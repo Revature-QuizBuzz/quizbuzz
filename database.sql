@@ -212,3 +212,28 @@ ALTER TABLE quizbuzz.quizzes ADD created_date timestamp NOT NULL;
 ALTER TABLE quizbuzz.quizzes ADD date_modified timestamp NULL;
 ALTER TABLE quizbuzz.questions ADD question_type varchar(30) NOT NULL;
 
+INSERT INTO quizbuzz.users (username,"password",f_name,l_name,total_points) VALUES
+	 ('test','1234','test','tester',0);
+	 
+INSERT INTO quizbuzz.tags ("name") VALUES
+	 ('Test Tag');
+	 
+INSERT INTO quizbuzz.quizzes (user_id,"name",description,total_score,created_date,date_modified) VALUES
+	 (1,'Test Quiz','A Quiz to test the system',100,'2021-09-08 13:25:16.142367',NULL);
+
+INSERT INTO quizbuzz.user_scores (quiz_id,user_id,user_score,completed_on) VALUES
+	 (1,1,100,'2021-09-08 13:26:45.194406');
+
+INSERT INTO quizbuzz.questions (quiz_id,question,possible_points,question_type) VALUES
+	 (1,'What is your name?',1.0,'multiplechoice'),
+	 (1,'What is your quest?',1.0,'multiplechoice'),
+	 (1,'What is the airspeed velocity of an unladen swallow?',1.0,'multiplechoice');
+	 
+INSERT INTO quizbuzz.answers (question_id,answer,correct) VALUES
+	 (1,'Arthur, King of Britons',true),
+	 (1,'Black Knight',false),
+	 (2,'To seek the Holy Grail',true),
+	 (2,'To over throw the king',false),
+	 (3,'African or European',true),
+	 (3,'Red... no, Blue',false);
+	 
