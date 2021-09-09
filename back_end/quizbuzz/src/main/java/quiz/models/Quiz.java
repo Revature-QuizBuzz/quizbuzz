@@ -53,6 +53,22 @@ public class Quiz {
 	@Column(name="date_modified")
 	private Date dateModified;
 
+	public Quiz() {
+	}
+
+	public Quiz(int id, User user, List<Scores> scores, List<Question> questions, List<QuizTag> tags, String name, String description, int totalScore, Date createdDate, Date dateModified) {
+		this.id = id;
+		this.user = user;
+		this.scores = scores;
+		this.questions = questions;
+		this.tags = tags;
+		this.name = name;
+		this.description = description;
+		this.totalScore = totalScore;
+		this.createdDate = createdDate;
+		this.dateModified = dateModified;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -64,6 +80,8 @@ public class Quiz {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	public User getUser() { return user; }
 
 	public List<Scores> getScores() {
 		return scores;
@@ -128,5 +146,6 @@ public class Quiz {
 	public void setDateModified(Date dateModified) {
 		this.dateModified = dateModified;
 	}
-	
+
+
 }

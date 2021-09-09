@@ -32,6 +32,15 @@ public class QuizTag {
 		return tag;
 	}
 
+	public QuizTag() {
+	}
+
+	public QuizTag(int id, Tags tag, Quiz quiz) {
+		this.id = id;
+		this.tag = tag;
+		this.quiz = quiz;
+	}
+
 	public void setTag(Tags tag) {
 		this.tag = tag;
 	}
