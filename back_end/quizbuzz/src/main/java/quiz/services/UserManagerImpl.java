@@ -1,5 +1,7 @@
 package quiz.services;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +40,10 @@ public class UserManagerImpl implements UserManager{
 			return null;
 		}
 		return null;
+	}
+	
+	@Override
+	public List<User> getUsers() {
+		return uDao.findAll();
 	}
 }

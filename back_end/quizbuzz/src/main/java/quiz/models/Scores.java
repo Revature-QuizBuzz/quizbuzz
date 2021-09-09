@@ -67,7 +67,5 @@ public class Scores {
 	public void setCompletedOn(Date completedOn) {
 		this.completedOn = completedOn;
 	}
-	
-	
-	
+
 }
