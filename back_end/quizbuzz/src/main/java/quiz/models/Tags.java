@@ -36,10 +36,6 @@ public class Tags {
 		this.name = name;
 	}
 
-	public List<QuizTag> getQuizTag() {
-		return quizTag;
-	}
-
 	public void setQuizTag(List<QuizTag> quizTag) {
 		this.quizTag = quizTag;
 	}

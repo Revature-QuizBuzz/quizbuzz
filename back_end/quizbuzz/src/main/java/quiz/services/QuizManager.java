@@ -7,6 +7,6 @@ import quiz.models.Quiz;
 import java.util.List;
 
 public interface QuizManager {
-    Quiz create(Quiz qz);
+//    Quiz create(Quiz qz);
     List<Quiz> findAll();
 }

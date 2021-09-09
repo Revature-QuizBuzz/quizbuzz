@@ -95,7 +95,7 @@ public class Question {
 		this.quiz = quiz;
 	}
 
-	public Quiz getQuiz() { return quiz; }
+
 
 
 

@@ -13,10 +13,10 @@ public class QuizController {
     @Autowired
     private QuizManager manager;
 
-    @PostMapping(path= "/createQuiz", produces = "application/json", consumes = "application/json")
-    public Quiz create(@RequestBody Quiz quiz){
-        return manager.create(quiz);
-    }
+//    @PostMapping(path= "/createQuiz", produces = "application/json", consumes = "application/json")
+//    public Quiz create(@RequestBody Quiz quiz){
+//        return manager.create(quiz);
+//    }
 
     @GetMapping(produces = "application/json")
     public List<Quiz> getAll(){

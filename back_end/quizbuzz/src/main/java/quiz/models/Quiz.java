@@ -3,17 +3,7 @@ package quiz.models;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="quizzes")
@@ -53,6 +43,9 @@ public class Quiz {
 	@Column(name="date_modified")
 	private Date dateModified;
 
+//	@Transient
+//	private int userId;
+
 	public Quiz() {
 	}
 
@@ -69,6 +62,19 @@ public class Quiz {
 		this.dateModified = dateModified;
 	}
 
+//	public Quiz(int id, userId, List<Scores> scores, List<Question> questions, List<QuizTag> tags, String name, String description, int totalScore, Date createdDate, Date dateModified) {
+//		this.id = id;
+//		this.userId = userId;
+//		this.scores = scores;
+//		this.questions = questions;
+//		this.tags = tags;
+//		this.name = name;
+//		this.description = description;
+//		this.totalScore = totalScore;
+//		this.createdDate = createdDate;
+//		this.dateModified = dateModified;
+//	}
+
 	public int getId() {
 		return id;
 	}
@@ -81,7 +87,7 @@ public class Quiz {
 		this.user = user;
 	}
 
-	public User getUser() { return user; }
+//	public User getUser() { return user; }
 
 	public List<Scores> getScores() {
 		return scores;
@@ -147,6 +153,11 @@ public class Quiz {
 		this.dateModified = dateModified;
 	}
 
-
-
+//	public int getUserId() {
+//		return userId;
+//	}
+//
+//	public void setUserId(int userId) {
+//		this.userId = userId;
+//	}
 }

@@ -48,8 +48,6 @@ public class Answers {
 		this.id = id;
 	}
 
-	public Question getQuestion() { return question; }
-
 	public void setQuestion(Question question) {
 		this.question = question;
 	}
@@ -69,6 +67,5 @@ public class Answers {
 	public void setCorrect(boolean correct) {
 		this.correct = correct;
 	}
-
 
 }

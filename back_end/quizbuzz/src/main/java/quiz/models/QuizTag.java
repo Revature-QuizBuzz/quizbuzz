@@ -20,11 +20,8 @@ public class QuizTag {
     @JoinColumn(name = "quiz_id", nullable = false)
     private Quiz quiz;
 
-    public Tags getTag() {
-        return tag;
+    public QuizTag() {
     }
-
-    public QuizTag() { }
 
     public QuizTag(int id, Tags tag, Quiz quiz) {
         this.id = id;
@@ -32,9 +29,9 @@ public class QuizTag {
         this.quiz = quiz;
     }
 
-    public int getId() { return id; }
-
-    public void setId(int id) { this.id = id; }
+    public Tags getTag() {
+        return tag;
+    }
 
     public void setTag(Tags tag) {
         this.tag = tag;
@@ -44,6 +41,6 @@ public class QuizTag {
         this.quiz = quiz;
     }
 
-    public Quiz getQuiz() { return quiz; }
+
 
 }

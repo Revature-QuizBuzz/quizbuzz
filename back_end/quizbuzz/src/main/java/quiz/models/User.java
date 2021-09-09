@@ -64,16 +64,8 @@ public class User {
 		this.id = id;
 	}
 
-	public List<Quiz> getQuizzes() {
-		return quizzes;
-	}
-
 	public void setQuizzes(List<Quiz> quizzes) {
 		this.quizzes = quizzes;
-	}
-
-	public List<Scores> getScores() {
-		return scores;
 	}
 
 	public void setScores(List<Scores> scores) {

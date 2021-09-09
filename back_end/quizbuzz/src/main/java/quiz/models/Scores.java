@@ -54,13 +54,9 @@ public class Scores {
 		this.id = id;
 	}
 
-	public User getUser() { return user; }
-
 	public void setUser(User user) {
 		this.user = user;
 	}
-
-	public Quiz getQuiz() { return quiz; }
 
 	public void setQuiz(Quiz quiz) {
 		this.quiz = quiz;
