@@ -39,6 +39,22 @@ public class Question {
 	
 	@Column(name="question_type")
 	private String type;
+	
+	public Question() {
+		super();
+	}
+	
+	public Question(int id, Quiz quiz, List<Answers> answers, String question, float possiblePoints, String type) {
+		super();
+		this.id = id;
+		this.quiz = quiz;
+		this.answers = answers;
+		this.question = question;
+		this.possiblePoints = possiblePoints;
+		this.type = type;
+	}
+
+
 
 	public int getId() {
 		return id;
@@ -83,5 +99,13 @@ public class Question {
 	public void setQuiz(Quiz quiz) {
 		this.quiz = quiz;
 	}
+	
+	@Override
+	public String toString() {
+		return "Question [id=" + id + ", quiz=" + quiz + ", answers=" + answers + ", question=" + question
+				+ ", possiblePoints=" + possiblePoints + ", type=" + type + "]";
+	}
+
+
 
 }
