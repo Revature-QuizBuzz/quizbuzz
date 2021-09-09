@@ -7,10 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { NewTagsComponent } from './new-tags/new-tags.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-
-const routes: Routes=[
-  {path:'newtags', component: NewTagsComponent}
-]
+import {routes} from './app-routing.module';
 
 @NgModule({
   declarations: [

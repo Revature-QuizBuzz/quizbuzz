@@ -18,7 +18,9 @@ export class NewTagsComponent implements OnInit {
       name: form.value.name
     })
     .subscribe({
-      next: (data:any)=>{},
+      next: (data:any)=>{
+        // this.router.navigate(['home']);
+      },
       error: (error)=>{
         console.log(error);
       },complete: ()=>{}

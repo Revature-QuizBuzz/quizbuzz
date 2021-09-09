@@ -2,11 +2,13 @@ package quiz.services;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
+
 import quiz.models.Tags;
 
 public interface TagsManager {
 	
 	//public List<Tags> getAllTags();
 	
-	public Tags create(Tags t);//adds new tag to db
+	public ResponseEntity<Tags> createTags(Tags t);//adds new tag to db
 }

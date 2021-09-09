@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import quiz.models.Tags;
 import quiz.services.TagsManager;
 
-@CrossOrigin(origins = "http://localhost:4200")
+
 @RestController
 @RequestMapping(path="/tags")
 public class TagsController {
@@ -35,10 +36,13 @@ public class TagsController {
 //		//List<Tags> tagsList = 		
 //		return new ResponseEntity<List<Tags>>(tagslist, HttpStatus.OK);
 //	}
-	
-	@PostMapping(consumes="application/json", produces="application/json")//adds new tag to db
-	public Tags create(@RequestBody Tags t) {
-		return manager.create(t);
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping(path="/new",consumes="application/json", produces="application/json")//adds new tag to db
+	public ResponseEntity<Tags> createTags(@RequestBody Tags t) {
+		System.out.println(t.getName());
+		HttpHeaders http=new HttpHeaders();
+		manager.createTags(t);
+		return new ResponseEntity<Tags>(t,HttpStatus.OK);
 	}
 	
 }

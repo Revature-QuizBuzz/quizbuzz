@@ -3,6 +3,7 @@ package quiz.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import quiz.dao.TagsDAO;
@@ -21,8 +22,11 @@ public class TagsManagerImpl implements TagsManager{
 //	}
 
 	@Override
-	public Tags create(Tags t) {//adds tag to db
-		return dao.save(t);
+	public ResponseEntity<Tags> createTags(Tags t) {
+		dao.save(t);
+		return null;
 	}
+
+	
 
 }
