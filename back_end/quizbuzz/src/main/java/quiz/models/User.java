@@ -43,6 +43,19 @@ public class User {
 	@Column(name="total_points")
 	private int totalPoints;
 
+	public User() { }
+
+	public User(int id, List<Quiz> quizzes, List<Scores> scores, String username, String password, String firstName, String lastName, int totalPoints) {
+		this.id = id;
+		this.quizzes = quizzes;
+		this.scores = scores;
+		this.username = username;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.totalPoints = totalPoints;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -106,5 +119,8 @@ public class User {
 	public void setTotalPoints(int totalPoints) {
 		this.totalPoints = totalPoints;
 	}
+
+
+
 	
 }

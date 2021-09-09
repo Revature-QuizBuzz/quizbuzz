@@ -27,8 +27,27 @@ public class Tags {
 	@Column
 	private String name;
 
+	public Tags() {
+	}
+
+	public Tags(int id, List<QuizTag> quizTag, String name) {
+		this.id = id;
+		this.quizTag = quizTag;
+		this.name = name;
+	}
+
+	public List<QuizTag> getQuizTag() {
+		return quizTag;
+	}
+
 	public void setQuizTag(List<QuizTag> quizTag) {
 		this.quizTag = quizTag;
+	}
+
+	public int getId() { return id; }
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {

@@ -1,12 +1,11 @@
 package quiz.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import quiz.models.Quiz;
 import quiz.services.QuizManager;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "quiz")
@@ -17,5 +16,10 @@ public class QuizController {
     @PostMapping(path= "/createQuiz", produces = "application/json", consumes = "application/json")
     public Quiz create(@RequestBody Quiz quiz){
         return manager.create(quiz);
+    }
+
+    @GetMapping(produces = "application/json")
+    public List<Quiz> getAll(){
+        return manager.findAll();
     }
 }

@@ -35,6 +35,13 @@ public class QuizManagerImpl implements QuizManager {
         List<QuizTag> tags = daoQuizTag.findAllByQuizId(quiz.getId());
         quiz.setTags(tags);
         return daoQuiz.save(quiz);
+
+
+    }
+
+    @Override
+    public List<Quiz> findAll() {
+        return daoQuiz.findAll();
     }
 
 }

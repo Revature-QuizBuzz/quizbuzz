@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import quiz.dao.QuizDAO;
 import quiz.models.Quiz;
 
+import java.util.List;
+
 public interface QuizManager {
-    public Quiz create(Quiz qz);
+    Quiz create(Quiz qz);
+    List<Quiz> findAll();
 }
