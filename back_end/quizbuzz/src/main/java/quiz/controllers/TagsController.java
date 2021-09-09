@@ -40,7 +40,6 @@ public class TagsController {
 	@PostMapping(path="/new",consumes="application/json", produces="application/json")//adds new tag to db
 	public ResponseEntity<Tags> createTags(@RequestBody Tags t) {
 		System.out.println(t.getName());
-		HttpHeaders http=new HttpHeaders();
 		manager.createTags(t);
 		return new ResponseEntity<Tags>(t,HttpStatus.OK);
 	}
