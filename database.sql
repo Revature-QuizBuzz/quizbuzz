@@ -215,6 +215,62 @@ ALTER TABLE quizbuzz.answers ADD CONSTRAINT answers_fk FOREIGN KEY (question_id)
 
 
 
+--trigger to update the user total_points total_possible_points and point percentage 
+--when a row is inserted into user_scores
+CREATE or replace function update_total_scores()
+returns trigger 
+LANGUAGE plpgsql
+AS $$
+begin
+
+UPDATE quizbuzz.users u
+set total_points = total_points + user_score
+FROM 
+    quizbuzz.user_scores s
+WHERE 
+    u.user_id = s.user_id
+and s.score_id = (select max(score_id) from quizbuzz.user_scores );
+
+
+UPDATE quizbuzz.users u
+set total_possible_points = total_possible_points + total_score
+FROM 
+    quizbuzz.user_scores s, quizbuzz.quizzes q
+WHERE 
+    u.user_id = s.user_id
+and s.quiz_id = q.quiz_id
+and s.score_id = (select max(score_id) from quizbuzz.user_scores );
+return null;
+end;
+$$;
+
+
+CREATE or replace function update_point_percentage()
+returns trigger 
+LANGUAGE plpgsql
+AS $$
+begin
+UPDATE quizbuzz.users 
+set point_percentage = ROUND(((total_points::decimal/ total_possible_points::decimal) * 100), 2);
+return null;
+end;
+$$;
+
+DROP TRIGGER IF exists update_score_on_insert on quizbuzz.user_scores;
+
+create trigger update_score_on_insert after
+insert
+    on
+    quizbuzz.user_scores for each row execute function update_total_scores();
+   
+DROP TRIGGER IF exists update_point_percentage_trigger on quizbuzz.users;
+
+create trigger update_point_percentage_trigger 
+AFTER UPDATE OF total_possible_points ON quizbuzz.users 
+    
+    for each row execute function update_point_percentage();
+   
+
 ALTER TABLE quizbuzz.user_scores ADD completed_on timestamp NOT NULL;
 ALTER TABLE quizbuzz.quizzes ADD created_date timestamp NOT NULL;
 ALTER TABLE quizbuzz.quizzes ADD date_modified timestamp NULL;
