@@ -10,5 +10,6 @@ import quiz.models.Tags;
 @Repository
 public interface TagsDAO extends JpaRepository<Tags, Integer>{
 
+	
 	public List<Tags> getAllTags();
 }
