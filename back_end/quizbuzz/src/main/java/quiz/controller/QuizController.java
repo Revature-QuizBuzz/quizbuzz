@@ -1,5 +1,7 @@
 package quiz.controller;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import quiz.models.Quiz;
@@ -12,9 +14,12 @@ import java.util.List;
 public class QuizController {
     @Autowired
     private QuizManager manager;
+    
+    	private static final Logger logger = LogManager.getLogger(QuizController.class);
 
     @PostMapping(path= "/createQuiz", produces = "application/json", consumes = "application/json")
     public Quiz create(@RequestBody Quiz quiz){
+        logger.info("created new quiz");
         return manager.create(quiz);
     }
 
