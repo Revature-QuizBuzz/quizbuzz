@@ -1,4 +1,5 @@
 import { UserScore } from "./scores";
+import { Quiz } from "./quizzes";
 
 export interface User {
     
@@ -11,4 +12,5 @@ export interface User {
     total_possible_points: number;
     point_percentage: number;
     userScores: UserScore[];
+    quizzes: Quiz[];
 }
