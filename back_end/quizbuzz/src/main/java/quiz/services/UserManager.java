@@ -1,5 +1,7 @@
 package quiz.services;
 
-public interface UserManager {
+import quiz.models.User;
 
+public interface UserManager {
+    User findById(int id);
 }

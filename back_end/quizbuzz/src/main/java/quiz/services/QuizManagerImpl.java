@@ -23,8 +23,9 @@ public class QuizManagerImpl implements QuizManager {
     private QuizTagDAO daoQuizTag;
 
 
-//    public Quiz create(Quiz quiz){
-//        User user = daoUser.findById(daoUser.findById()).get();
+    @Override
+    public Quiz create(Quiz quiz){
+//        User user = daoUser.findById(quiz.getUserId());
 //        quiz.setUser(user);
 //        List<Question> questions = daoQuestion.findAllByQuizId(quiz.getId());
 //        quiz.setQuestions(questions);
@@ -32,8 +33,8 @@ public class QuizManagerImpl implements QuizManager {
 //        quiz.setScores(scores);
 //        List<QuizTag> tags = daoQuizTag.findAllByQuizId(quiz.getId());
 //        quiz.setTags(tags);
-//        return daoQuiz.save(quiz);
-//    }
+        return daoQuiz.save(quiz);
+    }
 
     @Override
     public List<Quiz> findAll() {

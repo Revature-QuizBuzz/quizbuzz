@@ -43,8 +43,8 @@ public class Quiz {
 	@Column(name="date_modified")
 	private Date dateModified;
 
-//	@Transient
-//	private int userId;
+	@Transient
+	private int userId;
 
 	public Quiz() {
 	}
@@ -52,6 +52,19 @@ public class Quiz {
 	public Quiz(int id, User user, List<Scores> scores, List<Question> questions, List<QuizTag> tags, String name, String description, int totalScore, Date createdDate, Date dateModified) {
 		this.id = id;
 		this.user = user;
+		this.scores = scores;
+		this.questions = questions;
+		this.tags = tags;
+		this.name = name;
+		this.description = description;
+		this.totalScore = totalScore;
+		this.createdDate = createdDate;
+		this.dateModified = dateModified;
+	}
+
+	public Quiz(int id, int userId, List<Scores> scores, List<Question> questions, List<QuizTag> tags, String name, String description, int totalScore, Date createdDate, Date dateModified) {
+		this.id = id;
+		this.userId = userId;
 		this.scores = scores;
 		this.questions = questions;
 		this.tags = tags;
@@ -153,11 +166,13 @@ public class Quiz {
 		this.dateModified = dateModified;
 	}
 
-//	public int getUserId() {
-//		return userId;
-//	}
-//
-//	public void setUserId(int userId) {
-//		this.userId = userId;
-//	}
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+
 }

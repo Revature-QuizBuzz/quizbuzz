@@ -7,5 +7,6 @@ import quiz.models.User;
 
 @Repository
 public interface UserDAO extends JpaRepository<User, Integer>{
+    User findById(int id);
 
 }

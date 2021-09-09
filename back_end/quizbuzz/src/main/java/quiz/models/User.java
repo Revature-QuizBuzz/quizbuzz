@@ -112,6 +112,9 @@ public class User {
 		this.totalPoints = totalPoints;
 	}
 
+	public int getUser(){
+		return getId();
+	}
 
 
 	
