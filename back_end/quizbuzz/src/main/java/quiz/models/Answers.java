@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="answers")
@@ -19,6 +20,9 @@ public class Answers {
     @SequenceGenerator(name="id_generator", sequenceName = "answers_answer_id_seq", allocationSize = 1)
     @Column(name="answer_id")
 	private int id;
+	
+//	@Transient
+//	private int questionId;
 	
 	@ManyToOne
 	@JoinColumn(name="question_id", nullable=false)
@@ -40,6 +44,10 @@ public class Answers {
 
 	public void setQuestion(Question question) {
 		this.question = question;
+	}
+
+	public int getQuestionId() {
+		return question.getId();
 	}
 
 	public String getAnswer() {
