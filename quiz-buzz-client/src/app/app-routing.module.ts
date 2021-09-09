@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NewTagsComponent } from './new-tags/new-tags.component';
 
 export const routes: Routes = [
-  {path:" ", component: NewTagsComponent}
+  {path:"tags/new", component: NewTagsComponent}
 ];
 
 @NgModule({
