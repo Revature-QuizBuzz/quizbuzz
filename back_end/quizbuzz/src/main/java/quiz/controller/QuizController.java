@@ -8,7 +8,7 @@ import quiz.services.QuizManager;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "quiz")
+@RequestMapping(path = "quizzes")
 public class QuizController {
     @Autowired
     private QuizManager manager;

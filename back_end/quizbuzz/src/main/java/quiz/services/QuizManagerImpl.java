@@ -28,15 +28,11 @@ public class QuizManagerImpl implements QuizManager {
         quiz.setUser(user);
         List<Question> questions = daoQuestion.findAllByQuizId(quiz.getId());
         quiz.setQuestions(questions);
-
         List<Scores> scores = daoScore.findAllByQuizId(quiz.getId());
         quiz.setScores(scores);
-
         List<QuizTag> tags = daoQuizTag.findAllByQuizId(quiz.getId());
         quiz.setTags(tags);
         return daoQuiz.save(quiz);
-
-
     }
 
     @Override
