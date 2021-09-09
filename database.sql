@@ -1,6 +1,14 @@
--- DROP SCHEMA quizbuzz;
+--makes it so that anyone can copy and paste into their db no matter 
+--if they already have the db made
+
+DROP SCHEMA IF EXISTS quizbuzz CASCADE;
 
 CREATE SCHEMA quizbuzz AUTHORIZATION postgres;
+
+
+-- DROP SCHEMA quizbuzz;
+
+
 
 -- quizbuzz.answers_answer_id_seq definition
 
