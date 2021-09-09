@@ -8,8 +8,6 @@ CREATE SCHEMA quizbuzz AUTHORIZATION postgres;
 
 -- DROP SCHEMA quizbuzz;
 
-
-
 -- quizbuzz.answers_answer_id_seq definition
 
 -- DROP SEQUENCE quizbuzz.answers_answer_id_seq;
@@ -188,6 +186,8 @@ CREATE TABLE quizbuzz.users (
 	f_name varchar(40) NOT NULL,
 	l_name varchar(40) NOT NULL,
 	total_points int4 NOT NULL DEFAULT 0,
+	total_possible_points int not null default 0,
+	point_percentage decimal(4, 2) not null default 0,
 	CONSTRAINT users_pk PRIMARY KEY (user_id)
 );
 
