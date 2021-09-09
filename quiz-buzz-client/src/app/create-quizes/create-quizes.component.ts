@@ -12,4 +12,6 @@ export class CreateQuizesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  
+
 }

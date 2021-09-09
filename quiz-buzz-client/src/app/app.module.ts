@@ -5,6 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { CreateQuizesComponent } from './create-quizes/create-quizes.component';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes:Routes = [
+  {path: '', component:CreateQuizesComponent}
+]
 
 @NgModule({
   declarations: [
@@ -14,7 +19,8 @@ import { CreateQuizesComponent } from './create-quizes/create-quizes.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
