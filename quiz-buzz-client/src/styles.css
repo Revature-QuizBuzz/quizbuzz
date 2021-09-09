@@ -1,1 +1,57 @@
-/* You can add global styles to this file, and also import other style files */
+label {
+    font-weight: bold;
+    display: inline-block;
+    width:150px;
+    padding: 10px;
+    /*text-align: right;*/
+}
+
+.primary {
+    color:  #F26925;
+}
+
+.dark-gray {
+    color: #474C55;
+}
+
+.bg-dark-gray {
+    background-color: #474C55;
+}
+
+.blue {
+    color: #72A4C2;
+    background-color: #72A4C2;
+}
+
+.yellow {
+    color: #FCB414;
+}
+
+.light-gray {
+    color:  #B9B9BA;
+}
+
+.primary-btn {
+    background-color: #F26925;
+}
+
+main {
+    padding: 20px;
+}
+/*
+button {
+    background-color: #FCB414;
+}*/
+
+h2 {
+    color:#F26925;
+}
+/*
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  */
