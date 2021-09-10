@@ -1,29 +1,44 @@
-<p>create-quizes works!</p>
-
 <form [formGroup] = "createQuiz" (ngSubmit) = "onSubmit(createQuiz)">
 
     <div>
-        <h3>Create Quiz</h3>
+        <h2>Create a Quiz</h2> 
     </div>
 
     <label>Quiz Name</label>
+
     <div style="text-align: justify;">
+        <label for="name">Name</label>    
         <input type="text" formControlName="quizName" placeholder="i.e. Java Week 2"/>
-        <span style="text-align: right;">placeholder for tags</span>
-        <input type="text" formControlName="temptags" placeholder="temporary"/>
-        <div>
-            <input type="text" formControlName="quizDescription" placeholder="i.e. SQL/RDBMS"/>
-        </div>
+        <!-- <span style="text-align: right;">placeholder for tags</span> -->
+        <!-- <input type="text" formControlName="temptags" placeholder="temporary"/> -->
+    <div>
+        <label for="desc">Description</label>  
+        <input type="text" formControlName="quizDescription" placeholder="i.e. SQL/RDBMS"/>
+    </div>
     </div>
 
     <div formGroupName = "questions">
         
         Questions and answers go here, using dummies for testing
     </div>
-
+    <div class="tags">         
+        <button>JUnit</button>  
+       <button>Java</button>    
+       <button>SQL</button>    
+       <button>HTML, CSS, JS</button>      
+       <button>Angular</button>        
+       <button>DevOps</button>        
+       <button>Docker</button>      
+       <button>Jenkins</button>     
+       <button>Spring Boot</button>  
+        <button>+ Add new tag</button>         
+       </div>   
     <div>
         <button type="button" (click) = "addQuestion()">Add question</button>
         <button type="submit" [disabled]="!createQuiz.valid">Submit</button>
     </div>
 
 </form>
+
+
+
