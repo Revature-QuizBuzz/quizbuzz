@@ -18,4 +18,10 @@ export class NavbarComponent implements OnInit {
     localStorage.clear();
     this.router.navigate(['login']);
   }
+
+  getName() {
+    if(localStorage.getItem("id") === null)
+      return ""; 
+    return String(localStorage.getItem("firstName")) + " " + String(localStorage.getItem("lastName"));
+  }
 }
