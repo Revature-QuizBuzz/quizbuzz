@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import quiz.dao.*;
 import quiz.models.*;
 
-import java.util.Collections;
+
 import java.util.List;
 
 @Service
@@ -17,6 +17,11 @@ public class QuizManagerImpl implements QuizManager {
     @Override
     public Quiz create(Quiz quiz){
         return daoQuiz.save(quiz);
+    }
+
+    @Override
+    public Quiz findById(int id) {
+        return daoQuiz.findById(id);
     }
 
     @Override

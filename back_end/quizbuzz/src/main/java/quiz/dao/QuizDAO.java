@@ -11,4 +11,5 @@ import java.util.List;
 @Repository
 public interface QuizDAO extends JpaRepository<Quiz, Integer>{
     List<Quiz> findAll();
+    public Quiz findById(int id);
 }
