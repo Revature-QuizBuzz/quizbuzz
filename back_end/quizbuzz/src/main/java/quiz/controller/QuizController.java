@@ -18,7 +18,7 @@ public class QuizController {
     private QuizManager manager;
     
     private static final Logger logger = LogManager.getLogger(QuizController.class);
-    @PostMapping(path= "/createQuiz", produces = "application/json", consumes = "application/json")
+    @PostMapping(produces = "application/json", consumes = "application/json")
     public Quiz create(@RequestBody Quiz quiz){
         logger.info("created new quiz");
         return manager.create(quiz);
