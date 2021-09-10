@@ -187,7 +187,7 @@ CREATE TABLE quizbuzz.users (
 	l_name varchar(40) NOT NULL,
 	total_points int4 NOT NULL DEFAULT 0,
 	total_possible_points int not null default 0,
-	point_percentage decimal(4, 2) not null default 0,
+	point_percentage decimal not null default 0,
 	CONSTRAINT users_pk PRIMARY KEY (user_id)
 );
 
@@ -215,8 +215,13 @@ ALTER TABLE quizbuzz.answers ADD CONSTRAINT answers_fk FOREIGN KEY (question_id)
 
 
 
---trigger to update the user total_points total_possible_points and point percentage 
---when a row is inserted into user_scores
+ALTER TABLE quizbuzz.user_scores ADD completed_on timestamp NOT NULL;
+ALTER TABLE quizbuzz.quizzes ADD created_date timestamp NOT NULL;
+ALTER TABLE quizbuzz.quizzes ADD date_modified timestamp NULL;
+ALTER TABLE quizbuzz.questions ADD question_type varchar(30) NOT NULL;
+
+
+
 CREATE or replace function update_total_scores()
 returns trigger 
 LANGUAGE plpgsql
@@ -270,11 +275,8 @@ AFTER UPDATE OF total_possible_points ON quizbuzz.users
     
     for each row execute function update_point_percentage();
    
+  
 
-ALTER TABLE quizbuzz.user_scores ADD completed_on timestamp NOT NULL;
-ALTER TABLE quizbuzz.quizzes ADD created_date timestamp NOT NULL;
-ALTER TABLE quizbuzz.quizzes ADD date_modified timestamp NULL;
-ALTER TABLE quizbuzz.questions ADD question_type varchar(30) NOT NULL;
 
 INSERT INTO quizbuzz.users (username,"password",f_name,l_name,total_points) VALUES
 	 ('test','1234','test','tester',0);
