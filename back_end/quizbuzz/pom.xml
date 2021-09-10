@@ -54,6 +54,7 @@
 	      <version>4.11</version><!--$NO-MVN-MAN-VER$-->
 	      <scope>test</scope>
     	</dependency>
+    	
 	</dependencies>
 
 	<build>
