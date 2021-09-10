@@ -42,6 +42,32 @@ public class User {
 	
 	@Column(name="total_points")
 	private int totalPoints;
+	
+	@Column(name="total_possible_points")
+	private int totalPossible;
+	
+	@Column(name="point_percentage")
+	private double pointPercentage;
+	
+	
+	
+
+	public User(int id, List<Quiz> quizzes, List<Scores> scores, String username, String password, String firstName,
+			String lastName, int totalPoints, int totalPossible, double pointPercentage) {
+		super();
+		this.id = id;
+		this.quizzes = quizzes;
+		this.scores = scores;
+		this.username = username;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.totalPoints = totalPoints;
+		this.totalPossible = totalPossible;
+		this.pointPercentage = pointPercentage;
+	}
+	
+	
 
 	public int getId() {
 		return id;
@@ -107,4 +133,17 @@ public class User {
 		this.totalPoints = totalPoints;
 	}
 	
+	public int getTotalPossible() {
+		return totalPossible;
+	}
+	public void setTotalPossible(int totalPossible) {
+		this.totalPossible = totalPossible;
+	}
+	
+	public double getPointPercentage() {
+		return pointPercentage;
+	}
+	public void setPointPercentage(int pointPercentage) {
+		this.pointPercentage = pointPercentage;
+	}
 }
