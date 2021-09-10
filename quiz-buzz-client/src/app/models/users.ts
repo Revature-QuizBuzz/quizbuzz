@@ -2,7 +2,7 @@ import { UserScore } from "./scores";
 import { Quiz } from "./quizzes";
 import { LoginComponent } from "../login/login.component";
 
-export class User {
+export interface User {
     
     id: number;
     username: string;
