@@ -24,7 +24,11 @@ export class LoginComponent implements OnInit {
           this.incorrect = true;
         } else {
           console.log(JSON.stringify(data));
-          localStorage.setItem("user", JSON.stringify(data));
+          localStorage.setItem("username", String(data.id));
+          localStorage.setItem("username", String(data.username));
+          localStorage.setItem("username", String(data.firstName));
+          localStorage.setItem("username", String(data.lastName));
+          localStorage.setItem("username", String(data.totalPoints));
         }
       }
     })
