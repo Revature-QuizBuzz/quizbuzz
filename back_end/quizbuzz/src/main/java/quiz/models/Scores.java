@@ -38,6 +38,10 @@ public class Scores {
 
 	public Scores() { }
 
+	public Scores(int id) {
+		this.id = id;
+	}
+
 	public Scores(int id, User user, Quiz quiz, int score, Date completedOn) {
 		this.id = id;
 		this.user = user;

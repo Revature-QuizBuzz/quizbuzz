@@ -8,17 +8,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 class QuizbuzzApplicationTests {
 	
-	 @Autowired
-	 private QuizManager manager;
+//	 @Autowired
+//	 private QuizManager manager;
 
 	@Test
 	void contextLoads() {
 	}
 	
-	@Test
-	public void test2() throws Exception {
-		assertThat(manager).isNotNull();
-	    System.out.println("quizmanager is not null");
-	}
+//	@Test
+//	public void test2() throws Exception {
+//		assertThat(manager).isNotNull();
+//	    System.out.println("quizmanager is not null");
+//	}
 
 }
