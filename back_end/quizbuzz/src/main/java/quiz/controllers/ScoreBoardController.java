@@ -1,4 +1,4 @@
-package quiz.controller;
+package quiz.controllers;
 
 import java.util.List;
 
