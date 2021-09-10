@@ -37,4 +37,5 @@ public class ScoresManagerImpl implements ScoresManager{
 		return dao.save(score);
 	}
 
+	
 }
