@@ -3,7 +3,6 @@ label {
     display: inline-block;
     width:150px;
     padding: 10px;
-    /*text-align: right;*/
 }
 
 .primary {
@@ -31,27 +30,23 @@ label {
     color:  #B9B9BA;
 }
 
-.primary-btn {
+.btn-primary {
     background-color: #F26925;
+    outline:#B9B9BA;
+}
+.btn-primary:hover {
+    background-color: #F26925;
+    outline: #F26925;
 }
 
 main {
     padding: 20px;
 }
-/*
+
 button {
     background-color: #FCB414;
-}*/
+}
 
 h2 {
     color:#F26925;
 }
-/*
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 40px;
-    padding-bottom: 40px;
-  }
-  */
