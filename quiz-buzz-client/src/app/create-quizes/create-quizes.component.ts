@@ -19,6 +19,8 @@ export class CreateQuizesComponent implements OnInit {
   createQuiz!: FormGroup;
   // userId: number | null = <number><unknown>localStorage.getItem('userId');
   storageValue: string | null = localStorage.getItem('userId');
+  userId = JSON.parse(localStorage.getItem('userId')) as number;
+
 
 
 

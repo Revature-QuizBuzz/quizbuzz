@@ -7,4 +7,5 @@ export interface Quiz {
     totalScore: number;
     createdDate: Date;
     dateModified: Date;
+    
 }
