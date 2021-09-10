@@ -16,41 +16,41 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="quizzes")
+@Table(name = "quizzes")
 public class Quiz {
-	
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator")
-    @SequenceGenerator(name="id_generator", sequenceName = "quizzes_quiz_id_seq", allocationSize = 1)
-    @Column(name="quiz_id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator")
+	@SequenceGenerator(name = "id_generator", sequenceName = "quizzes_quiz_id_seq", allocationSize = 1)
+	@Column(name = "quiz_id")
 	private int id;
-	
+
 	@ManyToOne
-	@JoinColumn(name="user_id", nullable=false)
+	@JoinColumn(name = "user_id", nullable = false)
 	private User user;
-	
-	@OneToMany(mappedBy="quiz", cascade=CascadeType.ALL)
+
+	@OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
 	private List<Scores> scores;
-	
-	@OneToMany(mappedBy="quiz", cascade=CascadeType.ALL)
+
+	@OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
 	private List<Question> questions;
-	
-	@OneToMany(mappedBy="quiz")
+
+	@OneToMany(mappedBy = "quiz")
 	private List<QuizTag> tags;
 
 	@Column
 	private String name;
-	
+
 	@Column
 	private String description;
-	
-	@Column(name="total_score")
+
+	@Column(name = "total_score")
 	private int totalScore;
-	
-	@Column(name="created_date")
+
+	@Column(name = "created_date")
 	private Date createdDate;
-	
-	@Column(name="date_modified")
+
+	@Column(name = "date_modified")
 	private Date dateModified;
 
 	public int getId() {
@@ -80,7 +80,7 @@ public class Quiz {
 	public void setTags(List<QuizTag> tags) {
 		this.tags = tags;
 	}
-	
+
 	public List<Question> getQuestions() {
 		return questions;
 	}
@@ -128,5 +128,5 @@ public class Quiz {
 	public void setDateModified(Date dateModified) {
 		this.dateModified = dateModified;
 	}
-	
+
 }

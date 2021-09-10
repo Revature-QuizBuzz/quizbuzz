@@ -12,23 +12,21 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name="answers")
+@Table(name = "answers")
 public class Answers {
-	
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator")
-    @SequenceGenerator(name="id_generator", sequenceName = "answers_answer_id_seq", allocationSize = 1)
-    @Column(name="answer_id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator")
+	@SequenceGenerator(name = "id_generator", sequenceName = "answers_answer_id_seq", allocationSize = 1)
+	@Column(name = "answer_id")
 	private int id;
-	
-	
 	@ManyToOne
-	@JoinColumn(name="question_id", nullable=false)
+	@JoinColumn(name = "question_id", nullable = false)
 	private Question question;
-	
+
 	@Column
 	private String answer;
-	
+
 	@Column
 	private boolean correct;
 
@@ -44,9 +42,9 @@ public class Answers {
 		this.question = question;
 	}
 
-	public int getQuestionId() {
-		return question.getId();
-	}
+//	public int getQuestionId() {
+//		return question.getId();
+//	}
 
 	public String getAnswer() {
 		return answer;
@@ -63,6 +61,5 @@ public class Answers {
 	public void setCorrect(boolean correct) {
 		this.correct = correct;
 	}
-	
-	
+
 }

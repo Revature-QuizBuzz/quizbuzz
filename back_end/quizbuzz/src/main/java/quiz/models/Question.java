@@ -17,30 +17,28 @@ import javax.persistence.Table;
 import org.springframework.data.annotation.Transient;
 
 @Entity
-@Table(name="questions")
+@Table(name = "questions")
 public class Question {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator")
-    @SequenceGenerator(name="id_generator", sequenceName = "questions_question_id_seq", allocationSize = 1)
-    @Column(name="question_id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator")
+	@SequenceGenerator(name = "id_generator", sequenceName = "questions_question_id_seq", allocationSize = 1)
+	@Column(name = "question_id")
 	private int id;
-	
-	
 	@ManyToOne
-	@JoinColumn(name="quiz_id", nullable=false)
+	@JoinColumn(name = "quiz_id", nullable = false)
 	private Quiz quiz;
-	
-	@OneToMany(mappedBy="question", cascade=CascadeType.ALL)
+
+	@OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
 	private List<Answers> answers;
-	
+
 	@Column
 	private String question;
-	
-	@Column(name="possible_points")
+
+	@Column(name = "possible_points")
 	private float possiblePoints;
-	
-	@Column(name="question_type")
+
+	@Column(name = "question_type")
 	private String type;
 	
 	public int getId() {
@@ -92,8 +90,6 @@ public class Question {
 		this.type = type;
 	}
 	
-
-
 
 
 }

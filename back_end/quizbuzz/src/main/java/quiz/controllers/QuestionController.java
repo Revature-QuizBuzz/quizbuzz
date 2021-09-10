@@ -13,9 +13,9 @@ import quiz.models.Question;
 import quiz.services.QuestionManager;
 
 @RestController
-@RequestMapping(path= "/questions")
+@RequestMapping(path = "/questions")
 public class QuestionController {
-	
+
 	@Autowired
 	private QuestionManager manager;
 	
