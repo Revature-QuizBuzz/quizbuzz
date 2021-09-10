@@ -1,9 +1,10 @@
 import { UserScore } from "./scores";
 import { Quiz } from "./quizzes";
+import { LoginComponent } from "../login/login.component";
 
 export interface User {
     
-    userId: number;
+    id: number;
     username: string;
     password: string;
     firstName: string;
