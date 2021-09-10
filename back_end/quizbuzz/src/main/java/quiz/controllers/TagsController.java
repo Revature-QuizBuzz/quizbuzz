@@ -41,6 +41,7 @@ public class TagsController {
 	public ResponseEntity<Tags> createTags(@RequestBody Tags t) {
 		System.out.println(t.getName());
 		manager.createTags(t);
+		logger.info("New Tag Created");
 		return new ResponseEntity<Tags>(t,HttpStatus.OK);
 	}
 	
