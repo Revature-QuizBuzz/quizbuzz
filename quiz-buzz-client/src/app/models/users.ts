@@ -1,7 +1,7 @@
 import { UserScore } from "./scores";
 import { Quiz } from "./quizzes";
 
-export interface User {
+export class User {
     
     userId: number;
     username: string;
