@@ -17,7 +17,6 @@ public class Quiz {
 	private int id;
 	
 	@ManyToOne
-	@JoinColumn(name="user_id", nullable=false)
 	@JoinColumn(name="user_id")
 	private User user;
 	
