@@ -1,4 +1,4 @@
-<h3>Enter the queston and the answers below</h3>
+<h2>Enter the queston and the answers below</h2>
 <p></p>
 <div class="container">
     <form (ngSubmit)="onSubmit(f)" #f="ngForm">
@@ -11,11 +11,38 @@
     <div>
         <input id="answer" type="text" name="answer"
         placeholder="Answer here" required ngModel>
-        <label for="answer">What's the answer?</label>
+        <label for="answer">Answer #1</label>
     </div>
     <div>
-        <input type="checkbox" id="correct" name="correct" value="true">
-        <label for="correct">Correct answer?</label>
+        <span>
+            <input type="checkbox" id="correct" name="correct" value="true">
+            <label for="correct">Correct answer?</label>
+        </span>
+    </div>
+    <div>
+        <input id="answer2" type="text" name="answer2"
+        placeholder="Answer here" required ngModel>
+        <label for="answer2">Answer #2</label>
+    </div>
+    <div>
+        <span>
+            <input type="checkbox" id="correct" name="correct" value="true">
+            <label for="correct">Correct answer?</label>
+        </span>
+    </div>
+    <div>
+        <input id="answer3" type="text" name="answer3"
+        placeholder="Answer here" required ngModel>
+        <label for="answer3">Answer #3</label>
+    </div>
+    <div>
+        <span>
+            <input type="checkbox" id="correct" name="correct" value="true">
+            <label for="correct">Correct answer?</label>
+        </span>
+    </div>
+    <div>
+        <button type="submit">Submit Answers</button>
     </div>
     </form>
 </div>
