@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { NewTagsComponent } from './new-tags/new-tags.component';
 
 export const routes: Routes = [
+  {path: '', component:HomeComponent, canActivate:[AuthGuard]},
   {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path:"tags/new", component: NewTagsComponent}
