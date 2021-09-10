@@ -2,6 +2,20 @@
 <p></p>
 <div class="container">
     <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-        
+        <div>
+        <input id="questionid" type="number" name="questionid"
+        placeholder="Question ID" required ngModel>
+        <label for="questionid">Question ID</label>
+        </div>
+    <p></p>
+    <div>
+        <input id="answer" type="text" name="answer"
+        placeholder="Answer here" required ngModel>
+        <label for="answer">What's the answer?</label>
+    </div>
+    <div>
+        <input type="checkbox" id="correct" name="correct" value="true">
+        <label for="correct">Correct answer?</label>
+    </div>
     </form>
 </div>

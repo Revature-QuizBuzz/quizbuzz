@@ -10,4 +10,6 @@ public interface AnswersManager {
 
 	Answers create(Answers ans);
 
+	List<Answers> createAnswers(List<Answers> allAnswers);
+
 }

@@ -27,4 +27,8 @@ public class AnswersManagerImpl implements AnswersManager {
 		return dao.save(ans);
 	}
 
+	public List<Answers> createAnswers(List<Answers> list) {
+		return dao.saveAll(list);
+	}
+
 }
