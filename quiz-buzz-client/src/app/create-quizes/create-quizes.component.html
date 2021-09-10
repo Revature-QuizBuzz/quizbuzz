@@ -1,2 +1,29 @@
 <p>create-quizes works!</p>
 
+<form [formGroup] = "createQuiz" (ngSubmit) = "onSubmit(createQuiz)">
+
+    <div>
+        <h3>Create Quiz</h3>
+    </div>
+
+    <label>Quiz Name</label>
+    <div style="text-align: justify;">
+        <input type="text" formControlName="quizName" placeholder="i.e. Java Week 2"/>
+        <span style="text-align: right;">placeholder for tags</span>
+        <input type="text" formControlName="temptags" placeholder="temporary"/>
+        <div>
+            <input type="text" formControlName="quizDescription" placeholder="i.e. SQL/RDBMS"/>
+        </div>
+    </div>
+
+    <div formGroupName = "questions">
+        
+        Questions and answers go here, using dummies for testing
+    </div>
+
+    <div>
+        <button type="button" (click) = "addQuestion()">Add question</button>
+        <button type="submit" [disabled]="!createQuiz.valid">Submit</button>
+    </div>
+
+</form>
