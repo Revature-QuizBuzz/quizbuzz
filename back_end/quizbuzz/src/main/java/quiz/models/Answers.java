@@ -33,6 +33,10 @@ public class Answers {
 	public Answers() {
 	}
 
+	public Answers(int id) {
+		this.id = id;
+	}
+
 	public Answers(int id, Question question, String answer, boolean correct) {
 		this.id = id;
 		this.question = question;

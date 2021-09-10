@@ -42,6 +42,10 @@ public class Question {
 
 	public Question() { }
 
+	public Question(int id) {
+		this.id = id;
+	}
+
 	public Question(int id, Quiz quiz, List<Answers> answers, String question, float possiblePoints, String type) {
 		this.id = id;
 		this.quiz = quiz;
@@ -94,10 +98,5 @@ public class Question {
 	public void setQuiz(Quiz quiz) {
 		this.quiz = quiz;
 	}
-
-
-
-
-
 
 }

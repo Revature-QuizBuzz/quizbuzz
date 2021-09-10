@@ -45,6 +45,11 @@ public class User {
 
 	public User() { }
 
+	public User(int id) {
+		this.id = id;
+	}
+
+
 	public User(int id, List<Quiz> quizzes, List<Scores> scores, String username, String password, String firstName, String lastName, int totalPoints) {
 		this.id = id;
 		this.quizzes = quizzes;
