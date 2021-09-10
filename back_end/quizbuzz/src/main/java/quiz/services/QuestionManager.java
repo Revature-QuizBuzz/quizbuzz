@@ -8,6 +8,6 @@ public interface QuestionManager {
 	
 	List<Question> findAll();
 	
-	Question create(Question ps);
+	Question create(Question ques);
 
 }

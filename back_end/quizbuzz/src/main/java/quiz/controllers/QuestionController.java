@@ -19,15 +19,19 @@ public class QuestionController {
 	@Autowired
 	private QuestionManager manager;
 	
-	@GetMapping(path="/pull", produces = "application/json", consumes = "application/json")
-	public List<Question> getAllStocks(){
+	@GetMapping(path="/pull", produces = "application/json")
+	public List<Question> getAllQuestions(){
 		return manager.findAll();
 	}
 	
-	@PostMapping(path= "/create",consumes="application/json", produces="application/json")
+	@PostMapping(path= "/new",consumes="application/json", produces="application/json")
 	public Question create( @RequestBody Question ques){
-		return manager.create(ques);
+//		System.out.println(ques.getQuiz().getId());
+		manager.create(ques);
+		return null;
+		
 	}
+	
 	
 	
 	

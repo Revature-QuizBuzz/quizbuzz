@@ -8,12 +8,14 @@ import org.springframework.stereotype.Service;
 
 import quiz.dao.AnswersDAO;
 import quiz.models.Answers;
+import quiz.models.Quiz;
 
 @Service
 public class AnswersManagerImpl implements AnswersManager {
 
 	@Autowired
 	private AnswersDAO dao;
+	
 
 	@Override
 	public List<Answers> findAllAnswers() {

@@ -23,7 +23,7 @@ public class AnswerController {
 	public List<Answers> getAllAnswers() {
 		return answer.findAllAnswers();
 	}
-	@PostMapping(consumes = "application/json", produces = "applicatin/json")
+	@PostMapping(consumes = "application/json", produces = "application/json")
 	public Answers create(@RequestBody Answers ans) {
 		return answer.create(ans);
 	}

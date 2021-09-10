@@ -10,11 +10,13 @@ import org.springframework.stereotype.Service;
 import quiz.dao.QuestionDAO;
 import quiz.models.Question;
 
+
 @Service
 public class QuestionManagerImpl implements QuestionManager{
 	
 	@Autowired
 	private QuestionDAO dao;
+	
 
 	@Override
 	public List<Question> findAll() {

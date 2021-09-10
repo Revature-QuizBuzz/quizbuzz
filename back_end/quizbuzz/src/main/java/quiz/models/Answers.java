@@ -21,8 +21,6 @@ public class Answers {
     @Column(name="answer_id")
 	private int id;
 	
-//	@Transient
-//	private int questionId;
 	
 	@ManyToOne
 	@JoinColumn(name="question_id", nullable=false)

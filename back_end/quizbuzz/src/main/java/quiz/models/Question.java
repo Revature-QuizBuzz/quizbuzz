@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.springframework.data.annotation.Transient;
+
 @Entity
 @Table(name="questions")
 public class Question {
@@ -23,6 +25,7 @@ public class Question {
     @SequenceGenerator(name="id_generator", sequenceName = "questions_question_id_seq", allocationSize = 1)
     @Column(name="question_id")
 	private int id;
+	
 	
 	@ManyToOne
 	@JoinColumn(name="quiz_id", nullable=false)
@@ -40,22 +43,6 @@ public class Question {
 	@Column(name="question_type")
 	private String type;
 	
-	public Question() {
-		super();
-	}
-	
-	public Question(int id, Quiz quiz, List<Answers> answers, String question, float possiblePoints, String type) {
-		super();
-		this.id = id;
-		this.quiz = quiz;
-		this.answers = answers;
-		this.question = question;
-		this.possiblePoints = possiblePoints;
-		this.type = type;
-	}
-
-
-
 	public int getId() {
 		return id;
 	}
@@ -63,6 +50,15 @@ public class Question {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	public Quiz getQuiz() {
+		return this.quiz;
+	}
+	
+	public void setQuiz(Quiz quiz) {
+		this.quiz = quiz;
+	}
+
 
 	public List<Answers> getAnswers() {
 		return answers;
@@ -95,16 +91,8 @@ public class Question {
 	public void setType(String type) {
 		this.type = type;
 	}
-
-	public void setQuiz(Quiz quiz) {
-		this.quiz = quiz;
-	}
 	
-	@Override
-	public String toString() {
-		return "Question [id=" + id + ", quiz=" + quiz + ", answers=" + answers + ", question=" + question
-				+ ", possiblePoints=" + possiblePoints + ", type=" + type + "]";
-	}
+
 
 
 
