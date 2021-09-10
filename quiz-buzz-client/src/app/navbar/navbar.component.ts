@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AppRoutingModule } from '../app-routing.module';
 
 @Component({
   selector: 'app-navbar',
@@ -8,12 +10,13 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
   logo = 'assets/rev-logo_281_29.png';
   avatar = "assets/interns.png";
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
 
   signOut() {
     localStorage.clear();
+    this.router.navigate(['login']);
   }
 }
