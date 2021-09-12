@@ -22,21 +22,42 @@ export class QuestionAnswerComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   onSubmit(form:NgForm){
+    var answerArray = [];
+    var answer1 = {};
+    var answer2 = {};
+    var answer3 = {};
+
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     }
+   answer1 = {
+     questionid: form.value.questionid,
+     answer: form.value.answer1,
+     correct: form.value.correct1
+   }
+   answer2 = {
+    questionid: form.value.questionid,
+    answer: form.value.answer2,
+    correct: form.value.correct2
+  }
+  answer3 = {
+    questionid: form.value.questionid,
+    answer: form.value.answer3,
+    correct: form.value.correct3
+  }
+  answerArray.push(answer1);
+  answerArray.push(answer2);
+  answerArray.push(answer3);
     console.log(form.value.questionid)
     console.log(form.value.answer)
     console.log(form.value.correct)
+    console.log(this.answer.correct)
       this.http.post(this._url,
-        JSON.stringify({
-          questionid: form.value.questionid,
-          answer: form.value.answer,
-          correct: form.value.correct
-        }),httpOptions
+        answerArray,httpOptions
         ).subscribe({
           next: (data:any)=>{
             if(data.status === 'success'){
