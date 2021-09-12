@@ -3,9 +3,19 @@ import { Quiz } from '../models/quizzes';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 const baseUrl = 'http://localhost:8080/quizzes/createQuiz';
+// above should be paired with this in controller
+// @CrossOrigin(origins = "http://localhost:4200")
+// @PostMapping(value="/createQuiz",consumes="application/json")
+//     public Quiz create(@RequestBody Quiz quiz){
+//         logger.info("created new quiz");
+//         return manager.create(quiz);
+//     }
+
+
+
 
 @Component({
   selector: 'app-create-quizes',
@@ -14,17 +24,20 @@ const baseUrl = 'http://localhost:8080/quizzes/createQuiz';
 })
 
 export class CreateQuizesComponent implements OnInit {
-  quiz!: Quiz;
+
+  quiz: Quiz = {
+ 
+  };
   submitted = false;
   createQuiz!: FormGroup;
   // userId: number | null = <number><unknown>localStorage.getItem('userId');
   storageValue: string | null = localStorage.getItem('userId');
-  userId = JSON.parse(localStorage.getItem('userId')) as number;
+  userId = JSON.parse(localStorage.getItem('userId')|| '{}');
 
 
 
 
-  constructor(private httpClient: HttpClient, private http: HttpClient, private fb: FormBuilder) {
+  constructor(private httpClient: HttpClient, private http: HttpClient, private fb: FormBuilder,private modalService: NgbModal) {
 
 
   }
@@ -39,9 +52,13 @@ export class CreateQuizesComponent implements OnInit {
       })
 
     })
+
   }
 
-  create(quiz: Quiz): Observable<any> {
+
+
+
+  create(quiz: any): Observable<any> {
     return this.http.post(baseUrl, quiz);
   }
 
@@ -54,16 +71,16 @@ export class CreateQuizesComponent implements OnInit {
     this.quiz.userId = amount;
     this.quiz = value;
 
-    // if (confirm("You have succesfully added a new quiz"))
-    //   this.create(userId)
-    //     .subscribe(
-    //       response => {
-    //         console.log(response);
-    //         this.submitted = true;
-    //       },
-    //       error => {
-    //         console.log(error);
-    //       });
+   // if (confirm("You have succesfully added a new quiz"))
+      this.create(value)
+        .subscribe(
+          response => {
+            console.log(response);
+            this.submitted = true;
+          },
+          error => {
+            console.log(error);
+          });
   }
 
 
@@ -71,10 +88,27 @@ export class CreateQuizesComponent implements OnInit {
 
   }
 
-  // incase we want to pass date more neatly
-  // formatDate(date:any) {
-  //   let d = new Date(date);
-  //   return d.getMonth() + "/" + d.getDate() + "/" + d.getFullYear();
-  // }
+  add(): void {
+    const data = {
+      quizId: this.quiz.quizId,
+      userId: this.quiz.userId,
+      name: this.quiz.name,
+      description: this.quiz.description,
+      totalScore: this.quiz.totalScore,
+      createdDate: this.quiz.createdDate,
+      dateModified: this.quiz.dateModified
+    };
+ //   if(confirm("You have succesfully added a quiz"))
+    this.create(data)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.submitted = true;
+        },
+        error => {
+          console.log(error);
+        });
+  }
+
 
 }
