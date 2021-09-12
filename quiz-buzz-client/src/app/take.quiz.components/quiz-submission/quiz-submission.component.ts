@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {Question} from 'src/app/models/questions';
+import {Answer} from 'src/app/models/answers';
+import { Quiz } from 'src/app/models/quizzes';
+import { AnswerService } from '../answer.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-quiz-submission',
@@ -7,9 +12,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuizSubmissionComponent implements OnInit {
 
-  constructor() { }
+  answers: Answer[] = [];
+  questions: Question[] = [];
+  quizzes: Quiz[] = [];
+
+  constructor(private answerService: AnswerService) { }
+  
 
   ngOnInit(): void {
+    this.answerService.getAllAnswers()
+    .subscribe(data => {
+      console.log(data);
+      this.answers = data;
+    });
+
+    this.answerService.getAllQuiz()
+    .subscribe(data => {
+      console.log(data);
+      this.quizzes = data;
+    });
+
+    this.answerService.getAllQuestions()
+    .subscribe(data => {
+      console.log(data);
+      this.questions = data;
+    });
   }
+
+  // onSubmit(form: NgForm): void {
+  //   let userAnswer:Answer[] = []
+  // }
 
 }
