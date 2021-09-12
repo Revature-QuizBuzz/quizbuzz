@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { CreateQuizesComponent } from './create-quizes/create-quizes.component';
 import { RouterModule, Routes } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 const routes:Routes = [
@@ -24,7 +24,8 @@ const routes:Routes = [
     AppRoutingModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
