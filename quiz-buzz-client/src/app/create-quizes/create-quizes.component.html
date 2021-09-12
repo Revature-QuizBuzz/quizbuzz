@@ -3,17 +3,36 @@
     <div>
         <h2>Create a Quiz</h2> 
     </div>
-
-    <div style="text-align: justify;">
-        <label for="name">Name</label>    
-        <input type="text" formControlName="quizName" placeholder="i.e. Java Week 2"/>
-        <!-- <span style="text-align: right;">placeholder for tags</span> -->
-        <!-- <input type="text" formControlName="temptags" placeholder="temporary"/> -->
-    <div>
-        <label for="desc">Description</label>  
-        <input type="text" formControlName="quizDescription" placeholder="i.e. SQL/RDBMS"/>
+    <div class="modal-body">
+      <form>
+     <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        required
+        [(ngModel)]="quiz.name"
+        name="name"
+      />
     </div>
-    </div>
+  </form>
+</div>
+<div class="modal-body">
+  <form>
+ <div class="form-group">
+  <label for="description">Description</label>
+  <input
+    type="text"
+    class="form-control"
+    id="description"
+    required
+    [(ngModel)]="quiz.description"
+    name="description"
+  />
+</div>
+</form>
+</div>
 
     <div formGroupName = "questions">
         
@@ -32,11 +51,11 @@
         <button>+ Add new tag</button>         
        </div>   
     <div>
-        <button type="button" (click) = "addQuestion()">Add question</button>
-        <button type="submit" [disabled]="!createQuiz.valid">Submit</button>
-    </div>
-
-</form>
+        <button type="button" (click) = "addQuestion()" class="btn btn-primary">Add question</button>
+        <!-- <button type="submit" [disabled]="!createQuiz.valid" class="btn btn-primary">Submit</button> -->
+        <button (click)="add()" class="btn btn-success">Submit</button> 
+      </div> 
+   </form>
 
 
 
