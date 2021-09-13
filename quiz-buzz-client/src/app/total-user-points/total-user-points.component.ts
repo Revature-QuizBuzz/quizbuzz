@@ -4,6 +4,8 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ScoreService } from '../score.service';
 import { UserScore } from '../models/scores';
+import { User } from '../models/users';
+import { Quiz } from '../models/quizzes';
 
 
 @Component({
@@ -13,12 +15,13 @@ import { UserScore } from '../models/scores';
 })
 export class TotalUserPointsComponent implements OnInit {
 
-
+  users: User = {"id":1};
+  quizzes: Quiz = {"id":1};
   scores: UserScore[] = [];
   newScores: UserScore = {
-    userId: 1,
+    user: this.users,
     scoreId: 1,
-    quizId: 1,
+    quiz: this.quizzes,
     score: 90,
     completedOn: new Date()
   };
