@@ -31,8 +31,8 @@ export class CreateQuizesComponent implements OnInit {
   submitted = false;
   createQuiz!: FormGroup;
   // userId: number | null = <number><unknown>localStorage.getItem('userId');
-  storageValue: string | null = localStorage.getItem('userId');
-  userId = JSON.parse(localStorage.getItem('userId')|| '{}');
+  storageValue: string | null = localStorage.getItem('id');
+  userId = JSON.parse(localStorage.getItem('id')|| '{}');
 
 
 
