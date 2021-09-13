@@ -4,6 +4,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { User } from '../models/users';
 
 const baseUrl = 'http://localhost:8080/quizzes/createQuiz';
 // above should be paired with this in controller
@@ -66,7 +67,9 @@ export class CreateQuizesComponent implements OnInit {
     if (this.storageValue !== null) {
       amount = parseInt(this.storageValue, 10);
     }
-    this.quiz.userId = amount;
+    let user:User = {id:amount};
+    this.quiz.user = user;
+    // this.quiz.userId = amount;
     this.quiz = value;
 
    // if (confirm("You have succesfully added a new quiz"))
@@ -91,10 +94,12 @@ export class CreateQuizesComponent implements OnInit {
     if (this.storageValue !== null) {
       amount = parseInt(this.storageValue, 10);
     }
-    this.quiz.userId = amount;
+    let user:User = {id: amount};
+    // this.quiz.userId = amount;
     const data = {
-      quizId: this.quiz.quizId,
-      user: this.quiz.userId,
+      quizId: this.quiz.id,
+      user: user,
+      // user: this.quiz.userId,
       name: this.quiz.name,
       description: this.quiz.description,
       totalScore: this.quiz.totalScore,
