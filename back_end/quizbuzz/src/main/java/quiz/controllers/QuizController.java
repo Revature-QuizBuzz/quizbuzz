@@ -1,4 +1,4 @@
-package quiz.controller;
+package quiz.controllers;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

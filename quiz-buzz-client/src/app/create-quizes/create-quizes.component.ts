@@ -33,8 +33,8 @@ export class CreateQuizesComponent implements OnInit {
   user: User = {
   }
   quiz: Quiz = {
-    quizId: 0,
-    userId: this.user,
+    id: 0,
+    user: this.user,
     scores: [],
     questions: [],
     tags: [],
@@ -80,7 +80,9 @@ export class CreateQuizesComponent implements OnInit {
     if (this.storageValue !== null) {
       amount = parseInt(this.storageValue, 10);
     }
-    this.quiz.userId.id = amount;
+    let user:User = {id:amount};
+    this.user = user;
+    // this.quiz.userId = amount;
     this.quiz = value;
 
    // if (confirm("You have succesfully added a new quiz"))
@@ -105,10 +107,12 @@ export class CreateQuizesComponent implements OnInit {
     if (this.storageValue !== null) {
       amount = parseInt(this.storageValue, 10);
     }
-    this.quiz.userId.id = amount;
+    let user:User = {id: amount};
+    // this.quiz.userId = amount;
     const data = {
-      quizId: this.quiz.quizId,
-      user: this.quiz.userId,
+      quizId: this.quiz.id,
+      user: user,
+      // user: this.quiz.userId,
       name: this.quiz.name,
       description: this.quiz.description,
       totalScore: this.quiz.totalScore,
