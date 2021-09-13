@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { QuestionAnswerComponent } from './question-answer/question-answer.component';
+import { QuestionComponent } from './question/question.component';
 
 const routes: Routes = [
-  {path: 'newquestion', component: QuestionAnswerComponent}
+  {path: 'newquestionanswer', component: QuestionAnswerComponent},
+  {path: 'newquestion', component: QuestionComponent}
 ];
 
 @NgModule({

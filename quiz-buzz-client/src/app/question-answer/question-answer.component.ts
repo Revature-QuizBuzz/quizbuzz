@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./question-answer.component.css']
 })
 export class QuestionAnswerComponent implements OnInit {
-
   answer: Answer={
     id: 0,
     answer: "",
