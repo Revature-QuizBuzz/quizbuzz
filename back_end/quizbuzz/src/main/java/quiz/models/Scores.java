@@ -36,6 +36,20 @@ public class Scores {
 	@Column(name="completed_on")
 	private Date completedOn;
 
+	public Scores() { }
+
+	public Scores(int id) {
+		this.id = id;
+	}
+
+	public Scores(int id, User user, Quiz quiz, int score, Date completedOn) {
+		this.id = id;
+		this.user = user;
+		this.quiz = quiz;
+		this.score = score;
+		this.completedOn = completedOn;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -67,5 +81,4 @@ public class Scores {
 	public void setCompletedOn(Date completedOn) {
 		this.completedOn = completedOn;
 	}
-
 }

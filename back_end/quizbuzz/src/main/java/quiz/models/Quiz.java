@@ -1,19 +1,10 @@
 package quiz.models;
 
+
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="quizzes")
@@ -26,13 +17,13 @@ public class Quiz {
 	private int id;
 	
 	@ManyToOne
-	@JoinColumn(name="user_id", nullable=false)
+	@JoinColumn(name="user_id")
 	private User user;
 	
-	@OneToMany(mappedBy="quiz", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="quiz", cascade=CascadeType.MERGE)
 	private List<Scores> scores;
 	
-	@OneToMany(mappedBy="quiz", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="quiz", cascade=CascadeType.MERGE)
 	private List<Question> questions;
 	
 	@OneToMany(mappedBy="quiz")
@@ -48,10 +39,42 @@ public class Quiz {
 	private int totalScore;
 	
 	@Column(name="created_date")
-	private Date createdDate;
+	private Date createdDate = new Date();
 	
 	@Column(name="date_modified")
 	private Date dateModified;
+
+	public Quiz() {
+	}
+
+	public Quiz(int id) {
+		this.id = id;
+	}
+
+	public Quiz(int id, User user, List<Scores> scores, List<Question> questions, List<QuizTag> tags, String name, String description, int totalScore, Date dateModified) {
+		this.id = id;
+		this.user = user;
+		this.scores = scores;
+		this.questions = questions;
+		this.tags = tags;
+		this.name = name;
+		this.description = description;
+		this.totalScore = totalScore;
+		this.dateModified = dateModified;
+	}
+
+	public Quiz(int id, User user, List<Scores> scores, List<Question> questions, List<QuizTag> tags, String name, String description, int totalScore, Date createdDate, Date dateModified) {
+		this.id = id;
+		this.user = user;
+		this.scores = scores;
+		this.questions = questions;
+		this.tags = tags;
+		this.name = name;
+		this.description = description;
+		this.totalScore = totalScore;
+		this.createdDate = createdDate;
+		this.dateModified = dateModified;
+	}
 
 	public int getId() {
 		return id;
@@ -128,5 +151,5 @@ public class Quiz {
 	public void setDateModified(Date dateModified) {
 		this.dateModified = dateModified;
 	}
-	
+
 }

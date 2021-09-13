@@ -6,6 +6,8 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import quiz.dao.UserDAO;
+import quiz.models.User;
 
 import quiz.dao.UserDAO;
 import quiz.models.User;
@@ -46,4 +48,9 @@ public class UserManagerImpl implements UserManager{
 	public List<User> getUsers() {
 		return uDao.findAll();
 	}
+
+    @Override
+    public User findById(int id) {
+        return uDao.findById(id);
+    }
 }

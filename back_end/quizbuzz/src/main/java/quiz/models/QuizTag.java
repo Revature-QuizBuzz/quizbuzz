@@ -1,45 +1,46 @@
 package quiz.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name="quiz_tags")
+@Table(name = "quiz_tags")
 public class QuizTag {
 
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator")
-    @SequenceGenerator(name="id_generator", sequenceName = "quiz_tags_quiz_tag_id_seq", allocationSize = 1)
-    @Column(name="quiz_tag_id")
-	private int id;
-	
-	@ManyToOne
-	@JoinColumn(name="tag_id", nullable=false)
-	private Tags tag;
-	
-	@ManyToOne
-	@JoinColumn(name="quiz_id", nullable=false)
-	private Quiz quiz;
+    @SequenceGenerator(name = "id_generator", sequenceName = "quiz_tags_quiz_tag_id_seq", allocationSize = 1)
+    @Column(name = "quiz_tag_id")
+    private int id;
 
-	public Tags getTag() {
-		return tag;
-	}
+    @ManyToOne
+    @JoinColumn(name = "tag_id", nullable = false)
+    private Tags tag;
 
-	public void setTag(Tags tag) {
-		this.tag = tag;
-	}
+    @ManyToOne
+    @JoinColumn(name = "quiz_id", nullable = false)
+    private Quiz quiz;
 
-	public void setQuiz(Quiz quiz) {
-		this.quiz = quiz;
-	}
-	
-	
-	
+    public QuizTag() {
+    }
+
+    public QuizTag(int id, Tags tag, Quiz quiz) {
+        this.id = id;
+        this.tag = tag;
+        this.quiz = quiz;
+    }
+
+    public Tags getTag() {
+        return tag;
+    }
+
+    public void setTag(Tags tag) {
+        this.tag = tag;
+    }
+
+    public void setQuiz(Quiz quiz) {
+        this.quiz = quiz;
+    }
+
+
+
 }
