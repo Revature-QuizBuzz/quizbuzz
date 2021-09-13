@@ -50,9 +50,7 @@ export class CreateQuizesComponent implements OnInit {
       questions: this.fb.group({
         // form controll for questions section
       })
-
     })
-
   }
 
 
@@ -62,7 +60,7 @@ export class CreateQuizesComponent implements OnInit {
     return this.http.post(baseUrl, quiz);
   }
 
-  onSubmit({ value, valid }: { value: Quiz, valid: boolean }): void {
+  onSubmit({ value, valid }: { value: any, valid: boolean }): void {
     console.log(value, valid);
     let amount: number = 0; // We define 0 as default amount
     if (this.storageValue !== null) {
@@ -89,15 +87,21 @@ export class CreateQuizesComponent implements OnInit {
   }
 
   add(): void {
+    let amount: number = 0; // We define 0 as default amount
+    if (this.storageValue !== null) {
+      amount = parseInt(this.storageValue, 10);
+    }
+    this.quiz.userId = amount;
     const data = {
       quizId: this.quiz.quizId,
-      userId: this.quiz.userId,
+      user: this.quiz.userId,
       name: this.quiz.name,
       description: this.quiz.description,
       totalScore: this.quiz.totalScore,
       createdDate: this.quiz.createdDate,
       dateModified: this.quiz.dateModified
     };
+    console.log(data)
  //   if(confirm("You have succesfully added a quiz"))
     this.create(data)
       .subscribe(

@@ -44,9 +44,6 @@ public class Quiz {
 	@Column(name="date_modified")
 	private Date dateModified;
 
-	@Transient
-	private int userId;
-
 	public Quiz() {
 	}
 
@@ -154,14 +151,5 @@ public class Quiz {
 	public void setDateModified(Date dateModified) {
 		this.dateModified = dateModified;
 	}
-
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-
 
 }

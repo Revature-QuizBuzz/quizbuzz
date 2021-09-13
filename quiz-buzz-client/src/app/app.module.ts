@@ -8,6 +8,7 @@ import { CreateQuizesComponent } from './create-quizes/create-quizes.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routes:Routes = [
   {path: '', component:CreateQuizesComponent}
@@ -25,7 +26,9 @@ const routes:Routes = [
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
