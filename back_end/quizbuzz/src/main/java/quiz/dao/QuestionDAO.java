@@ -7,9 +7,12 @@ import org.springframework.stereotype.Repository;
 
 import quiz.models.Question;
 
+import java.util.List;
+
 @Repository
 public interface QuestionDAO extends JpaRepository<Question, Integer>{
 	
 	public List<Question> findAll();
 
+    List<Question> findAllByQuizId(int id);
 }

@@ -30,6 +30,20 @@ public class Answers {
 	@Column
 	private boolean correct;
 
+	public Answers() {
+	}
+
+	public Answers(int id) {
+		this.id = id;
+	}
+
+	public Answers(int id, Question question, String answer, boolean correct) {
+		this.id = id;
+		this.question = question;
+		this.answer = answer;
+		this.correct = correct;
+	}
+
 	public int getId() {
 		return id;
 	}
