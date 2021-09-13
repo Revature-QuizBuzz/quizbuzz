@@ -211,6 +211,7 @@ ALTER TABLE quizbuzz.user_scores ADD completed_on timestamp NOT NULL;
 ALTER TABLE quizbuzz.quizzes ADD created_date timestamp NOT NULL;
 ALTER TABLE quizbuzz.quizzes ADD date_modified timestamp NULL;
 ALTER TABLE quizbuzz.questions ADD question_type varchar(30) NOT NULL;
+ALTER TABLE quizbuzz.users ADD CONSTRAINT users_un UNIQUE (username);
 
 INSERT INTO quizbuzz.users (username,"password",f_name,l_name,total_points) VALUES
 	 ('test','1234','test','tester',0);
