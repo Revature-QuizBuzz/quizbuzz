@@ -19,25 +19,31 @@ export class TotalUserPointsComponent implements OnInit {
   users: User = {"id":1};
   quizzes: Quiz = {"id":1};
   scores: UserScore[] = [];
+  newScores!: UserScore;
+
+
 
   scoreBoard: ScoreBoard[] = [];
 
-  newScores: UserScore = {
-    user: this.users,
-    quiz: this.quizzes,
-    score: 90,
-    completedOn: new Date()
-  };
+  
 
-  constructor(private scoreService: ScoreService) {}
+  constructor(private scoreService: ScoreService) {
+  }
 
   ngOnInit(): void {
     this.seeScore();
   }
 
-  add(userScore: UserScore): void {
-    this.scoreService.addScore(userScore).subscribe(userScore=>{
-      console.log(userScore);
+  add(inputScore: number): void {
+    this.newScores = {
+      user: this.users,
+      quiz: this.quizzes,
+      score: inputScore,
+      completedOn: new Date()
+    };
+
+    this.scoreService.addScore(this.newScores).subscribe(userScore=>{
+      this.newScores = userScore;
     })
   }
 
@@ -47,8 +53,9 @@ export class TotalUserPointsComponent implements OnInit {
     })
   }
 
-  onSubmit(form:NgForm) { 
-    this.add(this.newScores);
+  onSubmit(f:NgForm) { 
+    console.log(f.value['inputScore'])
+    this.add(f.value['inputScore']);
     window.location.reload();
   }
 
