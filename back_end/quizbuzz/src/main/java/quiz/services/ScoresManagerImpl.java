@@ -6,26 +6,15 @@ import java.util.stream.StreamSupport;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import quiz.dao.AnswersDAO;
-import quiz.dao.QuestionDAO;
 import quiz.dao.ScoresDAO;
-import quiz.models.Answers;
-import quiz.models.Question;
 import quiz.models.Scores;
 
 @Service
 public class ScoresManagerImpl implements ScoresManager{
-	
-	@Autowired
-	private AnswersDAO adao;
+
 	@Autowired
 	private ScoresDAO sdao;
 
-	@Override
-	public List<Answers> findAll() {
-		return StreamSupport.stream(adao.findAll().spliterator(), false)
-				.collect(Collectors.toList());
-	}
 	
 	@Override
 	public Scores addScore(Scores us) {

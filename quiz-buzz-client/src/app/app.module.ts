@@ -8,7 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { NewTagsComponent } from './new-tags/new-tags.component';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { routes } from './app-routing.module';
 import { QuizSubmissionComponent } from './take-quiz-components/quiz-submission/quiz-submission.component';
@@ -16,7 +16,6 @@ import { QuizSelectionComponent } from './take-quiz-components/quiz-selection/qu
 import { TaketestComponent } from './take-quiz-components/taketest/taketest.component';
 import { CreateQuizesComponent } from './create-quizes/create-quizes.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 
 
 @NgModule({

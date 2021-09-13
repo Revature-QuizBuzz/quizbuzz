@@ -15,17 +15,17 @@ public class AnswersManagerImpl implements AnswersManager {
 	
 	@Autowired
 	private AnswersDAO adao;
-	
-//	@Override
-//	public List<Answers> getAllAnswers() {
-//		return adao.findAll();
-//	}
 
 	@Override
 	public List<Answers> getAllAnswers() {
 		return StreamSupport.stream(adao.findAll().spliterator(), false)
 				.collect(Collectors.toList());
 	}
+	
+//	@Override
+//	public List<Answers> getAllAnswers() {
+//		return adao.findAll();
+//	}
 //
 //	@Override
 //	public Answers findById(int id) {

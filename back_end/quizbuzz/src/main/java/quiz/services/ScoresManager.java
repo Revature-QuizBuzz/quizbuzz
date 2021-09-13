@@ -10,17 +10,6 @@ import quiz.models.Answers;
 
 public interface ScoresManager {
 	
-	List<Answers> findAll();
-	
-//	Answers findById(int id);
-
-//	Scores create(Scores us);
-
 	Scores addScore(Scores us);
 
-//	List<Answers>findByIdandQuestion(int id, Question question);
-
-//	List<Question> findAllQuestions();
-//
-//	Question findByQuestion(Question q);
 }
