@@ -1,24 +1,34 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { TaketestComponent } from './taketest/taketest.component';
-import { QuizSubmissionComponent } from './quiz-submission/quiz-submission.component';
-import { QuizSelectionComponent } from './quiz-selection/quiz-selection.component';
+import { TaketestComponent } from './takequizcomponents/taketest/taketest.component';
+import { QuizSubmissionComponent } from './takequizcomponents/quiz-submission/quiz-submission.component';
+import { QuizSelectionComponent } from './takequizcomponents/quiz-selection/quiz-selection.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material/material.module';
+
+ 
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    TaketestComponent,
-    QuizSubmissionComponent,
-    QuizSelectionComponent
+   TaketestComponent,
+   QuizSubmissionComponent,
+   QuizSelectionComponent,
+ 
+  
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
