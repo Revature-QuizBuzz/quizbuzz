@@ -45,13 +45,19 @@ public class ScoresController {
 //		return new ResponseEntity<List<Answers>>(answers, HttpStatus.OK);
 //	} //Getting Answers to compare with the front end
 	
-	@CrossOrigin(origins = "http://localhost:4200")
-	@PostMapping(consumes = "application/json", produces = "application/json")
-	public int createTest(@RequestBody Scores us) {
-		Scores userScores = score.create(us);
-		return userScores.getId();
-	}//Posting the user score to the database. Need to get User Answers
+//	@CrossOrigin(origins = "http://localhost:4200")
+//	@PostMapping(consumes = "application/json", produces = "application/json")
+//	public Scores createTest(@RequestBody Scores us) {
+//		Scores userScores = score.create(us);
+//		return userScores;
+//	}//Posting the user score to the database. Need to get User Answers
 
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping
+	public ResponseEntity<Scores> addScore(@RequestBody Scores us) {
+		Scores userScores = score.addScore(us);
+		return new ResponseEntity<>(userScores, HttpStatus.CREATED);
+	}
 	
 //	@GetMapping
 //	public ResponseEntity<List<Answers>> getAnswersById() {

@@ -28,7 +28,7 @@ public class ScoresManagerImpl implements ScoresManager{
 	}
 	
 	@Override
-	public Scores create(Scores us) {
+	public Scores addScore(Scores us) {
 		// Create User Results
 		return sdao.save(us);
 	}

@@ -14,7 +14,9 @@ public interface ScoresManager {
 	
 //	Answers findById(int id);
 
-	Scores create(Scores us);
+//	Scores create(Scores us);
+
+	Scores addScore(Scores us);
 
 //	List<Answers>findByIdandQuestion(int id, Question question);
 

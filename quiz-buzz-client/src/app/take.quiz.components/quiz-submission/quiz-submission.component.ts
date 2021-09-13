@@ -15,30 +15,31 @@ export class QuizSubmissionComponent implements OnInit {
   answers: Answer[] = [];
   questions: Question[] = [];
   quizzes: Quiz[] = [];
+  userAnswer?: Answer;
+  userAnswers: Answer[]=[];
 
   constructor(private answerService: AnswerService) { }
   
 
   ngOnInit(): void {
     this.answerService.getAllAnswers()
-    .subscribe(data => {
+    .subscribe((data: Answer[]) =>{
       console.log(data);
       this.answers = data;
     });
-
+  
     this.answerService.getAllQuiz()
-    .subscribe(data => {
+    .subscribe((data: Quiz[]) => {
       console.log(data);
       this.quizzes = data;
     });
 
     this.answerService.getAllQuestions()
-    .subscribe(data => {
+    .subscribe((data: Question[]) => {
       console.log(data);
       this.questions = data;
     });
   }
-
   // onSubmit(form: NgForm): void {
   //   let userAnswer:Answer[] = []
   // }
