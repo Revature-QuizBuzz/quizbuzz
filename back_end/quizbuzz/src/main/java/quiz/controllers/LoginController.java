@@ -13,10 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import quiz.models.User;
-import quiz.models.Quiz;
-import quiz.models.QuizTag;
-import quiz.models.Tags;
-import quiz.services.QuizTagManager;
 import quiz.services.UserManager;
 
 @RestController
@@ -25,9 +21,6 @@ public class LoginController {
 	
 	@Autowired
 	private UserManager userManager;
-	
-	@Autowired
-	private QuizTagManager quizTagManager;
 	
 	@CrossOrigin(origins="http://localhost:4200")
 	@PostMapping(path="", consumes="application/json", produces="application/json")
@@ -44,17 +37,5 @@ public class LoginController {
 	@GetMapping(path="", produces="application/json")
 	public ResponseEntity<List<User>> getUsers() {
 		return new ResponseEntity<>(userManager.getUsers(), HttpStatus.OK);
-	}
-	
-	@PostMapping(path="/addQuizTags", consumes="application/json", produces="application/json")
-	public ResponseEntity<List<QuizTag>> addQuizTags(@RequestBody Quiz quiz) {
-		List<QuizTag> tags = quizTagManager.makeQuizTags(quiz);
-		return new ResponseEntity<>(tags, HttpStatus.CREATED);
-	}
-	
-	@GetMapping(path="/addQuizTags", produces="application/json")
-	public ResponseEntity<List<Tags>> getTags(@RequestBody Quiz quiz) {
-		List<Tags> tags = quizTagManager.getTags(quiz);
-		return new ResponseEntity<>(tags, HttpStatus.OK);
 	}
 }
