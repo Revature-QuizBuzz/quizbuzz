@@ -28,6 +28,14 @@ public class QuizTag {
 	@JoinColumn(name="quiz_id", nullable=false)
 	private Quiz quiz;
 
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	public Tags getTag() {
 		return tag;
 	}

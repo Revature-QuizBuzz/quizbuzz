@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -21,16 +22,24 @@ public class Tags {
     @Column(name="tag_id")
 	private int id;
 	
-	@OneToMany(mappedBy="tag")
-	private List<QuizTag> quizTag;
+	@ManyToMany(mappedBy = "tags")
+	private List<Quiz> quizzes;
 	
 	@Column
 	private String name;
 
-	public void setQuizTag(List<QuizTag> quizTag) {
-		this.quizTag = quizTag;
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
 	}
 
+	public void setQuizzes(List<Quiz> quizzes) {
+		this.quizzes = quizzes;
+	}
+	
 	public String getName() {
 		return name;
 	}

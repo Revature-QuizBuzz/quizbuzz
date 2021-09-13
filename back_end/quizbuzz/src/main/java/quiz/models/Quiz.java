@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
@@ -35,8 +37,9 @@ public class Quiz {
 	@OneToMany(mappedBy="quiz", cascade=CascadeType.ALL)
 	private List<Question> questions;
 	
-	@OneToMany(mappedBy="quiz")
-	private List<QuizTag> tags;
+	@ManyToMany
+	@JoinTable(name="quiz_tags", joinColumns = { @JoinColumn(name="quiz_id") }, inverseJoinColumns = { @JoinColumn(name="tag_id") })
+	private List<Tags> tags;
 
 	@Column
 	private String name;
@@ -73,11 +76,11 @@ public class Quiz {
 		this.scores = scores;
 	}
 
-	public List<QuizTag> getTags() {
+	public List<Tags> getTags() {
 		return tags;
 	}
 
-	public void setTags(List<QuizTag> tags) {
+	public void setTags(List<Tags> tags) {
 		this.tags = tags;
 	}
 	
