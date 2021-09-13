@@ -2,7 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Question } from '../question';
+import { Question } from '../models/questions';
+import { Quiz } from '../models/quizzes';
 
 @Component({
   selector: 'app-question',
@@ -13,7 +14,6 @@ export class QuestionComponent implements OnInit {
   questions: Question[] = [];
   question: Question = {
     id: 0,
-    quiz: 0,
     question: "",
     possiblePoints: 0,
     type: ""
@@ -30,9 +30,9 @@ export class QuestionComponent implements OnInit {
 
     const httpOptions = {
     headers: new HttpHeaders({'Content-Type':'application/json'})}
-
-    this.http.post(this._url, JSON.stringify({ 
-      quiz:stockForm.value.quiz, 
+    let quiz: Quiz ={id:stockForm.value.quizid}
+    this.http.post(this._url,({ 
+      quiz:quiz, 
       question:stockForm.value.question, 
       possiblePoints:stockForm.value.possiblePoints, 
       type:stockForm.value.type, 
