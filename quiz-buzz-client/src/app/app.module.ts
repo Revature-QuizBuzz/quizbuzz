@@ -11,6 +11,7 @@ import { NewTagsComponent } from './new-tags/new-tags.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { routes } from './app-routing.module';
+import { AttachTagsComponent } from './attach-tags/attach-tags.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { routes } from './app-routing.module';
     HomeComponent,
     NavbarComponent,
     FooterComponent,
-    NewTagsComponent
+    NewTagsComponent,
+    AttachTagsComponent
   ],
   imports: [
     BrowserModule,
