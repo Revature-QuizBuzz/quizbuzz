@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form:NgForm): void {
-    let user:User = {id: 0, username: form.value.username, password: form.value.password, firstName: "", lastName: "", total_points: 0, total_possible_points: 0, point_percentage: 0, userScores: [], quizzes: []};
+    let user:User = {username: form.value.username, password: form.value.password};
 
     this.loginService.login(user).subscribe({
       next: (data:User) => {

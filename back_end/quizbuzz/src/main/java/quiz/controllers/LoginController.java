@@ -25,6 +25,7 @@ public class LoginController {
 	@CrossOrigin(origins="http://localhost:4200")
 	@PostMapping(path="", consumes="application/json", produces="application/json")
 	public ResponseEntity<User> login(@RequestBody User user) {
+		System.out.println(user.getTotalPoints());
 		return new ResponseEntity<>(userManager.findLogin(user), HttpStatus.CREATED);
 	}
 	

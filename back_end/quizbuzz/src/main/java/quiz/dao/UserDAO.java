@@ -9,6 +9,7 @@ import quiz.models.User;
 
 @Repository
 public interface UserDAO extends JpaRepository<User, Integer>{
+    User findById(int id);
 
 	@Query("select u from User u where u.username = :Username")
 	User findLogin(@Param("Username")String username);

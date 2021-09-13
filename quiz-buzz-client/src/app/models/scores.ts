@@ -1,6 +1,8 @@
+import { Quiz } from "./quizzes";
+
 export interface UserScore {
-    scoreId: number;
-    quizId: number;
-    score: number;
-    completedOn: Date;
+    id?: number;
+    quiz?: Quiz;
+    score?: number;
+    completedOn?: Date;
 }
