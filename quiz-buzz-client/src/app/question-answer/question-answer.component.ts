@@ -21,6 +21,8 @@ export class QuestionAnswerComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
+
 
   onSubmit(form:NgForm){
     var answerArray = [];
@@ -35,26 +37,25 @@ export class QuestionAnswerComponent implements OnInit {
     }
    answer1 = {
      questionid: form.value.questionid,
-     answer: form.value.answer1,
-     correct: form.value.correct1
+     answer: form.value.answer,
+     correct: form.value.correct ? true : false
    }
    answer2 = {
     questionid: form.value.questionid,
     answer: form.value.answer2,
-    correct: form.value.correct2
+    correct: form.value.correct2 ? true : false
   }
   answer3 = {
     questionid: form.value.questionid,
     answer: form.value.answer3,
-    correct: form.value.correct3
+    correct: form.value.correct3 ? true : false
   }
   answerArray.push(answer1);
   answerArray.push(answer2);
   answerArray.push(answer3);
-    console.log(form.value.questionid)
-    console.log(form.value.answer)
-    console.log(form.value.correct)
-    console.log(this.answer.correct)
+    console.log(answer1)
+    console.log(answer2)
+    console.log(answer3)
       this.http.post(this._url,
         answerArray,httpOptions
         ).subscribe({

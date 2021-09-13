@@ -9,7 +9,8 @@
     </div>
     <div>
         <span>
-            <input type="checkbox" id="correct" name="correct" value="true">
+            <input type="checkbox" id="correct" name="correct" 
+            ngModel>
             <label for="correct">Correct answer?</label>
         </span>
     </div>
@@ -20,8 +21,8 @@
     </div>
     <div>
         <span>
-            <input type="checkbox" id="correct2" name="correct2" value="true">
-            <label for="correct">Correct answer?</label>
+            <input type="checkbox" id="correct2" name="correct"
+            ngModel>Correct Answer?
         </span>
     </div>
     <div>
@@ -31,12 +32,13 @@
     </div>
     <div>
         <span>
-            <input type="checkbox" id="correct3" name="correct3" value="true">
+            <input type="checkbox" id="correct3" name="correct"
+            ngModel>
             <label for="correct">Correct answer?</label>
         </span>
     </div>
     <div>
-        <button type="submit">Submit Answers</button>
+        <button type="submit" [disabled]="f.invalid">Submit Answers</button>
     </div>
     </form>
 </div>
