@@ -20,7 +20,6 @@ export class TotalUserPointsComponent implements OnInit {
   scores: UserScore[] = [];
   newScores: UserScore = {
     user: this.users,
-    scoreId: 1,
     quiz: this.quizzes,
     score: 90,
     completedOn: new Date()
