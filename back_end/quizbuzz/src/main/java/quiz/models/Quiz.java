@@ -26,8 +26,9 @@ public class Quiz {
 	@OneToMany(mappedBy="quiz", cascade=CascadeType.MERGE)
 	private List<Question> questions;
 	
-	@OneToMany(mappedBy="quiz")
-	private List<QuizTag> tags;
+	@ManyToMany
+	@JoinTable(name="quiz_tags", joinColumns = { @JoinColumn(name="quiz_id") }, inverseJoinColumns = { @JoinColumn(name="tag_id") })
+	private List<Tags> tags;
 
 	@Column
 	private String name;
@@ -51,7 +52,7 @@ public class Quiz {
 		this.id = id;
 	}
 
-	public Quiz(int id, User user, List<Scores> scores, List<Question> questions, List<QuizTag> tags, String name, String description, int totalScore, Date dateModified) {
+	public Quiz(int id, User user, List<Scores> scores, List<Question> questions, List<Tags> tags, String name, String description, int totalScore, Date dateModified) {
 		this.id = id;
 		this.user = user;
 		this.scores = scores;
@@ -63,7 +64,7 @@ public class Quiz {
 		this.dateModified = dateModified;
 	}
 
-	public Quiz(int id, User user, List<Scores> scores, List<Question> questions, List<QuizTag> tags, String name, String description, int totalScore, Date createdDate, Date dateModified) {
+	public Quiz(int id, User user, List<Scores> scores, List<Question> questions, List<Tags> tags, String name, String description, int totalScore, Date createdDate, Date dateModified) {
 		this.id = id;
 		this.user = user;
 		this.scores = scores;
@@ -96,11 +97,11 @@ public class Quiz {
 		this.scores = scores;
 	}
 
-	public List<QuizTag> getTags() {
+	public List<Tags> getTags() {
 		return tags;
 	}
 
-	public void setTags(List<QuizTag> tags) {
+	public void setTags(List<Tags> tags) {
 		this.tags = tags;
 	}
 	

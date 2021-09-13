@@ -10,8 +10,8 @@ export interface User {
     firstName?: string;
     lastName?: string;
     total_points?: number;
-    total_possible_points?: number;
-    point_percentage?: number;
+    totalPossiblePoints?: number;
+    pointPercentage?: number;
     userScores?: UserScore[];
     quizzes?: Quiz[];
 }
