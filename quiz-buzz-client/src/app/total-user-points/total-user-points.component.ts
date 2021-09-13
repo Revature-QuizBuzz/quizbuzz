@@ -6,6 +6,7 @@ import { ScoreService } from '../score.service';
 import { UserScore } from '../models/scores';
 import { User } from '../models/users';
 import { Quiz } from '../models/quizzes';
+import { ScoreBoard } from '../models/scoreboard';
 
 
 @Component({
@@ -18,6 +19,9 @@ export class TotalUserPointsComponent implements OnInit {
   users: User = {"id":1};
   quizzes: Quiz = {"id":1};
   scores: UserScore[] = [];
+
+  scoreBoard: ScoreBoard[] = [];
+
   newScores: UserScore = {
     user: this.users,
     quiz: this.quizzes,
@@ -28,6 +32,7 @@ export class TotalUserPointsComponent implements OnInit {
   constructor(private scoreService: ScoreService) {}
 
   ngOnInit(): void {
+    this.seeScore();
   }
 
   add(userScore: UserScore): void {
@@ -36,9 +41,15 @@ export class TotalUserPointsComponent implements OnInit {
     })
   }
 
+  seeScore(): void {
+    this.scoreService.displayScore().subscribe(userScoreboard=>{
+      this.scoreBoard = userScoreboard;
+    })
+  }
+
   onSubmit(form:NgForm) { 
     this.add(this.newScores);
-
+    window.location.reload();
   }
 
 }

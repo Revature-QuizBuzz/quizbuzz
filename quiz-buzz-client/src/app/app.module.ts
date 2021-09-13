@@ -9,6 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TotalUserPointsComponent } from './total-user-points/total-user-points.component';
 import { FormsModule } from '@angular/forms';
 
+
 const routes: Routes = [
   {path: 'totaluserpoints', component: TotalUserPointsComponent}
 ]
