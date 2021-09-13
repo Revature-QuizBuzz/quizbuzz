@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -13,12 +14,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { routes } from './app-routing.module';
 import { CreateQuizesComponent } from './create-quizes/create-quizes.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { TotalUserPointsComponent } from './total-user-points/total-user-points.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    TotalUserPointsComponent,
     HomeComponent,
     NavbarComponent,
     FooterComponent,

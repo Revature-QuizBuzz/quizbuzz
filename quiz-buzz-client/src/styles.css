@@ -3,6 +3,7 @@ label {
     display: inline-block;
     width:150px;
     padding: 10px;
+
 }
 
 .primary {
@@ -30,6 +31,7 @@ label {
     color:  #B9B9BA;
 }
 
+
 .btn-primary {
     background-color: #F26925;
     outline:#B9B9BA;
@@ -54,3 +56,4 @@ button {
 h2 {
     color:#F26925;
 }
+
