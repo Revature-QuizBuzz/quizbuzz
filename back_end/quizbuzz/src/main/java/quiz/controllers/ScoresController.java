@@ -25,18 +25,17 @@ public class ScoresController {
 	
 	@Autowired
 	private ScoresManager score;
-	@Autowired
-	private AnswersManager answer;
-	
+
 	private static final Logger log = LogManager.getLogger(TagsController.class);
-	
+
 	@CrossOrigin(origins = "http://localhost:4200")
-	@GetMapping(path ="/answers",produces = "application/json")
-	public List<Answers> getAllAnswers() {
-		log.info("Listing Answers");
-		return this.answer.getAllAnswers();
-	} //Getting Answers to compare with the front end
-//	
+	@PostMapping(consumes = "application/json", produces = "application/json")
+	public ResponseEntity<Scores> addScore(@RequestBody Scores us) {
+		Scores userScores = score.addScore(us);
+		log.info("Submit User Answers");
+		return new ResponseEntity<>(userScores, HttpStatus.CREATED);
+	}//Posting the user score to the database. Need to get User Answers
+	
 //	@CrossOrigin(origins = "http://localhost:4200")
 //	@GetMapping
 //	public ResponseEntity<List<Answers>> getAllAnswers() {
@@ -50,15 +49,8 @@ public class ScoresController {
 //	public Scores createTest(@RequestBody Scores us) {
 //		Scores userScores = score.create(us);
 //		return userScores;
-//	}//Posting the user score to the database. Need to get User Answers
+//	}
 
-	@CrossOrigin(origins = "http://localhost:4200")
-	@PostMapping
-	public ResponseEntity<Scores> addScore(@RequestBody Scores us) {
-		Scores userScores = score.addScore(us);
-		return new ResponseEntity<>(userScores, HttpStatus.CREATED);
-	}
-	
 //	@GetMapping
 //	public ResponseEntity<List<Answers>> getAnswersById() {
 //		List<Answers> answers = score.findById(0);
