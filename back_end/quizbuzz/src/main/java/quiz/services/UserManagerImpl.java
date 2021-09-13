@@ -2,8 +2,15 @@ package quiz.services;
 
 import java.util.List;
 
+
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import quiz.dao.UserDAO;
+import quiz.models.User;
+
+import quiz.dao.UserDAO;
+import quiz.models.User;
 
 import quiz.dao.UserDAO;
 import quiz.models.ScoreBoard;
@@ -13,29 +20,46 @@ import quiz.models.User;
 public class UserManagerImpl implements UserManager{
 
 	@Autowired
-	UserDAO userDao;
+	private UserDAO uDao;
 	
-//	@Override
-//	public List<ScoreBoard> findScoreBoard() {
-//		return userDao.findScoreBoard();
-//	}
-
-//	@Override
-//	public List<Object> findScoreBoard() {
-//		return userDao.findScoreBoard();
-//	}
-
-//	@Override
-//	public List<ScoreBoard> findById(int id) {
-//		return userDao.findById(id);
-//	}
-
 	@Override
 	public List<ScoreBoard> findScoreBoard() {
-		// TODO Auto-generated method stub
-		return userDao.findScoreBoard();
+		return uDao.findScoreBoard();
+	}
+	
+	@Override
+	public User findLogin(User user) {
+		User login = uDao.findLogin(user.getUsername());
+		if(login != null && login.getPassword().equals(user.getPassword())) {
+			login.setPassword(null);
+			return login;
+		}
+		return null;
+	}
+	
+	@Override
+	@Transactional
+	public User createAccount(User user) {
+		try {
+			User login = findLogin(user);
+			if(login == null) {
+				uDao.save(user);
+				user.setPassword(null);
+				return user;
+			}
+		} catch (Exception e) {
+			return null;
+		}
+		return null;
+	}
+	
+	@Override
+	public List<User> getUsers() {
+		return uDao.findAll();
 	}
 
-	
-
+    @Override
+    public User findById(int id) {
+        return uDao.findById(id);
+    }
 }

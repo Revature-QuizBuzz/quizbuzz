@@ -5,27 +5,38 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
+import { NewTagsComponent } from './new-tags/new-tags.component';
+import { Routes, RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { routes } from './app-routing.module';
+import { CreateQuizesComponent } from './create-quizes/create-quizes.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TotalUserPointsComponent } from './total-user-points/total-user-points.component';
-import { FormsModule } from '@angular/forms';
-
-
-const routes: Routes = [
-  {path: 'totaluserpoints', component: TotalUserPointsComponent}
-]
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    TotalUserPointsComponent
+    TotalUserPointsComponent,
+    HomeComponent,
+    NavbarComponent,
+    FooterComponent,
+    NewTagsComponent,
+    CreateQuizesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    FormsModule,
+    RouterModule.forRoot(routes),
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
