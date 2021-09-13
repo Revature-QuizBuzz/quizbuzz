@@ -17,10 +17,15 @@ public class QuizController {
     @Autowired
     private QuizManager manager;
     
+ //   @Autowired
+ //  private UserDAO userdao;
+    
     private static final Logger logger = LogManager.getLogger(QuizController.class);
     @PostMapping(produces = "application/json", consumes = "application/json")
     public Quiz create(@RequestBody Quiz quiz){
         logger.info("created new quiz");
+     //	User usernew = userdao.findById(new Integer(1)).get();
+    //	quiz.setUser(usernew);
         return manager.create(quiz);
     }
 
