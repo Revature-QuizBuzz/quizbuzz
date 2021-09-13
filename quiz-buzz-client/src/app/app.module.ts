@@ -9,11 +9,14 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { NewTagsComponent } from './new-tags/new-tags.component';
 import { Routes, RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { routes } from './app-routing.module';
-import { QuizSubmissionComponent } from './take.quiz.components/quiz-submission/quiz-submission.component';
-import { QuizSelectionComponent } from './take.quiz.components/quiz-selection/quiz-selection.component';
-import { TaketestComponent } from './take.quiz.components/taketest/taketest.component';
+import { QuizSubmissionComponent } from './take-quiz-components/quiz-submission/quiz-submission.component';
+import { QuizSelectionComponent } from './take-quiz-components/quiz-selection/quiz-selection.component';
+import { TaketestComponent } from './take-quiz-components/taketest/taketest.component';
+import { CreateQuizesComponent } from './create-quizes/create-quizes.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 @NgModule({
@@ -26,14 +29,18 @@ import { TaketestComponent } from './take.quiz.components/taketest/taketest.comp
     HomeComponent,
     NavbarComponent,
     FooterComponent,
-    NewTagsComponent
+    NewTagsComponent,
+    CreateQuizesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
