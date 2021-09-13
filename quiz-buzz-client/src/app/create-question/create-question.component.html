@@ -1,8 +1,19 @@
 <div class="row justify-content-center">
     <div class="col-md-6 createQuestionCont">
         <form (ngSubmit) = "onSubmit(createQuestion)" #createQuestion = "ngForm" novalidate>
-            <label for=" ">Create Question: </label>
-
+            <label for="question">Create Question: </label>
+            <input name="question" >
+            <br>
+            <label for="type">Question Type: </label><!--might need to be changed to questionType-->
+            <input name="type">
+            <br>
+            <label for="type">Answer(/s): </label>
+            <input name="answers">
+            <br>
+            <label for="type">Possible Points: </label>
+            <input name="possiblePoints">
+            <br>
+            <button class= "btn btn-primary" type = "submit">Enter</button>
         </form>
     </div>
 </div>
