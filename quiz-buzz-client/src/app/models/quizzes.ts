@@ -5,12 +5,14 @@ import { Tag } from './tags'
 
 export interface Quiz {
     
-    quizId?: number;
-    userId?: number;
-    name?: string;
-    description?: string;
-    totalScore?: number;
+    quizId: number;
+    userId: User;
+    scores: UserScore[];
+    questions: Question[];
+    tags: Tag[]
+    name: string;
+    description: string;
+    totalScore: number;
     createdDate?: Date;
     dateModified?: Date;
-    
 }
