@@ -2,6 +2,9 @@
 <p></p>
 <div class="container">
     <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <input id="questionId" type="number" name="questionId" 
+        placeholder="Question Number" ngModel>
+        <label for="questionId">Enter Question Id</label>
     <div>
         <input id="answer" type="text" name="answer"
         placeholder="Answer here" required ngModel>
@@ -21,7 +24,7 @@
     </div>
     <div>
         <span>
-            <input type="checkbox" id="correct2" name="correct"
+            <input type="checkbox" id="correct2" name="correct2"
             ngModel>Correct Answer?
         </span>
     </div>
@@ -32,9 +35,9 @@
     </div>
     <div>
         <span>
-            <input type="checkbox" id="correct3" name="correct"
+            <input type="checkbox" id="correct3" name="correct3"
             ngModel>
-            <label for="correct">Correct answer?</label>
+            <label for="correct3">Correct answer?</label>
         </span>
     </div>
     <div>
