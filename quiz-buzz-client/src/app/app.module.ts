@@ -15,7 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { routes } from './app-routing.module';
 import { CreateQuizesComponent } from './create-quizes/create-quizes.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { TotalUserPointsComponent } from './total-user-points/total-user-points.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +23,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LoginComponent,
     QuestionAnswerComponent,
     QuestionComponent,
+    TotalUserPointsComponent,
     HomeComponent,
     NavbarComponent,
     FooterComponent,
