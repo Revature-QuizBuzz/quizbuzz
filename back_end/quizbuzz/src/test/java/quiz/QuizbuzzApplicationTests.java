@@ -1,6 +1,6 @@
 package quiz;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotEquals;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,16 +9,9 @@ import org.springframework.http.ResponseEntity;
 
 import quiz.models.Tags;
 import quiz.models.User;
+import quiz.services.ScoresManager;
 import quiz.services.TagsManager;
 import quiz.services.UserManager;
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import quiz.dao.QuizDAO;
-import quiz.models.Quiz;
-import quiz.services.QuizManager;
-import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 class QuizbuzzApplicationTests {
@@ -28,6 +21,10 @@ class QuizbuzzApplicationTests {
 
 	@Autowired
 	private UserManager userManager;
+	
+	// Sample test to add user score test
+	@Autowired
+	private ScoresManager manager;
 	
 	@Test
 	void contextLoads() {
@@ -46,6 +43,12 @@ class QuizbuzzApplicationTests {
 		user.setPassword("1234");
 		User found = userManager.findLogin(user);
 		assertNotEquals(found, null);
+	}
+	
+	// Sample test to add user score test
+	@Test
+	public void addUserScore() {
+		
 	}
 	
 }
