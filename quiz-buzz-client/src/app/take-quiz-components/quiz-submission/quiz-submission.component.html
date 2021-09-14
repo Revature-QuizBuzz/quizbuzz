@@ -1,0 +1,22 @@
+<div class = "container">
+    <div class = "card">
+        <h3 class = "text-center">Test Results</h3>
+        <div class = "card-body">
+            <table class = "table table-striped">
+                <thead>
+                    <th>Answer ID</th>
+                    <th>Question</th>
+                    <th>The Correct Answer</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor = "let answer of answers">
+                        <td> {{answer.id}}</td>
+                        <td> {{answer.question}</td>
+                        <td> {{answer.answer}}</td>
+                        <!-- <td><button class="btn btn-danger" (click)="addAnswers(answer)">Submit Answer</button></td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

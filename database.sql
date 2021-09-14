@@ -122,6 +122,12 @@ CREATE TABLE quizbuzz.quiz_tags (
 	CONSTRAINT quiz_tags_pk PRIMARY KEY (tag_id)
 );
 
+CREATE TABLE quizbuzz.quiz_tags (
+	quiz_tag_id serial NOT NULL,
+	tag_id int4 NOT NULL,
+	quiz_id int4 NOT NULL,
+	CONSTRAINT quiz_tags_pk PRIMARY KEY (tag_id)
+);
 
 -- quizbuzz.quizzes definition
 
@@ -182,6 +188,8 @@ CREATE TABLE quizbuzz.users (
 	total_points int4 NOT NULL DEFAULT 0,
 	CONSTRAINT users_pk PRIMARY KEY (user_id)
 );
+ALTER TABLE quizbuzz.users ADD CONSTRAINT users_un UNIQUE (username);
+
 
 -- quizbuzz.user_scores foreign keys
 
@@ -211,6 +219,7 @@ ALTER TABLE quizbuzz.user_scores ADD completed_on timestamp NOT NULL;
 ALTER TABLE quizbuzz.quizzes ADD created_date timestamp NOT NULL;
 ALTER TABLE quizbuzz.quizzes ADD date_modified timestamp NULL;
 ALTER TABLE quizbuzz.questions ADD question_type varchar(30) NOT NULL;
+ALTER TABLE quizbuzz.users ADD CONSTRAINT users_un UNIQUE (username);
 
 INSERT INTO quizbuzz.users (username,"password",f_name,l_name,total_points) VALUES
 	 ('test','1234','test','tester',0);
