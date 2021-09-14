@@ -40,9 +40,9 @@ export class QuizSubmissionComponent implements OnInit {
       this.questions = data;
     });
   }
-  onSubmit(form: NgForm): void {
-    this.userAnswer = Answer;
-  }
+  // onSubmit(form: NgForm): void {
+  //   this.userAnswer = Answer;
+  // }
 
 
 
