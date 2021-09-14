@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { Answer } from '../answer';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Quiz } from '../models/quizzes';
+import { Question } from '../models/questions';
 
 @Component({
   selector: 'app-question-answer',
@@ -17,7 +19,7 @@ export class QuestionAnswerComponent implements OnInit {
   }
   constructor(private http:HttpClient, private router:Router) { }
 
-  public _url = "http://localhosst:8080/answer/answerstoquestion"
+  public _url = "http://localhost:8080/answer/answerstoquestion"
 
   ngOnInit(): void {
   }
@@ -36,19 +38,28 @@ export class QuestionAnswerComponent implements OnInit {
       })
     }
    answer1 = {
-     questionid: form.value.questionid,
+     question: {
+       id: form.value.questionId
+     },
      answer: form.value.answer,
-     correct: form.value.correct ? true : false
+     correct: form.value.correct ? true : false,
+     possiblePoints: 2
    }
    answer2 = {
-    questionid: form.value.questionid,
+    question: {
+      id: form.value.questionId
+    },
     answer: form.value.answer2,
-    correct: form.value.correct2 ? true : false
+    correct: form.value.correct2 ? true : false,
+    possiblePoints: 2
   }
   answer3 = {
-    questionid: form.value.questionid,
+    question: {
+      id: form.value.questionId
+    },
     answer: form.value.answer3,
-    correct: form.value.correct3 ? true : false
+    correct: form.value.correct3 ? true : false,
+    possiblePoints: 2
   }
   answerArray.push(answer1);
   answerArray.push(answer2);
