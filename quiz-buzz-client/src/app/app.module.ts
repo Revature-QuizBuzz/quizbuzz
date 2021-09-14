@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { QuestionAnswerComponent } from './question-answer/question-answer.component';
+import { QuestionAnswerComponent } from './answer/question-answer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { QuestionComponent } from './question/question.component';
 import { AppRoutingModule } from './app-routing.module';

@@ -7,7 +7,7 @@ import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { User } from '../models/users';
 import { UserScore } from '../models/scores';
 import { Question } from '../models/questions';
-import { Tag } from '../models/tags'
+import { Tag } from '../models/tags';
 
 
 const baseUrl = 'http://localhost:8080/quizzes/createQuiz';
@@ -99,6 +99,8 @@ export class CreateQuizesComponent implements OnInit {
 
 
   addQuestion() {
+
+
 
   }
 

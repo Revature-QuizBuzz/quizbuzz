@@ -5,31 +5,33 @@
 
         <div>
             <label for="quizid">Quiz Id</label>
-            <input id="quizid" type="number" name="quizid"
-            placeholder="Quiz Id" required ngModel>
+            <input id="quizid" type="number" name="quizid" placeholder="Quiz Id" required ngModel>
         </div>
-            <div>
-                <label for="question">Question</label>
-                <input id="question" type="string" name="question"
-                placeholder="Question" required ngModel>
-            </div>
-            <br>
-            <div>
-                <select name="type" class= "form-select" id="questionType" required ngModel>
-                    <option selected="selected" value="" >Question Type</option>
-                    <option value="multipleChoice">Multiple Choice</option>
-                    <option value="multipleAnswers">Multiple Answers</option>
-                </select>
-            </div>
-            <br>
-            <div>
-                <label for="possiblePoints">Point Value</label>
-                <input id="possiblePoints" type="number" name="possiblePoints"
-                placeholder="Point Value" required ngModel>
-            </div>
-            <br>
-            <div>
-                <button type="submit">Submit Answers</button>
-            </div>
-        </form>
+        <div>
+            <label for="question">Question</label>
+            <input id="question" type="string" name="question" placeholder="Question" required ngModel>
+        </div>
+        <br>
+        <div>
+            <label for="possiblePoints">Point Value</label>
+            <input id="possiblePoints" type="number" name="possiblePoints" placeholder="Point Value" required ngModel>
+        </div>
+        <div>
+            <select name="type" class="form-select" id="questionType" required ngModel>
+                <option selected="selected" value="">Question Type</option>
+                <option value="multipleChoice">Multiple Choice</option>
+                <option value="multipleAnswers">Multiple Answers</option>
+                <option value="truefalse">True or False</option>
+            </select>
+            <!-- ngif questiontype -->
+            <app-question-answer></app-question-answer>
+        </div>
+        <br>
+        <br>
+        <div>
+            <!-- add question -->
+            <!-- onclick save answers to question array -->
+            <button type="submit">Submit Answers</button>
+        </div>
+    </form>
 </div>
