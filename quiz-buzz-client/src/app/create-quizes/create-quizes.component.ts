@@ -132,5 +132,8 @@ export class CreateQuizesComponent implements OnInit {
         });
   }
 
+  addTag(){
+    // this.quiz.tags.push();
+  }
 
 }
