@@ -1,0 +1,52 @@
+<div class="container">
+
+    <div class="row search">
+        <input style="border-radius: 5px;" type="text"><br>
+        <button style="border-radius: 5px;" (click)="search()">Search</button>
+    </div>
+
+    <div class="row quizSelector">
+        <table class="quizTable">
+            <tr>
+                <td>
+                    <div class="quizType" (click)="goToJavaQuizzes()">
+                        <img class="resize" src="assets/server-side-logo.png">
+                        <h3>Server-Side Quizzes</h3>
+                        <p>Weeks Covered</p>
+                        <p>Last Modified:</p>
+                    </div>
+                </td>
+                <td>
+                    <div class="quizType" (click)="goToDatabaseQuizzes()">
+                        <img class="resize" src="assets/db-logo.png">
+                        <h3>Database Quizzes</h3>
+                        <p>Weeks Covered</p>
+                        <p>Last Modified:</p>
+                    </div>
+                </td>
+                <td>
+                    <div class="quizType" (click)="goToClientQuizzes()">
+                        <img class="resize" src="assets/client-logo.png">
+                        <h3>Client-Side Quizzes</h3>
+                        <p>Weeks Covered</p>
+                        <p>Last Modified:</p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="row quizSelector">
+        <table class="quizTable">
+            <tr class="quizTable">
+                <th class="tableHead ">Name</th>
+                <th class="tableHead">Question Amount</th>
+                <th class="tableHead">Score</th>
+            </tr>
+        </table>
+    </div>
+    <div class="row">
+        <button class="startQuiz" (click)="startQuiz()">Start Quiz</button>
+    </div>
+
+</div>
