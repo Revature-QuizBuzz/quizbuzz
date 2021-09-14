@@ -8,4 +8,6 @@ public interface QuestionManager {
 
 	
 	List<Question> findAll(int id);
+	List<Question> getAllQuestions();
+
 }

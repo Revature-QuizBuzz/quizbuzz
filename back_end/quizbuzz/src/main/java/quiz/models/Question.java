@@ -40,6 +40,21 @@ public class Question {
 	@Column(name="question_type")
 	private String type;
 
+	public Question() { }
+
+	public Question(int id) {
+		this.id = id;
+	}
+
+	public Question(int id, Quiz quiz, List<Answers> answers, String question, float possiblePoints, String type) {
+		this.id = id;
+		this.quiz = quiz;
+		this.answers = answers;
+		this.question = question;
+		this.possiblePoints = possiblePoints;
+		this.type = type;
+	}
+
 	public int getId() {
 		return id;
 	}

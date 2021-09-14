@@ -1,1 +1,31 @@
-<p>taketest works!</p>
+<mat-card>
+    <mat-card-title>Quiz Buzz Test</mat-card-title>
+    <button class="" mat-fab (click)="home()">Home</button>
+    <button class="" mat-fab (click)="signout()">SignOut</button>
+    
+    <mat-card-content >
+  <!--where the questions and answers are going-->
+  <div > {{currentQuestion.id}}:{{currentQuestion.question}} 
+ 
+</div>
+    
+        <mat-card-actions >
+          <button *ngFor="let a of currentQuestion.answers"> {{a.answer}}</button> 
+         <!--   <div></div>
+           <div>{{currentQuestion | json}}</div>-->
+           
+           
+           
+      
+        </mat-card-actions>
+     
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button mat-raised-button (click)="previous()">Previous</button>
+        <button mat-raised-button (click)="submit()">Submit</button>
+        <button mat-raised-button (click)="next()">Next</button>
+    </mat-card-actions>
+
+</mat-card>
+
