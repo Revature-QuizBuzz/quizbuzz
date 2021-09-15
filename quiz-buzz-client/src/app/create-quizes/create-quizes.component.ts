@@ -127,11 +127,12 @@ export class CreateQuizesComponent implements OnInit {
         });
   }
 
-  addTag(){
-    // this.quiz.tags.push();
+  // Used for bubbling data and adding Tags to the quiz
+  addTag(tag : Tag){
+     this.quiz.tags?.push(tag);
   }
 
-  // Used for bubbling data
+  // Used for bubbling data and adding questions to the quiz
   addQuestion(question : Question){
     this.quiz.questions?.push(question);
   }
