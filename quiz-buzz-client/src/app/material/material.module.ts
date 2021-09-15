@@ -11,7 +11,6 @@ const MaterialComponents = [
   MatProgressSpinnerModule,
   MatFormFieldModule,
   MatInputModule
-
 ];
 
 @NgModule({

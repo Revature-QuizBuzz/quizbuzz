@@ -14,9 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import quiz.models.Answers;
 import quiz.services.AnswersManager;
 
-<<<<<<< HEAD
-
-
 @RestController
 @RequestMapping(path = "/answers")
 @CrossOrigin(origins = "http://localhost:4200")
