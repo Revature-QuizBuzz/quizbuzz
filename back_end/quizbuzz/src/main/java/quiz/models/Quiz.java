@@ -131,9 +131,9 @@ public class Quiz {
 		}
 		return total;
 	}
-
+	// [todo] refactor findDeletions so it takes two lists of the same generic type
 	// returns a list of ids to call deleteAllByIdInBatch() on
-	public List<Integer> findDeletions(List<Question> oldList, List<Question> newList) {
+	public static List<Integer> findQuestionDeletions(List<Question> oldList, List<Question> newList) {
 		List<Integer> toDelete = new ArrayList<>();
 		for (Question oldQuestion : oldList) {
 			for (Question newQuestion: newList) {

@@ -1,5 +1,6 @@
 package quiz.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -82,6 +83,19 @@ public class Question {
 
 	public void setQuiz(Quiz quiz) {
 		this.quiz = quiz;
+	}
+
+	public static List<Integer> findAnswerDeletions(List<Answers> oldList, List<Answers> newList) {
+		List<Integer> toDelete = new ArrayList<>();
+		for (Answers oldAnswer : oldList) {
+			for (Answers newAnswer: newList) {
+				if (oldAnswer.getId() == newAnswer.getId()) {
+					break;
+				}
+			}
+			toDelete.add(oldAnswer.getId());
+		}
+		return toDelete;
 	}
 
 }
