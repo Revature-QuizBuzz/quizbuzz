@@ -5,11 +5,10 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import quiz.dao.UserDAO;
 import quiz.models.Quiz;
 import quiz.models.User;
 import quiz.services.QuizManager;
-import quiz.services.UserManager;
+
 
 import java.util.List;
 
@@ -32,5 +31,11 @@ public class QuizController {
 	@GetMapping(produces = "application/json")
 	public List<Quiz> getAll() {
 		return manager.findAll();
+	}
+
+	@GetMapping(path="/user/{userId}", produces="application/json")
+	public List<Quiz> findQuizzesCreatedByUser(@PathVariable int userId){
+		logger.info("Find quiz(zes) created by user ");
+		return manager.findByUser(userId);
 	}
 }

@@ -64,18 +64,18 @@ public class Question {
 		this.id = id;
 	}
 	
-	public Quiz getQuiz() {
-		return this.quiz;
-	}
+//	public Quiz getQuiz() {
+//		return this.quiz;
+//	}
 	
 	public void setQuiz(Quiz quiz) {
 		this.quiz = quiz;
 	}
 
 
-	public List<Answers> getAnswers() {
-		return answers;
-	}
+//	public List<Answers> getAnswers() {
+//		return answers;
+//	}
 
 	public void setAnswers(List<Answers> answers) {
 		this.answers = answers;
@@ -104,7 +104,5 @@ public class Question {
 	public void setType(String type) {
 		this.type = type;
 	}
-	
-
 
 }
