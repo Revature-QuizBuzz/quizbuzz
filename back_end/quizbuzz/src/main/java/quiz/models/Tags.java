@@ -24,6 +24,8 @@ public class Tags {
 		this.quizzes = quizzes;
 	}
 
+
+
 	public String getName() {
 		return name;
 	}

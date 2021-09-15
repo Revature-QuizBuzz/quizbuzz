@@ -35,7 +35,6 @@ public class QuizManagerImpl implements QuizManager {
     public Quiz updateQuiz(int quizId, Quiz quiz) {
         Quiz updatedQuiz = daoQuiz.getById(quizId);
 
-        // [todo] refactor this so it's a method that takes an object and list of same type (in quiz model)
         // find deleted questions
         List<Integer> deletionsQ = Quiz.findQuestionDeletions(updatedQuiz.getQuestions(), quiz.getQuestions());
         // call question manager to delete from database
@@ -44,10 +43,14 @@ public class QuizManagerImpl implements QuizManager {
         for(Question question: quiz.getQuestions()) {
             qManager.updateQuestion(question.getId(), question);
         }
+        // update questions so that service returns the updated object
+        updatedQuiz.setQuestions(quiz.getQuestions());
 
-
-        // update old tags
-        /* [todo] look for new tags and call create tag if there are tags in the new one not present in the old */
+        // Look for tags that aren't on the quiz already
+        List<String> createTags = Quiz.findTagCreations(updatedQuiz.getTags(), quiz.getTags());
+        // compare createTags to database to see if they already exist, if not call create
+        tagManager.createTags(createTags);
+        //update tags so service returns the updated object
         updatedQuiz.setTags(quiz.getTags());
 
         updatedQuiz.setName(quiz.getName());

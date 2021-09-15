@@ -145,5 +145,18 @@ public class Quiz {
 		}
 		return toDelete;
 	}
+
+	public static List<String> findTagCreations(List<Tags> oldList, List<Tags> newList) {
+		List<String> toCreate = new ArrayList<>();
+		for(Tags newTag: newList) {
+			for(Tags oldTag: oldList) {
+				if(newTag.getName().equalsIgnoreCase(oldTag.getName())) {
+					break;
+				};
+			}
+			toCreate.add(newTag.getName());
+		}
+		return toCreate;
+	}
 	
 }
