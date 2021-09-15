@@ -31,11 +31,12 @@ public class TagsController {
 	private static final Logger logger = LogManager.getLogger(TagsController.class);
 	
 	
-//	@GetMapping(path="", produces="application/json")
-//	public ResponseEntity<List<Tags>> getAllTags() {
-//		//List<Tags> tagsList = 		
-//		return new ResponseEntity<List<Tags>>(tagslist, HttpStatus.OK);
-//	}
+	@GetMapping(path="", produces="application/json")
+	public ResponseEntity<List<Tags>> getAllTags() {
+		List<Tags> tagsList = manager.getAllTags();	
+		return new ResponseEntity<List<Tags>>(tagsList, HttpStatus.OK);
+	}
+	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping(path="/new",consumes="application/json", produces="application/json")//adds new tag to db
 	public ResponseEntity<Tags> createTags(@RequestBody Tags t) {
