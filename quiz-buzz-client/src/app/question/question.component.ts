@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CreateQuizesComponent } from '../create-quizes/create-quizes.component';
@@ -20,33 +20,39 @@ export class QuestionComponent implements OnInit {
     type: ""
   }
 
+  @Output() questionEvent = new EventEmitter<Question>();
 
-  constructor(private router:Router, private http:HttpClient) { }
+  constructor(private router: Router, private http: HttpClient) { }
 
-    public _url = "http://localhost:8080/questions/new"
+  public _url = "http://localhost:8080/questions/new"
 
   ngOnInit(): void {
   }
 
-  onSubmit(stockForm:NgForm){
+  onSubmit(stockForm: NgForm) {
 
-    const httpOptions = {
-    headers: new HttpHeaders({'Content-Type':'application/json'})}
-    let quiz: Quiz ={id:stockForm.value.quizid}
-    this.http.post(this._url,({ 
-      quiz:quiz, 
-      question:stockForm.value.question, 
-      possiblePoints:stockForm.value.possiblePoints, 
-      type:stockForm.value.type, 
-    }), httpOptions
-    ).subscribe({
-      next: (data) => {
-        console.log(data)
-      }
-    })
-
-    this.router.navigate([""])
-}
+    // const httpOptions = {
+    // headers: new HttpHeaders({'Content-Type':'application/json'})}
+    // let quiz: Quiz ={id:stockForm.value.quizid}
+    // this.http.post(this._url,({ 
+    //   quiz:quiz, 
+    //   question:stockForm.value.question, 
+    //   possiblePoints:stockForm.value.possiblePoints, 
+    //   type:stockForm.value.type, 
+    // }), httpOptions
+    // ).subscribe({
+    //   next: (data) => {
+    //     console.log(data)
+    //   }
+    // })
+    // this.router.navigate([""])
 
 
+    this.question.question = stockForm.value.question;
+    this.question.possiblePoints = stockForm.value.possiblePoints;
+    this.question.type = stockForm.value.type;
+    console.log(this.question);
+    this.questionEvent.emit(this.question);
+
+  }
 }
