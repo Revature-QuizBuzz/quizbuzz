@@ -56,7 +56,7 @@ export class TotalUserPointsComponent implements OnInit {
   onSubmit(f:NgForm) { 
     console.log(f.value['inputScore'])
     this.add(f.value['inputScore']);
-    window.location.reload();
+    //window.location.reload();
   }
 
 }
