@@ -50,4 +50,4 @@ To login if you have run the SQL file enter the username, test followed by the p
 
 # License
 
-MIT
+Licensed under the [MIT License](LICENSE).
