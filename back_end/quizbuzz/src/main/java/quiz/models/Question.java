@@ -98,4 +98,19 @@ public class Question {
 		return toDelete;
 	}
 
+	public static List<Answers> findNewAnswers(List<Answers> oldList, List<Answers> newList) {
+		List<Answers> newAnswers = new ArrayList<>();
+
+		for (Answers newAnswer: newList) {
+			for (Answers oldAnswer: oldList) {
+				if (newAnswer.getId() == oldAnswer.getId()) {
+					break;
+				}
+			}
+			// stopping here
+		}
+
+		return newAnswers;
+	}
+
 }
