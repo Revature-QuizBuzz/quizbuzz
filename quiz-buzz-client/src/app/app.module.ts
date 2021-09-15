@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -15,11 +16,13 @@ import { CreateQuizesComponent } from './create-quizes/create-quizes.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AttachTagsComponent } from './attach-tags/attach-tags.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { TotalUserPointsComponent } from './total-user-points/total-user-points.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    TotalUserPointsComponent,
     HomeComponent,
     NavbarComponent,
     FooterComponent,
