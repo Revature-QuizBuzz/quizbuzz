@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CreateQuizesComponent } from '../create-quizes/create-quizes.component';
 import { Question } from '../models/questions';
 import { Quiz } from '../models/quizzes';
 
@@ -18,6 +19,7 @@ export class QuestionComponent implements OnInit {
     possiblePoints: 0,
     type: ""
   }
+
 
   constructor(private router:Router, private http:HttpClient) { }
 
@@ -45,5 +47,6 @@ export class QuestionComponent implements OnInit {
 
     this.router.navigate([""])
 }
+
 
 }

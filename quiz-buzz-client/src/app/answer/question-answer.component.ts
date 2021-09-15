@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Quiz } from '../models/quizzes';
 import { Question } from '../models/questions';
+import { CreateQuizesComponent } from '../create-quizes/create-quizes.component';
 
 @Component({
   selector: 'app-question-answer',

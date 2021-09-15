@@ -25,7 +25,7 @@
 
     Questions and answers go here, using dummies for testing
   </div>
-  <div class="tags" name="tag" (click)="addTag()">
+  <div class="tags" name="tag" (click)="addTag(tag)">
     <!-- waiting on other groups to finish to add functionality -->
     <button>JUnit</button>
     <button>Java</button>
@@ -44,7 +44,7 @@
     
   </div>
   <div>
-    <button type="button" (click)="addQuestion()" class="btn btn-primary">Add question</button>
+    <button type="button" (click)="addQuestion(question)" class="btn btn-primary">Add question</button>
     <!-- <button type="submit" [disabled]="!createQuiz.valid" class="btn btn-primary">Submit</button> -->
     <button (click)="add()" class="btn btn-success">Submit</button> 
   </div>

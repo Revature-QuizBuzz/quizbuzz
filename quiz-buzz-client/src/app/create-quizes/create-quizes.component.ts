@@ -30,8 +30,9 @@ const baseUrl = 'http://localhost:8080/quizzes/createQuiz';
 
 export class CreateQuizesComponent implements OnInit {
 
-  user: User = {
-  }
+  user: User = {}
+  tag: Tag = {}
+  question: Question = {}
   quiz: Quiz = {
     id: 0,
     user: this.user,
@@ -97,13 +98,6 @@ export class CreateQuizesComponent implements OnInit {
           });
   }
 
-
-  addQuestion() {
-
-
-
-  }
-
   add(): void {
     let amount: number = 0; // We define 0 as default amount
     if (this.storageValue !== null) {
@@ -134,8 +128,14 @@ export class CreateQuizesComponent implements OnInit {
         });
   }
 
-  addTag(){
-    // this.quiz.tags.push();
+  // Used for bubbling data and adding Tags to the quiz 
+  public addTag(tag : Tag){
+      this.quiz.tags?.push(tag);
+  }
+
+  // Used for bubbling data and adding questions to the quiz
+  public addQuestion(question : Question){
+    this.quiz.questions?.push(question);
   }
 
 }
