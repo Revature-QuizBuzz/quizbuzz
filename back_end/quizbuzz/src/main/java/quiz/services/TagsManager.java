@@ -11,5 +11,5 @@ public interface TagsManager {
 	
 	public List<Tags> getAllTags();
 	
-	public ResponseEntity<Tags> createTags(Tags t) throws SQLException;//adds new tag to db
+	public ResponseEntity<Tags> createTags(Tags t) throws SQLException ;//adds new tag to db
 }

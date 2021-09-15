@@ -36,15 +36,10 @@ class QuizbuzzApplicationTests {
 	}
 	
 	@Test
-	void createTags(Tags tag) {
-		ResponseEntity<Tags> newTag;
-		try {
-			newTag = manager.createTags(tag);
-			assertNotEquals(newTag, null);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	void createTags() throws SQLException {
+		Tags tag = new Tags();		
+		ResponseEntity<Tags> newTag = manager.createTags(tag);
+		assertNotEquals(newTag, null);
 	}
 
 	@Test
