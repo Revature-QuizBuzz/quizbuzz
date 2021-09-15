@@ -26,4 +26,8 @@ export class NavbarComponent implements OnInit {
       return ""; 
     return String(localStorage.getItem("firstName")) + " " + String(localStorage.getItem("lastName"));
   }
+
+  quizSelection(){
+    this.router.navigate(['quiz/selection'])
+  }
 }

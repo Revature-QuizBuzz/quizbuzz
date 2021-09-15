@@ -2,7 +2,7 @@
 
     <div class="row search">
         <input style="border-radius: 5px;" type="text"><br>
-        <button style="border-radius: 5px;" (click)="search()">Search</button>
+        <button (click)="search()">Search</button>
     </div>
 
     <div class="row quizSelector">
@@ -40,8 +40,23 @@
         <table class="quizTable">
             <tr class="quizTable">
                 <th class="tableHead ">Name</th>
+                <th class="tableHead ">Tags</th>
                 <th class="tableHead">Question Amount</th>
                 <th class="tableHead">Score</th>
+            </tr>
+            <tr>
+                <td>
+                    <div *ngFor="let quiz of quizzes ">{{quiz.name}}</div>
+                </td>
+                <td>
+                    <div *ngFor="let quiz of quizzes ">{{quiz.tags}}</div>
+                </td>
+                <td>
+                    <div *ngFor="let quiz of quizzes ">{{quiz.questions.length}}</div>
+                </td>
+                <td>
+                    <div *ngFor="let quiz of quizzes ">{{quiz.totalScore}}</div>
+                </td>
             </tr>
         </table>
     </div>

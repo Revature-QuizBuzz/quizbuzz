@@ -15,11 +15,11 @@ export const routes: Routes = [
   {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'testresults', component: QuizSubmissionComponent},
-  {path:"tags/new", component: NewTagsComponent},
+  {path: "tags/new", component: NewTagsComponent},
   {path: 'quiz/new', component:CreateQuizesComponent},
-  {path: '/quiz/selection', component: QuizSelectionComponent},
-  {path: '/take/quiz', component: TaketestComponent},
-  {path: '/quiz/submit', component: QuizSubmissionComponent}
+  {path: 'quiz/selection', component: QuizSelectionComponent},
+  {path: 'take/quiz', component: TaketestComponent},
+  {path: 'quiz/submit', component: QuizSubmissionComponent}
 ];
 
 @NgModule({

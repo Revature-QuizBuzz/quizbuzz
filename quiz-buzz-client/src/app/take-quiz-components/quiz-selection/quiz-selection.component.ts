@@ -1,4 +1,6 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quiz-selection',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuizSelectionComponent implements OnInit {
 
-  constructor() { }
+  quizzes:any = [];
+
+  public getUrl = 'http://localhost:8080/quizzes'
+
+  constructor(private router:Router, private http:HttpClient) { }
 
   ngOnInit(): void {
+    this.fetch();
   }
 
   search(){
@@ -29,8 +36,18 @@ export class QuizSelectionComponent implements OnInit {
   }
 
   startQuiz(){
-    console.log("starting quiz...")
-    //add routing to 
+    this.router.navigate(["take/quiz"])
   }
+
+  fetch(){
+    const httpOptions = {
+    headers: new HttpHeaders({
+     'Content-Type':  'application/json'})}
+
+    this.http.get(this.getUrl, httpOptions).subscribe(data=>{
+      this.quizzes= data;
+      console.log(data)
+    })
+   }
 
 }
