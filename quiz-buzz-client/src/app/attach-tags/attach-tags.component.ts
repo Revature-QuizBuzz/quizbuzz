@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { Tag } from '../models/tags';
@@ -8,7 +8,8 @@ import { CreateQuizService } from '../services/create-quiz.service';
 @Component({
   selector: 'app-attach-tags',
   templateUrl: './attach-tags.component.html',
-  styleUrls: ['./attach-tags.component.css']
+  styleUrls: ['./attach-tags.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AttachTagsComponent implements OnInit {
   dropdownList: Tag[] = [];
@@ -28,7 +29,7 @@ export class AttachTagsComponent implements OnInit {
       textField: 'name',
       selectAllText: 'Select All',
       unSelectAllText: 'Unselect All',
-      itemsShowLimit: 3,
+      itemsShowLimit: 20,
       allowSearchFilter: true
     };
   }
@@ -66,4 +67,3 @@ export class AttachTagsComponent implements OnInit {
     this.addTagForm = false;
   }
 }
-

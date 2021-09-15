@@ -31,7 +31,6 @@ label {
     color:  #B9B9BA;
 }
 
-
 .btn-primary {
     background-color: #F26925;
     outline:#B9B9BA;
@@ -41,11 +40,18 @@ label {
     outline: #F26925;
 }
 
+.btn-primary {
+    background-color: #F26925;
+    outline: #F26925;
+    border: none;
+}
+
+
 main {
     padding: 20px;
 }
 
-button {
+.tag {
     background-color: #FCB414;
     border-radius: 10px;
     border:#FCB414;
@@ -57,3 +63,21 @@ h2 {
     color:#F26925;
 }
 
+.multiselect-dropdown .dropdown-btn {
+    display: inline-block;
+    border: 1px solid #adadad;
+    width: 100%;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.1;
+    text-align: left;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border-radius: 4px;
+}
+.multiselect-dropdown .dropdown-btn .selected-item {
+    background-color: #474C55;
+}
