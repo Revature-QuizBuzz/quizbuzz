@@ -30,8 +30,9 @@ const baseUrl = 'http://localhost:8080/quizzes/createQuiz';
 
 export class CreateQuizesComponent implements OnInit {
 
-  user: User = {
-  }
+  user: User = {}
+  tag: Tag = {}
+  question: Question = {}
   quiz: Quiz = {
     id: 0,
     user: this.user,
@@ -127,13 +128,13 @@ export class CreateQuizesComponent implements OnInit {
         });
   }
 
-  // Used for bubbling data and adding Tags to the quiz
-  addTag(tag : Tag){
-     this.quiz.tags?.push(tag);
+  // Used for bubbling data and adding Tags to the quiz 
+  public addTag(tag : Tag){
+      this.quiz.tags?.push(tag);
   }
 
   // Used for bubbling data and adding questions to the quiz
-  addQuestion(question : Question){
+  public addQuestion(question : Question){
     this.quiz.questions?.push(question);
   }
 
