@@ -24,12 +24,7 @@ public class TagsManagerImpl implements TagsManager{
 
 	@Override
 	public ResponseEntity<Tags> createTags(Tags t) throws SQLException {
-//		try {
-//			dao.save(t);
-//		}
-//		catch(SQLException sqlExc) {
-//			
-//		}
+		dao.save(t);
 		return null;
 	}
 

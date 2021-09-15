@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { Tag } from '../models/tags';
+import { CreateQuizService } from '../services/create-quiz.service';
 
 @Component({
   selector: 'app-attach-tags',
@@ -13,18 +15,13 @@ export class AttachTagsComponent implements OnInit {
   selectedItems: Tag[] = [];
   dropdownSettings:IDropdownSettings = {};
 
-  constructor(private http:HttpClient) { }
+  addTagForm:boolean = false;
+
+  constructor(private http:HttpClient, private service:CreateQuizService) { }
 
   ngOnInit() {
-    this.http.get('http://localhost:8080/tags').subscribe({
-      next: (data:any) => {
-        if(data !== null) {
-          this.dropdownList = data;
-          console.log(data);
-          console.log(this.dropdownList);
-        }
-      }
-    })
+    this.getTags();
+
     this.dropdownSettings = {
       singleSelection: false,
       idField: 'tagId',
@@ -35,14 +32,38 @@ export class AttachTagsComponent implements OnInit {
       allowSearchFilter: true
     };
   }
+
+  getTags() {
+    this.service.getTags().subscribe({
+      next: (data:any) => {
+        if(data !== null) {
+          this.dropdownList = data;
+        }
+      }
+    })
+  }
+
   save() {
     console.log(this.selectedItems);
   }
-  onItemSelect(item: any) {
-    console.log(item);
+  addTagToggle() {
+    this.addTagForm = !this.addTagForm;
   }
-  onSelectAll(items: any) {
-    console.log(items);
+
+  addTag(form:NgForm) {
+    this.service.addNewTag(form).subscribe({
+      next: (data:any) => {
+        if(data !== null) {
+          this.dropdownList = data;
+          console.log(data);
+          console.log(this.dropdownList);
+        }
+      }
+    });
+    
+    this.getTags();
+
+    this.addTagForm = false;
   }
 }
 

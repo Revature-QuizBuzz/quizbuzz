@@ -3,6 +3,11 @@
   Edit tags
 </button>
 
+<ng-container *ngFor="let items of selectedItems">
+  <button>{{items.name}}</button>
+</ng-container>
+
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -14,15 +19,19 @@
       <div class="modal-body">
 
         <ng-multiselect-dropdown [placeholder]="'attach quiz tags here'" [settings]="dropdownSettings"
-          [data]="dropdownList" [(ngModel)]="selectedItems" (onSelect)="onItemSelect($event)"
-          (onSelectAll)="onSelectAll($event)">
+          [data]="dropdownList" [(ngModel)]="selectedItems">
         </ng-multiselect-dropdown>
-
+        <ng-container *ngIf="addTagForm === true">
+          <form (ngSubmit)="addTag(f)" #f="ngForm">
+            <label for="tag_name">Tag Name:</label><input class="form-control" type="text" id="tag_name" name="tag" ngModel><button type="submit" class="btn btn-primary">Add</button>
+          </form>
+        </ng-container>
       </div>
 
       <div class="modal-footer">
+        <button type="button" (click)="addTagToggle()" class="btn btn-primary">Add Tag</button>
+        <button type="button" (click)="save()" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" (click)="save()" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
