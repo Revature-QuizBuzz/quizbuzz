@@ -24,7 +24,7 @@ class QuizbuzzApplicationTests {
 	
 	// Sample test to add user score test
 	@Autowired
-	private ScoresManager manager;
+	private ScoresManager manager;  // Note: change manager to scoreManager
 	
 	@Test
 	void contextLoads() {
