@@ -152,7 +152,7 @@ CREATE TABLE quizbuzz.quizzes (
 -- DROP TABLE quizbuzz.tags;
 
 CREATE TABLE quizbuzz.tags (
-	tag_id serial NOT NULL,
+	tag_id serial UNIQUE NOT NULL ,
 	"name" varchar(30) NOT NULL,
 	CONSTRAINT tags_pk PRIMARY KEY (tag_id)
 );
