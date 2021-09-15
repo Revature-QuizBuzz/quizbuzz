@@ -2,14 +2,7 @@ package quiz.models;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="tags")
@@ -21,14 +14,14 @@ public class Tags {
     @Column(name="tag_id")
 	private int id;
 	
-	@OneToMany(mappedBy="tag")
-	private List<QuizTag> quizTag;
+	@ManyToMany(mappedBy="tags")
+	private List<Quiz> quizzes;
 	
 	@Column
 	private String name;
 
-	public void setQuizTag(List<QuizTag> quizTag) {
-		this.quizTag = quizTag;
+	public void setQuizTag(List<Quiz> quizzes) {
+		this.quizzes = quizzes;
 	}
 
 	public String getName() {

@@ -51,9 +51,7 @@ public class User {
 		this.id = id;
 	}
 
-	public List<Quiz> getQuizzes() {
-		return quizzes;
-	}
+	// implementing a getQuizzes will cause errors in the updateQuiz() uer story
 
 	public void setQuizzes(List<Quiz> quizzes) {
 		this.quizzes = quizzes;

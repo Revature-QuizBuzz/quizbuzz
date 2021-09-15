@@ -5,7 +5,10 @@ import org.springframework.stereotype.Repository;
 
 import quiz.models.Quiz;
 
+import java.util.List;
+
 @Repository
 public interface QuizDAO extends JpaRepository<Quiz, Integer>{
 
+    List<Quiz> findAll();
 }
