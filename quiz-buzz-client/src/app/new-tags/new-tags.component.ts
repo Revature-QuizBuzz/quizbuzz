@@ -10,6 +10,7 @@ import { NgForm } from '@angular/forms';
 })
 export class NewTagsComponent implements OnInit {
 
+  
   constructor(private Http: HttpClient, private router: Router) { }
 
   onSubmit(form: NgForm){
