@@ -54,11 +54,11 @@ public class Scores {
 	}
 
 
-	public int getId() {
+	public int getScoreId() {
 		return scoreId;
 	}
 
-	public void setId(int id) {
+	public void setScoreId(int id) {
 		this.scoreId = id;
 	}
 

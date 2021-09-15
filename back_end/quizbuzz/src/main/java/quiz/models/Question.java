@@ -55,11 +55,11 @@ public class Question {
 		this.type = type;
 	}
 
-	public int getId() {
+	public int getQuestionId() {
 		return questionId;
 	}
 
-	public void setId(int id) {
+	public void setQuestionId(int id) {
 		this.questionId = id;
 	}
 

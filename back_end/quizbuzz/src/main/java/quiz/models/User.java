@@ -87,11 +87,11 @@ public class User {
 		this.totalPoints = totalPoints;
 	}
 
-	public int getId() {
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setId(int id) {
+	public void setUserId(int id) {
 		this.userId = id;
 	}
 
@@ -141,10 +141,6 @@ public class User {
 
 	public void setTotalPoints(int totalPoints) {
 		this.totalPoints = totalPoints;
-	}
-
-	public int getUser(){
-		return getId();
 	}
 
 //	public int getTotalPossible() {

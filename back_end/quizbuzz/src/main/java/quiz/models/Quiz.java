@@ -77,11 +77,11 @@ public class Quiz {
 		this.dateModified = dateModified;
 	}
 
-	public int getId() {
+	public int getQuizId() {
 		return quizId;
 	}
 
-	public void setId(int id) {
+	public void setQuizId(int id) {
 		this.quizId = id;
 	}
 

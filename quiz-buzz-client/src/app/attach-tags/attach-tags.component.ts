@@ -27,7 +27,7 @@ export class AttachTagsComponent implements OnInit {
     })
     this.dropdownSettings = {
       singleSelection: false,
-      idField: 'id',
+      idField: 'tagId',
       textField: 'name',
       selectAllText: 'Select All',
       unSelectAllText: 'Unselect All',

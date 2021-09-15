@@ -27,12 +27,12 @@ public class Tags {
 	@Column
 	private String name;
 
-	public int getId() {
+	public int getTagId() {
 		return tagId;
 	}
 	
-	public void setId(int id) {
-		this.tagId = id;
+	public void setTagId(int tagId) {
+		this.tagId = tagId;
 	}
 
 	public void setQuizzes(List<Quiz> quizzes) {
