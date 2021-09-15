@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -10,30 +10,31 @@ import { NgForm } from '@angular/forms';
 })
 export class NewTagsComponent implements OnInit {
 
-  
+
   constructor(private Http: HttpClient, private router: Router) { }
+
+  tagName='';
 
   onSubmit(form: NgForm){
     this.Http.post("http://localhost:8080/tags/new",{
       name: form.value.name
     })
     .subscribe({
-      next: (data:any)=>{
-        // if(){
-        //   alert("Succesfully created!")
-        //   this.router.navigate(['']);
-        // }
+      next: (data:any)=>{ 
         console.log(data);
       },
-      error: (error)=>{
-        console.log(error);
-        if(false){
-          alert("Tag already exists")
+      error: (data)=>{
+        if(data.status === 500){
+          alert("We're sorry, something went wrong!" + "\nThis tag may already exist.")
         }
 
       },complete: ()=>{}
     })
+    this.handleClear();
+  }
 
+  handleClear(){
+    this.tagName = '';
   }
 
   ngOnInit(): void {

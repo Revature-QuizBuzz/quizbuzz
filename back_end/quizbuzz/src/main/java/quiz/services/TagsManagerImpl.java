@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -24,13 +25,8 @@ public class TagsManagerImpl implements TagsManager{
 
 	@Override
 	public ResponseEntity<Tags> createTags(Tags t) throws SQLException {
-//		try {
-//			dao.save(t);
-//		}
-//		catch(SQLException sqlExc) {
-//			
-//		}
-		return null;
+		dao.save(t);
+		return new ResponseEntity<Tags>(t, HttpStatus.OK);
 	}
 
 	

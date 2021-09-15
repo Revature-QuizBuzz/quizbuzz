@@ -2,6 +2,8 @@ package quiz;
 
 import static org.junit.Assert.*;
 
+import java.sql.SQLException;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -34,7 +36,8 @@ class QuizbuzzApplicationTests {
 	}
 	
 	@Test
-	void createTags(Tags tag) {
+	void createTags() throws SQLException {
+		Tags tag = new Tags();		
 		ResponseEntity<Tags> newTag = manager.createTags(tag);
 		assertNotEquals(newTag, null);
 	}
