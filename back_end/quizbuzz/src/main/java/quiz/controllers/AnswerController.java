@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import quiz.models.Answers;
 import quiz.services.AnswersManager;
 
-<<<<<<< HEAD
 
 
 @RestController
