@@ -29,23 +29,13 @@ public class TagsController {
 
 	private static final Logger logger = LogManager.getLogger(TagsController.class);
 	
-	
+	@CrossOrigin(origins="http://localhost:4200")
 	@GetMapping(path="", produces="application/json")
 	public ResponseEntity<List<Tags>> getAllTags() {
 		List<Tags> tagsList = manager.getAllTags();
 		logger.info("GET to /tags");
 		return new ResponseEntity<List<Tags>>(tagsList, HttpStatus.OK);
 	}
-	
-	@CrossOrigin(origins = "http://localhost:4200")
-	@PostMapping(path="/new",consumes="application/json", produces="application/json")//adds new tag to db
-	public ResponseEntity<Tags> createTags(@RequestBody Tags t) {
-		System.out.println(t.getName());
-		manager.createTags(t);
-		logger.info("New Tag Created");
-		return new ResponseEntity<Tags>(t,HttpStatus.OK);
-	}
-	
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping(path="/new",consumes="application/json", produces="application/json")

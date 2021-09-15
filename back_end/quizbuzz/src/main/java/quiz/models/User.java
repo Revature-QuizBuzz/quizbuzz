@@ -20,7 +20,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @SequenceGenerator(name="id_generator", sequenceName = "users_user_id_seq", allocationSize = 1)
     @Column(name="user_id")
-	private int id;
+	private int userId;
 	
 	@OneToMany(mappedBy="user", cascade=CascadeType.ALL)
 	private List<Quiz> quizzes;
@@ -43,41 +43,41 @@ public class User {
 	@Column(name="total_points")
 	private int totalPoints;
 	
-	@Column(name="total_possible_points")
-	private int totalPossible;
+//	@Column(name="total_possible_points")
+//	private int totalPossible;
 	
-	@Column(name="point_percentage")
-	private double pointPercentage;
-	
+//	@Column(name="point_percentage")
+//	private double pointPercentage;
+//	
 	
 	
 
-	public User(int id, List<Quiz> quizzes, List<Scores> scores, String username, String password, String firstName,
-			String lastName, int totalPoints, int totalPossible, double pointPercentage) {
-		super();
-		this.id = id;
-		this.quizzes = quizzes;
-		this.scores = scores;
-		this.username = username;
-		this.password = password;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.totalPoints = totalPoints;
-		this.totalPossible = totalPossible;
-		this.pointPercentage = pointPercentage;
-	}
+//	public User(int id, List<Quiz> quizzes, List<Scores> scores, String username, String password, String firstName,
+//			String lastName, int totalPoints, int totalPossible, double pointPercentage) {
+//		super();
+//		this.userId = id;
+//		this.quizzes = quizzes;
+//		this.scores = scores;
+//		this.username = username;
+//		this.password = password;
+//		this.firstName = firstName;
+//		this.lastName = lastName;
+//		this.totalPoints = totalPoints;
+//		this.totalPossible = totalPossible;
+//		this.pointPercentage = pointPercentage;
+//	}
 	
 	
 
 	public User() { }
 
 	public User(int id) {
-		this.id = id;
+		this.userId = id;
 	}
 
 
 	public User(int id, List<Quiz> quizzes, List<Scores> scores, String username, String password, String firstName, String lastName, int totalPoints) {
-		this.id = id;
+		this.userId = id;
 		this.quizzes = quizzes;
 		this.scores = scores;
 		this.username = username;
@@ -88,11 +88,11 @@ public class User {
 	}
 
 	public int getId() {
-		return id;
+		return userId;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.userId = id;
 	}
 
 	public void setQuizzes(List<Quiz> quizzes) {
@@ -147,19 +147,17 @@ public class User {
 		return getId();
 	}
 
-
+//	public int getTotalPossible() {
+//		return totalPossible;
+//	}
+//	public void setTotalPossible(int totalPossible) {
+//		this.totalPossible = totalPossible;
+//	}
 	
-	public int getTotalPossible() {
-		return totalPossible;
-	}
-	public void setTotalPossible(int totalPossible) {
-		this.totalPossible = totalPossible;
-	}
-	
-	public double getPointPercentage() {
-		return pointPercentage;
-	}
-	public void setPointPercentage(int pointPercentage) {
-		this.pointPercentage = pointPercentage;
-	}
+//	public double getPointPercentage() {
+//		return pointPercentage;
+//	}
+//	public void setPointPercentage(int pointPercentage) {
+//		this.pointPercentage = pointPercentage;
+//	}
 }

@@ -14,6 +14,6 @@ import java.util.List;
 public interface ScoresDAO extends JpaRepository<Scores, Integer>{
 
 	public List<Scores> findAll();
-  List<Scores> findAllByQuizId(int id);
+//  List<Scores> findAllByQuizId(int id);
 
 }

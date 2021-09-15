@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { Tag } from '../models/tags';
 
 @Component({
   selector: 'app-attach-tags',
@@ -7,40 +9,34 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
   styleUrls: ['./attach-tags.component.css']
 })
 export class AttachTagsComponent implements OnInit {
-  dropdownList: Array<any> = [];
-  selectedItems: Array<any> = [];
+  dropdownList: Tag[] = [];
+  selectedItems: Tag[] = [];
   dropdownSettings:IDropdownSettings = {};
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
   ngOnInit() {
-    this.dropdownList = [
-      { item_id: 1, 
-        item_text: 'Java' },
-      { item_id: 2, 
-        item_text: 'SQL' },
-      { item_id: 3, 
-        item_text: 'Spring' },
-      { item_id: 4, 
-        item_text: 'Docker' },
-      { item_id: 5, 
-        item_text: 'Hibernate' }
-    ];
-    this.selectedItems = [
-      { item_id: 3, 
-        item_text: 'Spring' },
-      { item_id: 4, 
-        item_text: 'Docker' }
-    ];
+    this.http.get('http://localhost:8080/tags').subscribe({
+      next: (data:any) => {
+        if(data !== null) {
+          this.dropdownList = data;
+          console.log(data);
+          console.log(this.dropdownList);
+        }
+      }
+    })
     this.dropdownSettings = {
       singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
+      idField: 'id',
+      textField: 'name',
       selectAllText: 'Select All',
       unSelectAllText: 'Unselect All',
       itemsShowLimit: 3,
       allowSearchFilter: true
     };
+  }
+  save() {
+    console.log(this.selectedItems);
   }
   onItemSelect(item: any) {
     console.log(item);

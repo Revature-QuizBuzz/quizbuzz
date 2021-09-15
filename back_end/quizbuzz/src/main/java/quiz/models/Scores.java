@@ -20,7 +20,7 @@ public class Scores {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @SequenceGenerator(name="id_generator", sequenceName = "user_scores_score_id_seq", allocationSize = 1)
     @Column(name="score_id")
-	private int id;
+	private int scoreId;
 	
 	@ManyToOne
 	@JoinColumn(name="user_id", nullable=false)
@@ -40,7 +40,7 @@ public class Scores {
 
 	public Scores(int id, User user, Quiz quiz, int score, Date completedOn) {
 		super();
-		this.id = id;
+		this.scoreId = id;
 		this.user = user;
 		this.quiz = quiz;
 		this.score = score;
@@ -50,16 +50,16 @@ public class Scores {
 	public Scores() { }
 
 	public Scores(int id) {
-		this.id = id;
+		this.scoreId = id;
 	}
 
 
 	public int getId() {
-		return id;
+		return scoreId;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.scoreId = id;
 	}
 
 	public void setUser(User user) {

@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
           this.incorrect = true;
         } else {
           console.log(JSON.stringify(data));
-          localStorage.setItem("id", String(data.id));
+          localStorage.setItem("id", String(data.userId));
           localStorage.setItem("username", String(data.username));
           localStorage.setItem("firstName", String(data.firstName));
           localStorage.setItem("lastName", String(data.lastName));

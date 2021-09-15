@@ -3,7 +3,7 @@ import { User } from "./users";
 
 export interface UserScore {
     user?: User;
-    id?: number;
+    userId?: number;
     quiz?: Quiz;
     score?: number;
     completedOn?: Date;

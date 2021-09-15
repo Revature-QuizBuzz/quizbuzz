@@ -16,8 +16,8 @@ import { ScoreBoard } from '../models/scoreboard';
 })
 export class TotalUserPointsComponent implements OnInit {
 
-  users: User = {"id":1};
-  quizzes: Quiz = {"id":1};
+  users: User = {"userId":1};
+  quizzes: Quiz = {"quizId":1};
   scores: UserScore[] = [];
   newScores!: UserScore;
 
