@@ -12,4 +12,25 @@ export class QuizSelectionComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  search(){
+    console.log("seaching...")
+  }
+
+  goToJavaQuizzes(){
+    console.log("java")
+  }
+
+  goToDatabaseQuizzes(){
+    console.log("db")
+  }
+
+  goToClientQuizzes(){
+    console.log("client")
+  }
+
+  startQuiz(){
+    console.log("starting quiz...")
+    //add routing to 
+  }
+
 }
