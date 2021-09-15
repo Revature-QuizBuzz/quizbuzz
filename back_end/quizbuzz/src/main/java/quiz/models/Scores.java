@@ -38,9 +38,8 @@ public class Scores {
 	
 	
 
-	public Scores(int id, User user, Quiz quiz, int score, Date completedOn) {
+	public Scores(User user, Quiz quiz, int score, Date completedOn) {
 		super();
-		this.id = id;
 		this.user = user;
 		this.quiz = quiz;
 		this.score = score;
