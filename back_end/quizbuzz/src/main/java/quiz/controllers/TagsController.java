@@ -37,6 +37,15 @@ public class TagsController {
 		return new ResponseEntity<List<Tags>>(tagsList, HttpStatus.OK);
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping(path="/new",consumes="application/json", produces="application/json")//adds new tag to db
+	public ResponseEntity<Tags> createTags(@RequestBody Tags t) {
+		System.out.println(t.getName());
+		manager.createTags(t);
+		logger.info("New Tag Created");
+		return new ResponseEntity<Tags>(t,HttpStatus.OK);
+	}
+	
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping(path="/new",consumes="application/json", produces="application/json")
