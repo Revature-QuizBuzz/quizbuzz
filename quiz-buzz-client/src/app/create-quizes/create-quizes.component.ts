@@ -97,13 +97,6 @@ export class CreateQuizesComponent implements OnInit {
           });
   }
 
-
-  addQuestion() {
-
-
-
-  }
-
   add(): void {
     let amount: number = 0; // We define 0 as default amount
     if (this.storageValue !== null) {
@@ -136,6 +129,11 @@ export class CreateQuizesComponent implements OnInit {
 
   addTag(){
     // this.quiz.tags.push();
+  }
+
+  // Used for bubbling data
+  addQuestion(question : Question){
+    this.quiz.questions?.push(question);
   }
 
 }
