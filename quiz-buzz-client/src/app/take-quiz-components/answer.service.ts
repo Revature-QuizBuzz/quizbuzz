@@ -15,7 +15,7 @@ export class AnswerService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
     
-  private testUrl: string = "http://localhost:8080/testresults/answers"
+  private testUrl: string = "http://localhost:8080/answers/testresults"
   
   constructor(private http: HttpClient) { }
 
