@@ -39,14 +39,13 @@ public class QuizManagerImpl implements QuizManager {
         // [todo] refactor this so it's a method that takes an object and list of same type (in quiz model)
         // [todo] check for deleted questions
         // [todo] implement a delete questions
+        
         for(Question question: quiz.getQuestions()) {
             qManager.updateQuestion(question.getId(), question);
         }
 
-        // [todo] for tag in tags update fields (create, then call service)
-        for(Tags tag: quiz.getTags()) {
-            tagManager.updateTag(tag.getId(), tag);
-        }
+        // [todo] Just find deletions and add new tags. No need to delete tags from db
+
 
         //updatedQuiz.setTags(quiz.getTags());
 

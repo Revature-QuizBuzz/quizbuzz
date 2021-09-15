@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import quiz.dao.QuestionDAO;
 import quiz.models.Question;
 
+import java.util.List;
+
 @Service
 public class QuestionManagerImpl implements QuestionManager{
 
@@ -23,6 +25,11 @@ public class QuestionManagerImpl implements QuestionManager{
         updatedQuestion.setType(question.getType());
 
         return daoQuestion.save(updatedQuestion);
+    }
+
+    @Override
+    public void deleteQuestionsById(List<Integer> questionIds) {
+        daoQuestion.deleteAllById(questionIds);
     }
 
 }

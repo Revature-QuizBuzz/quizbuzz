@@ -1,5 +1,6 @@
 package quiz.models;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -129,6 +130,20 @@ public class Quiz {
 			total += element.getPossiblePoints();
 		}
 		return total;
+	}
+
+	// returns a list of ids to call deleteAllByIdInBatch() on
+	public List<Integer> findDeletions(List<Question> oldList, List<Question> newList) {
+		List<Integer> toDelete = new ArrayList<>();
+		for (Question oldQuestion : oldList) {
+			for (Question newQuestion: newList) {
+				if (oldQuestion.getId() == newQuestion.getId()) {
+					break;
+				}
+			}
+			toDelete.add(oldQuestion.getId());
+		}
+		return toDelete;
 	}
 	
 }
