@@ -128,12 +128,6 @@ CREATE TABLE quizbuzz.quiz_tags (
 	CONSTRAINT quiz_tags_pk PRIMARY KEY (tag_id)
 );
 
-CREATE TABLE quizbuzz.quiz_tags (
-	quiz_tag_id serial NOT NULL,
-	tag_id int4 NOT NULL,
-	quiz_id int4 NOT NULL,
-	CONSTRAINT quiz_tags_pk PRIMARY KEY (tag_id)
-);
 
 -- quizbuzz.quizzes definition
 
@@ -163,22 +157,6 @@ CREATE TABLE quizbuzz.tags (
 	CONSTRAINT tags_pk PRIMARY KEY (tag_id)
 );
 
-
--- quizbuzz.user_scores definition
-
--- Drop table
-
--- DROP TABLE quizbuzz.user_scores;
-
-CREATE TABLE quizbuzz.user_scores (
-	score_id serial NOT NULL,
-	quiz_id int4 NOT NULL,
-	user_id int4 NOT NULL,
-	user_score int4 NOT NULL,
-	CONSTRAINT user_scores_pk PRIMARY KEY (score_id)
-);
-
-
 -- quizbuzz.users definition
 
 -- Drop table
@@ -196,7 +174,23 @@ CREATE TABLE quizbuzz.users (
 	point_percentage decimal not null default 0,
 	CONSTRAINT users_pk PRIMARY KEY (user_id)
 );
-ALTER TABLE quizbuzz.users ADD CONSTRAINT users_un UNIQUE (username);
+
+
+-- quizbuzz.user_scores definition
+
+-- Drop table
+
+-- DROP TABLE quizbuzz.user_scores;
+
+CREATE TABLE quizbuzz.user_scores (
+	score_id serial NOT NULL,
+	quiz_id int4 NOT NULL,
+	user_id int4 NOT NULL,
+	user_score int4 NOT NULL,
+	CONSTRAINT user_scores_pk PRIMARY KEY (score_id)
+);
+
+
 
 
 -- quizbuzz.user_scores foreign keys
@@ -227,7 +221,6 @@ ALTER TABLE quizbuzz.user_scores ADD completed_on timestamp NOT NULL;
 ALTER TABLE quizbuzz.quizzes ADD created_date timestamp NOT NULL;
 ALTER TABLE quizbuzz.quizzes ADD date_modified timestamp NULL;
 ALTER TABLE quizbuzz.questions ADD question_type varchar(30) NOT NULL;
-ALTER TABLE quizbuzz.users ADD CONSTRAINT users_un UNIQUE (username);
 
 
 
@@ -254,21 +247,18 @@ WHERE
     u.user_id = s.user_id
 and s.quiz_id = q.quiz_id
 and s.score_id = (select max(score_id) from quizbuzz.user_scores );
+
+
+UPDATE quizbuzz.users u
+set point_percentage = ROUND(((u.total_points::decimal/ u.total_possible_points::decimal) * 100), 2)
+from quizbuzz.user_scores us
+where u.user_id = us.user_id;
+
 return null;
 end;
 $$;
 
 
-CREATE or replace function update_point_percentage()
-returns trigger 
-LANGUAGE plpgsql
-AS $$
-begin
-UPDATE quizbuzz.users 
-set point_percentage = ROUND(((total_points::decimal/ total_possible_points::decimal) * 100), 2);
-return null;
-end;
-$$;
 
 DROP TRIGGER IF exists update_score_on_insert on quizbuzz.user_scores;
 
@@ -277,32 +267,45 @@ insert
     on
     quizbuzz.user_scores for each row execute function update_total_scores();
    
-DROP TRIGGER IF exists update_point_percentage_trigger on quizbuzz.users;
-
-create trigger update_point_percentage_trigger 
-AFTER UPDATE OF total_possible_points ON quizbuzz.users 
-    
-    for each row execute function update_point_percentage();
-   
   
 
 
-INSERT INTO quizbuzz.users (username,"password",f_name,l_name,total_points) VALUES
-	 ('test','1234','test','tester',0);
+INSERT INTO quizbuzz.users (username,"password",f_name,l_name,total_points, total_possible_points, point_percentage) VALUES
+	 ('test','1234','test','tester',0,0,0),
+	 ('red','red123','Crimson','Red',0,0,0),
+	 ('orange','orange123','Clemintine','Orange',0,0,0),
+	 ('yellow','yellow123','Sunflower','Yellow',0,0,0),
+	 ('green','green123','Grass','Green',0,0,0);
 	 
 INSERT INTO quizbuzz.tags ("name") VALUES
-	 ('Test Tag');
+	 ('Test Tag'),
+	 ('Java'),
+	 ('Angular'),
+	 ('Spring Boot'),
+	 ('Hibernate'),
+	 ('Arithmetic');
 	 
 INSERT INTO quizbuzz.quizzes (user_id,"name",description,total_score,created_date,date_modified) VALUES
-	 (1,'Test Quiz','A Quiz to test the system',100,'2021-09-08 13:25:16.142367',NULL);
+	 (1,'Test Quiz','A Quiz to test the system',100,'2021-09-08 13:25:16.142367',NULL),
+	 (3,'Quiz A','A Quiz A to test the system',80,'2021-09-08 13:25:16.142367',NULL),
+	 (3,'Sample Quiz','A Sample Quiz to test the system',120,'2021-09-08 13:25:16.142367',NULL);
 
-INSERT INTO quizbuzz.user_scores (quiz_id,user_id,user_score,completed_on) VALUES
-	 (1,1,100,'2021-09-08 13:26:45.194406');
+INSERT INTO quizbuzz.user_scores (quiz_id,user_id,user_score,completed_on) VALUES(1,1,100,'2021-09-08 13:26:45.194406');
+INSERT INTO quizbuzz.user_scores (quiz_id,user_id,user_score,completed_on) VALUES(1,2,40,'2021-09-10 13:30:45.194406');
+INSERT INTO quizbuzz.user_scores (quiz_id,user_id,user_score,completed_on) values(2,1,70,'2021-09-08 13:26:45.194406');
+INSERT INTO quizbuzz.user_scores (quiz_id,user_id,user_score,completed_on) values(3,1,90,'2021-09-08 13:26:45.194406');
+
 
 INSERT INTO quizbuzz.questions (quiz_id,question,possible_points,question_type) VALUES
 	 (1,'What is your name?',1.0,'multiplechoice'),
 	 (1,'What is your quest?',1.0,'multiplechoice'),
-	 (1,'What is the airspeed velocity of an unladen swallow?',1.0,'multiplechoice');
+	 (1,'What is the airspeed velocity of an unladen swallow?',1.0,'multiplechoice'),
+	 (2,'3+4=?',10.0,'multiplechoice'),
+	 (2,'1+4=?',15.0,'multiplechoice'),
+	 (2,'2+4=?',13.0,'multiplechoice'),
+	 (3,'6+4=?',18.0,'multiplechoice'),
+	 (3,'7+4=?',19.0,'multiplechoice'),
+	 (3,'9+4=?',16.0,'multiplechoice');
 	 
 INSERT INTO quizbuzz.answers (question_id,answer,correct) VALUES
 	 (1,'Arthur, King of Britons',true),

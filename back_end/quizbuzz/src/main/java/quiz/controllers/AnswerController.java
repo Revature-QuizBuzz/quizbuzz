@@ -37,7 +37,7 @@ public class AnswerController {
 		System.out.println(answers.get(0).getAnswer());
 		System.out.println(answers.get(0).getId());
 		System.out.println(answers.get(0).isCorrect());
-		System.out.println(answers.get(0).getQuestion());
+//		System.out.println(answers.get(0).getQuestion());
 //		answer.createAnswers(answers);
 //		return null;
 		return answer.createAnswers(answers);

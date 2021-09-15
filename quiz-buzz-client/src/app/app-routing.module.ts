@@ -7,6 +7,7 @@ import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './login/login.component';
 import { NewTagsComponent } from './new-tags/new-tags.component';
 import { CreateQuizesComponent } from './create-quizes/create-quizes.component';
+import {ListCreatedQuizzesComponent} from './list-created-quizzes';
 
 
 export const routes: Routes = [
@@ -16,7 +17,8 @@ export const routes: Routes = [
   {path: 'tags/new', component: NewTagsComponent},
   {path: 'quiz/new', component:CreateQuizesComponent},
   {path: 'newquestionanswer', component: QuestionAnswerComponent, outlet: "answer"},
-  {path: 'newquestion', component: QuestionComponent, outlet: "question"}
+  {path: 'newquestion', component: QuestionComponent, outlet: "question"},
+  {path: 'list-created-quizzes', component: ListCreatedQuizzesComponent}
 ];
 
 @NgModule({
