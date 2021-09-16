@@ -8,8 +8,7 @@ import { TaketestComponent } from './takequizcomponents/taketest/taketest.compon
 import { QuizSubmissionComponent } from './takequizcomponents/quiz-submission/quiz-submission.component';
 import { QuizSelectionComponent } from './takequizcomponents/quiz-selection/quiz-selection.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './material/material.module';
-
+import { FormsModule , ReactiveFormsModule } from '@angular/forms';
  
 
 
@@ -28,7 +27,8 @@ import { MaterialModule } from './material/material.module';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

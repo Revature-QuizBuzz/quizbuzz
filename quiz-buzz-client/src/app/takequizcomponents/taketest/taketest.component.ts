@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {HttpHeaders} from '@angular/common/http';
+import { NgForm } from '@angular/forms';
+
 
 
 
@@ -18,53 +20,58 @@ export class TaketestComponent implements OnInit {
   questions:any = [];
   answers:any = [];
   currentQuestion:any;
-  currentAnswer:any;
+  selectedAnswer:string[] =[];
   idNum:number = 0;
-  progressbar:number = 0;
-  parsedJson:any;
-
+  score:number = 0;
+   
+ 
 // // Questions
 public urlOne ='http://localhost:8080/questions/1';
 public urlTwo ='http://localhost:8080/answers/1'; // Answers
+public testUrl = 'http://localhost:8080/testanswers/create'; //pushing answers to db
 
   constructor(private router:Router, private http:HttpClient) { }
 
   ngOnInit(): void {
+   
   this.fetchQuestions();
-   this.fetchAnswers();
-   this.currentQuestion = this.questions[this.counter];
-   this.currentAnswer = this.answers[this.counter];
-   this.parsedJson = JSON.parse(this.currentQuestion);  
-    console.log("With Parsed JSON :" , this.parsedJson); 
+  this.selectedAnswer = new Array<string>();
+  this.currentQuestion = this.questions[this.counter];
+  
+   
   }
 
-  submit(){
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
+  submit(testForm: any){
+    console.log("form Sumbitted!");
+    var quiz_data = this.selectedAnswer;
+    if(localStorage.getItem('answers')== null){
+      localStorage.setItem('answers','[]');
     }
     
-    this.currentQuestion.status="Submit";
-    this.idNum = this.currentQuestion.id;
-    this.http.post(this.urlOne, this.currentQuestion, httpOptions).subscribe(data=>{
-      this.currentAnswer = data;
-   })
+    var old_data  = JSON.parse(localStorage.getItem('answers')||'{}');
+    old_data.push(quiz_data);
+    JSON.stringify(old_data);
+    localStorage.setItem('answers', old_data);
     
+    console.log(this.currentQuestion.correct + "right answers");
+ 
   }
+
   previous(){
+    
     if(this.counter-1 >= 0){
       this.counter = this.counter - 1;
       this.currentQuestion = this.questions[this.counter];
-      this.currentAnswer = this.answers[this.counter];
+  
     }
   }
 
   next(){
+    
     if(this.counter + 1 < this.questions.length){
       this.counter = this.counter + 1;
       this.currentQuestion = this.questions[this.counter];
-      this.currentAnswer = this.answers[this.counter];
+     
     }
   }
 
@@ -84,15 +91,20 @@ public urlTwo ='http://localhost:8080/answers/1'; // Answers
   home(){
   //  this.router.navigate(['']);
   }
-  
- fetchAnswers(){
-    this.http.get(this.urlTwo).subscribe(data=>{
-      this.answers = data;
-      console.log(data);
-      this.currentAnswer = this.answers[0];
-    })
+
+  getAnswers(e:any,answer:string){
+
+    if(e.target.checked){
+      console.log(answer + ' Checked ');
+      this.selectedAnswer.push(answer);
+    }
+    else{
+     
+      this.selectedAnswer = this.selectedAnswer.filter((m)=>m!=answer);
+      console.log(answer);
+    }
+    console.log(this.selectedAnswer);
   }
-
-
+ 
 
 }
