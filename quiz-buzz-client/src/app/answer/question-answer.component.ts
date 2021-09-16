@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Answer } from '../answer';
+import { Answer } from '../models/answers';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Quiz } from '../models/quizzes';
@@ -14,69 +14,59 @@ import { CreateQuizesComponent } from '../create-quizes/create-quizes.component'
 })
 export class QuestionAnswerComponent implements OnInit {
   answer: Answer={
-    id: 0,
     answer: "",
     correct: false
   }
+  @Input() questionType?: string;
+  
   constructor(private http:HttpClient, private router:Router) { }
-
-  public _url = "http://localhost:8080/answer/answerstoquestion"
 
   ngOnInit(): void {
   }
   
+  @Output() answerEvent = new EventEmitter<Answer[]>();
 
-
-  onSubmit(form:NgForm){
+  onClick(form:NgForm){
+    console.log(this.questionType);
     var answerArray = [];
     var answer1 = {};
     var answer2 = {};
     var answer3 = {};
-
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    }
+    var answer4 = {};
    answer1 = {
-     question: {
-       id: form.value.questionId
-     },
      answer: form.value.answer,
      correct: form.value.correct ? true : false,
-     possiblePoints: 2
    }
    answer2 = {
-    question: {
-      id: form.value.questionId
-    },
     answer: form.value.answer2,
-    correct: form.value.correct2 ? true : false,
-    possiblePoints: 2
+    correct: form.value.correct2 ? true : false
   }
   answer3 = {
-    question: {
-      id: form.value.questionId
-    },
     answer: form.value.answer3,
-    correct: form.value.correct3 ? true : false,
-    possiblePoints: 2
+    correct: form.value.correct3 ? true : false
+  }
+  answer4 = {
+    answer: form.value.answer4,
+    correct: form.value.correct4 ? true : false
   }
   answerArray.push(answer1);
   answerArray.push(answer2);
   answerArray.push(answer3);
+  answerArray.push(answer4);
     console.log(answer1)
     console.log(answer2)
     console.log(answer3)
-      this.http.post(this._url,
-        answerArray,httpOptions
-        ).subscribe({
-          next: (data:any)=>{
-            if(data.status === 'success'){
-              this.router.navigate(['newquestion'])
-            }
-          }
-        })
+    console.log(answer4);
+  this.answerEvent.emit(answerArray);
+  //     this.http.post(this._url,
+  //       answerArray,httpOptions
+  //       ).subscribe({
+  //         next: (data:any)=>{
+  //           if(data.status === 'success'){
+  //             this.router.navigate(['newquestion'])
+  //           }
+  //         }
+  //       })
+  // }
   }
-
 }

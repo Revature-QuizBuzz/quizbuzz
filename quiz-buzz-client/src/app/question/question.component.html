@@ -17,14 +17,14 @@
             <input id="possiblePoints" type="number" name="possiblePoints" placeholder="Point Value" required ngModel>
         </div>
         <div>
-            <select name="type" class="form-select" id="questionType" required ngModel>
+            <select name="type" class="form-select" id="questionType" (ngModelChange)="onChange($event)" required ngModel>
                 <option selected="selected" value="">Question Type</option>
                 <option value="multipleChoice">Multiple Choice</option>
                 <option value="multipleAnswers">Multiple Answers</option>
                 <option value="truefalse">True or False</option>
             </select>
             <!-- ngif questiontype -->
-            <app-question-answer></app-question-answer>
+            <app-question-answer [questionType]="selectedType"></app-question-answer>
             <!--  -->
         </div>
         <br>

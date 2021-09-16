@@ -12,6 +12,7 @@ import { Quiz } from '../models/quizzes';
   styleUrls: ['./question.component.css']
 })
 export class QuestionComponent implements OnInit {
+  selectedType = "";
   questions: Question[] = [];
   question: Question = {
     id: 0,
@@ -29,7 +30,13 @@ export class QuestionComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onChange(selectedType: string){
+    console.log(selectedType);
+    this.selectedType= selectedType;
+  }
+
   onSubmit(stockForm: NgForm) {
+    
 
     // const httpOptions = {
     // headers: new HttpHeaders({'Content-Type':'application/json'})}
