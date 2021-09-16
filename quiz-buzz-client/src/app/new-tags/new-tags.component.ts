@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
@@ -14,13 +14,12 @@ export class NewTagsComponent implements OnInit {
   constructor(private Http: HttpClient, private router: Router) { }
 
   tagName='';
+  @Output() addTag = new EventEmitter();
 
   onSubmit(form: NgForm){
-    this.Http.post("http://localhost:8080/tags/new",{
-      name: form.value.name
-    })
+    this.Http.post("http://localhost:8080/tags/new",{name: String(form.value.name)})
     .subscribe({
-      next: (data:any)=>{ 
+      next: (data:any)=>{
         console.log(data);
       },
       error: (data)=>{
@@ -35,7 +34,9 @@ export class NewTagsComponent implements OnInit {
 
   handleClear(){
     this.tagName = '';
-  }
+    this.addTag.emit();
+    console.log("here");
+    }
 
   ngOnInit(): void {
   }

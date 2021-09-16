@@ -13,9 +13,4 @@ export class CreateQuizService {
     return this.http.get('http://localhost:8080/tags')
   }
 
-  addNewTag(form:NgForm) {
-    return this.http.post("http://localhost:8080/tags/new",{
-      name: form.value.tag
-    })
-  }
 }

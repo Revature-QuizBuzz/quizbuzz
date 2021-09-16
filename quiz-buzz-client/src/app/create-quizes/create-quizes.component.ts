@@ -42,6 +42,7 @@ export class CreateQuizesComponent implements OnInit {
     description: '',
     totalScore: 0,
   };
+
   submitted = false;
   createQuiz!: FormGroup;
   // userId: number | null = <number><unknown>localStorage.getItem('userId');
@@ -112,7 +113,7 @@ export class CreateQuizesComponent implements OnInit {
     const data = {
       quizId: this.quiz.quizId,
       user: user,
-      // user: this.quiz.userId,
+      tags: this.quiz.tags,
       name: this.quiz.name,
       description: this.quiz.description,
       totalScore: this.quiz.totalScore,
@@ -130,6 +131,11 @@ export class CreateQuizesComponent implements OnInit {
         error => {
           console.log(error);
         });
+  }
+
+  selectedTags($event:Tag[]) {
+    this.quiz.tags = $event; 
+    console.log($event);
   }
 
 

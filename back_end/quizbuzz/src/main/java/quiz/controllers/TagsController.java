@@ -38,7 +38,7 @@ public class TagsController {
 	}
 	
 	@CrossOrigin(origins = "http://localhost:4200")
-	@PostMapping(path="/new",consumes="application/json", produces="application/json")
+	@PostMapping(path="/new", consumes="application/json", produces="application/json")
 	public ResponseEntity<Tags> createTags(@RequestBody Tags t) throws SQLException {
 		ResponseEntity<Tags> returnTag;
 		try {		
@@ -46,7 +46,6 @@ public class TagsController {
 			logger.info("POST to /tags/new");
 			returnTag =  new ResponseEntity<Tags>(t, HttpStatus.OK);
 		}	catch (SQLException e) {
-			// TODO Auto-generated catch block
 			returnTag =  new ResponseEntity<Tags>(t, HttpStatus.CONFLICT);
 		} 
 		return returnTag;		

@@ -3,6 +3,11 @@
     color: #fff;
     border-radius:27px;
     width: 300px;
-    padding: 50px;
+    /* padding: 20px; */
+    padding-bottom: 20px;
+    margin-top: 20px;
 }
 
+.minwidth {
+    min-width: 200px;
+}

@@ -11,9 +11,11 @@ export const routes: Routes = [
   {path: '', component:HomeComponent, canActivate:[AuthGuard]},
   {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
   {path: 'login', component: LoginComponent},
-  {path: 'tags/new', component: NewTagsComponent},
-  {path: 'quiz/new', component:CreateQuizesComponent},
-  {path: 'tags/edit', component: AttachTagsComponent}
+  {path: 'quiz/new', component:CreateQuizesComponent, children:[
+    {path: 'tags/edit', component: AttachTagsComponent, children:[
+      {path: 'tags/new', component: NewTagsComponent}
+    ]}
+  ]},
 ];
 
 @NgModule({

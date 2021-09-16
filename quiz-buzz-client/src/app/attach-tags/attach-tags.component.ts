@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { Tag } from '../models/tags';
@@ -14,6 +14,10 @@ export class AttachTagsComponent implements OnInit {
   dropdownList: Tag[] = [];
   selectedItems: Tag[] = [];
   dropdownSettings:IDropdownSettings = {};
+
+  savedItems: Tag[] = [];
+
+  @Output() tags = new EventEmitter<Tag[]>();
 
   addTagForm:boolean = false;
 
@@ -44,26 +48,22 @@ export class AttachTagsComponent implements OnInit {
   }
 
   save() {
-    console.log(this.selectedItems);
+    this.savedItems = this.selectedItems;
+    this.tags.emit(this.savedItems);
   }
+
+  close() {
+    this.selectedItems = this.savedItems;
+  }
+
   addTagToggle() {
     this.addTagForm = !this.addTagForm;
   }
 
-  addTag(form:NgForm) {
-    this.service.addNewTag(form).subscribe({
-      next: (data:any) => {
-        if(data !== null) {
-          this.dropdownList = data;
-          console.log(data);
-          console.log(this.dropdownList);
-        }
-      }
-    });
-    
+  updateTags() {
     this.getTags();
-
-    this.addTagForm = false;
+    this.addTagToggle();
   }
+
 }
 

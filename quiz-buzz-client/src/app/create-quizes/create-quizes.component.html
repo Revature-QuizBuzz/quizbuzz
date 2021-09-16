@@ -25,17 +25,8 @@
 
     Questions and answers go here, using dummies for testing
   </div>
-  <div class="tags">
-    <button>JUnit</button>
-    <button>Java</button>
-    <button>SQL</button>
-    <button>HTML, CSS, JS</button>
-    <button>Angular</button>
-    <button>DevOps</button>
-    <button>Docker</button>
-    <button>Jenkins</button>
-    <button>Spring Boot</button>
-    <button>+ Add new tag</button>
+  <div>
+    <app-attach-tags (tags)="selectedTags($event)"></app-attach-tags>
   </div>
   <div>
     <button type="button" (click)="addQuestion()" class="btn btn-primary">Add question</button>

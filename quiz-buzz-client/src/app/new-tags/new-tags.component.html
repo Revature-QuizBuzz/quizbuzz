@@ -1,11 +1,12 @@
 <div class="row justify-content-center">
-    <div class="col-md-6 newTagCont">
+    <div class="col-md-8 newTagCont">
 
         <form (ngSubmit)="onSubmit(newTag)" #newTag="ngForm" novalidate> 
-            <label for="name">Name of new Tag:</label>
-            <input name="name" [(ngModel)]="tagName">
-            
-            <button class="btn btn-primary" type="submit">Enter</button>
+            <label class="minwidth" for="name">Name of new Tag:</label>
+            <div class="form-check form-check-inline">
+                <input class="form-control" name="name" id="name" [(ngModel)]="tagName">  
+                <button class="btn btn-primary" type="submit">Enter</button>
+            </div>
         </form>
     </div>
 </div>
