@@ -123,11 +123,11 @@ CREATE TABLE quizbuzz.questions (
 -- DROP TABLE quizbuzz.quiz_tags;
 
 CREATE TABLE quizbuzz.quiz_tags (
-	quiz_tag_id serial NOT NULL,
 	tag_id int4 NOT NULL,
 	quiz_id int4 NOT NULL,
 	CONSTRAINT quiz_tags_pk PRIMARY KEY (tag_id)
 );
+
 
 -- quizbuzz.quizzes definition
 
@@ -152,26 +152,10 @@ CREATE TABLE quizbuzz.quizzes (
 -- DROP TABLE quizbuzz.tags;
 
 CREATE TABLE quizbuzz.tags (
-	tag_id serial NOT NULL,
+	tag_id serial UNIQUE NOT NULL ,
 	"name" varchar(30) NOT NULL,
 	CONSTRAINT tags_pk PRIMARY KEY (tag_id)
 );
-
-
--- quizbuzz.user_scores definition
-
--- Drop table
-
--- DROP TABLE quizbuzz.user_scores;
-
-CREATE TABLE quizbuzz.user_scores (
-	score_id serial NOT NULL,
-	quiz_id int4 NOT NULL,
-	user_id int4 NOT NULL,
-	user_score int4 NOT NULL,
-	CONSTRAINT user_scores_pk PRIMARY KEY (score_id)
-);
-
 
 -- quizbuzz.users definition
 
@@ -190,7 +174,23 @@ CREATE TABLE quizbuzz.users (
 	point_percentage decimal not null default 0,
 	CONSTRAINT users_pk PRIMARY KEY (user_id)
 );
-ALTER TABLE quizbuzz.users ADD CONSTRAINT users_un UNIQUE (username);
+
+
+-- quizbuzz.user_scores definition
+
+-- Drop table
+
+-- DROP TABLE quizbuzz.user_scores;
+
+CREATE TABLE quizbuzz.user_scores (
+	score_id serial NOT NULL,
+	quiz_id int4 NOT NULL,
+	user_id int4 NOT NULL,
+	user_score int4 NOT NULL,
+	CONSTRAINT user_scores_pk PRIMARY KEY (score_id)
+);
+
+
 
 
 -- quizbuzz.user_scores foreign keys
@@ -248,17 +248,19 @@ return null;
 end;
 $$;
 
+
+
 DROP TRIGGER IF exists update_score_on_insert on quizbuzz.user_scores;
 
 create trigger update_score_on_insert after
 insert
-	on
-	quizbuzz.user_scores for each row execute function update_total_scores();
+    on
+    quizbuzz.user_scores for each row execute function update_total_scores();
    
   
 
 
-INSERT INTO quizbuzz.users (username,"password",f_name,l_name,total_points,total_possible_points,point_percentage) VALUES
+INSERT INTO quizbuzz.users (username,"password",f_name,l_name,total_points, total_possible_points, point_percentage) VALUES
 	 ('test','1234','test','tester',0,0,0),
 	 ('red','red123','Crimson','Red',0,0,0),
 	 ('orange','orange123','Clemintine','Orange',0,0,0),
@@ -277,7 +279,13 @@ INSERT INTO quizbuzz.quizzes (user_id,"name",description,total_score,created_dat
 	 (1,'Test Quiz','A Quiz to test the system',100,'2021-09-08 13:25:16.142367',NULL),
 	 (3,'Quiz A','A Quiz A to test the system',80,'2021-09-08 13:25:16.142367',NULL),
 	 (3,'Sample Quiz','A Sample Quiz to test the system',120,'2021-09-08 13:25:16.142367',NULL);
-	
+
+INSERT INTO quizbuzz.user_scores (quiz_id,user_id,user_score,completed_on) VALUES(1,1,100,'2021-09-08 13:26:45.194406');
+INSERT INTO quizbuzz.user_scores (quiz_id,user_id,user_score,completed_on) VALUES(1,2,40,'2021-09-10 13:30:45.194406');
+INSERT INTO quizbuzz.user_scores (quiz_id,user_id,user_score,completed_on) values(2,1,70,'2021-09-08 13:26:45.194406');
+INSERT INTO quizbuzz.user_scores (quiz_id,user_id,user_score,completed_on) values(3,1,90,'2021-09-08 13:26:45.194406');
+
+
 INSERT INTO quizbuzz.questions (quiz_id,question,possible_points,question_type) VALUES
 	 (1,'What is your name?',1.0,'multiplechoice'),
 	 (1,'What is your quest?',1.0,'multiplechoice'),
