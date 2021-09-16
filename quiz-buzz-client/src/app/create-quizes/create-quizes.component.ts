@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Quiz } from '../models/quizzes';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -7,7 +7,7 @@ import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { User } from '../models/users';
 import { UserScore } from '../models/scores';
 import { Question } from '../models/questions';
-import { Tag } from '../models/tags'
+import { Tag } from '../models/tags';
 
 
 const baseUrl = 'http://localhost:8080/quizzes/createQuiz';
@@ -30,8 +30,7 @@ const baseUrl = 'http://localhost:8080/quizzes/createQuiz';
 
 export class CreateQuizesComponent implements OnInit {
 
-  user: User = {
-  }
+  user: User = {}
   quiz: Quiz = {
     id: 0,
     user: this.user,
@@ -43,6 +42,8 @@ export class CreateQuizesComponent implements OnInit {
     totalScore: 0,
   };
   submitted = false;
+  saved = false;
+  moreQuestions = false;
   createQuiz!: FormGroup;
   // userId: number | null = <number><unknown>localStorage.getItem('userId');
   storageValue: string | null = localStorage.getItem('id');
@@ -67,7 +68,11 @@ export class CreateQuizesComponent implements OnInit {
     })
   }
 
-
+  recieveQuestion($event: Question){
+    console.log($event)
+    this.addQuestion($event);
+    console.log(this.quiz);
+  }
 
 
   create(quiz: any): Observable<any> {
@@ -97,11 +102,6 @@ export class CreateQuizesComponent implements OnInit {
           });
   }
 
-
-  addQuestion() {
-
-  }
-
   add(): void {
     let amount: number = 0; // We define 0 as default amount
     if (this.storageValue !== null) {
@@ -117,7 +117,8 @@ export class CreateQuizesComponent implements OnInit {
       description: this.quiz.description,
       totalScore: this.quiz.totalScore,
       createdDate: this.quiz.createdDate,
-      dateModified: this.quiz.dateModified
+      dateModified: this.quiz.dateModified,
+      questions: this.quiz.questions
     };
     console.log(data)
  //   if(confirm("You have succesfully added a quiz"))
@@ -132,5 +133,24 @@ export class CreateQuizesComponent implements OnInit {
         });
   }
 
+  // Used for bubbling data and adding Tags to the quiz 
+  public addTag(tag : Tag[]){
+    tag.forEach(element => {
+      this.quiz.tags?.push(element);
+    });
+  }
 
+  // Used for bubbling data and adding questions to the quiz
+  public addQuestion(question : Question){
+    this.quiz.questions?.push(question);
+  }
+
+  public deleteQuestion(index : number){
+    if(this.quiz.questions![index] !== null || undefined)
+    delete this.quiz.questions![index];
+  }
+
+  public save(){
+    this.saved = true;
+  }
 }

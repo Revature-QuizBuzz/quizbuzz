@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import quiz.models.ScoreBoard;
-import quiz.models.User;
 import quiz.services.UserManager;
 
 import java.util.Optional;

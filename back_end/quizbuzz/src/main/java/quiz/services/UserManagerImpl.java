@@ -9,12 +9,7 @@ import org.springframework.stereotype.Service;
 import quiz.dao.UserDAO;
 import quiz.models.User;
 
-import quiz.dao.UserDAO;
-import quiz.models.User;
-
-import quiz.dao.UserDAO;
 import quiz.models.ScoreBoard;
-import quiz.models.User;
 
 @Service
 public class UserManagerImpl implements UserManager{
