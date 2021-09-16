@@ -2,6 +2,7 @@
 <p></p>
 <div class="container">
     <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <ng-container *ngFor="let i of [].constructor(20)"> </ng-container>
 
         <!-- <div>
             <label for="quizid">Quiz Id</label>
@@ -32,7 +33,7 @@
         <div>
             <!-- add question -->
             <!-- onclick save answers to question array -->
-            <button type="submit">Add Question</button>
+            <button type="submit">Save Question</button>
         </div>
     </form>
 </div>

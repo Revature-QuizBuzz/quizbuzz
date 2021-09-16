@@ -40,8 +40,7 @@
     <button>+ Add new tag</button>
   </div>
   <div> 
-    <!-- container? -->
-    <app-question (questionEvent)="recieveQuestion($event)"></app-question>
+    <ng-container *ngFor="let i of [].constructor(20)"> <app-question (questionEvent)="recieveQuestion($event)"></app-question></ng-container>
     
   </div>
   <div>
