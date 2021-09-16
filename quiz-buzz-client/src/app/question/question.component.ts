@@ -14,14 +14,8 @@ import { Quiz } from '../models/quizzes';
 export class QuestionComponent implements OnInit {
   selectedType = "";
   questions: Question[] = [];
-  question: Question = {
-    id: 0,
-    question: "",
-    possiblePoints: 0,
-    type: ""
-  }
 
-  @Output() questionEvent = new EventEmitter<Question>();
+  @Output() questionEvent = new EventEmitter<Question[]>();
 
   constructor(private router: Router, private http: HttpClient) { }
 
@@ -30,13 +24,13 @@ export class QuestionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onChange(selectedType: string){
+  onChange(selectedType: string) {
     console.log(selectedType);
-    this.selectedType= selectedType;
+    this.selectedType = selectedType;
   }
 
   onSubmit(stockForm: NgForm) {
-    
+
 
     // const httpOptions = {
     // headers: new HttpHeaders({'Content-Type':'application/json'})}
@@ -54,12 +48,18 @@ export class QuestionComponent implements OnInit {
     // })
     // this.router.navigate([""])
 
+    let question: Question = {
+      id: 0,
+      question: "",
+      possiblePoints: 0,
+      type: ""
+    }
 
-    this.question.question = stockForm.value.question;
-    this.question.possiblePoints = stockForm.value.possiblePoints;
-    this.question.type = stockForm.value.type;
-    console.log(this.question);
-    this.questionEvent.emit(this.question);
-
+    question.question = stockForm.value.question;
+    question.possiblePoints = stockForm.value.possiblePoints;
+    question.type = stockForm.value.type;
+    console.log(question);
+    this.questions.push(question);
+    this.questionEvent.emit(this.questions);
   }
 }
