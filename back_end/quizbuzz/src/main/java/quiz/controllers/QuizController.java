@@ -4,11 +4,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import quiz.models.Quiz;
-import quiz.models.User;
 import quiz.services.QuizManager;
-
 
 import java.util.List;
 
@@ -33,9 +30,14 @@ public class QuizController {
 		return manager.findAll();
 	}
 
-	@GetMapping(path="/user/{userId}", produces="application/json")
-	public List<Quiz> findQuizzesCreatedByUser(@PathVariable int userId){
+	@GetMapping(path = "/user/{userId}", produces = "application/json")
+	public List<Quiz> findQuizzesCreatedByUser(@PathVariable int userId) {
 		logger.info("Find quiz(zes) created by user ");
 		return manager.findByUser(userId);
+	}
+
+	@GetMapping(path = "/findByName", produces = "application/json")
+	public Quiz findByName(String quizName) {
+		return manager.findByName(quizName);
 	}
 }
