@@ -123,12 +123,6 @@ CREATE TABLE quizbuzz.questions (
 -- DROP TABLE quizbuzz.quiz_tags;
 
 CREATE TABLE quizbuzz.quiz_tags (
-	tag_id int4 NOT NULL,
-	quiz_id int4 NOT NULL,
-	CONSTRAINT quiz_tags_pk PRIMARY KEY (tag_id)
-);
-
-CREATE TABLE quizbuzz.quiz_tags (
 	quiz_tag_id serial NOT NULL,
 	tag_id int4 NOT NULL,
 	quiz_id int4 NOT NULL,
@@ -227,7 +221,7 @@ ALTER TABLE quizbuzz.user_scores ADD completed_on timestamp NOT NULL;
 ALTER TABLE quizbuzz.quizzes ADD created_date timestamp NOT NULL;
 ALTER TABLE quizbuzz.quizzes ADD date_modified timestamp NULL;
 ALTER TABLE quizbuzz.questions ADD question_type varchar(30) NOT NULL;
-ALTER TABLE quizbuzz.users ADD CONSTRAINT users_un UNIQUE (username);
+
 
 
 
@@ -237,35 +231,19 @@ LANGUAGE plpgsql
 AS $$
 begin
 
+	
 UPDATE quizbuzz.users u
-set total_points = total_points + user_score
+set total_possible_points = u.total_possible_points + q.total_score,
+	total_points = u.total_points + s.user_score,
+	point_percentage = ROUND(((cast(u.total_points + s.user_score as decimal) / cast(u.total_possible_points + q.total_score as decimal) * 100)), 2)
 FROM 
-    quizbuzz.user_scores s
-WHERE 
-    u.user_id = s.user_id
-and s.score_id = (select max(score_id) from quizbuzz.user_scores );
-
-
-UPDATE quizbuzz.users u
-set total_possible_points = total_possible_points + total_score
-FROM 
-    quizbuzz.user_scores s, quizbuzz.quizzes q
+	quizbuzz.user_scores s, quizbuzz.quizzes q
 WHERE 
     u.user_id = s.user_id
 and s.quiz_id = q.quiz_id
-and s.score_id = (select max(score_id) from quizbuzz.user_scores );
-return null;
-end;
-$$;
+and s.score_id = (select max(score_id) from quizbuzz.user_scores);
 
-
-CREATE or replace function update_point_percentage()
-returns trigger 
-LANGUAGE plpgsql
-AS $$
-begin
-UPDATE quizbuzz.users 
-set point_percentage = ROUND(((total_points::decimal/ total_possible_points::decimal) * 100), 2);
+	
 return null;
 end;
 $$;
@@ -274,35 +252,42 @@ DROP TRIGGER IF exists update_score_on_insert on quizbuzz.user_scores;
 
 create trigger update_score_on_insert after
 insert
-    on
-    quizbuzz.user_scores for each row execute function update_total_scores();
-   
-DROP TRIGGER IF exists update_point_percentage_trigger on quizbuzz.users;
-
-create trigger update_point_percentage_trigger 
-AFTER UPDATE OF total_possible_points ON quizbuzz.users 
-    
-    for each row execute function update_point_percentage();
+	on
+	quizbuzz.user_scores for each row execute function update_total_scores();
    
   
 
 
-INSERT INTO quizbuzz.users (username,"password",f_name,l_name,total_points) VALUES
-	 ('test','1234','test','tester',0);
+INSERT INTO quizbuzz.users (username,"password",f_name,l_name,total_points,total_possible_points,point_percentage) VALUES
+	 ('test','1234','test','tester',0,0,0),
+	 ('red','red123','Crimson','Red',0,0,0),
+	 ('orange','orange123','Clemintine','Orange',0,0,0),
+	 ('yellow','yellow123','Sunflower','Yellow',0,0,0),
+	 ('green','green123','Grass','Green',0,0,0);
 	 
 INSERT INTO quizbuzz.tags ("name") VALUES
-	 ('Test Tag');
+	 ('Test Tag'),
+	 ('Java'),
+	 ('Angular'),
+	 ('Spring Boot'),
+	 ('Hibernate'),
+	 ('Arithmetic');
 	 
 INSERT INTO quizbuzz.quizzes (user_id,"name",description,total_score,created_date,date_modified) VALUES
-	 (1,'Test Quiz','A Quiz to test the system',100,'2021-09-08 13:25:16.142367',NULL);
-
-INSERT INTO quizbuzz.user_scores (quiz_id,user_id,user_score,completed_on) VALUES
-	 (1,1,100,'2021-09-08 13:26:45.194406');
-
+	 (1,'Test Quiz','A Quiz to test the system',100,'2021-09-08 13:25:16.142367',NULL),
+	 (3,'Quiz A','A Quiz A to test the system',80,'2021-09-08 13:25:16.142367',NULL),
+	 (3,'Sample Quiz','A Sample Quiz to test the system',120,'2021-09-08 13:25:16.142367',NULL);
+	
 INSERT INTO quizbuzz.questions (quiz_id,question,possible_points,question_type) VALUES
 	 (1,'What is your name?',1.0,'multiplechoice'),
 	 (1,'What is your quest?',1.0,'multiplechoice'),
-	 (1,'What is the airspeed velocity of an unladen swallow?',1.0,'multiplechoice');
+	 (1,'What is the airspeed velocity of an unladen swallow?',1.0,'multiplechoice'),
+	 (2,'3+4=?',10.0,'multiplechoice'),
+	 (2,'1+4=?',15.0,'multiplechoice'),
+	 (2,'2+4=?',13.0,'multiplechoice'),
+	 (3,'6+4=?',18.0,'multiplechoice'),
+	 (3,'7+4=?',19.0,'multiplechoice'),
+	 (3,'9+4=?',16.0,'multiplechoice');
 	 
 INSERT INTO quizbuzz.answers (question_id,answer,correct) VALUES
 	 (1,'Arthur, King of Britons',true),
@@ -311,4 +296,11 @@ INSERT INTO quizbuzz.answers (question_id,answer,correct) VALUES
 	 (2,'To over throw the king',false),
 	 (3,'African or European',true),
 	 (3,'Red... no, Blue',false);
+
+INSERT INTO quizbuzz.user_scores (quiz_id,user_id,user_score,completed_on) VALUES
+	(2,2,60,'2021-09-08 13:26:45.194406');
+INSERT INTO quizbuzz.user_scores (quiz_id,user_id,user_score,completed_on) VALUES
+ 	(2,1,70,'2021-09-08 13:26:45.194406');
+INSERT INTO quizbuzz.user_scores (quiz_id,user_id,user_score,completed_on) VALUES
+ 	(3,1,90,'2021-09-08 13:26:45.194406');
 	 
