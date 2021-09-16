@@ -1,0 +1,47 @@
+.search{
+    width: 200px;
+    display: block;
+    margin: auto;
+
+}
+
+.quizSelector{
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    box-shadow: 0 3px 10px lightgray;
+    margin: 5px;
+}
+
+.quizTable{
+    text-align: center;
+    border-radius: 10px;
+}
+
+.quizType{
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    margin: 10px;
+    padding: 10px;
+}
+
+.quizType:hover{
+    cursor: pointer;
+}
+
+.resize{
+    width: 100px;
+    height: 100px;
+}
+
+.tableHead{
+    background-color: lightgray;
+    border-radius: 5px;
+}
+
+.startQuiz{
+    text-align: center;
+    border-radius: 5px;
+    width: 200px;
+    display: block;
+    margin: auto;
+}
