@@ -35,7 +35,7 @@ public class QuestionManagerImpl implements QuestionManager{
 		for (Question question : questions) {
 			persistedQuestion.add(dao.save(question));
 		}
-		return persistedQuestion;
+		return persistedQuestion;}
 	public Question findByQuestion(String text) {
 		return dao.findByQuestion(text);
 	}

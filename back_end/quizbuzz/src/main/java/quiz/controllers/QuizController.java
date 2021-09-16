@@ -11,6 +11,7 @@ import quiz.models.User;
 import quiz.services.QuestionManager;
 import quiz.services.QuizManager;
 
+
 import java.util.List;
 
 @RestController
@@ -32,7 +33,6 @@ public class QuizController {
 		quiz = manager.create(quiz);
 		for (Question questions : quiz.getQuestions()) {
 			questions.setQuiz(quiz);
-			
 		}
 		qmanager.createAll(quiz.getQuestions());
 		return quiz;
@@ -43,14 +43,9 @@ public class QuizController {
 		return manager.findAll();
 	}
 
-	@GetMapping(path = "/user/{userId}", produces = "application/json")
-	public List<Quiz> findQuizzesCreatedByUser(@PathVariable int userId) {
+	@GetMapping(path="/user/{userId}", produces="application/json")
+	public List<Quiz> findQuizzesCreatedByUser(@PathVariable int userId){
 		logger.info("Find quiz(zes) created by user ");
 		return manager.findByUser(userId);
-	}
-
-	@GetMapping(path = "/findByName", produces = "application/json")
-	public Quiz findByName(String quizName) {
-		return manager.findByName(quizName);
 	}
 }
