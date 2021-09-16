@@ -1,5 +1,6 @@
 package quiz.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.StreamSupport;
 import java.util.stream.Collectors;
@@ -26,6 +27,15 @@ public class QuestionManagerImpl implements QuestionManager{
 	@Override
 	public Question create(Question que) {
 		return dao.save(que);
+	}
+
+	@Override
+	public List<Question> createAll(List<Question> questions) {
+		List<Question> persistedQuestion = new ArrayList<Question>();
+		for (Question question : questions) {
+			persistedQuestion.add(dao.save(question));
+		}
+		return persistedQuestion;
 	}
 
 }

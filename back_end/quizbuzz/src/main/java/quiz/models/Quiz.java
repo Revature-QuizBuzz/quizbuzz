@@ -152,5 +152,8 @@ public class Quiz {
 	public void setDateModified(Date dateModified) {
 		this.dateModified = dateModified;
 	}
+	public void setQuestionIds(Quiz quiz) {
+        this.questions.get(0).setQuiz(quiz);
+    }
 
 }
