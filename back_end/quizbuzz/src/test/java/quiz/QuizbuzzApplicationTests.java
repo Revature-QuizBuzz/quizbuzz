@@ -61,6 +61,7 @@ class QuizbuzzApplicationTests {
 
 	@Test
 	void createQuestion() {
+		createQuiz();
 		String name = "What does coffee equal?";
 		Question found = questionManager.findByQuestion(name);
 		Question question = new Question();
@@ -81,6 +82,7 @@ class QuizbuzzApplicationTests {
 
 	@Test
 	void createAnswer() {
+		createQuestion();
 		String answer = "Coffee equals enlightenment.";
 		Answers found = answersManager.findByAnswer(answer);
 		Answers answers = new Answers();
