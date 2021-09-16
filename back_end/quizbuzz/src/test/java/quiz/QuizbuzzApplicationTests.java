@@ -1,26 +1,14 @@
 package quiz;
 
-import static org.junit.Assert.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
+import quiz.models.*;
+import quiz.services.*;
 
-import quiz.dao.QuizDAO;
-import quiz.models.Quiz;
-import quiz.models.Tags;
-import quiz.models.User;
-import quiz.services.QuizManager;
-import quiz.services.TagsManager;
-import quiz.services.UserManager;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 @SpringBootTest
 class QuizbuzzApplicationTests {
@@ -31,10 +19,14 @@ class QuizbuzzApplicationTests {
 	@Autowired
 	private UserManager userManager;
 
-	@InjectMocks
+	@Autowired
 	QuizManager quizManager;
-	@Mock
-	QuizDAO quizDAO;
+
+	@Autowired
+	QuestionManager questionManager;
+
+	@Autowired
+	AnswersManager answersManager;
 
 	@Test
 	void contextLoads() {
@@ -48,23 +40,61 @@ class QuizbuzzApplicationTests {
 
 	@Test
 	void createQuiz() {
+		String name = "Coffee Quiz";
+		Quiz found = quizManager.findByName(name);
 		Quiz quiz = new Quiz();
-		quiz.setId(90000);
-		quiz.setUser(new User(2));
-		quiz.setScores(null);
-		quiz.setQuestions(null);
-		quiz.setTags(null);
-		quiz.setName("Test Quiz in QuizbuzzApplication");
-		quiz.setTotalScore(100);
-		quiz.setDescription("Quiz made in QuizbuzzApplication");
-		quizDAO.save(quiz);
-//		verify(quizManager, times(1)).create(any());
+		if (found == null) {
+			quiz.setUser(new User(1));
+			quiz.setScores(null);
+			quiz.setQuestions(null);
+			quiz.setTags(null);
+			quiz.setName(name);
+			quiz.setTotalScore(100);
+			quiz.setDescription("Quiz about coffee.");
+			quizManager.create(quiz);
+			found = quizManager.findByName(name);
+		}
 
-		ArgumentCaptor<Quiz> captor = ArgumentCaptor.forClass(Quiz.class);
-		verify(quizDAO).save(captor.capture());
-		System.out.println(captor.getValue().getName());
-		Assertions.assertTrue(captor.getValue().getName().equals(quiz.getName()));
+		assertNotEquals(found, null);
+		assertEquals(found.getName(),name);
 	}
+
+	@Test
+	void createQuestion() {
+		String name = "What does coffee equal?";
+		Question found = questionManager.findByQuestion(name);
+		Question question = new Question();
+		if (found == null) {
+			question.setId(9000);
+			question.setQuestion(name);
+			question.setAnswers(null);
+			Quiz quiz = quizManager.findByName("Coffee Quiz");
+			question.setQuiz(quiz);
+			question.setPossiblePoints(100);
+			question.setType("multiplechoice");
+			questionManager.create(question);
+			found = questionManager.findByQuestion(name);
+		}
+
+		assertNotEquals(found, null);
+	}
+
+	@Test
+	void createAnswer() {
+		String answer = "Coffee equals enlightenment.";
+		Answers found = answersManager.findByAnswer(answer);
+		Answers answers = new Answers();
+		if (found == null) {
+			answers.setAnswer(answer);
+			answers.setCorrect(true);
+			answers.setQuestion(questionManager.findByQuestion("What does coffee equal?"));
+			answersManager.create(answers);
+			found = answersManager.findByAnswer(answer);
+		}
+
+		assertNotEquals(found, null);
+	}
+
 
 	@Test
 	void login() {

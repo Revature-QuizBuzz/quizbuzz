@@ -10,4 +10,5 @@ public interface QuestionManager {
 	List<Question> createAll(List<Question> questions);
 	Question create(Question ques);
 
+    Question findByQuestion(String name);
 }
