@@ -20,7 +20,10 @@ export class QuizSelectionComponent implements OnInit {
   }
 
   search(){
-    console.log("seaching...")
+    //console.log("seaching...")
+    var searchValue = (document.getElementById('searchBar') as HTMLInputElement).value;
+    console.log(searchValue)
+
   }
 
   goToJavaQuizzes(){
