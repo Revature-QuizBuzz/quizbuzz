@@ -12,4 +12,5 @@ public interface AnswersManager {
 
 	List<Answers> createAnswers(List<Answers> allAnswers);
 
+    Answers findByAnswer(String answer);
 }

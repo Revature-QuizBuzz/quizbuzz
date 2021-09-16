@@ -31,4 +31,9 @@ public class AnswersManagerImpl implements AnswersManager {
 		return dao.saveAll(list);
 	}
 
+	@Override
+	public Answers findByAnswer(String answer) {
+		return dao.findByAnswer(answer);
+	}
+
 }

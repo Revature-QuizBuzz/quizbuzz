@@ -28,4 +28,9 @@ public class QuestionManagerImpl implements QuestionManager{
 		return dao.save(que);
 	}
 
+	@Override
+	public Question findByQuestion(String text) {
+		return dao.findByQuestion(text);
+	}
+
 }

@@ -10,4 +10,5 @@ public interface QuestionManager {
 	
 	Question create(Question ques);
 
+    Question findByQuestion(String name);
 }

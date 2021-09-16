@@ -4,13 +4,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
-import quiz.models.Quiz;
-import quiz.models.Tags;
-import quiz.models.User;
-import quiz.services.QuizManager;
-import quiz.services.TagsManager;
-import quiz.services.UserManager;
+import quiz.models.*;
+import quiz.services.*;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 @SpringBootTest
@@ -22,16 +19,18 @@ class QuizbuzzApplicationTests {
 	@Autowired
 	private UserManager userManager;
 
+	@Autowired
+	QuizManager quizManager;
+
+	@Autowired
+	QuestionManager questionManager;
+
+	@Autowired
+	AnswersManager answersManager;
 
 	@Test
 	void contextLoads() {
 	}
-
-//	@Test
-//	void createTags(Tags tag) {
-//		ResponseEntity<Tags> newTag = manager.createTags(tag);
-//		assertNotEquals(newTag, null);
-//	}
 
 	@Test
 	void createTags(Tags tag) {
@@ -39,12 +38,9 @@ class QuizbuzzApplicationTests {
 		assertNotEquals(newTag, null);
 	}
 
-	@Autowired
-	QuizManager quizManager;
-
 	@Test
 	void createQuiz() {
-		String name = "Quiz from Test";
+		String name = "Coffee Quiz";
 		Quiz found = quizManager.findByName(name);
 		Quiz quiz = new Quiz();
 		if (found == null) {
@@ -54,9 +50,46 @@ class QuizbuzzApplicationTests {
 			quiz.setTags(null);
 			quiz.setName(name);
 			quiz.setTotalScore(100);
-			quiz.setDescription("Quiz made in QuizbuzzApplicationTest");
+			quiz.setDescription("Quiz about coffee.");
 			quizManager.create(quiz);
 			found = quizManager.findByName(name);
+		}
+
+		assertNotEquals(found, null);
+		assertEquals(found.getName(),name);
+	}
+
+	@Test
+	void createQuestion() {
+		String name = "What does coffee equal?";
+		Question found = questionManager.findByQuestion(name);
+		Question question = new Question();
+		if (found == null) {
+			question.setId(9000);
+			question.setQuestion(name);
+			question.setAnswers(null);
+			Quiz quiz = quizManager.findByName("Coffee Quiz");
+			question.setQuiz(quiz);
+			question.setPossiblePoints(100);
+			question.setType("multiplechoice");
+			questionManager.create(question);
+			found = questionManager.findByQuestion(name);
+		}
+
+		assertNotEquals(found, null);
+	}
+
+	@Test
+	void createAnswer() {
+		String answer = "Coffee equals enlightenment.";
+		Answers found = answersManager.findByAnswer(answer);
+		Answers answers = new Answers();
+		if (found == null) {
+			answers.setAnswer(answer);
+			answers.setCorrect(true);
+			answers.setQuestion(questionManager.findByQuestion("What does coffee equal?"));
+			answersManager.create(answers);
+			found = answersManager.findByAnswer(answer);
 		}
 
 		assertNotEquals(found, null);
