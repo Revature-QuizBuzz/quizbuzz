@@ -16,7 +16,7 @@ import { routes } from './app-routing.module';
 import { CreateQuizesComponent } from './create-quizes/create-quizes.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TotalUserPointsComponent } from './total-user-points/total-user-points.component';
-import { ListCreatedQuizzesComponent } from './list-created-quizzes/list-created-quizzes.component';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +30,7 @@ import { ListCreatedQuizzesComponent } from './list-created-quizzes/list-created
     FooterComponent,
     NewTagsComponent,
     CreateQuizesComponent,
-    ListCreatedQuizzesComponent
+
   ],
   imports: [
     BrowserModule,
