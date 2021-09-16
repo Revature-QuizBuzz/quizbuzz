@@ -2,55 +2,59 @@
 <p></p>
 <div class="container">
     <form (ngSubmit)="onClick(f)" #f="ngForm">
-        <!-- <input id="questionId" type="number" name="questionId" placeholder="Question Number" ngModel>
-        <label for="questionId">Enter Question Id</label> -->
+        <!-- <div *ngIf="questionType === 'multipleAnswers'; else radio"> -->
         <div>
-            <span>
+            <div>
                 <label for="answer">Answer #1</label>
                 <input id="answer" type="text" name="answer" placeholder="Answer here" required ngModel>
-                <!-- ngIf="questionType === multipleAnswers; else #radio" -->
                 <label for="correct">Correct answer?</label>
-                <input *ngIf="questionType === 'multipleAnswers'; else radio" type="checkbox" id="correct"
-                    name="correct" ngModel>
-                <ng-template #radio>
-                    <input type="radio" id="correct" value=true name="correct">
-                </ng-template>
-            </span>
+                <input type="checkbox" id="correct" name="correct" ngModel>
+            </div>
+            <div>
+                <label for="answer">Answer #2</label>
+                <input id="answer2" type="text" name="answer2" placeholder="Answer here" required ngModel>
+                <label for="correct">Correct answer?</label>
+                <input type="checkbox" id="correct2" name="correct2" ngModel>
+            </div>
+            <div>
+                <label for="answer">Answer #3</label>
+                <input id="answer3" type="text" name="answer3" placeholder="Answer here" required ngModel>
+                <label for="correct">Correct answer?</label>
+                <input type="checkbox" id="correct3" name="correct3" ngModel>
+            </div>
+            <div>
+                <label for="answer">Answer #4</label>
+                <input id="answer4" type="text" name="answer4" placeholder="Answer here" required ngModel>
+                <label for="correct">Correct answer?</label>
+                <input type="checkbox" id="correct4" name="correct4" ngModel>
+            </div>
         </div>
-        <div>
-            <span>
+        <!-- <ng-template #radio>
+            <div>
+                <label for="answer">Answer #1</label>
+                <input id="answer" type="text" name="answer" placeholder="Answer here" required ngModel>
+                <label for="correct">Correct answer?</label>
+                <input id="correct" type="radio" [value]="true" name="correct" ngModel>
+            </div>
+            <div>
                 <label for="answer2">Answer #2</label>
                 <input id="answer2" type="text" name="answer2" placeholder="Answer here" required ngModel>
-                <label>Correct Answer?</label>
-                <input *ngIf="questionType === 'multipleAnswers'; else radio" type="checkbox" id="correct2"
-                name="correct2" ngModel>
-                <ng-template #radio>
-                    <input type="radio" id="correct2" value=true name="correct">
-                </ng-template>
-            </span>
-        </div>
-        <div>
-            <span>
+                <label for="correct2">Correct answer?</label>
+                <input id="correct2" type="radio" [value]="true" name="correct" ngModel>
+            </div>
+             <div>
                 <label for="answer3">Answer #3</label>
                 <input id="answer3" type="text" name="answer3" placeholder="Answer here" required ngModel>
-                <label for="correct3">Correct answer?</label>
-                <input *ngIf="questionType === 'multipleAnswers'; else radio" type="checkbox" id="correct3" name="correct3" ngModel>
-                <ng-template #radio>
-                    <input type="radio" id="correct3" value=true name="correct">
-                </ng-template>
-            </span>
-        </div>
-        <div>
-            <span>
+                <label for="correct">Correct answer?</label>
+                <input id="correct3" type="radio" [value]="true" name="correct" ngModel>
+            </div>
+            <div>
                 <label for="answer4">Answer #4</label>
                 <input id="answer4" type="text" name="answer4" placeholder="Answer here" required ngModel>
-                <label>Correct answer?</label>
-                <input *ngIf="questionType === 'multipleAnswers'; else radio" type="checkbox" id="correct4" name="correct4" ngModel>
-                <ng-template #radio>
-                    <input type="radio" id="correct4" value=true name="correct">
-                </ng-template>
-            </span>
-        </div>
+                <label for="correct">Correct answer?</label>
+                <input id="correct4" type="radio" [value]="true" name="correct" ngModel>
+            </div>
+        </ng-template> -->
         <div>
             <button type="submit">Submit Answers</button>
         </div>
