@@ -31,7 +31,9 @@ public class TotalUserPointsController {
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping(produces = "application/json", consumes = "application/json")
 	public Scores addUserScore(@RequestBody Scores score) {
-		return manager.newScore(score);
+		Scores newScore = manager.newScore(score);
+		System.out.println(newScore.getId());
+		return newScore;
 	}
 	
 	

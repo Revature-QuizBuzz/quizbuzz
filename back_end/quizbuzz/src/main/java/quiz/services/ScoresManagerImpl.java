@@ -19,23 +19,11 @@ public class ScoresManagerImpl implements ScoresManager{
 	public List<Scores> findAll() {
 		return dao.findAll();
 	}
-
-	@Override
-	public Scores create(Scores score) {
-		return score;
-	}
-
-	@Override
-	public Object save(Scores score) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
+	// TODO: Validate score is valid (int)
 	@Override
 	public Scores newScore(Scores score) {
-		// TODO Auto-generated method stub
 		return dao.save(score);
 	}
-
 	
 }
