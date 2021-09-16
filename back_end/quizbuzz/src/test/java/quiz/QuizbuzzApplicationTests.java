@@ -7,6 +7,10 @@ import org.springframework.http.ResponseEntity;
 import quiz.models.*;
 import quiz.services.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
@@ -14,7 +18,7 @@ import static org.junit.Assert.assertNotEquals;
 class QuizbuzzApplicationTests {
 
 	@Autowired
-	private TagsManager manager;
+	private TagsManager tagsManager;
 
 	@Autowired
 	private UserManager userManager;
@@ -32,11 +36,11 @@ class QuizbuzzApplicationTests {
 	void contextLoads() {
 	}
 
-	@Test
-	void createTags(Tags tag) {
-		ResponseEntity<Tags> newTag = manager.createTags(tag);
-		assertNotEquals(newTag, null);
-	}
+//	@Test
+//	void createTags(Tags tag) {
+//		ResponseEntity<Tags> newTag = manager.createTags(tag);
+//		assertNotEquals(newTag, null);
+//	}
 
 	@Test
 	void createQuiz() {
@@ -61,16 +65,15 @@ class QuizbuzzApplicationTests {
 
 	@Test
 	void createQuestion() {
-		createQuiz();
+		if(quizManager.findByName("Coffee Quiz") == null)
+			createQuiz();
 		String name = "What does coffee equal?";
 		Question found = questionManager.findByQuestion(name);
 		Question question = new Question();
 		if (found == null) {
-			question.setId(9000);
 			question.setQuestion(name);
 			question.setAnswers(null);
-			Quiz quiz = quizManager.findByName("Coffee Quiz");
-			question.setQuiz(quiz);
+			question.setQuiz(quizManager.findByName("Coffee Quiz"));
 			question.setPossiblePoints(100);
 			question.setType("multiplechoice");
 			questionManager.create(question);
@@ -82,7 +85,8 @@ class QuizbuzzApplicationTests {
 
 	@Test
 	void createAnswer() {
-		createQuestion();
+		if(questionManager.findByQuestion("What does coffee equal?") == null)
+			createQuestion();
 		String answer = "Coffee equals enlightenment.";
 		Answers found = answersManager.findByAnswer(answer);
 		Answers answers = new Answers();
@@ -92,6 +96,25 @@ class QuizbuzzApplicationTests {
 			answers.setQuestion(questionManager.findByQuestion("What does coffee equal?"));
 			answersManager.create(answers);
 			found = answersManager.findByAnswer(answer);
+		}
+
+		assertNotEquals(found, null);
+	}
+
+	@Test
+	void createTags() {
+		if(quizManager.findByName("Coffee Quiz") == null)
+			createQuiz();
+		String name = "Hot Drinks";
+		Tags found = tagsManager.findByName(name);
+		Tags newTags = new Tags();
+		if (found == null) {
+			newTags.setName(name);
+			List<Quiz> quizSet = new ArrayList<>();
+			quizSet.add(quizManager.findByName("Coffee Quiz"));
+			newTags.setQuizzes(quizSet);
+			tagsManager.createTags(newTags);
+			found = tagsManager.findByName(name);
 		}
 
 		assertNotEquals(found, null);
