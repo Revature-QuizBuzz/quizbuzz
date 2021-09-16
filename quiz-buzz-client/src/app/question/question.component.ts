@@ -61,7 +61,5 @@ export class QuestionComponent implements OnInit {
     console.log(question);
     this.questions.push(question);
     this.questionEvent.emit(this.questions);
-
-
   }
 }
