@@ -1,0 +1,11 @@
+<p>delete-tag works!</p>
+
+<form (ngSubmit)="onSubmit(deleteTag)" #deleteTag="ngForm" novalidate>
+    <label for="tagToRemove">Tag to Remove: </label>
+    <select name="id" class="form-control" id="tagremover" [(ngModel)]="tagName">
+        <!--Get id-->
+        <option value="" name="name">Tag 1</option>
+        <option value="" name="name">Tag 2</option>
+    </select>
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 
+import quiz.dao.TagsDAO;
 import quiz.models.Tags;
 import quiz.models.User;
 import quiz.services.TagsManager;
@@ -22,7 +23,10 @@ class QuizbuzzApplicationTests {
 
 	@Autowired
 	private UserManager userManager;
-
+	
+	@Autowired
+	private TagsDAO tags;
+	
 	@Test
 	void createTags() throws SQLException {
 		Tags tag = new Tags();	
@@ -39,5 +43,16 @@ class QuizbuzzApplicationTests {
 		User found = userManager.findLogin(user);
 		assertNotEquals(found, null);
 	}
-	
+	/*
+	@Test
+	public void deleteByIdFromTags() {
+		tags.deleteById(Tags.getTagId());
+		assert(tags.count()).isEqualTo(1);
+	}
+	@Test
+	public void empty () {
+		tags.deleteAll();
+		assert(tags.count()).isEqualTo(0);
+	}
+	*/
 }

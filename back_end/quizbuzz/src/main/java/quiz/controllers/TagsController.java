@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -50,5 +51,18 @@ public class TagsController {
 		} 
 		return returnTag;		
 	}
-		
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@DeleteMapping(path="/{id}", consumes="application/json", produces="application/json")
+	public ResponseEntity<Tags> deleteTags(@RequestBody Tags t) throws SQLException {
+		ResponseEntity<Tags> returnTag;
+		try {
+			manager.deleteTags(t);
+			logger.info("DELETE from /tags/delete{id}");
+			returnTag = new ResponseEntity<Tags>(t, HttpStatus.OK);
+		} catch (SQLException e) {
+			returnTag = new ResponseEntity<Tags> (t, HttpStatus.CONFLICT);
+		}
+		return returnTag;
+	}
 }
