@@ -34,7 +34,7 @@ label {
 
 .btn-primary {
     background-color: #F26925;
-    outline:#B9B9BA;
+    border: none;
 }
 .btn-primary:hover {
     background-color: #F26925;
@@ -45,7 +45,7 @@ main {
     padding: 20px;
 }
 
-button {
+.tag {
     background-color: #FCB414;
     border-radius: 10px;
     border:#FCB414;

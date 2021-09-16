@@ -1,10 +1,10 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Edit tags
 </button>
 
 <ng-container *ngFor="let items of savedItems">
-  <button>{{items.name}}</button>
+  <button class="tag">{{items.name}}</button>
 </ng-container>
 
 
