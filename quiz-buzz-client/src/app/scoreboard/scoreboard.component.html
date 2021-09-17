@@ -1,13 +1,13 @@
 <div class="container" style="text-align:center;">
-    <h1 style="text-align:center;">Total User Points</h1>
-    <h2>User</h2>
+    <h1 style="text-align:center;">ScoreBoard</h1>
+    <h2>Compare Your Scores!</h2>
     <div class="card-body">
         <table class="table table-striped">
             <thead>
                 <th>First Name</th>
-                <th>Total Points</th>
+                <th (click)="seeScoreBoard('totalPoints')">Total Points</th>
                 <th>Possible Points</th>
-                <th>Point Percentage</th>
+                <th (click)="seeScoreBoard('pointPercentage')">Point Percentage</th>
             </thead>
             <tbody>
                 <tr *ngFor="let scores of scoreBoard" [ngClass]="{'scoreboard': scores.id === testId }">
