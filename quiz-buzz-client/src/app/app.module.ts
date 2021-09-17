@@ -17,7 +17,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AttachTagsComponent } from './attach-tags/attach-tags.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { TotalUserPointsComponent } from './total-user-points/total-user-points.component';
-import { DeleteTagComponent } from './delete-tag/delete-tag.component';
 
 @NgModule({
   declarations: [
@@ -29,8 +28,7 @@ import { DeleteTagComponent } from './delete-tag/delete-tag.component';
     FooterComponent,
     NewTagsComponent,
     CreateQuizesComponent,
-    AttachTagsComponent,
-    DeleteTagComponent
+    AttachTagsComponent
   ],
   imports: [
     BrowserModule,

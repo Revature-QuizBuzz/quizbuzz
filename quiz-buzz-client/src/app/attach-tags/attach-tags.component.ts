@@ -60,17 +60,10 @@ export class AttachTagsComponent implements OnInit {
     this.addTagForm = !this.addTagForm;
   }
 
-  removeTagToggle() {
-    console.log("Removing tag");
-  }
-  //need to figure out where to put removeTag function
-  /*
-  removeTag() {
-    this.deleteTags();
-  }*/
-
   updateTags() {
     this.getTags();
     this.addTagToggle();
   }
+
 }
+

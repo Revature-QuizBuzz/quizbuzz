@@ -12,6 +12,4 @@ public interface TagsDAO extends JpaRepository<Tags, Integer>{
 
 	
 	//public List<Tags> getAllTags();
-	
-	//public List<Tags> deleteTags();
 }

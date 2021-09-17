@@ -24,14 +24,10 @@
         <ng-container *ngIf="addTagForm === true">
           <app-new-tags (addTag)="updateTags()"></app-new-tags>
         </ng-container>
-        <!--<ng-container *ngIf="removeTagForm === true">
-          
-        </ng-container>-->
       </div>
 
       <div class="modal-footer">
         <button type="button" (click)="addTagToggle()" class="btn btn-primary">Add Tag</button>
-        <button type="button" (click)="removeTagToggle()" class="btn btn-secondary">Remove Tag</button>
         <button type="button" (click)="save()" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
         <button type="button" (click)="close()" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>

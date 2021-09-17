@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import quiz.dao.TagsDAO;
 import quiz.models.Tags;
@@ -29,11 +28,7 @@ public class TagsManagerImpl implements TagsManager{
 		dao.save(t);
 		return new ResponseEntity<Tags>(t, HttpStatus.OK);
 	}
+
 	
-	@Override
-	public ResponseEntity<Tags> deleteTags(Tags t) throws SQLException {
-		dao.delete(t);
-		return new ResponseEntity<Tags>(t, HttpStatus.OK);
-	}
-	
+
 }

@@ -36,7 +36,7 @@
     <root level="info">
         <appender-ref ref="Console" />
     </root>
-		
+
 		<!-- 
     	<Logger name="project.two.controllers.ProductController" level="info" additivity="false">
     	  <appender-ref ref="RollingFile"/>
@@ -54,13 +54,4 @@
     	  <appender-ref ref="RollingFile"/>
    		</Logger>
 		-->
-		 <!--  
-		<Logger name="quizbuzz.controllers.TagsController" level="info" additivity="false">
-    	  <appender-ref ref="RollingFile"/>
-   		</Logger>
-   		<Logger name="quizbuzz.services.TagsManagerImpl" level="info" additivity="false">
-    	  <appender-ref ref="RollingFile"/>
-   		</Logger>
-   		-->
-   		
 </configuration>
