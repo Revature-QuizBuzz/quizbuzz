@@ -135,13 +135,10 @@ public class Quiz {
 	// returns a list of ids to call deleteAllByIdInBatch() on
 	public static List<Integer> findQuestionDeletions(List<Question> oldList, List<Question> newList) {
 		List<Integer> toDelete = new ArrayList<>();
-		for (Question oldQuestion : oldList) {
-			for (Question newQuestion: newList) {
-				if (oldQuestion.getId() == newQuestion.getId()) {
-					break;
-				}
+		for (Question oldQuestion: oldList) {
+			if (!newList.contains(oldQuestion)) {
+				toDelete.add(oldQuestion.getId());
 			}
-			toDelete.add(oldQuestion.getId());
 		}
 		return toDelete;
 	}
@@ -149,14 +146,10 @@ public class Quiz {
 	public static List<Question> findNewQuestions(List<Question> oldList, List<Question> newList) {
 		List<Question> newQuestions = new ArrayList<>();
 		for (Question newQuestion: newList) {
-			for (Question oldQuestion: oldList) {
-				if (newQuestion.getId() == oldQuestion.getId()) {
-					break;
-				}
+			if (!oldList.contains(newQuestion)) {
+				newQuestions.add(newQuestion);
 			}
-			newQuestions.add(newQuestion);
 		}
-
 		return newQuestions;
 	}
 
