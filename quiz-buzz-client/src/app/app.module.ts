@@ -15,6 +15,7 @@ import { routes } from './app-routing.module';
 import { CreateQuizesComponent } from './create-quizes/create-quizes.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TotalUserPointsComponent } from './total-user-points/total-user-points.component';
+import { ScoreBoardComponent } from './scoreboard/scoreboard.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { TotalUserPointsComponent } from './total-user-points/total-user-points.
     NavbarComponent,
     FooterComponent,
     NewTagsComponent,
-    CreateQuizesComponent
+    CreateQuizesComponent,
+    ScoreBoardComponent
   ],
   imports: [
     BrowserModule,
