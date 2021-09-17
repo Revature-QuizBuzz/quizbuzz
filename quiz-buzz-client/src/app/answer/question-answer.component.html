@@ -13,13 +13,13 @@
             <div>
                 <label for="answer">Answer #2</label>
                 <input id="answer2" type="text" name="answer2" placeholder="Answer here" required ngModel>
-                <label for="correct">Correct answer?</label>
+                <label for="correct2">Correct answer?</label>
                 <input type="checkbox" id="correct2" name="correct2" ngModel>
             </div>
             <div>
                 <label for="answer">Answer #3</label>
                 <input id="answer3" type="text" name="answer3" placeholder="Answer here" required ngModel>
-                <label for="correct">Correct answer?</label>
+                <label for="correct3">Correct answer?</label>
                 <input type="checkbox" id="correct3" name="correct3" ngModel>
             </div>
             <div>
@@ -28,8 +28,13 @@
                 <label for="correct">Correct answer?</label>
                 <input type="checkbox" id="correct4" name="correct4" ngModel>
             </div>
+            <div>
+                <button type="submit">Submit Answers</button>
+            </div>
         </div>
-        <!-- <ng-template #radio>
+    </form>
+</div>
+<!-- <ng-template #radio>
             <div>
                 <label for="answer">Answer #1</label>
                 <input id="answer" type="text" name="answer" placeholder="Answer here" required ngModel>
@@ -55,8 +60,3 @@
                 <input id="correct4" type="radio" [value]="true" name="correct" ngModel>
             </div>
         </ng-template> -->
-        <div>
-            <button type="submit">Submit Answers</button>
-        </div>
-    </form>
-</div>
