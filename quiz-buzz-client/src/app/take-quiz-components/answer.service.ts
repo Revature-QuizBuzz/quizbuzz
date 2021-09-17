@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Question } from '../models/questions';
 import { Quiz } from '../models/quizzes';
 import { Answer } from '../models/answers';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,7 @@ import { Answer } from '../models/answers';
 
 export class AnswerService {
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-    
-  private testUrl: string = "http://localhost:8080/testresults/answers"
+  private testUrl: string = "http://localhost:8080/answers/testresults"
   
   constructor(private http: HttpClient) { }
 
@@ -44,6 +41,27 @@ export class AnswerService {
 
   // clear() {
   //   this.answers = [];
+  // }
+
+  // private quizSource = new BehaviorSubject<Quiz>({});
+  // currentQuiz = this.quizSource.asObservable();
+
+  // private questionSource = new BehaviorSubject<Question>({});
+  // currentQuestion = this.questionSource.asObservable();
+
+  // private answerSource = new BehaviorSubject<Answer>({});
+  // currentAnswer = this.answerSource.asObservable();
+    
+  // changeQuiz(currentQuiz: Quiz) {
+  //   this.quizSource.next(currentQuiz)
+  // }
+
+  // changeQuestion(currentQuestion: Question) {
+  //   this.questionSource.next(currentQuestion)
+  // }
+
+  // changeAnswer(currentAnswer: Answer) {
+  //   this.answerSource.next(currentAnswer)
   // }
 
 }

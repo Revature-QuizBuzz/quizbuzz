@@ -8,15 +8,16 @@
                     <th>Question</th>
                     <th>The Correct Answer</th>
                 </thead>
-                <tbody>
-                    <tr *ngFor = "let answer of answers">
+                <tbody *ngFor = "let answer of answers">
+                    <!-- <tr *ngIf = "userAnswer.question != answer.question"> -->
+                    <tr>
                         <td> {{answer.id}}</td>
-                        <td> {{answer.question}</td>
+                        <td> {{answer.question}}</td>
                         <td> {{answer.answer}}</td>
-                        <!-- <td><button class="btn btn-danger" (click)="addAnswers(answer)">Submit Answer</button></td> -->
                     </tr>
                 </tbody>
             </table>
+            <!-- <button class="btn btn-danger" (click)="submitQuiz(UserAnswers)">Submit Score</button> -->
         </div>
     </div>
 </div>

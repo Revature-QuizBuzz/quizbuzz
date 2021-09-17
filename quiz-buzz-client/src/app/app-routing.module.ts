@@ -12,7 +12,7 @@ export const routes: Routes = [
   {path: '', component:HomeComponent, canActivate:[AuthGuard]},
   {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
   {path: 'login', component: LoginComponent},
-  {path: 'testresults', component: QuizSubmissionComponent},
+  {path: 'quiz/submit', component: QuizSubmissionComponent},
   {path:"tags/new", component: NewTagsComponent},
   {path: 'quiz/new', component:CreateQuizesComponent}
 ];

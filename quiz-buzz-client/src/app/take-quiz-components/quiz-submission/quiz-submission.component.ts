@@ -3,7 +3,8 @@ import {Question} from 'src/app/models/questions';
 import {Answer} from 'src/app/models/answers';
 import { Quiz } from 'src/app/models/quizzes';
 import { AnswerService } from '../answer.service';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, FormControl, FormArray } from '@angular/forms';
+
 
 @Component({
   selector: 'app-quiz-submission',
@@ -12,16 +13,20 @@ import { NgForm } from '@angular/forms';
 })
 export class QuizSubmissionComponent implements OnInit {
 
-  answers: Answer[] = [];
   questions: Question[] = [];
   quizzes: Quiz[] = [];
-  userAnswer?: Answer;
-  userAnswers: Answer[]=[];
+  answers: Answer[] = [];
+  answer: any;
+  userAnswer?: any;
+  userAnswers: any=[];
+  // scoreId: number;
 
-  constructor(private answerService: AnswerService) { }
+  constructor(private answerService: AnswerService) { 
   
+  }
 
   ngOnInit(): void {
+
     this.answerService.getAllAnswers()
     .subscribe((data: Answer[]) =>{
       console.log(data);
@@ -35,15 +40,41 @@ export class QuizSubmissionComponent implements OnInit {
     });
 
     this.answerService.getAllQuestions()
-    .subscribe((data: Question[]) => {
+    .subscribe((data: Question[]) => { 
       console.log(data);
       this.questions = data;
     });
+
+    this.userAnswers = new FormGroup({
+      currentQuestion : new FormControl (''),
+      currentAnswer : new FormControl ('')
+    });
+    
   }
-  // onSubmit(form: NgForm): void {
-  //   this.userAnswer = Answer;
+
+  getUserAnswer() {
+    this.userAnswer = localStorage.getItem('answers');
+    // let localStorageItem = JSON.parse(localStorage.getItem('answers'));
+    
+  }
+
+  // submit() {
+  //   localStorage.getItem('answers');
+  //   userAnswer = this.answers;
   // }
 
 
+  // addScore(text: string): void {
+  //   let userAnswer = new this.answers(this.scoreId, text);
+  //   this.userAnswers.push(this.userAnswer);
+  //   this.scoreId++;
+  // }
 
+  // addUserAnswer(userAnswer : Answer) {
+  //   this.userAnswer.push(this.userAnswers)
+  // }
+
+  // let userAnswers = this.getUserAnswers();
+
+  // this.scoreId = 2;
 }
