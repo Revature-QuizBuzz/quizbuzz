@@ -12,7 +12,6 @@ export class ScoreBoardComponent implements OnInit {
   
   scoreBoard: ScoreBoard[] = [];
 
-  testId = 0;
   userId = 0;
   
 
@@ -20,14 +19,12 @@ export class ScoreBoardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.testId = 1;
     this.seeScoreBoard("pointPercentage")
-  }
+   
+    this.userId = this.getUserId();
+    console.log(this.userId);
     
-
-  onClick(sort: string): void {
-    this.seeScoreBoard(sort)
-  }
+  } 
  
 
   seeScoreBoard(sort: string): void {
@@ -37,10 +34,15 @@ export class ScoreBoardComponent implements OnInit {
       } else if (sort === "totalPoints") {
         this.scoreBoard = userScoreboard.sort((a, b) => (a.totalPoints > b.totalPoints) ? -1 : 1)
       } 
-      
+      console.log(this.scoreBoard)
     })
   }
 
+  getUserId() {
+    if(localStorage.getItem("id") === null)
+      return 0; 
+    return Number(localStorage.getItem("id"))
+  }
 
 }
 
