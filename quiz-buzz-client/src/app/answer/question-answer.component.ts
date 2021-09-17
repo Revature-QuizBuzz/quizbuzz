@@ -17,12 +17,14 @@ export class QuestionAnswerComponent implements OnInit {
     answer: "",
     correct: false
   }
+
   @Input() questionType?: string;
   
   constructor(private http:HttpClient, private router:Router) { }
 
   ngOnInit(): void {
   }
+
   
   @Output() answerEvent = new EventEmitter<Answer[]>();
 

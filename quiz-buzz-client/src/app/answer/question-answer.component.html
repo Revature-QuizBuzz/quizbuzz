@@ -29,7 +29,7 @@
                 <input type="checkbox" id="correct4" name="correct4" ngModel>
             </div>
             <div>
-                <button type="submit">Submit Answers</button>
+                <button type="submit" [disabled]="!f.valid">Submit Answers</button>
             </div>
         </div>
     </form>
