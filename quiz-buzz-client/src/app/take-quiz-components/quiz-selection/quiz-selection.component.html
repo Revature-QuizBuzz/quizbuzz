@@ -1,8 +1,9 @@
 <div class="container">
 
     <div class="row search">
-        <input id="searchBar" style="border-radius: 5px; text-align: center;" type="text" placeholder="search for quizzes" (keyup)="search()"><br>
-        <!-- <button (click)="search()">Search</button> -->
+        <!-- <input ng-model="searchBar" id="searchBar" type="text" placeholder="search for quizzes" (keyup)="search()"><br> -->
+        <input id="searchBar" type="text" placeholder="search for quizzes"><br>
+       <button class="searchButton" (click)="search()">Search</button>
     </div>
 
     <div class="row quizSelector">
@@ -46,7 +47,7 @@
             </tr>
             <tr>
                 <td>
-                    <div *ngFor="let quiz of quizzes ">{{quiz.name}}</div>
+                    <div *ngFor="let quiz of quizzes">{{quiz.name}}</div>
                 </td>
                 <td>
                     <div *ngFor="let quiz of quizzes ">{{quiz.tags}}</div>
@@ -58,6 +59,22 @@
                     <div *ngFor="let quiz of quizzes ">{{quiz.totalScore}}</div>
                 </td>
             </tr>
+            <!-- https://www.youtube.com/watch?v=YFsduR7mBfY -->
+            <!-- <tr>
+                <td ng-repeat="quiz in quizzes | filter:searchBar">
+                    {quiz.name}}
+                </td>
+                <td ng-repeat="quiz in quizzes | filter:searchBar">
+                    {{quiz.tags}}
+                </td>
+                <td ng-repeat="quiz in quizzes | filter:searchBar">
+                    {{quiz.questions.length}}
+                </td>
+                <td ng-repeat="quiz in quizzes | filter:searchBar">
+                    {{quiz.totalScore}}
+                </td>
+            </tr> -->
+
         </table>
     </div>
     <div class="row">
