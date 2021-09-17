@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.stream.Collectors;
 
 import quiz.models.ScoreBoard;
-import quiz.models.User;
 import quiz.services.UserManager;
 
 import java.util.Optional;

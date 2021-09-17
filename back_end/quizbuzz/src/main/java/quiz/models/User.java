@@ -162,4 +162,5 @@ public class User {
 	public void setPointPercentage(int pointPercentage) {
 		this.pointPercentage = pointPercentage;
 	}
+
 }
