@@ -17,7 +17,7 @@ import javax.persistence.Table;
 public class User {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @SequenceGenerator(name="id_generator", sequenceName = "users_user_id_seq", allocationSize = 1)
     @Column(name="user_id")
 	private int id;
@@ -42,6 +42,32 @@ public class User {
 	
 	@Column(name="total_points")
 	private int totalPoints;
+	
+	@Column(name="total_possible_points")
+	private int totalPossible;
+	
+	@Column(name="point_percentage")
+	private double pointPercentage;
+	
+	
+	
+
+	public User(int id, List<Quiz> quizzes, List<Scores> scores, String username, String password, String firstName,
+			String lastName, int totalPoints, int totalPossible, double pointPercentage) {
+		super();
+		this.id = id;
+		this.quizzes = quizzes;
+		this.scores = scores;
+		this.username = username;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.totalPoints = totalPoints;
+		this.totalPossible = totalPossible;
+		this.pointPercentage = pointPercentage;
+	}
+	
+	
 
 	public User() { }
 
@@ -123,4 +149,18 @@ public class User {
 
 
 	
+	public int getTotalPossible() {
+		return totalPossible;
+	}
+	public void setTotalPossible(int totalPossible) {
+		this.totalPossible = totalPossible;
+	}
+	
+	public double getPointPercentage() {
+		return pointPercentage;
+	}
+	public void setPointPercentage(int pointPercentage) {
+		this.pointPercentage = pointPercentage;
+	}
+
 }

@@ -9,40 +9,43 @@ import org.springframework.stereotype.Service;
 import quiz.dao.ScoresDAO;
 import quiz.models.Scores;
 
+import quiz.dao.ScoresDAO;
+import quiz.models.Scores;
+
 @Service
 public class ScoresManagerImpl implements ScoresManager{
-
+	
 	@Autowired
-	private ScoresDAO sdao;
+	private ScoresDAO dao;
+	
+	// Finds all scores
+	@Override
+	public List<Scores> findAll() {
+		return dao.findAll();
+	}
+
+	@Override
+	public Scores create(Scores score) {
+		return score;
+	}
+
+	@Override
+	public Object save(Scores score) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public Scores newScore(Scores score) {
+		// TODO Auto-generated method stub
+		return dao.save(score);
+	}
 
 	
 	@Override
 	public Scores addScore(Scores us) {
 		// Create User Results
-		return sdao.save(us);
+		return dao.save(us);
 	}
-
-//	@Override
-//	public Answers findById(Answers ua) {
-//		return StreamSupport.stream(adao.findById(), false)
-//				.collect(Collectors.toList());
-//	}
-//	
-//	@Override
-//	public List<Question> findAllQuestions() {
-//		return StreamSupport.stream(qdao.findAll().spliterator(), false)
-//				.collect(Collectors.toList());
-//	}
-//
-//	@Override
-//	public Answers findById(int id) {
-//		return adao.findById(Integer.valueOf(id));
-//	}
-//	
-//
-//	@Override
-//	public Question findByQuestion(Question q) {
-//		return qdao.findByQuestion(findByQuestion q));
-//	}
 
 }

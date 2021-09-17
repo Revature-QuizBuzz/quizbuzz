@@ -1,7 +1,19 @@
+
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/*section {
+    
+}*/
+
+.alt-section {
+    background-color: #72A4C2;
+}
+
+
+>>>>>>> main
 label {
     font-weight: bold;
     display: inline-block;
@@ -34,26 +46,18 @@ label {
     color:  #B9B9BA;
 }
 
+
 .btn-primary {
     background-color: #F26925;
-    outline:#B9B9BA;
-}
-.btn-primary:hover {
-    background-color: #F26925;
-    outline: #F26925;
 }
 
 main {
     padding: 20px;
 }
-
+/*
 button {
     background-color: #FCB414;
-    border-radius: 10px;
-    border:#FCB414;
-    padding: 5px;
-    margin: 2px;
-}
+}*/
 
 h2 {
     color:#F26925;

@@ -7,15 +7,15 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table(name="quizzes")
+@Table(name = "quizzes")
 public class Quiz {
-	
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator")
-    @SequenceGenerator(name="id_generator", sequenceName = "quizzes_quiz_id_seq", allocationSize = 1)
-    @Column(name="quiz_id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator")
+	@SequenceGenerator(name = "id_generator", sequenceName = "quizzes_quiz_id_seq", allocationSize = 1)
+	@Column(name = "quiz_id")
 	private int id;
-	
+
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
@@ -32,11 +32,11 @@ public class Quiz {
 
 	@Column
 	private String name;
-	
+
 	@Column
 	private String description;
-	
-	@Column(name="total_score")
+
+	@Column(name = "total_score")
 	private int totalScore;
 	
 	@Column(name="created_date")
@@ -104,7 +104,7 @@ public class Quiz {
 	public void setTags(List<Tags> tags) {
 		this.tags = tags;
 	}
-	
+
 	public List<Question> getQuestions() {
 		return questions;
 	}

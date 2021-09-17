@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { QuestionAnswerComponent } from './answer/question-answer.component';
+import { QuestionComponent } from './question/question.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './login/login.component';
@@ -14,7 +16,11 @@ export const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'quiz/submit', component: QuizSubmissionComponent},
   {path:"tags/new", component: NewTagsComponent},
-  {path: 'quiz/new', component:CreateQuizesComponent}
+  {path: 'quiz/new', component:CreateQuizesComponent},
+  {path: 'tags/new', component: NewTagsComponent},
+  {path: 'quiz/new', component:CreateQuizesComponent},
+  {path: 'newquestionanswer', component: QuestionAnswerComponent, outlet: "answer"},
+  {path: 'newquestion', component: QuestionComponent, outlet: "question"}
 ];
 
 @NgModule({

@@ -28,13 +28,13 @@ public class ScoresController {
 
 	private static final Logger log = LogManager.getLogger(TagsController.class);
 
-	@CrossOrigin(origins = "http://localhost:4200")
-	@PostMapping(consumes = "application/json", produces = "application/json")
-	public ResponseEntity<Scores> addScore(@RequestBody Scores us) {
-		Scores userScores = score.addScore(us);
-		log.info("Submit User Answers");
-		return new ResponseEntity<>(userScores, HttpStatus.CREATED);
-	}//Posting the user score to the database. Need to get User Answers
+//	@CrossOrigin(origins = "http://localhost:4200")
+//	@PostMapping(consumes = "application/json", produces = "application/json")
+//	public ResponseEntity<Scores> addScore(@RequestBody Scores us) {
+//		Scores userScores = score.addScore(us);
+//		log.info("Submit User Answers");
+//		return new ResponseEntity<>(userScores, HttpStatus.CREATED);
+//	}//Posting the user score to the database. Need to get User Answers
 	
 //	@CrossOrigin(origins = "http://localhost:4200")
 //	@GetMapping

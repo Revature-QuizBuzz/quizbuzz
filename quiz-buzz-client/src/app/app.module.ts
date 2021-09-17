@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { QuestionAnswerComponent } from './answer/question-answer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { QuestionComponent } from './question/question.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -18,6 +20,7 @@ import { QuizSelectionComponent } from './take-quiz-components/quiz-selection/qu
 import { TaketestComponent } from './take-quiz-components/taketest/taketest.component';
 import { CreateQuizesComponent } from './create-quizes/create-quizes.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TotalUserPointsComponent } from './total-user-points/total-user-points.component';
 
 
 @NgModule({
@@ -34,11 +37,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     TaketestComponent,
     QuizSubmissionComponent,
     QuizSelectionComponent,
+    QuestionAnswerComponent,
+    QuestionComponent,
+    TotalUserPointsComponent,
     HomeComponent,
     NavbarComponent,
     FooterComponent,
     NewTagsComponent,
-    CreateQuizesComponent
+    CreateQuizesComponent,
+
   ],
   imports: [
     BrowserModule,

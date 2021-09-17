@@ -27,6 +27,10 @@ public class TagsManagerImpl implements TagsManager{
 		return null;
 	}
 
-	
+	@Override
+	public Tags findByName(String name) {
+		return dao.findByName(name);
+	}
+
 
 }

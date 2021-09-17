@@ -2,21 +2,25 @@ package quiz.services;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
 
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import quiz.dao.UserDAO;
 import quiz.models.User;
-
-import quiz.dao.UserDAO;
-import quiz.models.User;
+//
+//import quiz.models.ScoreBoard;
 
 @Service
 public class UserManagerImpl implements UserManager{
 
 	@Autowired
 	private UserDAO uDao;
+//	
+//	@Override
+//	public List<ScoreBoard> findScoreBoard() {
+//		return uDao.findScoreBoard();
+//	}
 	
 	@Override
 	public User findLogin(User user) {
@@ -49,8 +53,8 @@ public class UserManagerImpl implements UserManager{
 		return uDao.findAll();
 	}
 
-    @Override
-    public User findById(int id) {
-        return uDao.findById(id);
-    }
+//    @Override
+//    public User findById(int id) {
+//        return uDao.findById(id);
+//    }
 }
