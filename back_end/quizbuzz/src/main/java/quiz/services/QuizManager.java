@@ -12,5 +12,5 @@ public interface QuizManager {
     Quiz create(Quiz quiz);
     Quiz findById(int id);
     List<Quiz> findAll();
-    List<String> findByQuizName(String quizName);
+    List<Quiz> findByQuizName(String quizName);
 }

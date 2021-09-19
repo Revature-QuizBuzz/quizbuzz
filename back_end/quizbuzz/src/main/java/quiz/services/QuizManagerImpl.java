@@ -38,7 +38,7 @@ public class QuizManagerImpl implements QuizManager {
     }
 
 	@Override
-	public List<String> findByQuizName(String quizName) {
+	public List<Quiz> findByQuizName(String quizName) {
 		return daoQuiz.findByQuizName(quizName);
 	}
 

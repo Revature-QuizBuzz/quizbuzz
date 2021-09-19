@@ -36,8 +36,8 @@ public class QuizController {
 	}
 	
 	@CrossOrigin(origins = "http://localhost:4200")
-	@GetMapping(path="/search/{searchValue}", produces="application/json")
-	public List<String> findBySearchValue(@PathVariable String quizName) {
+	@GetMapping(path="search/{quizName}", produces="application/json")
+	public List<Quiz> findBySearchValue(@PathVariable String quizName) {
 		return manager.findByQuizName(quizName);
 	}
 	

@@ -20,6 +20,6 @@ public interface QuizDAO extends JpaRepository<Quiz, Integer>{
     List<Quiz> findAll();
     public Quiz findById(int id);
     
-    @Query(value = "SELECT DISTINCT name FROM quizbuzz.quizzes WHERE name LIKE :name%", nativeQuery = true)
-	List<String> findByQuizName(@Param("name") String quizName);
+    @Query(value = "SELECT * FROM quizbuzz.quizzes WHERE name LIKE :name%", nativeQuery = true)
+	List<Quiz> findByQuizName(@Param("name") String quizName);
 }
