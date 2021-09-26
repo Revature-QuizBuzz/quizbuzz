@@ -47,7 +47,7 @@
                 <th class="tableHead">Score</th>
             </tr>
             <tr class="quiz" *ngFor="let quiz of quizzes" (click)="selectQuiz()">
-                <td>
+                <td id="quizName">
                     {{quiz.name}}
                 </td>
                 <td>
@@ -62,7 +62,7 @@
             </tr>
         </table>
         </div>
-        <div class = "row quizSelector" *ngIf="searchValue != ''" (click)="selectQuiz()">
+        <div class = "row quizSelector" *ngIf="searchValue != ''">
         <h1>Filtered Quizzes:</h1>
         <table class="quizTable">
             <tr class="quizTable">
@@ -71,7 +71,7 @@
                 <th class="tableHead">Question Amount</th>
                 <th class="tableHead">Score</th>
             </tr>
-            <tr class="quiz" *ngFor="let quiz of filteredQuizzes">
+            <tr class="quiz" *ngFor="let quiz of filteredQuizzes" (click)="selectQuiz()">
                 <td>
                     {{quiz.name}}
                 </td>
@@ -88,7 +88,7 @@
         </table>
     </div>
     <div class="row">
-        <!-- <h1>Quiz Selected: {{selectedQuiz.name}}</h1> -->
+        <h1 style="text-align: center;">Quiz Selected: {{selectedQuiz}}</h1>
         <button class="startQuiz" (click)="startQuiz()">Start Quiz</button>
     </div>
 

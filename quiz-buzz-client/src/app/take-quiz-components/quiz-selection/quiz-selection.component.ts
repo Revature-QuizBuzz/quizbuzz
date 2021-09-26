@@ -11,8 +11,8 @@ export class QuizSelectionComponent implements OnInit {
 
   quizzes:any = [];
   filteredQuizzes:any = [];
-  selectedQuiz:any;
-  searchValue:string = '';
+  selectedQuiz:any = '';
+  searchValue:any = '';
 
   public getUrl = 'http://localhost:8080/quizzes'
   public searchQuizzesUrl = 'http://localhost:8080/quizzes/search/'
@@ -34,7 +34,6 @@ export class QuizSelectionComponent implements OnInit {
       console.log(this.searchQuizzesUrl+this.searchValue)
       if(this.searchValue != '')
       {
-
         this.http.get(this.searchQuizzesUrl+this.searchValue, httpOptions).subscribe(data=>{
         this.filteredQuizzes= data;
         console.log(data)
@@ -44,9 +43,11 @@ export class QuizSelectionComponent implements OnInit {
   }
 
   selectQuiz(){
-    console.log("quiz selected")
-    var quiz = document.getElementsByTagName("td")
-    console.log(quiz)
+    var quiz = document.getElementById("quizName")?.innerHTML.trim()
+    console.log(":"+quiz+":")
+    // quiz?.replace(/^\s+|\s+$/gm,'')
+    // console.log(":"+quiz+":")
+    this.selectedQuiz = quiz;
   }
 
   goToJavaQuizzes(){
@@ -62,7 +63,15 @@ export class QuizSelectionComponent implements OnInit {
   }
 
   startQuiz(){
-    this.router.navigate(["take/quiz"])
+     for(let i = 0; i < this.quizzes.length; i++){
+      var quiz:string = this.quizzes[i].name
+      if(this.selectedQuiz === quiz){
+        this.selectedQuiz = this.quizzes[i]
+        console.log(this.selectedQuiz)
+      }
+    }
+    localStorage.setItem("quizId", this.selectedQuiz.id)
+    //this.router.navigate(["take/quiz"])
   }
 
   fetch(){
