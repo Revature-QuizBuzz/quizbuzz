@@ -11,8 +11,11 @@ export class QuizSelectionComponent implements OnInit {
 
   quizzes:any = [];
   filteredQuizzes:any = [];
+  selectedQuiz:any;
+  searchValue:string = '';
 
   public getUrl = 'http://localhost:8080/quizzes'
+  public searchQuizzesUrl = 'http://localhost:8080/quizzes/search/'
 
   constructor(private router:Router, private http:HttpClient) { }
 
@@ -21,33 +24,29 @@ export class QuizSelectionComponent implements OnInit {
   }
 
   search(){
-    //console.log("seaching...")
-    var searchValue = (document.getElementById('searchBar') as HTMLInputElement).value;
-    console.log(searchValue)
+    this.searchValue = (document.getElementById('searchBar') as HTMLInputElement).value;
+    console.log(this.searchValue)
 
-    
+    const httpOptions = {
+      headers: new HttpHeaders({
+       'Content-Type':  'application/json'})}
+      
+      console.log(this.searchQuizzesUrl+this.searchValue)
+      if(this.searchValue != '')
+      {
 
-    console.log(this.filteredQuizzes.length)
+        this.http.get(this.searchQuizzesUrl+this.searchValue, httpOptions).subscribe(data=>{
+        this.filteredQuizzes= data;
+        console.log(data)
+        })
+      }
 
-    let filteredQuizzes = this.quizzes.filter(function (quiz:any){ return quiz.name === searchValue}).map(function (quiz:any){return quiz.name})
+  }
 
-    console.log(filteredQuizzes[0].totalScore)
-
-    //1. filter
-    //this.filteredQuizzes = this.quizzes.name.filter((q: string | string[]) => q.includes(searchValue))
-
-    //2. triple for loop checking each value
-    // for(let i = 0; i < this.quizzes.length; i++){
-    //   for(let j = 0; j < this.quizzes[i].name.length; j++){
-    //     console.log(this.quizzes[i].name[j])
-    //     for(let l = 0; l < searchValue.length; l++){
-    //       if(this.quizzes[i].name[j] == searchValue[l]){
-    //         this.filteredQuizzes.push(this.quizzes[i])
-    //         i++;
-    //       }
-    //     }
-    //   }
-    // }
+  selectQuiz(){
+    console.log("quiz selected")
+    var quiz = document.getElementsByTagName("td")
+    console.log(quiz)
   }
 
   goToJavaQuizzes(){

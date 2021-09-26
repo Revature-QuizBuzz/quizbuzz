@@ -21,10 +21,17 @@
 }
 
 .quizSelector{
-    border-radius: 10px;
+    
     border: 1px solid lightgray;
     box-shadow: 0 3px 10px lightgray;
     margin: 5px;
+    padding: 5px;
+}
+
+.quiz:hover{
+    background-color: lightgray;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .quizTable{

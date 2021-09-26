@@ -2,7 +2,7 @@
 
     <div class="row search">
         <!-- <input ng-model="searchBar" id="searchBar" type="text" placeholder="search for quizzes" (keyup)="search()"><br> -->
-        <input id="searchBar" type="text" placeholder="search for quizzes"><br>
+        <input id="searchBar" type="text" placeholder="search for quizzes" name="searchBar">
        <button class="searchButton" (click)="search()">Search</button>
     </div>
 
@@ -38,6 +38,7 @@
     </div>
 
     <div class="row quizSelector">
+        <h1>All Quizzes:</h1>
         <table class="quizTable">
             <tr class="quizTable">
                 <th class="tableHead ">Name</th>
@@ -45,39 +46,49 @@
                 <th class="tableHead">Question Amount</th>
                 <th class="tableHead">Score</th>
             </tr>
-            <tr>
+            <tr class="quiz" *ngFor="let quiz of quizzes" (click)="selectQuiz()">
                 <td>
-                    <div *ngFor="let quiz of quizzes">{{quiz.name}}</div>
-                </td>
-                <td>
-                    <div *ngFor="let quiz of quizzes ">{{quiz.tags}}</div>
+                    {{quiz.name}}
                 </td>
                 <td>
-                    <div *ngFor="let quiz of quizzes ">{{quiz.questions.length}}</div>
+                   {{quiz.tags}}
                 </td>
                 <td>
-                    <div *ngFor="let quiz of quizzes ">{{quiz.totalScore}}</div>
-                </td>
-            </tr>
-            <!-- https://www.youtube.com/watch?v=YFsduR7mBfY -->
-            <!-- <tr>
-                <td ng-repeat="quiz in quizzes | filter:searchBar">
-                    {quiz.name}}
-                </td>
-                <td ng-repeat="quiz in quizzes | filter:searchBar">
-                    {{quiz.tags}}
-                </td>
-                <td ng-repeat="quiz in quizzes | filter:searchBar">
                     {{quiz.questions.length}}
                 </td>
-                <td ng-repeat="quiz in quizzes | filter:searchBar">
+                <td>
                     {{quiz.totalScore}}
                 </td>
-            </tr> -->
-
+            </tr>
+        </table>
+        </div>
+        <div class = "row quizSelector" *ngIf="searchValue != ''" (click)="selectQuiz()">
+        <h1>Filtered Quizzes:</h1>
+        <table class="quizTable">
+            <tr class="quizTable">
+                <th class="tableHead ">Name</th>
+                <th class="tableHead ">Tags</th>
+                <th class="tableHead">Question Amount</th>
+                <th class="tableHead">Score</th>
+            </tr>
+            <tr class="quiz" *ngFor="let quiz of filteredQuizzes">
+                <td>
+                    {{quiz.name}}
+                </td>
+                <td>
+                    {{quiz.tags}}
+                </td>
+                <td>
+                    {{quiz.questions.length}}
+                </td>
+                <td>
+                    {{quiz.totalScore}}
+                </td>
+            </tr>
         </table>
     </div>
     <div class="row">
+        <!-- <h1>Quiz Selected: {{selectedQuiz.name}}</h1> -->
         <button class="startQuiz" (click)="startQuiz()">Start Quiz</button>
     </div>
 
