@@ -94,7 +94,7 @@ public class User {
 	public void setUserId(int id) {
 		this.userId = id;
 	}
-
+	
 	public void setQuizzes(List<Quiz> quizzes) {
 		this.quizzes = quizzes;
 	}
