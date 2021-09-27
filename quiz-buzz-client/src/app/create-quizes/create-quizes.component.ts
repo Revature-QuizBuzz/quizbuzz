@@ -54,7 +54,6 @@ export class CreateQuizesComponent implements OnInit {
 
   constructor(private httpClient: HttpClient, private http: HttpClient, private fb: FormBuilder,private modalService: NgbModal) {
 
-
   }
 
   ngOnInit(): void {
@@ -153,4 +152,25 @@ export class CreateQuizesComponent implements OnInit {
   public save(){
     this.saved = true;
   }
+
+  
+
+  public increment(){
+
+  }
+
+
+  public count(){
+    let result = '';
+    let i = 0;
+
+    do {
+      
+      i = i + 1;
+      result = result + i;
+    } while (i < 5);
+
+    console.log(result);
+
+      }
 }
