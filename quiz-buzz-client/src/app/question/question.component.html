@@ -1,40 +1,43 @@
 <h2>Enter the queston below</h2>
 <p></p>
 <div class="container">
-    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <form [formGroup]="questionForm" (ngSubmit)="onSubmit()" >
 
         <!-- <div>
             <label for="quizid">Quiz Id</label>
             <input id="quizid" type="number" name="quizid" placeholder="Quiz Id" required ngModel>
         </div> -->
-        <div>
-            <label for="question">Question</label>
-            <input id="question" type="string" name="question" placeholder="Question" required ngModel>
-        </div>
-        <br>
-        <div>
-            <label for="possiblePoints">Point Value</label>
-            <input id="possiblePoints" type="number" name="possiblePoints" placeholder="Point Value" required ngModel>
-        </div>
-        <div>
-            <select name="type" class="form-select" id="questionType" (ngModelChange)="onChange($event)" required ngModel>
-                <option selected="selected" value="">Question Type</option>
-                <option value="multipleChoice">Multiple Choice</option>
-                <option value="multipleAnswers">Multiple Answers</option>
-                <option value="truefalse">True or False</option>
-            </select>
-            <!-- ngif questiontype -->
-            <!-- <ng-container *ngFor="let i of [].constructor(20)">  <app-question-answer [questionType]="selectedType"></app-question-answer> </ng-container> -->
-
-            <app-question-answer [questionType]="selectedType"></app-question-answer>
-            <!--  -->
-        </div>
-        <br>
-        <br>
+        <div *ngFor = "let question of questions">
+        <!-- <ng-container> -->
+            
+            <div>
+                <label for="question">Question</label>
+                <input formControlName="questionName"id="question" type="string" name="questionName" placeholder="Question">
+                <label for="possiblePoints">Point Value</label>
+                <input formControlName="possiblePoints" id="possiblePoints" type="number" name="possiblePoints" placeholder="Point Value">
+            </div>
+            <div>
+                <select formControlName="questionType" name="type" class="form-select" id="questionType" (ngModelChange)="onChange($event)">
+                    <option selected="selected" value="">Question Type</option>
+                    <option value="multipleChoice">Multiple Choice</option>
+                    <option value="multipleAnswers">Multiple Answers</option>
+                    <option value="truefalse">True or False</option>
+                    <option value="fillInTheBlank">Fill in the Blank</option>
+                </select>
+                <ng-container *ngIf="selectedType !== ''">
+                    <app-question-answer [questionType]="selectedType"></app-question-answer>
+                    <!-- <ng-container *ngFor="let i of [].constructor(20)">  <app-question-answer [questionType]="selectedType"></app-question-answer> </ng-container> -->
+                </ng-container>
+            </div>
+            <br>
+        <!-- </ng-container> -->
         <div>
             <!-- add question -->
             <!-- onclick save answers to question array -->
-            <button type="submit">Add Question</button>
+            <!-- add css styling to make buttons placed on screen correctly -->
+            <button type="button" (click)="addQuestion()" class="btn btn-success">Add Question</button>
+            <button type="submit" class="btn btn-success">Save Question</button>
+        </div>
         </div>
     </form>
 </div>

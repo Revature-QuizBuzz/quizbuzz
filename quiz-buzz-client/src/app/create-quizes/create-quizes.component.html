@@ -7,7 +7,7 @@
     <form>
       <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" required [(ngModel)]="quiz.name" name="name" />
+        <input type="text" class="form-control" id="name"  name="name" />
       </div>
     </form>
   </div>
@@ -15,18 +15,14 @@
     <form>
       <div class="form-group">
         <label for="description">Description</label>
-        <input type="text" class="form-control" id="description" required [(ngModel)]="quiz.description"
+        <input type="text" class="form-control" id="description"
           name="description" />
       </div>
     </form>
   </div>
 
-  <div formGroupName="questions">
-
-    Questions and answers go here, using dummies for testing
-  </div>
   <div class="tags" name="tag">
-     <!-- (click)="addTag(tag)"> -->
+    <!-- (click)="addTag(tag)"> -->
     <!-- waiting on other groups to finish to add functionality -->
     <button>JUnit</button>
     <button>Java</button>
@@ -39,15 +35,20 @@
     <button>Spring Boot</button>
     <button>+ Add new tag</button>
   </div>
-  <div> 
-    <!-- container? -->
+  <div formGroupName="questionArray">
     <app-question (questionEvent)="recieveQuestion($event)"></app-question>
-    
+  </div>
+  <div>
+
+    <!-- <div *ngFor="let numberQuestions of quiz.questions">  -->
+      <!-- container? -->
+      
+    <!-- </div> -->
   </div>
   <div>
     <!-- <button type="button" (click)="" class="btn btn-primary">Add question</button> -->
-    <!-- <button type="submit" [disabled]="!createQuiz.valid" class="btn btn-primary">Submit</button> -->
-    <button (click)="save()" class="btn btn-success">Save Quiz</button>
-    <button (click)="add()" class="btn btn-success">Submit</button> 
+    <button (click)="onSubmit()"  class="btn btn-primary">reactive submit</button>
+    <!-- <button (click)="save()" class="btn btn-success">Save Quiz</button> -->
+    <!-- <button (click)="add()" class="btn btn-success">Submit</button>  -->
   </div>
 </form>

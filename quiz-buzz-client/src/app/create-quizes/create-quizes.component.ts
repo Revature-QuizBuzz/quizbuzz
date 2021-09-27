@@ -3,11 +3,14 @@ import { Quiz } from '../models/quizzes';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { User } from '../models/users';
 import { UserScore } from '../models/scores';
 import { Question } from '../models/questions';
 import { Tag } from '../models/tags';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { QuestionAnswerComponent } from '../answer/question-answer.component';
+import { QuestionComponent } from '../question/question.component';
 
 
 const baseUrl = 'http://localhost:8080/quizzes/createQuiz';
@@ -47,31 +50,35 @@ export class CreateQuizesComponent implements OnInit {
   createQuiz!: FormGroup;
   // userId: number | null = <number><unknown>localStorage.getItem('userId');
   storageValue: string | null = localStorage.getItem('id');
-  userId = JSON.parse(localStorage.getItem('id')|| '{}');
+  userId = JSON.parse(localStorage.getItem('id') || '{}');
+  numQuestions: number = 1;
 
 
 
 
-  constructor(private httpClient: HttpClient, private http: HttpClient, private fb: FormBuilder,private modalService: NgbModal) {
+  constructor(private httpClient: HttpClient, private http: HttpClient, private fb: FormBuilder, private modalService: NgbModal) {
 
 
   }
 
   ngOnInit(): void {
     this.createQuiz = this.fb.group({
-      quizName: ['', [Validators.required, Validators.maxLength(15)]],
-      quizDescription: ['', [Validators.required]],
+      quizName: ['', [ Validators.maxLength(15)]],
+      quizDescription: [''],
       temptags: [''],
-      questions: this.fb.group({
+      questionArray: this.fb.array([this.fb.group({
         // form controll for questions section
+        questions: ['', Validators.required]
       })
+      ])
     })
   }
 
-  recieveQuestion($event: Question[]){
+  recieveQuestion($event: Question[]) {
     console.log($event)
     this.addQuestion($event);
     console.log(this.quiz);
+    this.numQuestions++;
   }
 
 
@@ -79,50 +86,21 @@ export class CreateQuizesComponent implements OnInit {
     return this.http.post(baseUrl, quiz);
   }
 
-  onSubmit({ value, valid }: { value: any, valid: boolean }): void {
-    console.log(value, valid);
+  onSubmit(){
+    console.log(this.createQuiz);
     let amount: number = 0; // We define 0 as default amount
     if (this.storageValue !== null) {
       amount = parseInt(this.storageValue, 10);
     }
-    let user:User = {id:amount};
-    this.user = user;
-    // this.quiz.userId = amount;
-    this.quiz = value;
 
-   // if (confirm("You have succesfully added a new quiz"))
-      this.create(value)
-        .subscribe(
-          response => {
-            console.log(response);
-            this.submitted = true;
-          },
-          error => {
-            console.log(error);
-          });
-  }
-
-  add(): void {
-    let amount: number = 0; // We define 0 as default amount
-    if (this.storageValue !== null) {
-      amount = parseInt(this.storageValue, 10);
-    }
-    let user:User = {id: amount};
-    // this.quiz.userId = amount;
-    const data = {
-      quizId: this.quiz.id,
-      user: user,
-      // user: this.quiz.userId,
-      name: this.quiz.name,
-      description: this.quiz.description,
-      totalScore: this.quiz.totalScore,
-      createdDate: this.quiz.createdDate,
-      dateModified: this.quiz.dateModified,
-      questions: this.quiz.questions
-    };
-    console.log(data)
- //   if(confirm("You have succesfully added a quiz"))
-    this.create(data)
+    this.quiz.user = { id: amount };
+    this.quiz.name = this.createQuiz.value.quizName;
+    this.quiz.description = this.createQuiz.value.quizDescription;
+    // this.quiz.tags = this.createQuiz.value.temptags;
+    // this.quiz.questions = this.createQuiz.value.questionArray;
+    console.log(this.quiz)
+    // if (confirm("You have succesfully added a new quiz"))
+    this.create(this.quiz)
       .subscribe(
         response => {
           console.log(response);
@@ -133,24 +111,55 @@ export class CreateQuizesComponent implements OnInit {
         });
   }
 
+  // add(): void {
+  //   let amount: number = 0; // We define 0 as default amount
+  //   if (this.storageValue !== null) {
+  //     amount = parseInt(this.storageValue, 10);
+  //   }
+  //   let user: User = { id: amount };
+  //   // this.quiz.userId = amount;
+  //   const data = {
+  //     quizId: this.quiz.id,
+  //     user: user,
+  //     // user: this.quiz.userId,
+  //     name: this.quiz.name,
+  //     description: this.quiz.description,
+  //     totalScore: this.quiz.totalScore,
+  //     createdDate: this.quiz.createdDate,
+  //     dateModified: this.quiz.dateModified,
+  //     questions: this.quiz.questions
+  //   };
+  //   console.log(data)
+  //   //   if(confirm("You have succesfully added a quiz"))
+  //   this.create(data)
+  //     .subscribe(
+  //       response => {
+  //         console.log(response);
+  //         this.submitted = true;
+  //       },
+  //       error => {
+  //         console.log(error);
+  //       });
+  // }
+
   // Used for bubbling data and adding Tags to the quiz 
-  public addTag(tag : Tag[]){
+  public addTag(tag: Tag[]) {
     tag.forEach(element => {
       this.quiz.tags?.push(element);
     });
   }
 
   // Used for bubbling data and adding questions to the quiz
-  public addQuestion(question : Question[]){
+  public addQuestion(question: Question[]) {
     this.quiz.questions = question;
   }
 
-  public deleteQuestion(index : number){
-    if(this.quiz.questions![index] !== null || undefined)
-    delete this.quiz.questions![index];
+  public deleteQuestion(index: number) {
+    if (this.quiz.questions![index] !== null || undefined)
+      delete this.quiz.questions![index];
   }
 
-  public save(){
+  public save() {
     this.saved = true;
   }
 }
