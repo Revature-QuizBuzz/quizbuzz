@@ -68,14 +68,14 @@
         <div class="row">
           <div class="col-6">
               <div>
-                  <select name="type" class="form-select" id="questionType" (ngModelChange)="onChange($event)" required ngModel>
+                  <select name="type" class="form-select" id="questionType" (ngModelChange)="onChange($event, i)" required ngModel>
                       <option selected="selected" value="">Question Type</option>
                       <option value="multipleChoice">Multiple Choice</option>
                       <option value="multipleAnswers">Multiple Answers</option>
                       <option value="truefalse">True or False</option>
                   </select>
 
-                  <ng-container *ngIf="{{questions[i].type}} !== ''">
+                  <ng-container *ngIf="questions[i].type !== ''">
                     <app-question-answer [questionType]="questions[i].type"></app-question-answer>
                 </ng-container>
                <!-- <app-question-answer [questionType]="selectedType"></app-question-answer>--> 
