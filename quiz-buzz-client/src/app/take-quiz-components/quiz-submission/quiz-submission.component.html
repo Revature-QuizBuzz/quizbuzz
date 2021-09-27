@@ -9,25 +9,18 @@
                     <th>Your Answer</th>
                     <th>Question</th>
                     <th>The Correct Answer</th>
+                    <th>Your Score</th>{{userPoints}}
                 </thead>
-                <tbody *ngFor = "let answer of userAnswers" >
-                    <!-- <tr *ngFor = "let ua of userAnswers"> -->
-                    <tr>
-                        <td> {{ answer }}</td>
-                        <!-- <td> {{ answer.question }}</td>
-                        <td> {{ answer.answer }}</td> -->
-                    </tr>
-                </tbody>
+           <tbody>
+                 <tr *ngFor = "let a of answers">{{a}}</tr>
+           
+                 <tr *ngFor= "let q of question">{{q}}</tr>
+            
+                <tr *ngFor="let c of correct">{{c}}</tr>
+          </tbody>
             </table>
             
         </div>
     </div>
 </div>
 
-<!-- <div>
-    <li *ngFor = "let ua of userAnswers">
-        <ul >{{ua.answer}}</ul><br>
-    </li>
-</div> -->
-
-<!-- <button type = submit class="btn btn-danger" (click)="submitQuiz(answers)">Submit Score</button> -->

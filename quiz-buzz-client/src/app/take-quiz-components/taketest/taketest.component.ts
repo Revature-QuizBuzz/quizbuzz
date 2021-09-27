@@ -13,16 +13,18 @@ export class TaketestComponent implements OnInit {
 
   counter:number = 0;
   questions:any = [];
+  question:any = [];
   answers:any = [];
   correctAnswser:any =[]; 
   currentQuestion:any;
   selectedAnswer:any ="";
   score:number=0;
   //quiz id will take you to any test you pick
-  quizId:any;
+  quizId:any = localStorage.getItem('quizId');
+
 
 // Questions ans Answers from Quizzes
-public url ='http://localhost:8080/questions/1';
+public url ='http://localhost:8080/questions/'+this.quizId;
 
  
 
@@ -32,8 +34,8 @@ public url ='http://localhost:8080/questions/1';
    
   this.fetchQuestions();
   this.currentQuestion = this.questions[this.counter];
-  
-   
+  console.log(this.quizId);
+   console.log('http://localhost:8080/questions/'+this.quizId);
   }
 
   submit(testForm: any){
@@ -41,27 +43,48 @@ public url ='http://localhost:8080/questions/1';
 //loops questions and compares them to correct answers 
 for(let i in this.questions){
   this.answers.push(this.questions[i].selectedAnswer);
+  this.question.push(this.questions[i].question);
+  this.correctAnswser.push(this.questions[i].answers[0].answer)
+ // console.log(this.questions[i].answers[0].correct);
+  //console.log(this.questions[i].answers[0].answer);
   if(this.questions[i].selectedAnswer === this.questions[i].answers[0].answer ){
     this.score +=1;
+    localStorage.setItem('score', this.score.toString())
+    
   }
-  
 }
 //console logs the score and when form is submitted
   console.log( " this is your score " + this.score);
   console.log("form Sumbitted!");
 //variable for quiz answers to put in local storage
   var quiz_data =  this.answers;
+  var quiz_question = this.question;
+  var quiz_correct = this.correctAnswser;
   //checks to see if the answers array is empyt or even in the local storage then sets the item
-  if(localStorage.getItem('answers')== null){
+  if(localStorage.getItem('answers') == null && localStorage.getItem('question') == null && localStorage.getItem('correctAnswer')== null){
     localStorage.setItem('answers','[]');
+    localStorage.setItem('question','[]');
+    localStorage.setItem('correctAnswer','[]');  
   }
   //adds new answer to the array then stores it in local storage
   var old_data  = JSON.parse(localStorage.getItem('answers')||'{}');
   old_data.push(quiz_data);
   JSON.stringify(old_data);
   localStorage.setItem('answers', old_data);
+
+  var old_question = JSON.parse(localStorage.getItem('question')||'{}');
+  old_question.push(quiz_question);
+  JSON.stringify(old_question);
+  localStorage.setItem('question',old_question);
+
+  var old_correctAnswer = JSON.parse(localStorage.getItem('correctAnswer')||'{}');
+  old_correctAnswer.push(quiz_correct);
+  JSON.stringify(old_correctAnswer);
+  localStorage.setItem('correctAnswer',old_correctAnswer);
+
   //navigates to the Test Results page
   this.router.navigate(['testresults']);
+  
   }
 //Goes back to previous question 
   previous(){
