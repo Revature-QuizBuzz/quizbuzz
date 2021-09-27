@@ -22,9 +22,6 @@ public class TestController {
 	@Autowired
 	private TestManager manager; 
 	
-	
-	
-	
 	@PostMapping(path = "/create", consumes = "application/json", produces = "application/json")
 	public TestClass create(@Validated @RequestBody TestClass tc) {
 		return manager.create(tc);

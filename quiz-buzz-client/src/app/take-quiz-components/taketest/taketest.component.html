@@ -5,24 +5,26 @@
 <br>
 
 
-<!--where the questions and answers are -->
-<div class="test-group" > {{currentQuestion?.id}}:{{currentQuestion?.question}} </div>
+    
+    <!--where the questions and answers are -->
+    <div class="test-group" > {{currentQuestion?.id}}:{{currentQuestion?.question}} </div>
+    
+    <form #testForm="ngForm" >
+      
+      <div *ngFor="let a of currentQuestion?.answers"  >
+        <input required [name]="currentQuestion?.id" value={{a.answer}}   required type="radio"
 
-<form #testForm="ngForm" >
+        class="test-group" 
+           (change)="getAnswers($event)" [checked]="a.answer === currentQuestion.selectedAnswer"> {{a?.answer}}
+               
+           
+     </div>
+        <br>
   
-  <div *ngFor="let a of currentQuestion?.answers"  >
-    <input id="input" name="{{a.answer}}" [value]="a.answer" [(ngModel)]="a.answers"  required type="checkbox"  
-    class="test-group"  #name="ngModel" [ngModelOptions]="{standalone: true}"  
-       (change)="getAnswers($event,a.answer)" ngModel> {{a?.answer}}
-       
-       
-       <div *ngIf="name.touched && name.invalid" class="alert-danger" ></div>
- </div>
-    <br>
-
-    <button class="btn"  (click)="previous()" >Previous</button>
-    <button class="btn" (click)="submit(testForm)" [disabled]="!testForm.valid" ngModel [ngModelOptions]="{standalone: true}">Submit</button>
-    <button class="btn" (click)="next()" >Next</button>
+        <button class="btn"  (click)="previous()" >Previous</button>
+        <button class="btn" (click)="submit(testForm)" ngModel>Submit</button>
+        <button class="btn" (click)="next()" >Next</button>
+   
+    </form>
 
 
-</form>
