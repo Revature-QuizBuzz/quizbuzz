@@ -26,9 +26,10 @@ class QuizbuzzApplicationTests {
 	@Test
 	void createTags() throws SQLException {
 		Tags tag = new Tags();	
-		tag.setName("Test");
+		tag.setName("junit test tag");
 		ResponseEntity<Tags> newTag = manager.createTags(tag);
 		assertNotEquals(newTag, null);
+		manager.deleteTags(newTag.getBody().getTagId());
 	}
 
 	@Test

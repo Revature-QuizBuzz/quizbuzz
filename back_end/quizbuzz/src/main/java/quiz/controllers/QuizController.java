@@ -5,11 +5,8 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import quiz.dao.UserDAO;
 import quiz.models.Quiz;
-import quiz.models.User;
 import quiz.services.QuizManager;
-import quiz.services.UserManager;
 
 import java.util.List;
 
@@ -29,8 +26,10 @@ public class QuizController {
 		return manager.create(quiz);
 	}
 
-	@GetMapping(produces = "application/json")
+	@CrossOrigin(origins="http://localhost:4200")
+	@GetMapping(path="", produces = "application/json")
 	public List<Quiz> getAll() {
+		logger.info("GET to /quizzes");
 		return manager.findAll();
 	}
 }

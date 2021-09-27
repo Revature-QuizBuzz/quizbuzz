@@ -29,6 +29,9 @@ public class TagsManagerImpl implements TagsManager{
 		return new ResponseEntity<Tags>(t, HttpStatus.OK);
 	}
 
-	
+	@Override
+	public void deleteTags(int id) {
+		dao.deleteById(id);
+	}
 
 }
