@@ -32,7 +32,7 @@ export class AttachTagsComponent implements OnInit {
       textField: 'name',
       selectAllText: 'Select All',
       unSelectAllText: 'Unselect All',
-      itemsShowLimit: 3,
+      itemsShowLimit: 5,
       allowSearchFilter: true
     };
   }
