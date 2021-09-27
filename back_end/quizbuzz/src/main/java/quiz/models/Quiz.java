@@ -155,13 +155,14 @@ public class Quiz {
 
 	public static List<String> findTagCreations(List<Tags> oldList, List<Tags> newList) {
 		List<String> toCreate = new ArrayList<>();
-		for(Tags newTag: newList) {
-			for(Tags oldTag: oldList) {
-				if(newTag.getName().equalsIgnoreCase(oldTag.getName())) {
-					break;
-				};
+		List<String> oldNames = new ArrayList<>();
+		for(Tags oldTag: oldList) {
+			oldNames.add(oldTag.getName());
+		}
+		for (Tags newTag: newList) {
+			if(!oldNames.contains(newTag.getName())) {
+				toCreate.add(newTag.getName());
 			}
-			toCreate.add(newTag.getName());
 		}
 		return toCreate;
 	}

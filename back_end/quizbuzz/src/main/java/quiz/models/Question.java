@@ -87,27 +87,23 @@ public class Question {
 
 	public static List<Integer> findAnswerDeletions(List<Answers> oldList, List<Answers> newList) {
 		List<Integer> toDelete = new ArrayList<>();
-		for (Answers oldAnswer : oldList) {
-			for (Answers newAnswer: newList) {
-				if (oldAnswer.getId() == newAnswer.getId()) {
-					break;
-				}
+		
+		for(Answers oldAnswer: oldList) {
+			if(!newList.contains(oldAnswer)) {
+				toDelete.add(oldAnswer.getId());
 			}
-			toDelete.add(oldAnswer.getId());
 		}
+		
 		return toDelete;
 	}
 
 	public static List<Answers> findNewAnswers(List<Answers> oldList, List<Answers> newList) {
 		List<Answers> newAnswers = new ArrayList<>();
-
-		for (Answers newAnswer: newList) {
-			for (Answers oldAnswer: oldList) {
-				if (newAnswer.getId() == oldAnswer.getId()) {
-					break;
-				}
+		
+		for(Answers newAnswer: newList) {
+			if(!oldList.contains(newAnswer)) {
+				newAnswers.add(newAnswer);
 			}
-			// stopping here
 		}
 
 		return newAnswers;

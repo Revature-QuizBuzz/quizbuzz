@@ -26,21 +26,22 @@ public class TagsManagerImpl implements TagsManager{
         newTag.setName(name);
         return daoTags.save(newTag);
     }
+    
+    @Override
+    public Tags getTagByName(String name) {
+    	return daoTags.findByName(name);
+    }
 
     @Override
     public List<Tags> createTags(List<String> names) {
         List<Tags> newTags = new ArrayList<>();
         List<Tags> oldTags = getAllTags();
-
-        for (String name: names){
-            for(Tags tag: oldTags) {
-                if (tag.getName().equalsIgnoreCase(name)) {
-                    break;
-                }
-            }
-            // if the name is not in the db, create a tag for it and then add it to the return list
-            Tags newTag = createTag(name);
-            newTags.add(newTag);
+        
+        for(String name: names) {
+        	if(!oldTags.contains(getTagByName(name))) {
+        		Tags newTag = createTag(name);
+        		newTags.add(newTag);
+        	}
         }
         return newTags;
     }

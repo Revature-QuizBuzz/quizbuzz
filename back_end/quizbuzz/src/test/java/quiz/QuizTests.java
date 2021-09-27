@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import quiz.models.Answers;
 import quiz.models.Question;
 import quiz.models.Quiz;
+import quiz.models.Tags;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -174,5 +175,46 @@ public class QuizTests {
         List<Question> addedQuestions = Quiz.findNewQuestions(oldQuestions, newQuestions);
 
         Assert.assertTrue(compare.size() == addedQuestions.size() && compare.containsAll(addedQuestions));
+    }
+    
+    @Test
+    void testFindTagCreations() {
+    	
+        List<Tags> oldTags = new ArrayList<>();
+        List<Tags> newTags = new ArrayList<>();
+        
+        Tags t1 = new Tags();
+        t1.setName("tag1");
+        Tags t2 = new Tags();
+        t2.setName("tag2");
+        Tags t3 = new Tags();
+        t3.setName("tag3");
+        
+        oldTags.add(t1);
+        oldTags.add(t2);
+        oldTags.add(t3);
+        
+        Tags t10 = new Tags();
+        t10.setName("tag10");
+        Tags t11 = new Tags();
+        t11.setName("tag11");
+        
+        newTags.add(t1);
+        newTags.add(t2);
+        newTags.add(t10);
+        newTags.add(t11);
+        
+        // should return the list of names that represent the new tags
+        List<String> addedTags = Quiz.findTagCreations(oldTags, newTags);
+        
+        List<String> compare = new ArrayList<>();
+        compare.add("tag10");
+        compare.add("tag11");
+  
+        
+        Assert.assertTrue(compare.size() == addedTags.size() && compare.containsAll(addedTags));
+        
+        
+    	
     }
 }

@@ -11,5 +11,7 @@ public interface TagsManager {
     Tags createTag(String name);
 
     List<Tags> createTags(List<String> name);
+    
+    Tags getTagByName(String name);
 
 }
