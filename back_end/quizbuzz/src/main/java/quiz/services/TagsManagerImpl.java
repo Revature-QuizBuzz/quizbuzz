@@ -29,6 +29,12 @@ public class TagsManagerImpl implements TagsManager{
 		return new ResponseEntity<Tags>(t, HttpStatus.OK);
 	}
 
+	@Override
+	public ResponseEntity<Integer> deleteTags(Integer t) throws SQLException {
+		dao.deleteById(t);
+		return new ResponseEntity<Integer>(t, HttpStatus.OK);
+	}
+
 	
 
 }

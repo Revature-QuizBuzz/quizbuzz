@@ -17,12 +17,32 @@ export class TagsShowPageComponent implements OnInit {
 
   constructor(private Http: HttpClient, private router: Router) { }
 
+
+  tags:any = [];
+
+
   ngOnInit(): void {
-    
+    this.getAllTags();
   }
 
-  deleteTag(tag:Tag){
+  getAllTags(){
+    this.Http.get<any>('http://localhost:8080/tags').subscribe(
+      response => {
+        this.tags = response;
+      }
+    )
+  }
 
+  deleteTag(tag: Tag){
+    this.Http.delete('http://localhost:8080/tags/' + tag.tagId )
+    .subscribe({
+        next: data => {
+          this.getAllTags();         
+        },
+        error: error => {
+            alert("Sorry, there was a problem with your request.")
+        }
+    });
 
 
     // call getalltags method
