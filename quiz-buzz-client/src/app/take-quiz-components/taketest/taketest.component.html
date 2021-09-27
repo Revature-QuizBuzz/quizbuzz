@@ -1,30 +1,28 @@
+<title>Quiz Buzz Test</title><br>
+<button class=""  (click)="home()">Home</button>
+<button class=""  (click)="signout()">SignOut</button>
+    
+<br>
 
-    <title>Quiz Buzz Test</title><br>
-    <button class=""  (click)="home()">Home</button>
-    <button class=""  (click)="signout()">SignOut</button>
-        
+
+<!--where the questions and answers are -->
+<div class="test-group" > {{currentQuestion?.id}}:{{currentQuestion?.question}} </div>
+
+<form #testForm="ngForm" >
+  
+  <div *ngFor="let a of currentQuestion?.answers"  >
+    <input id="input" name="{{a.answer}}" [value]="a.answer" [(ngModel)]="a.answers"  required type="checkbox"  
+    class="test-group"  #name="ngModel" [ngModelOptions]="{standalone: true}"  
+       (change)="getAnswers($event,a.answer)" ngModel> {{a?.answer}}
+       
+       
+       <div *ngIf="name.touched && name.invalid" class="alert-danger" ></div>
+ </div>
     <br>
 
-    
-    <!--where the questions and answers are -->
-    <div class="test-group" > {{currentQuestion?.id}}:{{currentQuestion?.question}} </div>
-    
-    <form #testForm="ngForm" >
-      
-      <div *ngFor="let a of currentQuestion?.answers"  >
-        <input id="input" name="{{a.answer}}" [value]="a.answer" [(ngModel)]="a.answers"  required type="checkbox"  
-        class="test-group"  #name="ngModel" [ngModelOptions]="{standalone: true}"  
-           (change)="getAnswers($event,a.answer,a.correct)" ngModel> {{a?.answer}}
-           
-           
-           <div *ngIf="name.touched && name.invalid" class="alert-danger" ></div>
-     </div>
-        <br>
-  
-        <button class="btn"  (click)="previous()" >Previous</button>
-        <button class="btn" (click)="submit(testForm)" [disabled]="!testForm.valid" ngModel [ngModelOptions]="{standalone: true}">Submit</button>
-        <button class="btn" (click)="next()" >Next</button>
-   
+    <button class="btn"  (click)="previous()" >Previous</button>
+    <button class="btn" (click)="submit(testForm)" [disabled]="!testForm.valid" ngModel [ngModelOptions]="{standalone: true}">Submit</button>
+    <button class="btn" (click)="next()" >Next</button>
 
-  </form>
 
+</form>
