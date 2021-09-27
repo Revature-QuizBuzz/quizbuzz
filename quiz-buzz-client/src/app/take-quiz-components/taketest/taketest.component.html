@@ -14,7 +14,7 @@
       <div *ngFor="let a of currentQuestion?.answers"  >
         <input id="input" name="{{a.answer}}" [value]="a.answer" [(ngModel)]="a.answers"  required type="checkbox"  
         class="test-group"  #name="ngModel" [ngModelOptions]="{standalone: true}"  
-           (change)="getAnswers($event,a.answer)" ngModel> {{a?.answer}}
+           (change)="getAnswers($event,a.answer,a.correct)" ngModel> {{a?.answer}}
            
            
            <div *ngIf="name.touched && name.invalid" class="alert-danger" ></div>

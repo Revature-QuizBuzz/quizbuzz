@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import {Question} from 'src/app/models/questions';
 import {Answer} from 'src/app/models/answers';
 import { Quiz } from 'src/app/models/quizzes';
 import { AnswerService } from '../answer.service';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, FormControl, FormArray } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-quiz-submission',
@@ -12,38 +15,71 @@ import { NgForm } from '@angular/forms';
 })
 export class QuizSubmissionComponent implements OnInit {
 
-  answers: Answer[] = [];
-  questions: Question[] = [];
+  questions: any = [];
   quizzes: Quiz[] = [];
-  userAnswer?: Answer;
-  userAnswers: Answer[]=[];
+  // answers: Answer[] = [];
+  // answer: any;
+  userQuestion: any; 
+  userAnswer?: any;
+  userAnswers: any = [];
+  userPoints: number = 0;
+  totalPoints: number = 100;
+  key = 'correct';
 
-  constructor(private answerService: AnswerService) { }
-  
+  // public testUrl = 'http://localhost:8080/testanswers/create';
+
+  constructor(private answerService: AnswerService, private http:HttpClient) { }
 
   ngOnInit(): void {
-    this.answerService.getAllAnswers()
-    .subscribe((data: Answer[]) =>{
-      console.log(data);
-      this.answers = data;
-    });
-  
-    this.answerService.getAllQuiz()
-    .subscribe((data: Quiz[]) => {
-      console.log(data);
-      this.quizzes = data;
+
+    this.fetchQuestions();
+    this.userAnswers = new Array<string>();
+    this.userQuestion = this.questions;
+    const quizForm = document.querySelector('testForm');
+
+    quizForm?.addEventListener('submit', event => {
+      event.preventDefault();
+      this.userAnswer = JSON.parse(localStorage.getItem('correct')||'{}');
+    
     });
 
-    this.answerService.getAllQuestions()
-    .subscribe((data: Question[]) => {
-      console.log(data);
-      this.questions = data;
-    });
+  for ( let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    this.userPoints++;
+    console.log(`${key}: ${localStorage.getItem('correct')}`);
   }
-  // onSubmit(form: NgForm): void {
-  //   this.userAnswer = Answer;
+
+  //   this.answerService.getUserAnswers(this.key)
+  //   .subscribe((data: Answer[]) =>{
+  //     console.log(data);
+  //     this.userAnswers = data;
+  //   });
+
+  }
+
+  getScore() {
+    return (Math.round(this.userPoints%this.totalPoints));
+  }
+  
+  // getUserAnswer() {
+  //   this.userAnswer = localStorage.getItem('answers');
+  //   // let localStorageItem = JSON.parse(localStorage.getItem('answers'));
+  //   console.log(this.userAnswer);
   // }
 
+  // submit(quizForm: any){
+  //   console.log("Sumbitted for Review");
+  //   var quiz_answer = this.userAnswers;
+  //   // if( localStorage.getItem('correct')== null){
+  //   //   localStorage.setItem('correct','[]');
+  //   // }
 
+  //   var old_data1  = JSON.parse(localStorage.getItem('correct')||'{}');
+  //   old_data1.push(quiz_answer);
+  //   JSON.stringify(old_data1);
+  //   localStorage.setItem('correct', old_data1);
 
+  // }
+
+  // this.scoreId = 2;
 }
