@@ -12,4 +12,8 @@ import java.util.List;
 public interface QuizDAO extends JpaRepository<Quiz, Integer>{
     List<Quiz> findAll();
     public Quiz findById(int id);
+    
+    @Query(value="select * from quizbuzz.quizzes limit 5", nativeQuery=true)
+    public List<Quiz> getFeaturedQuizzes();
+    
 }
