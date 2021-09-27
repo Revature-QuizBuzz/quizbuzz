@@ -30,8 +30,11 @@ public class TagsManagerImpl implements TagsManager{
 	}
 
 	@Override
-	public void deleteTags(int id) {
-		dao.deleteById(id);
+	public ResponseEntity<Integer> deleteTags(Integer t) throws SQLException {
+		dao.deleteById(t);
+		return new ResponseEntity<Integer>(t, HttpStatus.OK);
 	}
+
+	
 
 }

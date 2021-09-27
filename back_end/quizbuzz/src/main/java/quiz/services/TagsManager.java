@@ -13,5 +13,5 @@ public interface TagsManager {
 	
 	public ResponseEntity<Tags> createTags(Tags t) throws SQLException ;//adds new tag to db
 	
-	public void deleteTags(int id);
+	public ResponseEntity<Integer> deleteTags(Integer t) throws SQLException;
 }
