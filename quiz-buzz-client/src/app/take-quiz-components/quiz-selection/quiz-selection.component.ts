@@ -45,8 +45,6 @@ export class QuizSelectionComponent implements OnInit {
   selectQuiz(){
     var quiz = document.getElementById("quizName")?.innerHTML.trim()
     console.log(":"+quiz+":")
-    // quiz?.replace(/^\s+|\s+$/gm,'')
-    // console.log(":"+quiz+":")
     this.selectedQuiz = quiz;
   }
 
@@ -71,7 +69,7 @@ export class QuizSelectionComponent implements OnInit {
       }
     }
     localStorage.setItem("quizId", this.selectedQuiz.id)
-    //this.router.navigate(["take/quiz"])
+    this.router.navigate(["take/quiz"])
   }
 
   fetch(){
