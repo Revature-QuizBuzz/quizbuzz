@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './login/login.component';
 import { NewTagsComponent } from './new-tags/new-tags.component';
+import { TagsShowPageComponent } from './tags-show-page/tags-show-page.component';
 import { CreateQuizesComponent } from './create-quizes/create-quizes.component';
 
 export const routes: Routes = [
@@ -11,7 +12,8 @@ export const routes: Routes = [
   {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path:"tags/new", component: NewTagsComponent},
-  {path: 'quiz/new', component:CreateQuizesComponent}
+  {path: 'quiz/new', component:CreateQuizesComponent},
+  {path: 'tags', component: TagsShowPageComponent}
 ];
 
 @NgModule({
