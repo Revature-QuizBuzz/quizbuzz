@@ -37,4 +37,9 @@ public class QuizManagerImpl implements QuizManager {
         return daoQuiz.findAll();
     }
 
+	@Override
+	public List<Quiz> findByQuizName(String quizName) {
+		return daoQuiz.findByQuizName(quizName);
+	}
+
 }

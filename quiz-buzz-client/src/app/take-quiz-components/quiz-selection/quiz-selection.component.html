@@ -1,8 +1,8 @@
 <div class="container">
 
     <div class="row search">
-        <input style="border-radius: 5px;" type="text"><br>
-        <button style="border-radius: 5px;" (click)="search()">Search</button>
+        <input id="searchBar" type="text" placeholder="search for quizzes" name="searchBar">
+       <button class="searchButton" (click)="search()">Search</button>
     </div>
 
     <div class="row quizSelector">
@@ -37,15 +37,57 @@
     </div>
 
     <div class="row quizSelector">
+        <h1>All Quizzes:</h1>
         <table class="quizTable">
             <tr class="quizTable">
                 <th class="tableHead ">Name</th>
+                <th class="tableHead ">Tags</th>
                 <th class="tableHead">Question Amount</th>
                 <th class="tableHead">Score</th>
+            </tr>
+            <tr class="quiz" *ngFor="let quiz of quizzes" (click)="selectQuiz()">
+                <td id="quizName">
+                    {{quiz.name}}
+                </td>
+                <td>
+                   {{quiz.tags}}
+                </td>
+                <td>
+                    {{quiz.questions.length}}
+                </td>
+                <td>
+                    {{quiz.totalScore}}
+                </td>
+            </tr>
+        </table>
+        </div>
+        <div class = "row quizSelector" *ngIf="searchValue != ''">
+        <h1>Filtered Quizzes:</h1>
+        <table class="quizTable">
+            <tr class="quizTable">
+                <th class="tableHead ">Name</th>
+                <th class="tableHead ">Tags</th>
+                <th class="tableHead">Question Amount</th>
+                <th class="tableHead">Score</th>
+            </tr>
+            <tr class="quiz" *ngFor="let quiz of filteredQuizzes" (click)="selectQuiz()">
+                <td>
+                    {{quiz.name}}
+                </td>
+                <td>
+                    {{quiz.tags}}
+                </td>
+                <td>
+                    {{quiz.questions.length}}
+                </td>
+                <td>
+                    {{quiz.totalScore}}
+                </td>
             </tr>
         </table>
     </div>
     <div class="row">
+        <h1 style="text-align: center;">Quiz Selected: {{selectedQuiz}}</h1>
         <button class="startQuiz" (click)="startQuiz()">Start Quiz</button>
     </div>
 

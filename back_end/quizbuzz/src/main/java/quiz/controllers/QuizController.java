@@ -29,8 +29,17 @@ public class QuizController {
 		return manager.create(quiz);
 	}
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping(produces = "application/json")
 	public List<Quiz> getAll() {
 		return manager.findAll();
 	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping(path="search/{quizName}", produces="application/json")
+	public List<Quiz> findBySearchValue(@PathVariable String quizName) {
+		return manager.findByQuizName(quizName);
+	}
+	
+	
 }
