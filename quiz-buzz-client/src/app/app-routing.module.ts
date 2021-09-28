@@ -18,9 +18,9 @@ export const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'scoreboard', component:ScoreBoardComponent, canActivate:[AuthGuard]},
   {path: 'totalpoints', component:TotalUserPointsComponent, canActivate:[AuthGuard]},
+  {path: 'tags', component: TagsShowPageComponent, canActivate:[AuthGuard]},
   {path: 'quiz/new', component:CreateQuizesComponent, canActivate:[AuthGuard], children:[
     {path: 'tags/new', component: NewTagsComponent, canActivate:[AuthGuard]},
-    {path: 'tags', component: TagsShowPageComponent, canActivate:[AuthGuard]},
     {path: 'newquestionanswer', component: QuestionAnswerComponent, outlet: 'answer', canActivate:[AuthGuard]},
     {path: 'newquestion', component: QuestionComponent, outlet: "question", canActivate:[AuthGuard]},
   ]},
