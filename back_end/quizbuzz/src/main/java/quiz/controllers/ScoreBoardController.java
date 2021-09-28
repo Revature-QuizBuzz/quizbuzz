@@ -37,9 +37,9 @@ public class ScoreBoardController {
 		
 		
 		
-			// sortedUsers = scoreboard.stream()
-			// 		  .sorted(Comparator.comparing(ScoreBoard::getTotalPoints).reversed())
-			// 		  .collect(Collectors.toList());
+			 sortedUsers = scoreboard.stream()
+			 		  .sorted(Comparator.comparing(ScoreBoard::getTotalPoints).reversed())
+			 		  .collect(Collectors.toList());
 			
 		
 		return sortedUsers;

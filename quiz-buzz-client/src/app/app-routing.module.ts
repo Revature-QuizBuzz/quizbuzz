@@ -16,13 +16,15 @@ export const routes: Routes = [
   {path: '', component:HomeComponent, canActivate:[AuthGuard]},
   {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
   {path: 'login', component: LoginComponent},
-  {path: 'scoreboard', component:ScoreBoardComponent},
-  {path: 'totalpoints', component:TotalUserPointsComponent},
-  {path: 'newquestionanswer', component: QuestionAnswerComponent, outlet: 'answer'},
-  {path: 'newquestion', component: QuestionComponent, outlet: "question"},
-  {path: 'tags/new', component: NewTagsComponent, canActivate:[AuthGuard]},
-  {path: 'quiz/new', component:CreateQuizesComponent, canActivate:[AuthGuard]},
-  {path: 'tags', component: TagsShowPageComponent, canActivate:[AuthGuard]}
+  {path: 'scoreboard', component:ScoreBoardComponent, canActivate:[AuthGuard]},
+  {path: 'totalpoints', component:TotalUserPointsComponent, canActivate:[AuthGuard]},
+  {path: 'quiz/new', component:CreateQuizesComponent, canActivate:[AuthGuard], children:[
+    {path: 'tags/new', component: NewTagsComponent, canActivate:[AuthGuard]},
+    {path: 'tags', component: TagsShowPageComponent, canActivate:[AuthGuard]},
+    {path: 'newquestionanswer', component: QuestionAnswerComponent, outlet: 'answer', canActivate:[AuthGuard]},
+    {path: 'newquestion', component: QuestionComponent, outlet: "question", canActivate:[AuthGuard]},
+  ]},
+  
 ];
 
 @NgModule({
