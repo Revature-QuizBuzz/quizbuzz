@@ -3,6 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {Question} from 'src/app/models/questions';
 import {Answer} from 'src/app/models/answers';
 import { Quiz } from 'src/app/models/quizzes';
+import { UserScore } from 'src/app/models/scores';
+import { Router } from '@angular/router';
 import { AnswerService } from '../answer.service';
 import { NgForm, FormGroup, FormControl, FormArray } from '@angular/forms';
 
@@ -16,70 +18,68 @@ import { NgForm, FormGroup, FormControl, FormArray } from '@angular/forms';
 export class QuizSubmissionComponent implements OnInit {
 
   questions: any = [];
-  quizzes: Quiz[] = [];
-  // answers: Answer[] = [];
-  // answer: any;
-  userQuestion: any; 
-  userAnswer?: any;
-  userAnswers: any = [];
-  userPoints: number = 0;
-  totalPoints: number = 100;
+  question:any =[];
+
+  userQuestion: any =[]; 
+  answers: any = [];
+  userAnswers:any = [];
+  correctAnswers:any = [];
+  correct:any=[];
+
   key = 'correct';
 
-  // public testUrl = 'http://localhost:8080/testanswers/create';
+  userScore: any;
+  quiz: any = localStorage.getItem('quizId');
+  quizQuestion: any = [];
+  userPoints: any = localStorage.getItem('score');
+  totalPoints: any = 100;
+  date: any;
+  
 
-  constructor(private answerService: AnswerService, private http:HttpClient) { }
+ 
+
+  constructor(private router:Router, private answerService: AnswerService) { }
 
   ngOnInit(): void {
-
-    //this.fetchQuestions();
-    this.userAnswers = new Array<string>();
-    this.userQuestion = this.questions;
-    const quizForm = document.querySelector('testForm');
-
-    quizForm?.addEventListener('submit', event => {
-      event.preventDefault();
-      this.userAnswer = JSON.parse(localStorage.getItem('correct')||'{}');
-    
-    });
-
-  for ( let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    this.userPoints++;
-    console.log(`${key}: ${localStorage.getItem('correct')}`);
+    this.getUserAnswer()
+    this.getUserQuestion()
+    this.getCorrectAnswers()
+    this.getScore()
+    this.date = this.userScore.completedOn?.getDate
+  
   }
-
-  //   this.answerService.getUserAnswers(this.key)
-  //   .subscribe((data: Answer[]) =>{
-  //     console.log(data);
-  //     this.userAnswers = data;
-  //   });
-
-  }
-
-  getScore() {
-    return (Math.round(this.userPoints%this.totalPoints));
+   
+  getUserScore() {
+   this.quiz = this.quiz;
+   this.answers = localStorage.getItem('answers');
+   
   }
   
-  // getUserAnswer() {
-  //   this.userAnswer = localStorage.getItem('answers');
-  //   // let localStorageItem = JSON.parse(localStorage.getItem('answers'));
-  //   console.log(this.userAnswer);
-  // }
+  getUserAnswer() {
+    this.userAnswers = localStorage.getItem('answers');
+    this.answers = this.userAnswers.split(',');
+   }
+  getUserQuestion() {
+    this.questions = localStorage.getItem('question');
+    this.question = this.questions.split(',');
+  }
 
-  // submit(quizForm: any){
-  //   console.log("Sumbitted for Review");
-  //   var quiz_answer = this.userAnswers;
-  //   // if( localStorage.getItem('correct')== null){
-  //   //   localStorage.setItem('correct','[]');
-  //   // }
+  getCorrectAnswers() {
+    this.correctAnswers = localStorage.getItem('correctAnswer');
+    this.correct = this.correctAnswers.split(',');
+  }
 
-  //   var old_data1  = JSON.parse(localStorage.getItem('correct')||'{}');
-  //   old_data1.push(quiz_answer);
-  //   JSON.stringify(old_data1);
-  //   localStorage.setItem('correct', old_data1);
+  getScore(){
+    this.userPoints = localStorage.getItem('score');
+    this.userScore = this.userPoints + '/' + this.question.length ;
+  }
+  
+  home(){
+    this.router.navigate(['home']);
+   }
 
-  // }
+  }
 
-  // this.scoreId = 2;
-}
+ 
+
+
