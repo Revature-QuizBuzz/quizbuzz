@@ -11,6 +11,7 @@
 	<groupId>quiz</groupId>
 	<artifactId>quizbuzz</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>quizbuzz</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -72,6 +73,7 @@
 	</dependencies>
 
 	<build>
+		<finalname>AutoDeployTomcat</finalname>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
