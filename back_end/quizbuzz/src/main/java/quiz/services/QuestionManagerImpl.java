@@ -11,9 +11,6 @@ import quiz.dao.QuestionDAO;
 import quiz.models.Question;
 
 
-import quiz.dao.QuestionDAO;
-import quiz.models.Question;
-
 
 @Service
 public class QuestionManagerImpl implements QuestionManager{
@@ -43,6 +40,7 @@ public class QuestionManagerImpl implements QuestionManager{
 	
 	public Question findByQuestion(String text) {
 		return dao.findByQuestion(text);
+	}
 	
 	@Override
 	public List<Question> findAll(int id) {

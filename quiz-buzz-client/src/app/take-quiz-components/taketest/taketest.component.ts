@@ -24,7 +24,7 @@ export class TaketestComponent implements OnInit {
    isDisable = true;
 
 // Questions ans Answers from Quizzes
-public url ='http://localhost:8080/questions/'+this.quizId;
+  url:string ='http://localhost:8080/questions/'+this.quizId;
 
  
 

@@ -48,7 +48,7 @@ public class Scores {
 	}
 
 	public Scores(int id) {
-		this.id = id;
+		this.scoreId = id;
 	}
 
 	public int getScoreId() {

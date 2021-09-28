@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Quiz } from 'src/app/models/quizzes';
 
 @Component({
   selector: 'app-quiz-selection',
@@ -9,8 +10,8 @@ import { Router } from '@angular/router';
 })
 export class QuizSelectionComponent implements OnInit {
 
-  quizzes:any = [];
-  filteredQuizzes:any = [];
+  quizzes:Quiz[] = [];
+  filteredQuizzes:Quiz[] = [];
   selectedQuiz:any = '';
   searchValue:any = '';
 
@@ -34,41 +35,29 @@ export class QuizSelectionComponent implements OnInit {
       console.log(this.searchQuizzesUrl+this.searchValue)
       if(this.searchValue != '')
       {
-        this.http.get(this.searchQuizzesUrl+this.searchValue, httpOptions).subscribe(data=>{
-        this.filteredQuizzes= data;
-        console.log(data)
+        this.http.get(this.searchQuizzesUrl+this.searchValue, httpOptions).subscribe({
+          next: (data:any) =>{
+            this.filteredQuizzes= data;
+            console.log(data)
+          }
         })
       }
 
   }
 
-  selectQuiz(){
-    var quiz = document.getElementById("quizName")?.innerHTML.trim()
-    console.log(":"+quiz+":")
+  selectQuiz(quiz:any){
+    //var quiz = document.getElementById("quizName")?.innerHTML.trim()
     this.selectedQuiz = quiz;
   }
 
-  goToJavaQuizzes(){
-    console.log("java")
-  }
-
-  goToDatabaseQuizzes(){
-    console.log("db")
-  }
-
-  goToClientQuizzes(){
-    console.log("client")
+  getQuizLength() {
+    if( this.quizzes !== undefined && this.quizzes !== null)
+      return this.quizzes.length;
+    return 0;
   }
 
   startQuiz(){
-     for(let i = 0; i < this.quizzes.length; i++){
-      var quiz:string = this.quizzes[i].name
-      if(this.selectedQuiz === quiz){
-        this.selectedQuiz = this.quizzes[i]
-        console.log(this.selectedQuiz)
-      }
-    }
-    localStorage.setItem("quizId", this.selectedQuiz.id)
+    localStorage.setItem("quizId", this.selectedQuiz.quizId)
     this.router.navigate(["take/quiz"])
   }
 
@@ -77,10 +66,11 @@ export class QuizSelectionComponent implements OnInit {
     headers: new HttpHeaders({
      'Content-Type':  'application/json'})}
 
-    this.http.get(this.getUrl, httpOptions).subscribe(data=>{
+    this.http.get(this.getUrl, httpOptions).subscribe({
+      next: (data:any) =>{
       this.quizzes= data;
       console.log(data)
-
+      }
     })
    }
 
@@ -88,4 +78,3 @@ export class QuizSelectionComponent implements OnInit {
 function quiz(quiz: any, arg1: (any: any) => void) {
   throw new Error('Function not implemented.');
 }
-

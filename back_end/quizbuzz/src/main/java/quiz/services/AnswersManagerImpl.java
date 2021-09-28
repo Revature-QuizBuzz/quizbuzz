@@ -32,7 +32,7 @@ public class AnswersManagerImpl implements AnswersManager {
 
 	@Override
 	public List<Answers> createAnswers(List<Answers> allAnswers) {
-		return dao.saveAll(list);
+		return dao.saveAll(allAnswers);
 	}
 
 	@Override
