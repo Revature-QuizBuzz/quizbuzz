@@ -21,34 +21,32 @@ import quiz.models.Question;
 public class QuestionManagerImpl implements QuestionManager{
 	
 	@Autowired
-	private QuestionDAO dao;
+	private QuestionDAO daoQuestion;
+
 	
+    private AnswersManager aManager;
 
 	@Override
 	public List<Question> findAll() {
-		return StreamSupport.stream(dao.findAll().spliterator(), false).collect(Collectors.toList());
+		return StreamSupport.stream(daoQuestion.findAll().spliterator(), false).collect(Collectors.toList());
 	}
 	
 	@Override
 	public Question create(Question que) {
-		return dao.save(que);
+		return daoQuestion.save(que);
 	}
 
 	@Override
 	public List<Question> createAll(List<Question> questions) {
 		List<Question> persistedQuestion = new ArrayList<Question>();
 		for (Question question : questions) {
-			persistedQuestion.add(dao.save(question));
+			persistedQuestion.add(daoQuestion.save(question));
 		}
 		return persistedQuestion;}
 	public Question findByQuestion(String text) {
-		return dao.findByQuestion(text);
+		return daoQuestion.findByQuestion(text);
 	}
 
-    private AnswersManager aManager;
-
-    @Autowired
-    private QuestionDAO daoQuestion;
 
     @Override
     public Question updateQuestion(int questionId, Question question) {
