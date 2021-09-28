@@ -1,1 +1,16 @@
-<p>login works!</p>
+<div>
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <img class="mb-4" src="../../assets/rev-logo.png" style="margin-top: 40px;" alt="" width="25%" height="25%">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <h5 *ngIf="incorrect === true">Incorrect Username/Password</h5>
+        <label for="username" class="sr-only">Username</label>
+        <input type="text" name="username" id="username" class="form-control" placeholder="Username" required autofocus ngModel>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required ngModel>
+        <br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <br>
+        <!--Can work if signup component is created-->
+        <!--<a href="/signup">Create a new account</a>-->   
+    </form>
+</div>

@@ -1,11 +1,19 @@
 package quiz.services;
 
-import quiz.models.Answers;
-
 import java.util.List;
+
+import quiz.models.Answers;
 
 public interface AnswersManager {
 
+	List<Answers> findAllAnswers();
+
+	Answers create(Answers ans);
+
+	List<Answers> createAnswers(List<Answers> allAnswers);
+
+    Answers findByAnswer(String answer);
+    
     Answers updateAnswer(int answerId, Answers answer);
 
     void deleteAnswersById(List<Integer> answerIds);

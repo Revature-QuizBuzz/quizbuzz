@@ -7,23 +7,23 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table(name="quizzes")
+@Table(name = "quizzes")
 public class Quiz {
-	
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator")
-    @SequenceGenerator(name="id_generator", sequenceName = "quizzes_quiz_id_seq", allocationSize = 1)
-    @Column(name="quiz_id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator")
+	@SequenceGenerator(name = "id_generator", sequenceName = "quizzes_quiz_id_seq", allocationSize = 1)
+	@Column(name = "quiz_id")
 	private int id;
-	
+
 	@ManyToOne
-	@JoinColumn(name="user_id", nullable=false)
+	@JoinColumn(name="user_id")
 	private User user;
 	
-	@OneToMany(mappedBy="quiz", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="quiz", cascade=CascadeType.MERGE)
 	private List<Scores> scores;
 	
-	@OneToMany(mappedBy="quiz", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="quiz", cascade=CascadeType.MERGE)
 	private List<Question> questions;
 
 	@ManyToMany(cascade=CascadeType.PERSIST)
@@ -32,18 +32,50 @@ public class Quiz {
 
 	@Column
 	private String name;
-	
+
 	@Column
 	private String description;
-	
-	@Column(name="total_score")
+
+	@Column(name = "total_score")
 	private int totalScore;
 	
 	@Column(name="created_date")
-	private Date createdDate;
+	private Date createdDate = new Date();
 	
 	@Column(name="date_modified")
 	private Date dateModified;
+
+	public Quiz() {
+	}
+
+	public Quiz(int id) {
+		this.id = id;
+	}
+
+	public Quiz(int id, User user, List<Scores> scores, List<Question> questions, List<Tags> tags, String name, String description, int totalScore, Date dateModified) {
+		this.id = id;
+		this.user = user;
+		this.scores = scores;
+		this.questions = questions;
+		this.tags = tags;
+		this.name = name;
+		this.description = description;
+		this.totalScore = totalScore;
+		this.dateModified = dateModified;
+	}
+
+	public Quiz(int id, User user, List<Scores> scores, List<Question> questions, List<Tags> tags, String name, String description, int totalScore, Date createdDate, Date dateModified) {
+		this.id = id;
+		this.user = user;
+		this.scores = scores;
+		this.questions = questions;
+		this.tags = tags;
+		this.name = name;
+		this.description = description;
+		this.totalScore = totalScore;
+		this.createdDate = createdDate;
+		this.dateModified = dateModified;
+	}
 
 	public int getId() {
 		return id;
@@ -74,7 +106,7 @@ public class Quiz {
 	public void setTags(List<Tags> tags) {
 		this.tags = tags;
 	}
-	
+
 	public List<Question> getQuestions() {
 		return questions;
 	}

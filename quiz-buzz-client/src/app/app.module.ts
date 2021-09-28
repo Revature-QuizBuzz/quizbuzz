@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+<<<<<<< HEAD
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -8,19 +9,61 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { EditQuizComponent } from './edit-quiz/edit-quiz.component';
 import { MyQuizzesComponent } from './my-quizzes/my-quizzes.component';
+=======
+import { QuestionAnswerComponent } from './answer/question-answer.component';
+import { HttpClientModule } from '@angular/common/http';
+import { QuestionComponent } from './question/question.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
+import { NewTagsComponent } from './new-tags/new-tags.component';
+import { Routes, RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { routes } from './app-routing.module';
+import { CreateQuizesComponent } from './create-quizes/create-quizes.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TotalUserPointsComponent } from './total-user-points/total-user-points.component';
+import { ScoreBoardComponent } from './scoreboard/scoreboard.component';
+
+>>>>>>> 61bcad626f4f30ac554db28be1bd22fc809621dd
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+<<<<<<< HEAD
     EditQuizComponent,
     MyQuizzesComponent
+=======
+    QuestionAnswerComponent,
+    QuestionComponent,
+    TotalUserPointsComponent,
+    HomeComponent,
+    NavbarComponent,
+    FooterComponent,
+    NewTagsComponent,
+    CreateQuizesComponent,
+    ScoreBoardComponent
+>>>>>>> 61bcad626f4f30ac554db28be1bd22fc809621dd
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+<<<<<<< HEAD
     HttpClientModule
+=======
+    HttpClientModule,
+    FormsModule,
+    RouterModule.forRoot(routes),
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule,
+    NgbModule
+>>>>>>> 61bcad626f4f30ac554db28be1bd22fc809621dd
   ],
   providers: [],
   bootstrap: [AppComponent]

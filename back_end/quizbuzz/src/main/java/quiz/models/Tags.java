@@ -9,29 +9,35 @@ import javax.persistence.*;
 public class Tags {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @SequenceGenerator(name="id_generator", sequenceName = "tags_tag_id_seq", allocationSize = 1)
     @Column(name="tag_id")
 	private int id;
 	
-	@ManyToMany(mappedBy="tags")
+	@ManyToMany(mappedBy = "tags")
 	private List<Quiz> quizzes;
 	
 	@Column
 	private String name;
 
-	public void setQuizTag(List<Quiz> quizzes) {
-		this.quizzes = quizzes;
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
 	}
 
-
-
+	public void setQuizzes(List<Quiz> quizzes) {
+		this.quizzes = quizzes;
+	}
+	
 	public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
-	}	
-	
+	}
+
 }

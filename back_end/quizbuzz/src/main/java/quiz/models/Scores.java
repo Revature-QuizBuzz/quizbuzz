@@ -17,7 +17,7 @@ import javax.persistence.Table;
 public class Scores {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @SequenceGenerator(name="id_generator", sequenceName = "user_scores_score_id_seq", allocationSize = 1)
     @Column(name="score_id")
 	private int id;
@@ -35,6 +35,24 @@ public class Scores {
 	
 	@Column(name="completed_on")
 	private Date completedOn;
+	
+	
+
+	public Scores(int id, User user, Quiz quiz, int score, Date completedOn) {
+		super();
+		this.id = id;
+		this.user = user;
+		this.quiz = quiz;
+		this.score = score;
+		this.completedOn = completedOn;
+	}
+
+	public Scores() { }
+
+	public Scores(int id) {
+		this.id = id;
+	}
+
 
 	public int getId() {
 		return id;
@@ -67,7 +85,5 @@ public class Scores {
 	public void setCompletedOn(Date completedOn) {
 		this.completedOn = completedOn;
 	}
-	
-	
-	
+
 }

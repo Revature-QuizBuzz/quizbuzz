@@ -31,8 +31,28 @@ public class QuizManagerImpl implements QuizManager {
 //    private TagsManager tagManager;
 
     @Override
+    public Quiz create(Quiz quiz){
+        return daoQuiz.save(quiz);
+    }
+
+    @Override
+    public Quiz findById(int id) {
+        return daoQuiz.findById(id);
+    }
+
+    @Override
     public List<Quiz> findAll() {
         return daoQuiz.findAll();
+    }
+
+    @Override
+    public List<Quiz> findByUser(int userId) {
+        return daoQuiz.findByUserId(userId);
+    }
+
+    @Override
+    public Quiz findByName(String name) {
+        return daoQuiz.findByName(name);
     }
 
     @Override
@@ -68,5 +88,4 @@ public class QuizManagerImpl implements QuizManager {
         
         return daoQuiz.save(updatedQuiz);
     }
-
 }
