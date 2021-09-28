@@ -1,22 +1,22 @@
-<form [formGroup]="createQuiz" >
+<form [formGroup]="createQuiz" (ngSubmit)="onSubmit()">
 
   <div>
     <h2>Create a Quiz</h2>
   </div>
   <div class="modal-body">
     <form>
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name"  name="name" />
+      <div [formGroup]="createQuiz">
+        <label for="quizName">Name</label>
+        <input type="text" class="form-control" id="quizName"  name="quizName" formControlName="quizName"/>
       </div>
     </form>
   </div>
   <div class="modal-body">
     <form>
-      <div class="form-group">
-        <label for="description">Description</label>
-        <input type="text" class="form-control" id="description"
-          name="description" />
+      <div [formGroup]="createQuiz">
+        <label for="quizDescription">Description</label>
+        <input type="text" class="form-control" id="quizDescription"
+          name="quizDescription" formControlName="quizDescription"/>
       </div>
     </form>
   </div>
@@ -31,7 +31,7 @@
   </div>
   <div>
     <!-- <button type="button" (click)="" class="btn btn-primary">Add question</button> -->
-    <button (click)="onSubmit()"  class="btn btn-primary">reactive submit</button>
+    <button type="submit"  class="btn btn-primary">Submit</button>
     <!-- <button (click)="save()" class="btn btn-success">Save Quiz</button> -->
     <!-- <button (click)="add()" class="btn btn-success">Submit</button>  -->
   </div>
