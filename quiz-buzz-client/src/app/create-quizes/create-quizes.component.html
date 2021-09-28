@@ -1,17 +1,17 @@
-<form [formGroup]="createQuiz" >
+<form [formGroup]="createQuiz">
 
   <div>
     <h2>Create a Quiz</h2>
   </div>
-  <div class="modal-body">
+  <!--<div class="modal-body">-->
     <form>
       <div class="form-group">
         <label for="name">Name</label>
         <input type="text" class="form-control" id="name" required [(ngModel)]="quiz.name" name="name" />
       </div>
     </form>
-  </div>
-  <div class="modal-body">
+  <!--</div>-->
+  <!--<div class="modal-body">-->
     <form>
       <div class="form-group">
         <label for="description">Description</label>
@@ -19,34 +19,21 @@
           name="description" />
       </div>
     </form>
-  </div>
+  <!--</div>-->
 
   <div formGroupName="questions">
 
     Questions and answers go here, using dummies for testing
   </div>
-  <div class="tags" name="tag">
-     <!-- (click)="addTag(tag)"> -->
-    <!-- waiting on other groups to finish to add functionality -->
-    <button>JUnit</button>
-    <button>Java</button>
-    <button>SQL</button>
-    <button>HTML, CSS, JS</button>
-    <button>Angular</button>
-    <button>DevOps</button>
-    <button>Docker</button>
-    <button>Jenkins</button>
-    <button>Spring Boot</button>
-    <button>+ Add new tag</button>
+  <div class="form-group">
+    <app-attach-tags (tags)="selectedTags($event)"></app-attach-tags>
   </div>
-  <div>
-    <ng-container *ngFor="let i of [].constructor(1)"> <app-question (questionEvent)="recieveQuestion($event)"></app-question></ng-container>
-    
-  </div>
+ 
   <div>
     <!-- <button type="button" (click)="" class="btn btn-primary">Add question</button> -->
-    <!-- <button type="submit" [disabled]="!createQuiz.valid" class="btn btn-primary">Submit</button> -->
-    <button (click)="save()" class="btn btn-success">Save Quiz</button>
-    <button (click)="add()" class="btn btn-success">Submit</button> 
+    <button (click)="onSubmit()"  class="btn btn-primary">reactive submit</button>
+    <!-- <button (click)="save()" class="btn btn-success">Save Quiz</button> -->
+    <!-- <button (click)="add()" class="btn btn-success">Submit</button>  -->
   </div>
+
 </form>

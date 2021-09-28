@@ -19,7 +19,8 @@ public class Answers {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @SequenceGenerator(name="id_generator", sequenceName = "answers_answer_id_seq", allocationSize = 1)
     @Column(name="answer_id")
-	private int id;
+	private int answerId;
+	
 	@ManyToOne
 	@JoinColumn(name = "question_id", nullable = false)
 	private Question question;
@@ -34,22 +35,22 @@ public class Answers {
 	}
 
 	public Answers(int id) {
-		this.id = id;
+		this.answerId = id;
 	}
 
 	public Answers(int id, Question question, String answer, boolean correct) {
-		this.id = id;
+		this.answerId = id;
 		this.question = question;
 		this.answer = answer;
 		this.correct = correct;
 	}
 
-	public int getId() {
-		return id;
+	public int getAnswerId() {
+		return answerId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setAnswerId(int id) {
+		this.answerId = id;
 	}
 
 	public void setQuestion(Question question) {

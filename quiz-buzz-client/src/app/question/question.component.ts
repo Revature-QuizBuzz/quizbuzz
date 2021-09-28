@@ -21,7 +21,7 @@ export class QuestionComponent implements OnInit {
   
   }];
 
-  @Output() questionEvent = new EventEmitter<Question[]>();
+  @Output() questionEvent = new EventEmitter<Question>();
 
   constructor(private router: Router, private http: HttpClient) {
    }
@@ -33,7 +33,7 @@ export class QuestionComponent implements OnInit {
 
   addQuestion(index:number, stockForm: NgForm) {
     let question: Question = {
-      id: 0,
+      questionId: 0,
       question: "",
       possiblePoints: 0,
       type: ""
@@ -70,7 +70,7 @@ export class QuestionComponent implements OnInit {
   }
 
   onSubmit(stockForm: NgForm) {
-
+    
 
     // const httpOptions = {
     // headers: new HttpHeaders({'Content-Type':'application/json'})}
@@ -88,18 +88,12 @@ export class QuestionComponent implements OnInit {
     // })
     // this.router.navigate([""])
 
-    let question: Question = {
-      id: 0,
-      question: "",
-      possiblePoints: 0,
-      type: ""
-    }
 
-    question.question = stockForm.value.question;
-    question.possiblePoints = stockForm.value.possiblePoints;
-    question.type = stockForm.value.type;
-    console.log(question);
-    this.questions.push(question);
-    this.questionEvent.emit(this.questions);
+    this.questions.question = stockForm.value.question;
+    this.question.possiblePoints = stockForm.value.possiblePoints;
+    this.question.type = stockForm.value.type;
+    console.log(this.question);
+    this.questionEvent.emit(this.question);
+
   }
 }

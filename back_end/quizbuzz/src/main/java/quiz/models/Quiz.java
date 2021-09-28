@@ -14,8 +14,8 @@ public class Quiz {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @SequenceGenerator(name="id_generator", sequenceName = "quizzes_quiz_id_seq", allocationSize = 1)
     @Column(name="quiz_id")
-	private int id;
-
+	private int quizId;
+	
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
@@ -49,11 +49,11 @@ public class Quiz {
 	}
 
 	public Quiz(int id) {
-		this.id = id;
+		this.quizId = id;
 	}
 
 	public Quiz(int id, User user, List<Scores> scores, List<Question> questions, List<Tags> tags, String name, String description, int totalScore, Date dateModified) {
-		this.id = id;
+		this.quizId = id;
 		this.user = user;
 		this.scores = scores;
 		this.questions = questions;
@@ -65,7 +65,7 @@ public class Quiz {
 	}
 
 	public Quiz(int id, User user, List<Scores> scores, List<Question> questions, List<Tags> tags, String name, String description, int totalScore, Date createdDate, Date dateModified) {
-		this.id = id;
+		this.quizId = id;
 		this.user = user;
 		this.scores = scores;
 		this.questions = questions;
@@ -77,12 +77,12 @@ public class Quiz {
 		this.dateModified = dateModified;
 	}
 
-	public int getId() {
-		return id;
+	public int getQuizId() {
+		return quizId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setQuizId(int id) {
+		this.quizId = id;
 	}
 
 	public void setUser(User user) {
