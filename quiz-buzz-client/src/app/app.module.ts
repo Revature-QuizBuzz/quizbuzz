@@ -29,7 +29,8 @@ import { TagsShowPageComponent } from './tags-show-page/tags-show-page.component
     FooterComponent,
     NewTagsComponent,
     CreateQuizesComponent,
-    TagsShowPageComponent
+    TagsShowPageComponent,
+    AttachTagsComponent
   ],
   imports: [
     BrowserModule,

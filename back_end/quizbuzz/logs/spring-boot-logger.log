@@ -135,3 +135,10 @@
 2021-09-27 13:41:22,651 INFO quiz.controllers.TagsController [http-nio-8080-exec-10] GET to /tags
 2021-09-27 13:41:25,318 INFO quiz.controllers.QuizController [http-nio-8080-exec-1] GET to /getTen
 2021-09-27 13:43:39,927 INFO quiz.controllers.QuizController [http-nio-8080-exec-3] GET to /getTen
+2021-09-27 14:36:53,424 INFO quiz.controllers.QuizController [http-nio-8080-exec-1] GET to /getTen
+2021-09-27 14:37:06,791 INFO quiz.controllers.TagsController [http-nio-8080-exec-2] GET to /tags
+2021-09-27 14:37:15,357 INFO quiz.controllers.TagsController [http-nio-8080-exec-4] DELETE from /tags/{id}
+2021-09-27 14:37:15,367 INFO quiz.controllers.TagsController [http-nio-8080-exec-5] GET to /tags
+2021-09-27 14:37:24,475 INFO quiz.controllers.TagsController [http-nio-8080-exec-7] DELETE from /tags/{id}
+2021-09-27 14:37:24,484 INFO quiz.controllers.TagsController [http-nio-8080-exec-8] GET to /tags
+2021-09-27 14:45:31,334 INFO quiz.controllers.QuizController [http-nio-8080-exec-1] GET to /getTen

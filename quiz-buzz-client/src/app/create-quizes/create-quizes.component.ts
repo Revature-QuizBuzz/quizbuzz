@@ -133,7 +133,7 @@ export class CreateQuizesComponent implements OnInit {
         });
   }
 
-  selectedTags($event:Tag[]) {
+  selectedTags($event:any) {
     this.quiz.tags = $event; 
     console.log($event);
   }
