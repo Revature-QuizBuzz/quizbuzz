@@ -79,6 +79,9 @@ export class CreateQuizesComponent implements OnInit {
     this.numQuestions++;
   }
 
+  public addQuestion(question : Question[]){
+    this.quiz.questions = question;
+  }
 
   create(quiz: any): Observable<any> {
     return this.http.post(baseUrl, quiz);
@@ -186,10 +189,6 @@ export class CreateQuizesComponent implements OnInit {
     });
   }
 
-  // Used for bubbling data and adding questions to the quiz
-  public addQuestion(question: Question[]) {
-    this.quiz.questions = question;
-  }
 
 
 }

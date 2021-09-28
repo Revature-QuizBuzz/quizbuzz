@@ -3,13 +3,11 @@
 
 DROP SCHEMA IF EXISTS quizbuzz CASCADE;
 
-CREATE SCHEMA quizbuzz AUTHORIZATION postgres;
+CREATE SCHEMA quizbuzz AUTHORIZATION nacard192;
 
 
 -- DROP SCHEMA quizbuzz;
 
-
-	
 -- quizbuzz.answers definition
 
 -- Drop table
@@ -47,9 +45,10 @@ CREATE TABLE quizbuzz.questions (
 -- DROP TABLE quizbuzz.quiz_tags;
 
 CREATE TABLE quizbuzz.quiz_tags (
+	quiz_tag_id serial NOT null,
 	tag_id int4 NOT NULL,
 	quiz_id int4 NOT NULL,
-	CONSTRAINT quiz_tags_pk PRIMARY KEY (tag_id)
+	CONSTRAINT quiz_tags_pk PRIMARY KEY (quiz_tag_id)
 );
 
 
@@ -315,3 +314,4 @@ INSERT INTO quizbuzz.answers (question_id,answer,correct) VALUES
 	 (3,'African or European',true),
 	 (3,'Red... no, Blue',false);
 	 
+insert into quizbuzz.quiz_tags(tag_id, quiz_id) values(2, 1);
