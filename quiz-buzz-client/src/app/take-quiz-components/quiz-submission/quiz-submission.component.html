@@ -1,26 +1,26 @@
 
-
 <div class = "container">
     <div class = "card">
-        <h3 class = "text-center">Quiz Results</h3>
-        <div class = "card-body">
-            <table class = "table table-striped">
-                <thead>
-                    <th>Your Answer</th>
-                    <th>Question</th>
-                    <th>The Correct Answer</th>
-                    <th>Your Score</th>{{userPoints}}
-                </thead>
-           <tbody>
-                 <tr *ngFor = "let a of answers">{{a}}</tr>
-           
-                 <tr *ngFor= "let q of question">{{q}}</tr>
+        <h3 class = "text-center">Quiz Results</h3><span class = "text-center">Your Score</span>
+        <span class = "text-center" >{{userScore}}</span>
+            <div class = "card-body">
+                <table class = "table table-striped">
+                    <thead>
+                        <th>Your Answer</th>
+                        <th>Question</th>
+                        <th>The Correct Answer</th>
+                    </thead>
+                    <tbody >
+                         <tr>
+                            <td>{{answers}}</td>
+                            <td>{{question}}</td>
+                            <td>{{correct}}</td>
+                        </tr>               
+                    </tbody>
+                </table>
+            </div>
             
-                <tr *ngFor="let c of correct">{{c}}</tr>
-          </tbody>
-            </table>
-            
-        </div>
     </div>
 </div>
 
+<button class="btn" (click)="home()" >Home</button>

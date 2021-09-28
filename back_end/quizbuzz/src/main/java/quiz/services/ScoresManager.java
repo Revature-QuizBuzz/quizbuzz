@@ -7,8 +7,6 @@ import quiz.models.Answers;
 public interface ScoresManager {
 	
 	Scores addScore(Scores score);
-	Scores findScore(Scores score);
-	List<Scores> getScores();
-	Scores findById(int id);
+//	Scores findById(int id);
 
 }

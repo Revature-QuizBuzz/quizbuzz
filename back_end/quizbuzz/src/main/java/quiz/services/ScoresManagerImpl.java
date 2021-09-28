@@ -23,47 +23,4 @@ public class ScoresManagerImpl implements ScoresManager{
 	}
 
 
-	@Override
-	public Scores findScore(Scores score) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public List<Scores> getScores() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public Scores findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-//	@Override
-//	public Answers findById(Answers ua) {
-//		return StreamSupport.stream(adao.findById(), false)
-//				.collect(Collectors.toList());
-//	}
-//	
-//	@Override
-//	public List<Question> findAllQuestions() {
-//		return StreamSupport.stream(qdao.findAll().spliterator(), false)
-//				.collect(Collectors.toList());
-//	}
-//
-//	@Override
-//	public Answers findById(int id) {
-//		return adao.findById(Integer.valueOf(id));
-//	}
-//	
-//
-//	@Override
-//	public Question findByQuestion(Question q) {
-//		return qdao.findByQuestion(findByQuestion q));
-//	}
-
 }
