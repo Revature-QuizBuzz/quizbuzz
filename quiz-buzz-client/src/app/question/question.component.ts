@@ -13,26 +13,60 @@ import { Quiz } from '../models/quizzes';
 })
 export class QuestionComponent implements OnInit {
   selectedType = "";
-  questions: Question[] = [];
-  question: Question = {
-    id: 0,
-    question: "",
-    possiblePoints: 0,
-    type: ""
-  }
+  // questions: Question[] = [];
+  public questions: Question[] = [{
+      question: "",
+      possiblePoints: 0,
+      type: ""
+  
+  }];
 
   @Output() questionEvent = new EventEmitter<Question>();
 
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient) {
+   }
 
   public _url = "http://localhost:8080/questions/new"
 
   ngOnInit(): void {
   }
 
-  onChange(selectedType: string){
+  addQuestion(index:number, stockForm: NgForm) {
+    let question: Question = {
+      questionId: 0,
+      question: "",
+      possiblePoints: 0,
+      type: ""
+    }
+    question.question= stockForm.value.question;
+    question.possiblePoints = stockForm.value.possiblePoints;
+    question.type = stockForm.value.type;
+    console.log(question);
+    this.questions[index]= question;
+    this.questions.push({
+      question: "",
+      possiblePoints: 0,
+      type: ""
+    });
+    this.selectedType = "";
+    console.log(this.questions);
+  }
+
+  removeQuestion(i: number) {
+    this.questions.splice(i, 1);
+  }
+
+  logValue() {
+    console.log(this.questions);
+  }
+
+  counter(i: number){
+    return new Array(i)
+  }
+
+  onChange(selectedType: string, index:number) {
     console.log(selectedType);
-    this.selectedType= selectedType;
+    this.questions[index].type = selectedType;
   }
 
   onSubmit(stockForm: NgForm) {
@@ -55,7 +89,7 @@ export class QuestionComponent implements OnInit {
     // this.router.navigate([""])
 
 
-    this.question.question = stockForm.value.question;
+    this.questions.question = stockForm.value.question;
     this.question.possiblePoints = stockForm.value.possiblePoints;
     this.question.type = stockForm.value.type;
     console.log(this.question);
