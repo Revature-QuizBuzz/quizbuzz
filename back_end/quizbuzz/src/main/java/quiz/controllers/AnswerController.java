@@ -2,6 +2,8 @@ package quiz.controllers;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +20,8 @@ import quiz.services.AnswersManager;
 @RestController
 @RequestMapping(path = "answer")
 public class AnswerController {
+	
+	private static final Logger logger = LogManager.getLogger(Answers.class);
 
 	@Autowired
 	private AnswersManager answer;
@@ -34,9 +38,10 @@ public class AnswerController {
 	@JsonFormat(shape = JsonFormat.Shape.ARRAY)
 	@PostMapping(path = "/answerstoquestion", consumes = "application/json", produces = "application/json")
 	public List<Answers> createAnswers(@RequestBody List<Answers> answers){
-		System.out.println(answers.get(0).getAnswer());
-		System.out.println(answers.get(0).getAnswerId());
-		System.out.println(answers.get(0).isCorrect());
+		//re-factored
+		logger.info(answers.get(0).getAnswer());
+		logger.info(answers.get(0).getAnswerId());
+		logger.info(answers.get(0).isCorrect());
 //		System.out.println(answers.get(0).getQuestion());
 //		answer.createAnswers(answers);
 //		return null;

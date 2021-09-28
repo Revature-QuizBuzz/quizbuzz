@@ -152,5 +152,14 @@ public class Quiz {
 	public void setDateModified(Date dateModified) {
 		this.dateModified = dateModified;
 	}
+	
+	
+	// "this" referring to the quiz calling the method
+	public void setQuestionsQuiz(Quiz quiz, List<Question> ques) {
+		for(Question question: ques) {
+			
+			question.setQuiz(quiz);
+		}
+	}
 
 }

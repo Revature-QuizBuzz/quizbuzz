@@ -29,8 +29,8 @@ public class ScoreBoardController {
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping(path = "/{sort}", produces = "application/json")
 	public List<ScoreBoard> findScoreBoard(@PathVariable String sort) {
-		System.out.println("sort");
-		System.out.println(sort);
+		//re-factored print statements to logger
+		logger.info("sort: " + sort);
 
 		List<ScoreBoard> scoreboard = manager.findScoreBoard();
 		List<ScoreBoard> sortedUsers = null;
@@ -49,7 +49,6 @@ public class ScoreBoardController {
 	public List<ScoreBoard> findScoreBoard() {
 		logger.info("GET to /scoreboard");
 		List<ScoreBoard> scoreboard = manager.findScoreBoard();
-//		System.out.println(scoreboard);
 		return scoreboard;
 	}
 

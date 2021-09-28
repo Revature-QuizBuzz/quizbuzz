@@ -105,5 +105,11 @@ public class Question {
 	public void setType(String type) {
 		this.type = type;
 	}
+	
+	// re-factored
+	public boolean quizIsNull() {
+		return this.quiz == null;
+	}
+	
 
 }
