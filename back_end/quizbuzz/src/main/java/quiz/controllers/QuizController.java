@@ -19,7 +19,7 @@ import quiz.services.QuizManager;
 import java.util.List;
 
 @RestController
-@EnableTransactionManagement
+//@EnableTransactionManagement
 @RequestMapping(path = "quizzes")
 public class QuizController {
 
@@ -61,6 +61,10 @@ public class QuizController {
 
     @PutMapping(path = "/{quizId}", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Quiz> updateQuiz(@PathVariable int quizId, @RequestBody Quiz quiz) {
+    	
+    	logger.info("Calling update quiz from controller with id: " + quizId + " and quiz: " + ", name: " +
+    quiz.getName() + ", total score: " + quiz.getTotalScore() + ", questions: " + quiz.getQuestions());
+    	
         manager.updateQuiz(quizId, quiz);
         return new ResponseEntity<>(manager.getQuizById(quizId), HttpStatus.NO_CONTENT); // status code 204, means successful put
     }

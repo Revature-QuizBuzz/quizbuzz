@@ -56,13 +56,13 @@ public class Answers {
 		this.question = question;
 	}
 	
-	// public Question getQuestion() {
-	// 	return this.question;
-	// }
+	public Question getQuestion() {
+		return this.question;
+	}
 
-//	public int getQuestionId() {
-//		return question.getId();
-//	}
+	public int getQuestionId() {
+		return question.getId();
+	}
 
 	public String getAnswer() {
 		return answer;

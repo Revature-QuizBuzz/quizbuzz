@@ -1,26 +1,34 @@
 package quiz.services;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import quiz.dao.QuizDAO;
+import quiz.models.Answers;
 import quiz.models.Question;
 import quiz.models.Quiz;
 
-import quiz.models.Tags;
-import quiz.services.QuizManager;
-
 import javax.transaction.Transactional;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Service
 public class QuizManagerImpl implements QuizManager {
 
-    private QuestionManager qManager;
-    private TagsManager tagManager;
-
     @Autowired
     private QuizDAO daoQuiz;
+    
+    private static final Logger logger = LogManager.getLogger(QuizManagerImpl.class);
+    
+    @Autowired
+    private QuestionManager qManager;
+//    
+//    @Autowired
+//    private TagsManager tagManager;
 
     @Override
     public Quiz create(Quiz quiz){
@@ -51,29 +59,25 @@ public class QuizManagerImpl implements QuizManager {
     public Quiz getQuizById(int id) {return daoQuiz.getById(id);}
 
     @Override
-    @Transactional
     public Quiz updateQuiz(int quizId, Quiz quiz) {
         Quiz updatedQuiz = daoQuiz.getById(quizId);
 
-        // find deleted questions
-        List<Integer> deletionsQ = Quiz.findQuestionDeletions(updatedQuiz.getQuestions(), quiz.getQuestions());
-        // call question manager to delete from database
-        qManager.deleteQuestionsById(deletionsQ);
-        // update remaining questions, updateQuestion() calls updateAnswers()
-        for(Question question: quiz.getQuestions()) {
-            qManager.updateQuestion(question.getId(), question);
+        
+        for(Question inputQuestion: quiz.getQuestions()) {
+        	inputQuestion.setQuiz(quiz);
+        	for(Answers inputAnswer: inputQuestion.getAnswers()) {
+        		inputAnswer.setQuestion(inputQuestion);
+        	}
         }
-        // update questions so that service returns the updated object
+        
+        // update questions
         updatedQuiz.setQuestions(quiz.getQuestions());
-
-        // Look for tags that aren't on the quiz already
-        List<String> createTags = Quiz.findTagCreations(updatedQuiz.getTags(), quiz.getTags());
-        // compare createTags to database to see if they already exist, if not call create
-        tagManager.createTags(createTags);
+        
         //update tags so service returns the updated object
         updatedQuiz.setTags(quiz.getTags());
 
         updatedQuiz.setName(quiz.getName());
+
         updatedQuiz.setDescription(quiz.getDescription());
 
         // calculate totalScore
@@ -81,6 +85,7 @@ public class QuizManagerImpl implements QuizManager {
         updatedQuiz.setTotalScore(updatedScore);
 
         updatedQuiz.setDateModified(new Date());
+        
         return daoQuiz.save(updatedQuiz);
     }
 }

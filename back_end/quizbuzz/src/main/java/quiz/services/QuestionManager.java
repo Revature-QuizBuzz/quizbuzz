@@ -13,6 +13,10 @@ public interface QuestionManager {
     Question updateQuestion(int questionId, Question question);
 
     void deleteQuestionsById(List<Integer> questionIds);
+    
+    void createAll(List<Question> questions);
+    
+    void deleteQuestion(Question question);
 
     Question findByQuestion(String name);
 }

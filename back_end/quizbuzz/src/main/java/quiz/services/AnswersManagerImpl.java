@@ -49,6 +49,11 @@ public class AnswersManagerImpl implements AnswersManager {
 
         return dao.save(updatedAnswer);
     }
+    
+    @Override
+    public void createAll(List<Answers> answers) {
+    	daoAnswers.saveAll(answers);
+    }
 
     @Override
     public void deleteAnswersById(List<Integer> answerIds) {

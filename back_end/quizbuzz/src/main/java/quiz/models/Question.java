@@ -106,6 +106,20 @@ public class Question {
 		this.type = type;
 	}
 
+	public void setQuiz(Quiz quiz) {
+		this.quiz = quiz;
+	}
+	
+	public void add(Answers answer) {
+		if(this.answers == null) {
+			this.answers = new ArrayList<>();
+		}
+		
+		this.answers.add(answer);
+		answer.setQuestion(this);
+	}
+	
+
 	public static List<Integer> findAnswerDeletions(List<Answers> oldList, List<Answers> newList) {
 		List<Integer> toDelete = new ArrayList<>();
 		
