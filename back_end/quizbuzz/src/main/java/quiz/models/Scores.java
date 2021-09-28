@@ -36,7 +36,7 @@ public class Scores {
 	@Column(name="completed_on")
 	private Date completedOn;
 	
-	
+	public Scores() { }
 
 	public Scores(int id, User user, Quiz quiz, int score, Date completedOn) {
 		super();
@@ -47,12 +47,9 @@ public class Scores {
 		this.completedOn = completedOn;
 	}
 
-	public Scores() { }
-
 	public Scores(int id) {
-		this.scoreId = id;
+		this.id = id;
 	}
-
 
 	public int getScoreId() {
 		return scoreId;

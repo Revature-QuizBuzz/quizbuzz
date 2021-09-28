@@ -59,4 +59,12 @@ public class QuizController {
 		logger.info("GET to /getTen");
 		return new ResponseEntity<>(manager.getFeaturedQuizzes(), HttpStatus.OK);
 	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping(path="/search/{quizName}", produces="application/json")
+	public List<Quiz> findBySearchValue(@PathVariable String quizName) {
+		return manager.findByQuizName(quizName);
+	}
+	
+	
 }

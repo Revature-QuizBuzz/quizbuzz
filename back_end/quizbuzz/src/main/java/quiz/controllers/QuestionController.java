@@ -31,9 +31,23 @@ public class QuestionController {
 		return null;
 		
 	}
+
+	@GetMapping(path = "/{id}", produces = "application/json")
+	public List<Question> getProduct(@PathVariable int id) {
+		return manager.findAll(id);
+	}
+
+	@Autowired
+	private QuestionManager qm;
+	
+	private static final Logger log = LogManager.getLogger(TagsController.class);
 	
 	
-	
-	
+	@GetMapping(path ="/question",produces = "application/json")
+	public List<Question> getAllAnswers() {
+		log.info("Listing Answers");
+		return this.qm.getAllQuestions();
+	} //Getting Questions to compare UserAnswers
+
 
 }

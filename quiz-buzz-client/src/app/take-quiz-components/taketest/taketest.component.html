@@ -1,0 +1,30 @@
+<title>Quiz Buzz Test</title><br>
+<button class=""  (click)="home()">Home</button>
+<button class=""  (click)="signout()">SignOut</button>
+    
+<br>
+
+
+    
+    <!--where the questions and answers are -->
+    <div class="test-group" > {{currentQuestion?.id}}:{{currentQuestion?.question}} </div>
+    
+    <form #testForm="ngForm" >
+      
+      <div *ngFor="let a of currentQuestion?.answers"  >
+        <input [name]="currentQuestion?.id"  value={{a.answer}}  type="radio"  
+
+        class="test-group"  
+           (change)="getAnswers($event)"  [checked]="a.answer === currentQuestion.selectedAnswer" > {{a?.answer}}
+               
+           
+     </div>
+        <br>
+  
+        <button class="btn"  (click)="previous()" >Previous</button>
+        <button class="btn" (click)="submit(testForm)" [disabled]="isDisable" >Submit</button>
+        <button class="btn" (click)="next()" >Next</button>
+   
+    </form>
+
+
