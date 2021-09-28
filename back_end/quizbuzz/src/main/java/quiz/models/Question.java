@@ -22,7 +22,7 @@ public class Question {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @SequenceGenerator(name="id_generator", sequenceName = "questions_question_id_seq", allocationSize = 1)
+//    @SequenceGenerator(name="id_generator", sequenceName = "questions_question_id_seq", allocationSize = 1)
     @Column(name="question_id")
 	private int questionId;
 	

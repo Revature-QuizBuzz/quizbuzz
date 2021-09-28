@@ -60,8 +60,9 @@ export class AttachTagsComponent implements OnInit {
     this.addTagForm = !this.addTagForm;
   }
 
-  updateTags() {
-    this.getTags();
+  updateTags($event: Tag) {
+    this.dropdownList.push($event);
+    this.ngOnInit();
     this.addTagToggle();
   }
 
