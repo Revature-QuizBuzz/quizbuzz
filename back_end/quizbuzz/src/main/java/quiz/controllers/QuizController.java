@@ -61,6 +61,8 @@ public class QuizController {
 		// {quizId}", quizId));
 		manager.deleteQuiz(quizId);
 		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
 	@GetMapping(path="/user/{userId}", produces="application/json")
 	public List<Quiz> findQuizzesCreatedByUser(@PathVariable int userId){
 		logger.info("Find quiz(zes) created by user ");
