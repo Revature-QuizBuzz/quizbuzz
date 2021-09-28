@@ -44,8 +44,6 @@ for(let i in this.questions){
   this.answers.push(this.questions[i].selectedAnswer);
   this.question.push(this.questions[i].question);
   this.correctAnswser.push(this.questions[i].answers[0].answer)
-  console.log(this.questions[i].answers[0].correct);
-  console.log(this.questions[i].answers[0].answer);
   if(this.questions[i].selectedAnswer === this.questions[i].answers[0].answer ){
     this.score +=1;
     localStorage.setItem('score', this.score.toString())
