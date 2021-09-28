@@ -74,9 +74,9 @@ public class Question {
 	}
 
 
-//	public List<Answers> getAnswers() {
-//		return answers;
-//	}
+	public List<Answers> getAnswers() {
+		return answers;
+	}
 
 	public void setAnswers(List<Answers> answers) {
 		this.answers = answers;
@@ -106,4 +106,9 @@ public class Question {
 		this.type = type;
 	}
 
+	@Override
+	public String toString() {
+		return "Question [questionId=" + questionId + ", quiz=" + quiz + ", answers=" + answers + ", question="
+				+ question + ", possiblePoints=" + possiblePoints + ", type=" + type + "]";
+	}
 }
