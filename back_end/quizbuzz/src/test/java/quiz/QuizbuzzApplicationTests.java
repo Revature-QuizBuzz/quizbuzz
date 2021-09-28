@@ -32,17 +32,17 @@ class QuizbuzzApplicationTests {
 
 	@Autowired
 	AnswersManager answersManager;
-
+/*
 	@Test
 	void contextLoads() {
 	}
-
+*/
 //	@Test
 //	void createTags(Tags tag) {
 //		ResponseEntity<Tags> newTag = manager.createTags(tag);
 //		assertNotEquals(newTag, null);
 //	}
-
+/*
 	@Test
 	void createQuiz() {
 		String name = "Coffee Quiz";
@@ -63,7 +63,7 @@ class QuizbuzzApplicationTests {
 		assertNotEquals(found, null);
 		assertEquals(found.getName(),name);
 	}
-
+/*
 	@Test
 	void createQuestion() {
 		if(quizManager.findByName("Coffee Quiz") == null)
@@ -83,7 +83,8 @@ class QuizbuzzApplicationTests {
 
 		assertNotEquals(found, null);
 	}
-
+*/
+	/*
 	@Test
 	void createAnswer() {
 		if(questionManager.findByQuestion("What does coffee equal?") == null)
@@ -101,7 +102,8 @@ class QuizbuzzApplicationTests {
 
 		assertNotEquals(found, null);
 	}
-
+*/
+	/*
 	@Test
 	void createTags() {
 		if(quizManager.findByName("Coffee Quiz") == null)
@@ -121,7 +123,7 @@ class QuizbuzzApplicationTests {
 		assertNotEquals(found, null);
 	}
 
-
+/*
 	@Test
 	void login() {
 		User user = new User();
@@ -130,6 +132,6 @@ class QuizbuzzApplicationTests {
 		User found = userManager.findLogin(user);
 		assertNotEquals(found, null);
 	}
-
+*/
 }
 
