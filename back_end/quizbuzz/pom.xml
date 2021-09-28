@@ -73,7 +73,7 @@
 	</dependencies>
 
 	<build>
-		<finalname>AutoDeployTomcat</finalname>
+	
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
