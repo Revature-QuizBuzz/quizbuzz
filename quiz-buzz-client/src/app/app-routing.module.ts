@@ -13,6 +13,7 @@ import { QuizSubmissionComponent } from './take-quiz-components/quiz-submission/
 import { CreateQuizesComponent } from './create-quizes/create-quizes.component';
 import { QuizSelectionComponent } from './take-quiz-components/quiz-selection/quiz-selection.component';
 import { TaketestComponent } from './take-quiz-components/taketest/taketest.component';
+import { AttachTagsComponent } from './attach-tags/attach-tags.component';
 
 
 export const routes: Routes = [
@@ -22,12 +23,13 @@ export const routes: Routes = [
   {path: 'scoreboard', component:ScoreBoardComponent, canActivate:[AuthGuard]},
   {path: 'totalpoints', component:TotalUserPointsComponent, canActivate:[AuthGuard]},
   {path: 'quiz/new', component:CreateQuizesComponent, canActivate:[AuthGuard], children:[
-    {path: 'tags/new', component: NewTagsComponent, canActivate:[AuthGuard]},
-    {path: 'tags', component: TagsShowPageComponent, canActivate:[AuthGuard]},
+    {path: 'tags/edit', component:AttachTagsComponent, canActivate:[AuthGuard], children:[
+      {path: 'tags/new', component: NewTagsComponent, canActivate:[AuthGuard]}
+    ]},
     {path: 'newquestionanswer', component: QuestionAnswerComponent, outlet: 'answer', canActivate:[AuthGuard]},
     {path: 'newquestion', component: QuestionComponent, outlet: "question", canActivate:[AuthGuard]},
   ]},
-  
+  {path: 'tags', component: TagsShowPageComponent, canActivate:[AuthGuard]},
   {path: 'testresults', component: QuizSubmissionComponent},
   {path: 'quiz/selection', component: QuizSelectionComponent},
   {path: 'take/quiz', component: TaketestComponent},
