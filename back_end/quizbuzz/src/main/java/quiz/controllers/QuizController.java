@@ -33,7 +33,7 @@ public class QuizController {
 	public Quiz create(@RequestBody Quiz quiz) {
 		logger.info("created new quiz");
 		quiz = manager.create(quiz);
-		for (Question questions : quiz.getQuestions()) {
+		for(Question questions : quiz.getQuestions()) {
 			questions.setQuiz(quiz);
 		}
 		qmanager.createAll(quiz.getQuestions());
