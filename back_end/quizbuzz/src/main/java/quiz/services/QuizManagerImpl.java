@@ -41,8 +41,7 @@ public class QuizManagerImpl implements QuizManager {
     @Override
     public Quiz updateQuiz(int quizId, Quiz quiz) {
         Quiz updatedQuiz = daoQuiz.getById(quizId);
-        List<Integer> oldIds = Quiz.getListIds(updatedQuiz.getQuestions());
-        List<Integer> newIds = Quiz.getListIds(quiz.getQuestions());
+
         
         for(Question inputQuestion: quiz.getQuestions()) {
         	inputQuestion.setQuiz(quiz);
@@ -50,15 +49,6 @@ public class QuizManagerImpl implements QuizManager {
         		inputAnswer.setQuestion(inputQuestion);
         	}
         }
-        
-        List<Integer> deletions = new ArrayList<Integer>();
-        for(Integer id: oldIds) {
-        	// if a question id is not present in the updated quiz call delete
-        	if(!newIds.contains(id)) {
-        		deletions.add(id);
-        	}
-        }
-        qManager.deleteQuestionsById(deletions);
         
         // update questions
         updatedQuiz.setQuestions(quiz.getQuestions());
