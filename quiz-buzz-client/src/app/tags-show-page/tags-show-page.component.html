@@ -1,0 +1,14 @@
+
+<app-new-tags></app-new-tags>
+
+
+<div class="row justify-content-center marginSpacer centerText">
+    <div class="col-lg-5 tagsAllCont">
+        <h3>All Tags</h3>
+        <ul class="tagsListAll">
+            <!-- create ng foreach of each LI to loop thru all tags, enter variable into the deleteTag method -->
+            <li *ngFor="let tag of tags;" class="listItem">{{tag.name}}<span (click)="deleteTag(tag)"><i class="fa fa-trash trash float-right"></i></span></li>
+            
+        </ul>
+    </div>
+</div>

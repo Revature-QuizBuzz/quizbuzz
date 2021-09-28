@@ -1,5 +1,7 @@
 <section>
-    <h2>Browse Quizzes by Category</h2>
+  <h2>Welcome to QuizBuzz!</h2>
+<!--     
+  <h2>Browse Quizzes by Category</h2>
     <div class="tags">
       <button>JUnit</button>
       <button>Java</button>
@@ -127,5 +129,34 @@
           </div>
         </div>
       </div>
+    </div> -->
+
+    <div class="row">
+      <h5 class="col-auto">{{getName()}}</h5>
+      <h5 class="col">Total Score: {{getTotalScore()}}</h5>
     </div>
+
+    <div class="row featured-section">
+      <h2>Featured Quizzes: </h2>
+      <ng-container *ngFor="let quiz of quizzes">
+        <div class="row card text-dark bg-light mb-3 featured-row">
+          <div class="col-10">
+            <b>Quiz Name: </b>{{quiz.name}}<br>
+            <b>Quiz Description: </b>{{quiz.description}}<br>   
+            <div class="row" *ngIf="quiz.tags !== undefined && quiz.tags.length !== 0">
+              <b class="col-auto">Tags:</b>
+              <ng-container *ngFor="let tags of quiz.tags">
+                <div class="col-auto">
+                  {{tags.name}}
+                </div>
+              </ng-container> 
+            </div>
+          </div>
+          <div class="col-2">
+            <button class="btn btn-primary" (click)="takeQuiz(quiz.quizId)" style="position:absolute; top:50%; transform: translateY(-50%);">Take Quiz</button> 
+          </div> 
+        </div>
+      </ng-container>
+    </div>
+
   </section>

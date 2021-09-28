@@ -9,6 +9,10 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
   logo = 'assets/rev-logo_281_29.png';
   avatar = "assets/interns.png";
+  navClass = "navbar navbar-expand-lg navbar-dark bg-dark";
+  logoClass="d-inline-block align-text-top"
+  dropdownLinkClass="d-block link-dark text-decoration-none dropdown-toggle text-light"
+
   constructor(private router:Router) { }
 
   ngOnInit(): void {

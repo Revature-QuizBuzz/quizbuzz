@@ -10,23 +10,24 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+
 @Entity
-@Table(name="answers")
+@Table(name = "answers")
 public class Answers {
-	
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator")
-    @SequenceGenerator(name="id_generator", sequenceName = "answers_answer_id_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @SequenceGenerator(name="id_generator", sequenceName = "answers_answer_id_seq", allocationSize = 1)
     @Column(name="answer_id")
-	private int id;
+	private int answerId;
 	
 	@ManyToOne
-	@JoinColumn(name="question_id", nullable=false)
+	@JoinColumn(name = "question_id", nullable = false)
 	private Question question;
-	
+
 	@Column
 	private String answer;
-	
+
 	@Column
 	private boolean correct;
 
@@ -34,27 +35,35 @@ public class Answers {
 	}
 
 	public Answers(int id) {
-		this.id = id;
+		this.answerId = id;
 	}
 
 	public Answers(int id, Question question, String answer, boolean correct) {
-		this.id = id;
+		this.answerId = id;
 		this.question = question;
 		this.answer = answer;
 		this.correct = correct;
 	}
 
-	public int getId() {
-		return id;
+	public int getAnswerId() {
+		return answerId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setAnswerId(int id) {
+		this.answerId = id;
 	}
 
 	public void setQuestion(Question question) {
 		this.question = question;
 	}
+	
+	// public Question getQuestion() {
+	// 	return this.question;
+	// }
+
+//	public int getQuestionId() {
+//		return question.getId();
+//	}
 
 	public String getAnswer() {
 		return answer;

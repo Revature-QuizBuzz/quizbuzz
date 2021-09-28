@@ -17,10 +17,10 @@ import javax.persistence.Table;
 public class Scores {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator")
-    @SequenceGenerator(name="id_generator", sequenceName = "user_scores_score_id_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @SequenceGenerator(name="id_generator", sequenceName = "user_scores_score_id_seq", allocationSize = 1)
     @Column(name="score_id")
-	private int id;
+	private int scoreId;
 	
 	@ManyToOne
 	@JoinColumn(name="user_id", nullable=false)
@@ -38,9 +38,9 @@ public class Scores {
 	
 	public Scores() { }
 
-
 	public Scores(int id, User user, Quiz quiz, int score, Date completedOn) {
-		this.id = id;
+		super();
+		this.scoreId = id;
 		this.user = user;
 		this.quiz = quiz;
 		this.score = score;
@@ -48,15 +48,15 @@ public class Scores {
 	}
 
 	public Scores(int id) {
-		this.id = id;
+		this.scoreId = id;
 	}
 
-	public int getId() {
-		return id;
+	public int getScoreId() {
+		return scoreId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setScoreId(int id) {
+		this.scoreId = id;
 	}
 
 	public void setUser(User user) {
@@ -82,4 +82,5 @@ public class Scores {
 	public void setCompletedOn(Date completedOn) {
 		this.completedOn = completedOn;
 	}
+
 }
