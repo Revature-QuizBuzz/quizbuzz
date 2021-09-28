@@ -130,5 +130,6 @@ class QuizbuzzApplicationTests {
 		User found = userManager.findLogin(user);
 		assertNotEquals(found, null);
 	}
-*/
+
 }
+*/
