@@ -22,4 +22,8 @@ public interface QuizDAO extends JpaRepository<Quiz, Integer> {
 
     @Query("SELECT DISTINCT q FROM Quiz q WHERE q.name = ?1")
     Quiz findByName(String name);
+    
+    @Query(value="select * from quizbuzz.quizzes limit 5", nativeQuery=true)
+    public List<Quiz> getFeaturedQuizzes();
+    
 }

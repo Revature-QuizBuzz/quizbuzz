@@ -1,5 +1,9 @@
 package quiz;
 
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
+import java.sql.SQLException;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,6 +17,10 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import quiz.models.Tags;
+import quiz.models.User;
+import quiz.services.TagsManager;
+import quiz.services.UserManager;
 
 @SpringBootTest
 class QuizbuzzApplicationTests {
@@ -61,7 +69,7 @@ class QuizbuzzApplicationTests {
 
 		assertNotEquals(found, null);
 		assertEquals(found.getName(),name);
-	}
+	
 
 	@Test
 	void createQuestion() {

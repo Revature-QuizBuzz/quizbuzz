@@ -9,3 +9,17 @@
 i {
     text-align: right;
 }
+
+.featured-section {
+    margin-top: 5%;
+}
+
+.featured-row {
+    display: table;
+}
+
+.featured-row [class*="col-"] {
+    float: none;
+    display: table-cell;
+    vertical-align: top;
+}

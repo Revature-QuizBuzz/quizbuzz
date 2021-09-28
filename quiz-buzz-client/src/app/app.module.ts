@@ -15,8 +15,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { routes } from './app-routing.module';
 import { CreateQuizesComponent } from './create-quizes/create-quizes.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AttachTagsComponent } from './attach-tags/attach-tags.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { TotalUserPointsComponent } from './total-user-points/total-user-points.component';
-
+import { ScoreBoardComponent } from './scoreboard/scoreboard.component';
+import { TagsShowPageComponent } from './tags-show-page/tags-show-page.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,9 @@ import { TotalUserPointsComponent } from './total-user-points/total-user-points.
     FooterComponent,
     NewTagsComponent,
     CreateQuizesComponent,
-
+    ScoreBoardComponent,
+    TagsShowPageComponent,
+    AttachTagsComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +46,8 @@ import { TotalUserPointsComponent } from './total-user-points/total-user-points.
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

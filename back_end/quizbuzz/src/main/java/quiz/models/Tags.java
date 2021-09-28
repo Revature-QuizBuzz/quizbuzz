@@ -19,7 +19,7 @@ public class Tags {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @SequenceGenerator(name="id_generator", sequenceName = "tags_tag_id_seq", allocationSize = 1)
     @Column(name="tag_id")
-	private int id;
+	private int tagId;
 	
 	@ManyToMany(mappedBy = "tags")
 	private List<Quiz> quizzes;
@@ -27,12 +27,12 @@ public class Tags {
 	@Column
 	private String name;
 
-	public int getId() {
-		return id;
+	public int getTagId() {
+		return tagId;
 	}
 	
-	public void setId(int id) {
-		this.id = id;
+	public void setTagId(int tagId) {
+		this.tagId = tagId;
 	}
 
 	public void setQuizzes(List<Quiz> quizzes) {

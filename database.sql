@@ -8,83 +8,7 @@ CREATE SCHEMA quizbuzz AUTHORIZATION postgres;
 
 -- DROP SCHEMA quizbuzz;
 
--- quizbuzz.answers_answer_id_seq definition
 
--- DROP SEQUENCE quizbuzz.answers_answer_id_seq;
-
-CREATE SEQUENCE quizbuzz.answers_answer_id_seq
-	INCREMENT BY 1
-	MINVALUE 1
-	MAXVALUE 2147483647
-	START 1
-	CACHE 1
-	NO CYCLE;
-
-
--- quizbuzz.questions_question_id_seq definition
-
--- DROP SEQUENCE quizbuzz.questions_question_id_seq;
-
-CREATE SEQUENCE quizbuzz.questions_question_id_seq
-	INCREMENT BY 1
-	MINVALUE 1
-	MAXVALUE 2147483647
-	START 1
-	CACHE 1
-	NO CYCLE;
-
-
--- quizbuzz.quizzes_quiz_id_seq definition
-
--- DROP SEQUENCE quizbuzz.quizzes_quiz_id_seq;
-
-CREATE SEQUENCE quizbuzz.quizzes_quiz_id_seq
-	INCREMENT BY 1
-	MINVALUE 1
-	MAXVALUE 2147483647
-	START 1
-	CACHE 1
-	NO CYCLE;
-
-
--- quizbuzz.tags_tag_id_seq definition
-
--- DROP SEQUENCE quizbuzz.tags_tag_id_seq;
-
-CREATE SEQUENCE quizbuzz.tags_tag_id_seq
-	INCREMENT BY 1
-	MINVALUE 1
-	MAXVALUE 2147483647
-	START 1
-	CACHE 1
-	NO CYCLE;
-
-
--- quizbuzz.user_scores_score_id_seq definition
-
--- DROP SEQUENCE quizbuzz.user_scores_score_id_seq;
-
-CREATE SEQUENCE quizbuzz.user_scores_score_id_seq
-	INCREMENT BY 1
-	MINVALUE 1
-	MAXVALUE 2147483647
-	START 1
-	CACHE 1
-	NO CYCLE;
-
-
--- quizbuzz.users_user_id_seq definition
-
--- DROP SEQUENCE quizbuzz.users_user_id_seq;
-
-CREATE SEQUENCE quizbuzz.users_user_id_seq
-	INCREMENT BY 1
-	MINVALUE 1
-	MAXVALUE 2147483647
-	START 1
-	CACHE 1
-	NO CYCLE;
-	
 	
 -- quizbuzz.answers definition
 
@@ -152,7 +76,7 @@ CREATE TABLE quizbuzz.quizzes (
 -- DROP TABLE quizbuzz.tags;
 
 CREATE TABLE quizbuzz.tags (
-	tag_id serial UNIQUE NOT NULL ,
+	tag_id serial NOT NULL,
 	"name" varchar(30) NOT NULL,
 	CONSTRAINT tags_pk PRIMARY KEY (tag_id)
 );
@@ -222,7 +146,83 @@ ALTER TABLE quizbuzz.quizzes ADD created_date timestamp NOT NULL;
 ALTER TABLE quizbuzz.quizzes ADD date_modified timestamp NULL;
 ALTER TABLE quizbuzz.questions ADD question_type varchar(30) NOT NULL;
 
+-- quizbuzz.answers_answer_id_seq definition
 
+-- DROP SEQUENCE quizbuzz.answers_answer_id_seq;
+
+ALTER SEQUENCE quizbuzz.answers_answer_id_seq
+	INCREMENT BY 1
+	MINVALUE 1
+	MAXVALUE 2147483647
+	START 1
+	CACHE 1
+	NO CYCLE;
+
+
+-- quizbuzz.questions_question_id_seq definition
+
+-- DROP SEQUENCE quizbuzz.questions_question_id_seq;
+
+ALTER SEQUENCE quizbuzz.questions_question_id_seq
+	INCREMENT BY 1
+	MINVALUE 1
+	MAXVALUE 2147483647
+	START 1
+	CACHE 1
+	NO CYCLE;
+
+
+-- quizbuzz.quizzes_quiz_id_seq definition
+
+-- DROP SEQUENCE quizbuzz.quizzes_quiz_id_seq;
+
+ALTER SEQUENCE quizbuzz.quizzes_quiz_id_seq
+	INCREMENT BY 1
+	MINVALUE 1
+	MAXVALUE 2147483647
+	START 1
+	CACHE 1
+	NO CYCLE;
+
+
+-- quizbuzz.tags_tag_id_seq definition
+
+-- DROP SEQUENCE quizbuzz.tags_tag_id_seq;
+
+ALTER SEQUENCE quizbuzz.tags_tag_id_seq
+	INCREMENT BY 1
+	MINVALUE 1
+	MAXVALUE 2147483647
+	START 1
+	CACHE 1
+	NO CYCLE;
+
+
+-- quizbuzz.user_scores_score_id_seq definition
+
+-- DROP SEQUENCE quizbuzz.user_scores_score_id_seq;
+
+ALTER SEQUENCE quizbuzz.user_scores_score_id_seq
+	INCREMENT BY 1
+	MINVALUE 1
+	MAXVALUE 2147483647
+	START 1
+	CACHE 1
+	NO CYCLE;
+
+
+-- quizbuzz.users_user_id_seq definition
+
+-- DROP SEQUENCE quizbuzz.users_user_id_seq;
+
+ALTER SEQUENCE quizbuzz.users_user_id_seq
+	INCREMENT BY 1
+	MINVALUE 1
+	MAXVALUE 2147483647
+	START 1
+	CACHE 1
+	NO CYCLE;
+	
 
 CREATE or replace function update_total_scores()
 returns trigger 

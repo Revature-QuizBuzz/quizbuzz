@@ -45,15 +45,15 @@
 		<dependency>
 	        <groupId>javax.servlet</groupId>
 	        <artifactId>servlet-api</artifactId>
-			<version>2.5</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version><!--$NO-MVN-MAN-VER$-->
-			<scope>test</scope>
-		</dependency>
+	        <version>2.5</version>
+	        <scope>provided</scope>
+    	</dependency>
+    	<dependency>
+	      <groupId>junit</groupId>
+	      <artifactId>junit</artifactId>
+	      <version>4.11</version><!--$NO-MVN-MAN-VER$-->
+	      <scope>test</scope>
+    	</dependency>
 
 		<!--		<dependency>-->
 		<!--			<groupId>org.assertj</groupId>-->
@@ -77,6 +77,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+		
 		</plugins>
 	</build>
 
