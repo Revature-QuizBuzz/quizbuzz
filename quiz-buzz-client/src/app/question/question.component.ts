@@ -15,7 +15,7 @@ export class QuestionComponent implements OnInit {
   selectedType = "";
   questions: Question[] = [];
   question: Question = {
-    id: 0,
+    questionId: 0,
     question: "",
     possiblePoints: 0,
     type: ""

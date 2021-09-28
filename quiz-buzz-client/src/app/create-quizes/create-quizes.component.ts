@@ -69,12 +69,15 @@ export class CreateQuizesComponent implements OnInit {
     })
   }
 
-  recieveQuestion($event: Question){
+  recieveQuestion($event: Question[]){
     console.log($event)
     this.addQuestion($event);
     console.log(this.quiz);
   }
 
+  public addQuestion(question : Question[]){
+    this.quiz.questions = question;
+  }
 
   create(quiz: any): Observable<any> {
     return this.http.post(baseUrl, quiz);
