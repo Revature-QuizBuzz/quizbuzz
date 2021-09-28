@@ -21,7 +21,7 @@ export class TaketestComponent implements OnInit {
   score:number=0;
   //quiz id will take you to any test you pick
   quizId:any = localStorage.getItem('quizId');
-
+   isDisable = true;
 
 // Questions ans Answers from Quizzes
 public url ='http://localhost:8080/questions/'+this.quizId;
@@ -34,7 +34,6 @@ public url ='http://localhost:8080/questions/'+this.quizId;
    
   this.fetchQuestions();
   this.currentQuestion = this.questions[this.counter];
-  console.log(this.quizId);
    console.log('http://localhost:8080/questions/'+this.quizId);
   }
 
@@ -45,8 +44,8 @@ for(let i in this.questions){
   this.answers.push(this.questions[i].selectedAnswer);
   this.question.push(this.questions[i].question);
   this.correctAnswser.push(this.questions[i].answers[0].answer)
- // console.log(this.questions[i].answers[0].correct);
-  //console.log(this.questions[i].answers[0].answer);
+  console.log(this.questions[i].answers[0].correct);
+  console.log(this.questions[i].answers[0].answer);
   if(this.questions[i].selectedAnswer === this.questions[i].answers[0].answer ){
     this.score +=1;
     localStorage.setItem('score', this.score.toString())
@@ -71,12 +70,12 @@ for(let i in this.questions){
   old_data.push(quiz_data);
   JSON.stringify(old_data);
   localStorage.setItem('answers', old_data);
-
+//adds new question to the array then stores it in local storage
   var old_question = JSON.parse(localStorage.getItem('question')||'{}');
   old_question.push(quiz_question);
   JSON.stringify(old_question);
   localStorage.setItem('question',old_question);
-
+//adds the correct answer to the array in local storage
   var old_correctAnswer = JSON.parse(localStorage.getItem('correctAnswer')||'{}');
   old_correctAnswer.push(quiz_correct);
   JSON.stringify(old_correctAnswer);
@@ -92,7 +91,10 @@ for(let i in this.questions){
     if(this.counter-1 >= 0){
       this.counter = this.counter - 1;
       this.currentQuestion = this.questions[this.counter];
-  
+      
+      if(this.counter != this.questions.length){
+        this.isDisable = true;
+      }
     }
   }
 //Goes to the next question 
@@ -101,7 +103,11 @@ for(let i in this.questions){
     if(this.counter + 1 < this.questions.length){
       this.counter = this.counter + 1;
       this.currentQuestion = this.questions[this.counter];
-     
+  
+     if((this.counter + 1) === this.questions.length){
+       this.isDisable=false;
+     }
+ 
     }
   }
 
@@ -129,6 +135,14 @@ for(let i in this.questions){
          q.selectedAnswer = e.target.value 
        }  
       });
+  }
+
+
+  isAnswered(){
+    this.questions.forEach((n:any) => {
+       
+    });
+
   }
 
 }
