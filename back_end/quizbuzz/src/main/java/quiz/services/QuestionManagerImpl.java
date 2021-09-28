@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.StreamSupport;
 import java.util.stream.Collectors;
 
+import org.apache.el.stream.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import quiz.dao.QuestionDAO;
@@ -44,7 +45,7 @@ public class QuestionManagerImpl implements QuestionManager{
 	
 	@Override
 	public List<Question> findAll(int id) {
-		return dao.findAll();
+		return dao.findAllByQuizId(id);
 	}
 
 	@Autowired

@@ -46,7 +46,7 @@
                     </ng-container>
                 </td>
                 <td class="quizData">
-                    {{getQuizLength()}}
+                    {{quiz.questions.length}}
                 </td>
                 <td class="quizData">
                     {{quiz.totalScore}}
@@ -54,7 +54,7 @@
             </tr>
         </table>
         </div>
-        <div class = "row quizSelector" *ngIf="searchValue != ''">
+        <div class = "row quizSelector" *ngIf="searchValue !='' ">
         <h1>Filtered Quizzes:</h1>
         <table class="quizTable">
             <tr class="quizTable">
@@ -73,7 +73,7 @@
                     </ng-container>
                 </td>
                 <td class="quizData">
-                    {{getQuizLength()}}
+                    {{quiz.questions.length}}
                 </td>
                 <td class="quizData">
                     {{quiz.totalScore}}

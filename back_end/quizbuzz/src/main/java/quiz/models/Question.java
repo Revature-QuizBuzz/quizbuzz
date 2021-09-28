@@ -74,9 +74,9 @@ public class Question {
 	}
 
 
-//	public List<Answers> getAnswers() {
-//		return answers;
-//	}
+	public List<Answers> getAnswers() {
+		return answers;
+	}
 
 	public void setAnswers(List<Answers> answers) {
 		this.answers = answers;

@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Quiz } from 'src/app/models/quizzes';
 
 @Component({
   selector: 'app-quiz-selection',
@@ -10,8 +9,8 @@ import { Quiz } from 'src/app/models/quizzes';
 })
 export class QuizSelectionComponent implements OnInit {
 
-  quizzes:Quiz[] = [];
-  filteredQuizzes:Quiz[] = [];
+  quizzes:any = [];
+  filteredQuizzes:any = [];
   selectedQuiz:any = '';
   searchValue:any = '';
 
@@ -35,11 +34,9 @@ export class QuizSelectionComponent implements OnInit {
       console.log(this.searchQuizzesUrl+this.searchValue)
       if(this.searchValue != '')
       {
-        this.http.get(this.searchQuizzesUrl+this.searchValue, httpOptions).subscribe({
-          next: (data:any) =>{
-            this.filteredQuizzes= data;
-            console.log(data)
-          }
+        this.http.get(this.searchQuizzesUrl+this.searchValue, httpOptions).subscribe(data=>{
+        this.filteredQuizzes= data;
+        console.log(data)
         })
       }
 
@@ -50,14 +47,11 @@ export class QuizSelectionComponent implements OnInit {
     this.selectedQuiz = quiz;
   }
 
-  getQuizLength() {
-    if( this.quizzes !== undefined && this.quizzes !== null)
-      return this.quizzes.length;
-    return 0;
-  }
 
   startQuiz(){
     localStorage.setItem("quizId", this.selectedQuiz.quizId)
+    
+    console.log(this.selectedQuiz.quizId)
     this.router.navigate(["take/quiz"])
   }
 
@@ -66,11 +60,10 @@ export class QuizSelectionComponent implements OnInit {
     headers: new HttpHeaders({
      'Content-Type':  'application/json'})}
 
-    this.http.get(this.getUrl, httpOptions).subscribe({
-      next: (data:any) =>{
+    this.http.get(this.getUrl, httpOptions).subscribe(data=>{
       this.quizzes= data;
       console.log(data)
-      }
+
     })
    }
 
@@ -78,3 +71,4 @@ export class QuizSelectionComponent implements OnInit {
 function quiz(quiz: any, arg1: (any: any) => void) {
   throw new Error('Function not implemented.');
 }
+
