@@ -33,7 +33,7 @@ export class CreateQuizesComponent implements OnInit {
   user: User = {
   }
   quiz: Quiz = {
-    id: 0,
+    quizId: 0,
     user: this.user,
     scores: [],
     questions: [],
@@ -110,7 +110,7 @@ export class CreateQuizesComponent implements OnInit {
     let user:User = {id: amount};
     // this.quiz.userId = amount;
     const data = {
-      quizId: this.quiz.id,
+      quizId: this.quiz.quizId,
       user: user,
       // user: this.quiz.userId,
       name: this.quiz.name,

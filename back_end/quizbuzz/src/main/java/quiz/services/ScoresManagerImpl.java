@@ -23,25 +23,25 @@ public class ScoresManagerImpl implements ScoresManager{
 	}
 
 
-	@Override
-	public Scores findScore(Scores score) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public List<Scores> getScores() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public Scores findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public Scores findScore(Scores score) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//
+//	@Override
+//	public List<Scores> getScores() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//
+//	@Override
+//	public Scores findById(int id) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 //	@Override
 //	public Answers findById(Answers ua) {

@@ -50,6 +50,8 @@ export class QuizSelectionComponent implements OnInit {
 
   startQuiz(){
     localStorage.setItem("quizId", this.selectedQuiz.id)
+    
+    console.log(this.selectedQuiz.id)
     this.router.navigate(["take/quiz"])
   }
 
