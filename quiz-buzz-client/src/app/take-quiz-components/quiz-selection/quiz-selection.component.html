@@ -1,6 +1,6 @@
 <div class="container">
 
-    <div class="row search">
+    <div class="row search justify-content-center">
         <input id="searchBar" type="text" placeholder="search for quizzes" name="searchBar">
        <button class="searchButton" (click)="search()">Search</button>
     </div>
@@ -9,27 +9,18 @@
         <table class="quizTable">
             <tr>
                 <td>
-                    <div class="quizType" (click)="goToJavaQuizzes()">
+                    <div class="quizType">
                         <img class="resize" src="assets/server-side-logo.png">
-                        <h3>Server-Side Quizzes</h3>
-                        <p>Weeks Covered</p>
-                        <p>Last Modified:</p>
                     </div>
                 </td>
                 <td>
-                    <div class="quizType" (click)="goToDatabaseQuizzes()">
+                    <div class="quizType">
                         <img class="resize" src="assets/db-logo.png">
-                        <h3>Database Quizzes</h3>
-                        <p>Weeks Covered</p>
-                        <p>Last Modified:</p>
                     </div>
                 </td>
                 <td>
-                    <div class="quizType" (click)="goToClientQuizzes()">
+                    <div class="quizType">
                         <img class="resize" src="assets/client-logo.png">
-                        <h3>Client-Side Quizzes</h3>
-                        <p>Weeks Covered</p>
-                        <p>Last Modified:</p>
                     </div>
                 </td>
             </tr>
@@ -45,17 +36,19 @@
                 <th class="tableHead">Question Amount</th>
                 <th class="tableHead">Score</th>
             </tr>
-            <tr class="quiz" *ngFor="let quiz of quizzes" (click)="selectQuiz()">
-                <td id="quizName">
+            <tr class="quiz" *ngFor="let quiz of quizzes" (click)="selectQuiz(quiz)">
+                <td class="quizData">
                     {{quiz.name}}
                 </td>
-                <td>
-                   {{quiz.tags}}
+                <td class="quizData">
+                    <ng-container *ngFor="let tag of quiz.tags">
+                        {{tag.name}}
+                    </ng-container>
                 </td>
-                <td>
+                <td class="quizData">
                     {{quiz.questions.length}}
                 </td>
-                <td>
+                <td class="quizData">
                     {{quiz.totalScore}}
                 </td>
             </tr>
@@ -70,24 +63,26 @@
                 <th class="tableHead">Question Amount</th>
                 <th class="tableHead">Score</th>
             </tr>
-            <tr class="quiz" *ngFor="let quiz of filteredQuizzes" (click)="selectQuiz()">
-                <td>
+            <tr class="quiz" *ngFor="let quiz of filteredQuizzes" (click)="selectQuiz(quiz)">
+                <td class="quizData">
                     {{quiz.name}}
                 </td>
-                <td>
-                    {{quiz.tags}}
+                <td class="quizData">
+                    <ng-container *ngFor="let tag of quiz.tags">
+                        {{tag.name}}
+                    </ng-container>
                 </td>
-                <td>
+                <td class="quizData">
                     {{quiz.questions.length}}
                 </td>
-                <td>
+                <td class="quizData">
                     {{quiz.totalScore}}
                 </td>
             </tr>
         </table>
     </div>
     <div class="row">
-        <h1 style="text-align: center;">Quiz Selected: {{selectedQuiz}}</h1>
+        <h1 style="text-align: center;">Quiz Selected: {{selectedQuiz.name}}</h1>
         <button class="startQuiz" (click)="startQuiz()">Start Quiz</button>
     </div>
 

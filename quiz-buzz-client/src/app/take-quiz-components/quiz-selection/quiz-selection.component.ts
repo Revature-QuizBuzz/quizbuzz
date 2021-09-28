@@ -42,32 +42,13 @@ export class QuizSelectionComponent implements OnInit {
 
   }
 
-  selectQuiz(){
-    var quiz = document.getElementById("quizName")?.innerHTML.trim()
-    console.log(":"+quiz+":")
+  selectQuiz(quiz:any){
+    //var quiz = document.getElementById("quizName")?.innerHTML.trim()
     this.selectedQuiz = quiz;
   }
 
-  goToJavaQuizzes(){
-    console.log("java")
-  }
-
-  goToDatabaseQuizzes(){
-    console.log("db")
-  }
-
-  goToClientQuizzes(){
-    console.log("client")
-  }
 
   startQuiz(){
-     for(let i = 0; i < this.quizzes.length; i++){
-      var quiz:string = this.quizzes[i].name
-      if(this.selectedQuiz === quiz){
-        this.selectedQuiz = this.quizzes[i]
-        console.log(this.selectedQuiz)
-      }
-    }
     localStorage.setItem("quizId", this.selectedQuiz.id)
     this.router.navigate(["take/quiz"])
   }

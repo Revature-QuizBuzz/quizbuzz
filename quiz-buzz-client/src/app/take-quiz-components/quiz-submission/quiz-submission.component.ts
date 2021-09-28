@@ -32,7 +32,7 @@ export class QuizSubmissionComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.fetchQuestions();
+    //this.fetchQuestions();
     this.userAnswers = new Array<string>();
     this.userQuestion = this.questions;
     const quizForm = document.querySelector('testForm');
