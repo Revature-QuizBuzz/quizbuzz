@@ -3,6 +3,8 @@ package quiz.controllers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import quiz.models.Question;
@@ -38,8 +40,10 @@ public class QuizController {
 		return quiz;
 	}
 
-	@GetMapping(produces = "application/json")
+	@CrossOrigin(origins="http://localhost:4200")
+	@GetMapping(path="", produces = "application/json")
 	public List<Quiz> getAll() {
+		logger.info("GET to /quizzes");
 		return manager.findAll();
 	}
 
@@ -47,5 +51,11 @@ public class QuizController {
 	public List<Quiz> findQuizzesCreatedByUser(@PathVariable int userId){
 		logger.info("Find quiz(zes) created by user ");
 		return manager.findByUser(userId);
+	
+	@CrossOrigin(origins="http://localhost:4200")
+	@GetMapping(path="/getTen", produces="application/json")
+	public ResponseEntity<List<Quiz>> getTenQuizzes() {
+		logger.info("GET to /getTen");
+		return new ResponseEntity<>(manager.getFeaturedQuizzes(), HttpStatus.OK);
 	}
 }

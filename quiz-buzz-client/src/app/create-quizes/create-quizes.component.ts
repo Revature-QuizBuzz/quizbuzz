@@ -32,7 +32,7 @@ export class CreateQuizesComponent implements OnInit {
 
   user: User = {}
   quiz: Quiz = {
-    id: 0,
+    quizId: 0,
     user: this.user,
     scores: [],
     questions: [],
@@ -41,6 +41,7 @@ export class CreateQuizesComponent implements OnInit {
     description: '',
     totalScore: 0,
   };
+
   submitted = false;
   saved = false;
   moreQuestions = false;
@@ -85,7 +86,7 @@ export class CreateQuizesComponent implements OnInit {
     if (this.storageValue !== null) {
       amount = parseInt(this.storageValue, 10);
     }
-    let user:User = {id:amount};
+    let user:User = {userId:amount};
     this.user = user;
     // this.quiz.userId = amount;
     this.quiz = value;
@@ -107,12 +108,12 @@ export class CreateQuizesComponent implements OnInit {
     if (this.storageValue !== null) {
       amount = parseInt(this.storageValue, 10);
     }
-    let user:User = {id: amount};
+    let user:User = {userId: amount};
     // this.quiz.userId = amount;
     const data = {
-      quizId: this.quiz.id,
+      quizId: this.quiz.quizId,
       user: user,
-      // user: this.quiz.userId,
+      tags: this.quiz.tags,
       name: this.quiz.name,
       description: this.quiz.description,
       totalScore: this.quiz.totalScore,
@@ -133,17 +134,11 @@ export class CreateQuizesComponent implements OnInit {
         });
   }
 
-  // Used for bubbling data and adding Tags to the quiz 
-  public addTag(tag : Tag[]){
-    tag.forEach(element => {
-      this.quiz.tags?.push(element);
-    });
+  selectedTags($event:any) {
+    this.quiz.tags = $event; 
+    console.log($event);
   }
 
-  // Used for bubbling data and adding questions to the quiz
-  public addQuestion(question : Question){
-    this.quiz.questions?.push(question);
-  }
 
   public deleteQuestion(index : number){
     if(this.quiz.questions![index] !== null || undefined)

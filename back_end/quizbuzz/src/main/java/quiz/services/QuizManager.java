@@ -14,4 +14,5 @@ public interface QuizManager {
     List<Quiz> findByUser(int userId);
 
     Quiz findByName(String name);
+    List<Quiz> getFeaturedQuizzes();
 }

@@ -27,6 +27,11 @@ public class QuizManagerImpl implements QuizManager {
     public List<Quiz> findAll() {
         return daoQuiz.findAll();
     }
+    
+    @Override
+    public List<Quiz> getFeaturedQuizzes() {
+    	return daoQuiz.getFeaturedQuizzes();
+    }
 
     @Override
     public List<Quiz> findByUser(int userId) {
