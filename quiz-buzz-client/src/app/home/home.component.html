@@ -1,5 +1,13 @@
 <section>
-  <h2>Welcome to QuizBuzz!</h2>
+  <div class="jumbotron"> 
+    <h4>Welcome to QuizBuzz, the premier online quiz taking platform
+      designed to make learning code fun.</h4>
+      Level up your skills.
+      Compete with other trainees. Aim for the top.
+  </div>
+  
+</section>
+<section>
 <!--     
   <h2>Browse Quizzes by Category</h2>
     <div class="tags">
@@ -142,7 +150,7 @@
         <div class="row card text-dark bg-light mb-3 featured-row">
           <div class="col-10">
             <b>Quiz Name: </b>{{quiz.name}}<br>
-            <b>Quiz Description: </b>{{quiz.description}}<br>   
+            <b>Description: </b>{{quiz.description}}<br>   
             <div class="row" *ngIf="quiz.tags !== undefined && quiz.tags.length !== 0">
               <b class="col-auto">Tags:</b>
               <ng-container *ngFor="let tags of quiz.tags">
