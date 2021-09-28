@@ -34,7 +34,7 @@ public class QuizController {
         return new ResponseEntity<>(tempQuiz, HttpStatus.OK);
     }
 
-    @PutMapping(path = "/{quizId}", consumes = "application/json", produces = "application/json")
+    @PutMapping(path = "/edit/{quizId}", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Quiz> updateQuiz(@PathVariable int quizId, @RequestBody Quiz quiz) {
     	
     	logger.info("Calling update quiz from controller with id: " + quizId + " and quiz: " + ", name: " +
