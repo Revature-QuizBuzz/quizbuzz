@@ -35,7 +35,7 @@ public class AnswerController {
 	@PostMapping(path = "/answerstoquestion", consumes = "application/json", produces = "application/json")
 	public List<Answers> createAnswers(@RequestBody List<Answers> answers){
 		System.out.println(answers.get(0).getAnswer());
-		System.out.println(answers.get(0).getId());
+		System.out.println(answers.get(0).getAnswerId());
 		System.out.println(answers.get(0).isCorrect());
 //		System.out.println(answers.get(0).getQuestion());
 //		answer.createAnswers(answers);

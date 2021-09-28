@@ -51,6 +51,7 @@ public class QuizController {
 	public List<Quiz> findQuizzesCreatedByUser(@PathVariable int userId){
 		logger.info("Find quiz(zes) created by user ");
 		return manager.findByUser(userId);
+	}
 	
 	@CrossOrigin(origins="http://localhost:4200")
 	@GetMapping(path="/getTen", produces="application/json")

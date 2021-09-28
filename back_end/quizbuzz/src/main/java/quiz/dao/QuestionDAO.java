@@ -14,8 +14,6 @@ public interface QuestionDAO extends JpaRepository<Question, Integer>{
 	
 	public List<Question> findAll();
 
-    List<Question> findAllByQuizId(int id);
-
     @Query("SELECT q FROM Question q where q.question = ?1")
     Question findByQuestion(String question);
 //    List<Question> findAllByQuizId(int id);

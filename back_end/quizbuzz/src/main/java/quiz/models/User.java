@@ -43,12 +43,12 @@ public class User {
 	@Column(name="total_points")
 	private int totalPoints;
 	
-//	@Column(name="total_possible_points")
-//	private int totalPossible;
+	@Column(name="total_possible_points")
+	private int totalPossible;
 	
-//	@Column(name="point_percentage")
-//	private double pointPercentage;
-//	
+	@Column(name="point_percentage")
+	private double pointPercentage;
+	
 	
 	
 
@@ -143,12 +143,12 @@ public class User {
 		this.totalPoints = totalPoints;
 	}
 
-//	public int getTotalPossible() {
-//		return totalPossible;
-//	}
-//	public void setTotalPossible(int totalPossible) {
-//		this.totalPossible = totalPossible;
-//	}
+	public int getTotalPossible() {
+		return totalPossible;
+	}
+	public void setTotalPossible(int totalPossible) {
+		this.totalPossible = totalPossible;
+	}
 	
 	public double getPointPercentage() {
 		return pointPercentage;

@@ -12,8 +12,4 @@ import quiz.models.Scores;
 @Repository
 public interface ScoresDAO extends JpaRepository<Scores, Integer>{
 	List<Scores> findAll();
-	List<Scores> findAllByQuizId(int id);
-
-	
-
 }
