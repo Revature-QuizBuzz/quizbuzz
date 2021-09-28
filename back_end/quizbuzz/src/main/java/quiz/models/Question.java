@@ -29,7 +29,7 @@ public class Question {
 	@JoinColumn(name="quiz_id", nullable=false)
 	private Quiz quiz;
 	
-	@OneToMany(mappedBy="question", cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="question")
 	private List<Answers> answers;
 	
 	@Column
@@ -84,6 +84,16 @@ public class Question {
 	public void setQuiz(Quiz quiz) {
 		this.quiz = quiz;
 	}
+	
+	public void add(Answers answer) {
+		if(this.answers == null) {
+			this.answers = new ArrayList<>();
+		}
+		
+		this.answers.add(answer);
+		answer.setQuestion(this);
+	}
+	
 
 	public static List<Integer> findAnswerDeletions(List<Answers> oldList, List<Answers> newList) {
 		List<Integer> toDelete = new ArrayList<>();

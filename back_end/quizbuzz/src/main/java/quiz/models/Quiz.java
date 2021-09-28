@@ -26,7 +26,7 @@ public class Quiz {
 	@OneToMany(mappedBy="quiz", cascade=CascadeType.ALL)
 	private List<Question> questions;
 
-	@ManyToMany
+	@ManyToMany(cascade=CascadeType.PERSIST)
 	@JoinTable(name="quiz_tags", joinColumns = { @JoinColumn(name="quiz_id") }, inverseJoinColumns = { @JoinColumn(name="tag_id") })
 	private List<Tags> tags;
 
@@ -122,6 +122,15 @@ public class Quiz {
 	public void setDateModified(Date dateModified) {
 		this.dateModified = dateModified;
 	}
+	
+	public void add(Question tempQuestion) {
+		if(this.questions == null) {
+			this.questions = new ArrayList<>();
+		
+		}
+		this.questions.add(tempQuestion);
+		tempQuestion.setQuiz(this);
+	}
 
 
 	public int calculateTotalScore (List<Question> questions) {
@@ -165,6 +174,14 @@ public class Quiz {
 			}
 		}
 		return toCreate;
+	}
+	
+	public static List<Integer> getListIds(List<Question> questions) {
+		List<Integer> ids = new ArrayList<>();
+		for(Question question: questions) {
+			ids.add(question.getId());
+		}
+		return ids;
 	}
 	
 }

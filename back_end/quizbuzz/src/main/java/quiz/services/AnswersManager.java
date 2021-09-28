@@ -9,5 +9,7 @@ public interface AnswersManager {
     Answers updateAnswer(int answerId, Answers answer);
 
     void deleteAnswersById(List<Integer> answerIds);
+    
+    void createAll(List<Answers> answers);
 
 }
