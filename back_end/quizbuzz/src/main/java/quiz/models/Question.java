@@ -21,9 +21,9 @@ import org.springframework.data.annotation.Transient;
 public class Question {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator")
-	@SequenceGenerator(name = "id_generator", sequenceName = "questions_question_id_seq", allocationSize = 1)
-	@Column(name = "question_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name="id_generator", sequenceName = "questions_question_id_seq", allocationSize = 1)
+    @Column(name="question_id")
 	private int id;
 	@ManyToOne
 	@JoinColumn(name = "quiz_id")

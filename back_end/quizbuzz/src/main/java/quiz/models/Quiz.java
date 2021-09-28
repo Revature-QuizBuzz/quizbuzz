@@ -11,9 +11,9 @@ import javax.persistence.*;
 public class Quiz {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator")
-	@SequenceGenerator(name = "id_generator", sequenceName = "quizzes_quiz_id_seq", allocationSize = 1)
-	@Column(name = "quiz_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name="id_generator", sequenceName = "quizzes_quiz_id_seq", allocationSize = 1)
+    @Column(name="quiz_id")
 	private int id;
 
 	@ManyToOne
