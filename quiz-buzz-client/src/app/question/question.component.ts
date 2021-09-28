@@ -25,6 +25,7 @@ export class QuestionComponent implements OnInit {
   }];
 
   @Output() questionEvent = new EventEmitter<Question[]>();
+  @Output() saveEvent = new EventEmitter<boolean>();
 
   @Input() answerEvent?: Answer[];
 
@@ -90,6 +91,7 @@ export class QuestionComponent implements OnInit {
     this.questions[this.questions.length - 1] = question;
     console.log(question);
     this.questionEvent.emit(this.questions);
+    this.saveEvent.emit(true);
 
   }
 
