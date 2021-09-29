@@ -19,5 +19,5 @@ public interface QuizManager {
 
     Quiz findByName(String name);
     List<Quiz> getFeaturedQuizzes();
-    List<Quiz> findByQuizName(String quizName);
+    List<Quiz> findBySearchValue(String searchValue);
 }
