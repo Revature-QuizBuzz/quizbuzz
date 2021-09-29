@@ -2,7 +2,7 @@
 
     <div class="row search justify-content-center">
         <input id="searchBar" type="text" placeholder="search for quizzes" name="searchBar">
-       <button class="searchButton" (click)="search()">Search</button>
+       <button class="searchButton btn" (click)="search()">Search</button>
     </div>
 
     <div class="row quizSelector">
@@ -11,16 +11,19 @@
                 <td>
                     <div class="quizType">
                         <img class="resize" src="assets/server-side-logo.png">
+                        <h3>Back-End Quizzes</h3>
                     </div>
                 </td>
                 <td>
                     <div class="quizType">
                         <img class="resize" src="assets/db-logo.png">
+                        <h3>Database Quizzes</h3>
                     </div>
                 </td>
                 <td>
                     <div class="quizType">
                         <img class="resize" src="assets/client-logo.png">
+                        <h3>Front-End Quizzes</h3>
                     </div>
                 </td>
             </tr>
@@ -81,9 +84,9 @@
             </tr>
         </table>
     </div>
-    <div class="row">
+    <div class="row quizSelector">
         <h1 style="text-align: center;">Quiz Selected: {{selectedQuiz.name}}</h1>
-        <button class="startQuiz" (click)="startQuiz()">Start Quiz</button>
+        <button class="startQuiz btn" (click)="startQuiz()">Start Quiz</button>
     </div>
 
 </div>
