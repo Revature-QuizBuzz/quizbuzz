@@ -36,14 +36,8 @@ public class Scores {
 	@Column(name="completed_on")
 	private Date completedOn;
 	
-<<<<<<< HEAD
-=======
 	public Scores() { }
 
-<<<<<<< HEAD
->>>>>>> main
-=======
->>>>>>> TakeQuizzes
 	public Scores(int id, User user, Quiz quiz, int score, Date completedOn) {
 		super();
 		this.scoreId = id;
@@ -53,27 +47,12 @@ public class Scores {
 		this.completedOn = completedOn;
 	}
 
-<<<<<<< HEAD
-	public Scores() { }
-
-=======
->>>>>>> main
 	public Scores(int id) {
 		this.scoreId = id;
 	}
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-	public int getId() {
-		return id;
-=======
 	public int getScoreId() {
 		return scoreId;
->>>>>>> main
-=======
-	public int getScoreId() {
-		return scoreId;
->>>>>>> TakeQuizzes
 	}
 
 	public void setScoreId(int id) {

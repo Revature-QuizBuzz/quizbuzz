@@ -6,7 +6,7 @@ import { Quiz } from 'src/app/models/quizzes';
 import { UserScore } from 'src/app/models/scores';
 import { Router } from '@angular/router';
 import { AnswerService } from '../answer.service';
-import { NgForm, FormGroup, FormControl, FormArray } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -24,30 +24,31 @@ export class QuizSubmissionComponent implements OnInit {
   userAnswers:any = [];
   correctAnswers:any = [];
   correct:any=[];
+
+  key = 'correct';
+  userId: any = localStorage.getItem('');
   userScore: any;
   quiz: any = localStorage.getItem('quizId');
   quizQuestion: any = [];
   userPoints: any = localStorage.getItem('score');
-  totalPoints: any = 0;
+  totalPoints: any = localStorage.getItem('question')?.length;
   date: any;
    
+  constructor(private router:Router, private http: HttpClient, private answerService: AnswerService) {
 
-  constructor(private router:Router, private answerService: AnswerService) { }
+    let scoreUrl= "http://localhost:8080/testresults"
 
-  ngOnInit(): void {
-    this.getUserAnswer()
-    this.getUserQuestion()
-    this.getCorrectAnswers()
-    this.getScore()
-    this.date = this.userScore.completedOn?.getDate
-  
+    this.http.post(scoreUrl, {      
+      user: {userId: this.userId},
+      quiz: {quizId: this.quiz.id},
+      score: this.userScore,      
+    }).toPromise().then((data : any) => {
+      console.log(data)
+    })
   }
+
+  ngOnInit(): void { }
    
-  getUserScore() {
-   this.quiz = this.quiz;
-   this.answers = localStorage.getItem('answers');
-   
-  }
   
   getUserAnswer() {
     this.userAnswers = localStorage.getItem('answers');
@@ -65,7 +66,10 @@ export class QuizSubmissionComponent implements OnInit {
 
   getScore(){
     this.userPoints = localStorage.getItem('score');
-    this.userScore = this.userPoints + '/' + this.question.length ;
+  //   this.userScore = this.userPoints + '/' + this.question.length ;
+  // }
+    console.log(this.totalPoints);
+    this.userScore = Math.round(this.userPoints/this.totalPoints*100);
   }
   
   home(){
@@ -74,16 +78,4 @@ export class QuizSubmissionComponent implements OnInit {
 
   }
 
- 
-
-  // addScore(text: string): void {
-  //   let userAnswer = new this.answers(this.scoreId, text);
-  //   this.userAnswers.push(this.userAnswer);
-  // }
-
-  // addUserAnswer(userAnswer : Answer) {
-  //   this.userAnswer.push(this.userAnswers)
-  // }
-
-  // let userAnswers = this.getUserAnswers();
 

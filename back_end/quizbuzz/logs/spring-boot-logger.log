@@ -210,3 +210,5 @@
 2021-09-28 14:11:45,350 INFO quiz.controllers.TagsController [http-nio-8080-exec-7] GET to /tags
 2021-09-28 14:12:14,365 INFO quiz.controllers.QuizController [http-nio-8080-exec-8] created new quiz
 2021-09-28 14:13:20,779 INFO quiz.controllers.QuizController [http-nio-8080-exec-10] GET to /getTen
+2021-09-29 16:50:28,276 INFO quiz.controllers.QuizController [http-nio-8080-exec-2] GET to /quizzes
+2021-09-29 16:53:12,860 INFO quiz.controllers.QuizController [http-nio-8080-exec-1] GET to /quizzes

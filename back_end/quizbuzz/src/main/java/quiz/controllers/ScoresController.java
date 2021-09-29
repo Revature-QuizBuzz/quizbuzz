@@ -27,34 +27,17 @@ public class ScoresController {
 	private ScoresManager score;
 
 	private static final Logger log = LogManager.getLogger(TagsController.class);
-
 //	@CrossOrigin(origins = "http://localhost:4200")
-//	@PostMapping(consumes = "application/json", produces = "application/json")
-//	public ResponseEntity<Scores> addScore(@RequestBody Scores us) {
-//		Scores userScores = score.addScore(us);
-//		log.info("Submit User Answers");
-//		return new ResponseEntity<>(userScores, HttpStatus.CREATED);
-//	}//Posting the user score to the database. Need to get User Answers
-	
-//	@CrossOrigin(origins = "http://localhost:4200")
-//	@GetMapping
-//	public ResponseEntity<List<Answers>> getAllAnswers() {
-//		List<Answers> answers = answer.getAllAnswers();
-//		log.info("Listing Answers");
-//		return new ResponseEntity<List<Answers>>(answers, HttpStatus.OK);
-//	} //Getting Answers to compare with the front end
-	
-//	@CrossOrigin(origins = "http://localhost:4200")
-//	@PostMapping(consumes = "application/json", produces = "application/json")
+//	@PostMapping(path ="/submitQuiz", consumes = "application/json", produces = "application/json")
 //	public Scores createTest(@RequestBody Scores us) {
 //		Scores userScores = score.create(us);
 //		return userScores;
 //	}
-
-//	@GetMapping
-//	public ResponseEntity<List<Answers>> getAnswersById() {
-//		List<Answers> answers = score.findById(0);
-//		return new ResponseEntity<>(answers, HttpStatus.OK);
-//	}
-
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping(path = "/submitQuiz", produces = "application/json", consumes = "application/json")
+	public Scores create(@RequestBody Scores scores) {
+		log.info("Submitted user Quiz");
+		return score.create(scores);
+	}
 }

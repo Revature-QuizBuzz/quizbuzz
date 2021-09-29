@@ -20,23 +20,18 @@ export const routes: Routes = [
   {path: '', component:HomeComponent, canActivate:[AuthGuard]},
   {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
   {path: 'login', component: LoginComponent},
-<<<<<<< HEAD
-<<<<<<< HEAD
   {path: 'quiz/submit', component: QuizSubmissionComponent},
   {path:"tags/new", component: NewTagsComponent},
   {path: 'quiz/new', component:CreateQuizesComponent},
   {path: 'tags/new', component: NewTagsComponent},
   {path: 'quiz/new', component:CreateQuizesComponent},
   {path: 'newquestionanswer', component: QuestionAnswerComponent, outlet: "answer"},
-  {path: 'newquestion', component: QuestionComponent, outlet: "question"}
-=======
+  {path: 'newquestion', component: QuestionComponent, outlet: "question"},
   {path: 'scoreboard', component:ScoreBoardComponent, canActivate:[AuthGuard]},
   {path: 'totalpoints', component:TotalUserPointsComponent, canActivate:[AuthGuard]},
   {path: 'tags', component: TagsShowPageComponent, canActivate:[AuthGuard]},
-=======
   {path: 'scoreboard', component:ScoreBoardComponent, canActivate:[AuthGuard]},
   {path: 'totalpoints', component:TotalUserPointsComponent, canActivate:[AuthGuard]},
->>>>>>> TakeQuizzes
   {path: 'quiz/new', component:CreateQuizesComponent, canActivate:[AuthGuard], children:[
     {path: 'tags/edit', component:AttachTagsComponent, canActivate:[AuthGuard], children:[
       {path: 'tags/new', component: NewTagsComponent, canActivate:[AuthGuard]}
@@ -49,7 +44,6 @@ export const routes: Routes = [
   {path: 'quiz/selection', component: QuizSelectionComponent},
   {path: 'take/quiz', component: TaketestComponent},
   {path: 'quiz/submit', component: QuizSubmissionComponent}
->>>>>>> main
 ];
 
 @NgModule({

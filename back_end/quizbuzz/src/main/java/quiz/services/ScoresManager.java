@@ -2,7 +2,6 @@ package quiz.services;
 import quiz.models.Scores;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
-import quiz.models.Answers;
 
 import java.util.List;
 

@@ -106,12 +106,9 @@ public class Question {
 		this.type = type;
 	}
 
-<<<<<<< HEAD
 	@Override
 	public String toString() {
 		return "Question [questionId=" + questionId + ", quiz=" + quiz + ", answers=" + answers + ", question="
 				+ question + ", possiblePoints=" + possiblePoints + ", type=" + type + "]";
 	}
-=======
->>>>>>> TakeQuizzes
 }
