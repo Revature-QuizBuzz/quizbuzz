@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.*;
 import quiz.models.Quiz;
 import quiz.services.QuizManager;
 
+import quiz.models.Answers;
 import quiz.models.Question;
 import quiz.models.Quiz;
 import quiz.models.User;
+import quiz.services.AnswersManager;
 import quiz.services.QuestionManager;
 import quiz.services.QuizManager;
 
@@ -26,7 +28,9 @@ public class QuizController {
     @Autowired
     private QuizManager manager;
 	@Autowired
-	private QuestionManager qmanager;
+	private QuestionManager questionManager;
+	@Autowired
+	private AnswersManager answersManager;
 
 	private static final Logger logger = LogManager.getLogger(QuizController.class);
 
@@ -55,8 +59,13 @@ public class QuizController {
 		quiz = manager.create(quiz);
 		for(Question questions : quiz.getQuestions()) {
 			questions.setQuiz(quiz);
-		}
-		qmanager.createAll(quiz.getQuestions());
+			questionManager.create(questions);
+			for (Answers answers : questions.getAnswers()) {
+				answers.setQuestion(questions);
+				answersManager.create(answers);
+			}
+			
+		}		
 		return quiz;
 	}
 
@@ -71,10 +80,18 @@ public class QuizController {
     }
    
 	
-//	@CrossOrigin(origins="http://localhost:4200")
-//	@GetMapping(path="/getTen", produces="application/json")
-//	public ResponseEntity<List<Quiz>> getTenQuizzes() {
-//		logger.info("GET to /getTen");
-//		return new ResponseEntity<>(manager.getFeaturedQuizzes(), HttpStatus.OK);
-//	}
+	@CrossOrigin(origins="http://localhost:4200")
+	@GetMapping(path="/getTen", produces="application/json")
+	public ResponseEntity<List<Quiz>> getTenQuizzes() {
+		logger.info("GET to /getTen");
+		return new ResponseEntity<>(manager.getFeaturedQuizzes(), HttpStatus.OK);
+	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping(path="/search/{quizName}", produces="application/json")
+	public List<Quiz> findBySearchValue(@PathVariable String quizName) {
+		return manager.findByQuizName(quizName);
+	}
+	
+	
 }

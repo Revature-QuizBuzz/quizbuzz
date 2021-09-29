@@ -1,5 +1,9 @@
 package quiz.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import quiz.dao.QuizDAO;
 import quiz.models.Quiz;
 
 import java.util.List;
@@ -19,4 +23,6 @@ public interface QuizManager {
     Quiz getQuizById(int id);
 
     Quiz updateQuiz(int quizId, Quiz quiz);
+    List<Quiz> getFeaturedQuizzes();
+    List<Quiz> findByQuizName(String quizName);
 }

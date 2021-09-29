@@ -61,19 +61,18 @@ export class CreateQuizesComponent implements OnInit {
 
   ngOnInit(): void {
     this.createQuiz = this.fb.group({
-      quizName: ['', [ Validators.maxLength(15)]],
-      quizDescription: [''],
+      quizName: ['', [ Validators.maxLength(15), Validators.required]],
+      quizDescription: ['', [Validators.required]],
       temptags: [''],
       questionArray: this.fb.array([this.fb.group({
         // form controll for questions section
-        questions: ['', Validators.required]
+        questions: ['']
       })
       ])
     })
   }
 
   recieveQuestion($event: Question[]) {
-    console.log($event)
     this.addQuestion($event);
     console.log(this.quiz);
     this.numQuestions++;
@@ -99,8 +98,12 @@ export class CreateQuizesComponent implements OnInit {
     this.quiz.description = this.createQuiz.value.quizDescription;
     // this.quiz.tags = this.createQuiz.value.temptags;
     // this.quiz.questions = this.createQuiz.value.questionArray;
-    console.log(this.quiz)
+    // console.log(this.quiz)
     // if (confirm("You have succesfully added a new quiz"))
+    if (this.saved == false) {
+      alert("Please save your progress before submitting!");
+      return;
+    }
     this.create(this.quiz)
       .subscribe(
         response => {
@@ -148,39 +151,6 @@ export class CreateQuizesComponent implements OnInit {
 
       }
 
-
-  
-
-  // add(): void {
-  //   let amount: number = 0; // We define 0 as default amount
-  //   if (this.storageValue !== null) {
-  //     amount = parseInt(this.storageValue, 10);
-  //   }
-  //   let user: User = { id: amount };
-  //   // this.quiz.userId = amount;
-  //   const data = {
-  //     quizId: this.quiz.id,
-  //     user: user,
-  //     // user: this.quiz.userId,
-  //     name: this.quiz.name,
-  //     description: this.quiz.description,
-  //     totalScore: this.quiz.totalScore,
-  //     createdDate: this.quiz.createdDate,
-  //     dateModified: this.quiz.dateModified,
-  //     questions: this.quiz.questions
-  //   };
-  //   console.log(data)
-  //   //   if(confirm("You have succesfully added a quiz"))
-  //   this.create(data)
-  //     .subscribe(
-  //       response => {
-  //         console.log(response);
-  //         this.submitted = true;
-  //       },
-  //       error => {
-  //         console.log(error);
-  //       });
-  // }
 
   // Used for bubbling data and adding Tags to the quiz 
   public addTag(tag: Tag[]) {

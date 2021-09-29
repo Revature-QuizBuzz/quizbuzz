@@ -8,13 +8,19 @@ import { QuestionComponent } from './question/question.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule , ReactiveFormsModule } from '@angular/forms';
+ 
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { NewTagsComponent } from './new-tags/new-tags.component';
-import { Routes, RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+
 import { routes } from './app-routing.module';
+import { QuizSubmissionComponent } from './take-quiz-components/quiz-submission/quiz-submission.component';
+import { QuizSelectionComponent } from './take-quiz-components/quiz-selection/quiz-selection.component';
+import { TaketestComponent } from './take-quiz-components/taketest/taketest.component';
 import { CreateQuizesComponent } from './create-quizes/create-quizes.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AttachTagsComponent } from './attach-tags/attach-tags.component';
@@ -32,8 +38,11 @@ import { EditQuizComponent } from './edit-quiz/edit-quiz.component';
     QuestionAnswerComponent,
     QuestionComponent,
     TotalUserPointsComponent,
-    HomeComponent,
+    QuizSubmissionComponent,
     NavbarComponent,
+    TaketestComponent,
+    QuizSelectionComponent,
+    HomeComponent,
     FooterComponent,
     NewTagsComponent,
     CreateQuizesComponent,
@@ -49,13 +58,16 @@ import { EditQuizComponent } from './edit-quiz/edit-quiz.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     FormsModule,
-    RouterModule.forRoot(routes),
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
     NgbModule,
-    NgMultiSelectDropDownModule
+    NgMultiSelectDropDownModule,
+    NgMultiSelectDropDownModule.forRoot(),
+    RouterModule.forRoot(routes),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

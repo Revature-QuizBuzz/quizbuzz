@@ -16,6 +16,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import quiz.dao.*;
+import quiz.models.*;
+
+
+import java.util.List;
+
 @Service
 public class QuizManagerImpl implements QuizManager {
 
@@ -96,4 +104,10 @@ public class QuizManagerImpl implements QuizManager {
         
         return daoQuiz.save(updatedQuiz);
     }
+}
+	@Override
+	public List<Quiz> findByQuizName(String quizName) {
+		return daoQuiz.findByQuizName(quizName);
+	}
+
 }

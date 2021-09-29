@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { QuestionAnswerComponent } from './answer/question-answer.component';
@@ -8,11 +8,15 @@ import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './login/login.component';
 import { NewTagsComponent } from './new-tags/new-tags.component';
 import { TagsShowPageComponent } from './tags-show-page/tags-show-page.component';
-import { CreateQuizesComponent } from './create-quizes/create-quizes.component';
 import { ScoreBoardComponent } from './scoreboard/scoreboard.component';
 import { TotalUserPointsComponent } from './total-user-points/total-user-points.component';
 import { MyQuizzesComponent } from './my-quizzes/my-quizzes.component';
 import { EditQuizComponent } from './edit-quiz/edit-quiz.component';
+import { QuizSubmissionComponent } from './take-quiz-components/quiz-submission/quiz-submission.component';
+import { CreateQuizesComponent } from './create-quizes/create-quizes.component';
+import { QuizSelectionComponent } from './take-quiz-components/quiz-selection/quiz-selection.component';
+import { TaketestComponent } from './take-quiz-components/taketest/taketest.component';
+import { AttachTagsComponent } from './attach-tags/attach-tags.component';
 
 
 export const routes: Routes = [
@@ -22,9 +26,11 @@ export const routes: Routes = [
 
   {path: 'scoreboard', component:ScoreBoardComponent, canActivate:[AuthGuard]},
   {path: 'totalpoints', component:TotalUserPointsComponent, canActivate:[AuthGuard]},
+  {path: 'tags', component: TagsShowPageComponent, canActivate:[AuthGuard]},
   {path: 'quiz/new', component:CreateQuizesComponent, canActivate:[AuthGuard], children:[
-    {path: 'tags/new', component: NewTagsComponent, canActivate:[AuthGuard]},
-    {path: 'tags', component: TagsShowPageComponent, canActivate:[AuthGuard]},
+    {path: 'tags/edit', component:AttachTagsComponent, canActivate:[AuthGuard], children:[
+      {path: 'tags/new', component: NewTagsComponent, canActivate:[AuthGuard]}
+    ]},
     {path: 'newquestionanswer', component: QuestionAnswerComponent, outlet: 'answer', canActivate:[AuthGuard]},
     {path: 'newquestion', component: QuestionComponent, outlet: "question", canActivate:[AuthGuard]},
   ]},
@@ -38,8 +44,12 @@ export const routes: Routes = [
   {path: 'newquestionanswer', component: QuestionAnswerComponent, outlet: "answer"},
   {path: 'newquestion', component: QuestionComponent, outlet: "question"},
   {path: 'my-quizzes', component: MyQuizzesComponent},
-  {path: 'edit-quiz/${name}', component: EditQuizComponent}
-  
+  {path: 'edit-quiz/${name}', component: EditQuizComponent},
+  {path: 'tags', component: TagsShowPageComponent, canActivate:[AuthGuard]},
+  {path: 'testresults', component: QuizSubmissionComponent},
+  {path: 'quiz/selection', component: QuizSelectionComponent},
+  {path: 'take/quiz', component: TaketestComponent},
+  {path: 'quiz/submit', component: QuizSubmissionComponent}
 ];
 
 @NgModule({

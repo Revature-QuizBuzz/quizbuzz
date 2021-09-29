@@ -22,7 +22,7 @@
           [data]="dropdownList" [(ngModel)]="selectedItems">
         </ng-multiselect-dropdown>
         <ng-container *ngIf="addTagForm === true">
-          <app-new-tags (addTag)="updateTags()"></app-new-tags>
+          <app-new-tags (addTag)="updateTags($event)"></app-new-tags>
         </ng-container>
       </div>
 

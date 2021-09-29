@@ -1,4 +1,5 @@
 package quiz.services;
+import java.util.List;
 
 import java.util.List;
 
@@ -20,4 +21,8 @@ public interface AnswersManager {
     
     void createAll(List<Answers> answers);
 
+	
+	List< Answers> findAll(int id);
+	List<Answers> getAllAnswers();
+		
 }

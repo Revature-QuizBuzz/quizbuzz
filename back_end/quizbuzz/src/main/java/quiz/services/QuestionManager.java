@@ -19,4 +19,8 @@ public interface QuestionManager {
     void deleteQuestion(Question question);
 
     Question findByQuestion(String name);
+
+	List<Question> findAll(int id);
+	List<Question> getAllQuestions();
+	
 }
