@@ -26,6 +26,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { TotalUserPointsComponent } from './total-user-points/total-user-points.component';
 import { ScoreBoardComponent } from './scoreboard/scoreboard.component';
 import { TagsShowPageComponent } from './tags-show-page/tags-show-page.component';
+import { CreatedQuizzesComponent } from './created-quizzes/created-quizzes.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { TagsShowPageComponent } from './tags-show-page/tags-show-page.component
     CreateQuizesComponent,
     ScoreBoardComponent,
     TagsShowPageComponent,
-    AttachTagsComponent
+    AttachTagsComponent,
+    CreatedQuizzesComponent
   ],
   imports: [
     BrowserModule,
