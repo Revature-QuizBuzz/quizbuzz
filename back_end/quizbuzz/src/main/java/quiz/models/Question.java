@@ -22,7 +22,7 @@ public class Question {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @SequenceGenerator(name="id_generator", sequenceName = "questions_question_id_seq", allocationSize = 1)
+//    @SequenceGenerator(name="id_generator", sequenceName = "questions_question_id_seq", allocationSize = 1)
     @Column(name="question_id")
 	private int questionId;
 	
@@ -74,9 +74,9 @@ public class Question {
 	}
 
 
-//	public List<Answers> getAnswers() {
-//		return answers;
-//	}
+	public List<Answers> getAnswers() {
+		return answers;
+	}
 
 	public void setAnswers(List<Answers> answers) {
 		this.answers = answers;
@@ -106,4 +106,9 @@ public class Question {
 		this.type = type;
 	}
 
+	@Override
+	public String toString() {
+		return "Question [questionId=" + questionId + ", quiz=" + quiz + ", answers=" + answers + ", question="
+				+ question + ", possiblePoints=" + possiblePoints + ", type=" + type + "]";
+	}
 }

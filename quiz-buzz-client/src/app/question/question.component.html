@@ -45,50 +45,51 @@
 <form #questionForm="ngForm" class="container mt-3" (ngSubmit)="onSubmit(questionForm)">
                 
     <section class="container border mb-4 p-3" *ngFor="let question of questions; let i = index;">
-          <button type="button" class="btn btn-primary mb-2" (click)="addQuestion(i, questionForm)">Add Question</button>
         <div class="row">
-          <div class="col-6">
-              <h4>Question {{i + 1}}</h4>
-          </div>
-          <div class="col-6 text-right">
-              <button type="button" class="btn btn-danger btn-sm" (click)="removeQuestion(i)">Remove</button>
-          </div>
+            <div class="col-6">
+                <h4>Question {{i + 1}}</h4>
+            </div>
+            <div class="col-6 text-right">
+                <button type="button" class="btn btn-danger btn-sm" (click)="removeQuestion(i)">Remove</button>
+            </div>
         </div>
         <div class="row">
-          <div class="col-6">
-              <div>
-                  <label for="question">Question</label>
-                  <input id="question" type="string" name="question" placeholder="{{questions[i].question}}" required ngModel>
-              </div>
-          </div>
-          
-              <div>
-                  <label for="possiblePoints">Point Value</label>
-                  <input id="possiblePoints" type="number" name="possiblePoints" placeholder="{{questions[i].possiblePoints}}" required ngModel>
-              </div>
-          </div>
+            <div class="col-6">
+                <div>
+                    <label for="question">Question</label>
+                    <input id="question" type="string" name="question" placeholder="{{questions[i].question}}" required ngModel>
+                </div>
+            </div>
+            
+            <!-- <div>
+                <label for="possiblePoints">Point Value</label>
+                <input id="possiblePoints" type="number" name="possiblePoints" placeholder="{{questions[i].possiblePoints}}" required ngModel>
+            </div> -->
+        </div>
         
         <div class="row">
-          <div class="col-6">
-              <div>
-                  <select name="type" class="form-select" id="questionType" (ngModelChange)="onChange($event, i)" required ngModel>
-                      <option selected="selected" value="">Question Type</option>
-                      <option value="multipleChoice">Multiple Choice</option>
-                      <option value="multipleAnswers">Multiple Answers</option>
-                      <option value="truefalse">True or False</option>
-                  </select>
-
-                  <ng-container *ngIf="questions[i].type !== ''">
-                    <app-question-answer [questionType]="questions[i].type"></app-question-answer>
-                </ng-container>
-               <!-- <app-question-answer [questionType]="selectedType"></app-question-answer>--> 
-          </div>
-
+            <div class="col-6">
+                <div>
+                    <select name="type" class="form-select" id="questionType" (ngModelChange)="onChange($event, i)" required ngModel>
+                        <option selected="selected" value="">Question Type</option>
+                        <option value="multipleChoice">Multiple Choice</option>
+                        <option value="multipleAnswers">Multiple Answers</option>
+                        <option value="truefalse">True or False</option>
+                    </select>
+                    
+                    <ng-container *ngIf="questions[i].type !== ''">
+                        <app-question-answer [questionType]="questions[i].type" (answerEvent) = "answerCapture($event, i)"></app-question-answer>
+                    </ng-container>
+                    <!-- <app-question-answer [questionType]="selectedType"></app-question-answer>--> 
+                </div>
+                
+            </div>
         </div>
-    </div>
-      </section>
-
-      <div class="text-right">
+        <br>
+        <button type="button" class="btn btn-primary mb-2" (click)="addQuestion(i, questionForm)">Add Question</button>
+    </section>
+    
+    <div class="text-right">
           <input type="submit" class="btn btn-success" value="Save"/>
       </div>
 </form>

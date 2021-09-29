@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
+import { Tag } from '../models/tags';
 
 @Component({
   selector: 'app-new-tags',
@@ -19,7 +20,8 @@ export class NewTagsComponent implements OnInit {
   onSubmit(form: NgForm){
     this.Http.post("http://localhost:8080/tags/new",{name: String(form.value.name)})
     .subscribe({
-      next: (data:any)=>{
+      next: (data:Tag)=>{
+        this.addTag.emit(data)
         console.log(data);
       },
       error: (data)=>{
@@ -34,8 +36,6 @@ export class NewTagsComponent implements OnInit {
 
   handleClear(){
     this.tagName = '';
-    this.addTag.emit();
-    console.log("here");
     }
 
   ngOnInit(): void {

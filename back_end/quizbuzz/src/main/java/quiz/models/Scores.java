@@ -18,7 +18,7 @@ public class Scores {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @SequenceGenerator(name="id_generator", sequenceName = "user_scores_score_id_seq", allocationSize = 1)
+//    @SequenceGenerator(name="id_generator", sequenceName = "user_scores_score_id_seq", allocationSize = 1)
     @Column(name="score_id")
 	private int scoreId;
 	
@@ -36,7 +36,7 @@ public class Scores {
 	@Column(name="completed_on")
 	private Date completedOn;
 	
-	
+	public Scores() { }
 
 	public Scores(int id, User user, Quiz quiz, int score, Date completedOn) {
 		super();
@@ -47,12 +47,9 @@ public class Scores {
 		this.completedOn = completedOn;
 	}
 
-	public Scores() { }
-
 	public Scores(int id) {
 		this.scoreId = id;
 	}
-
 
 	public int getScoreId() {
 		return scoreId;

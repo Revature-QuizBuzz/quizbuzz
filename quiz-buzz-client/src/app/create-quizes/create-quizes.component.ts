@@ -66,7 +66,7 @@ export class CreateQuizesComponent implements OnInit {
       temptags: [''],
       questionArray: this.fb.array([this.fb.group({
         // form controll for questions section
-        questions: ['', Validators.required]
+        questions: ['']
       })
       ])
     })
@@ -100,6 +100,10 @@ export class CreateQuizesComponent implements OnInit {
     // this.quiz.questions = this.createQuiz.value.questionArray;
     // console.log(this.quiz)
     // if (confirm("You have succesfully added a new quiz"))
+    if (this.saved == false) {
+      alert("Please save your progress before submitting!");
+      return;
+    }
     this.create(this.quiz)
       .subscribe(
         response => {
