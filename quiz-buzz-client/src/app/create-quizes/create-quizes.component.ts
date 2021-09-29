@@ -8,7 +8,7 @@ import { User } from '../models/users';
 import { UserScore } from '../models/scores';
 import { Question } from '../models/questions';
 import { Tag } from '../models/tags';
-   
+import { Router } from '@angular/router';   
 
 
 const baseUrl = 'http://localhost:8080/quizzes/createQuiz';
@@ -55,7 +55,7 @@ export class CreateQuizesComponent implements OnInit {
 
 
 
-  constructor(private httpClient: HttpClient, private http: HttpClient, private fb: FormBuilder,private modalService: NgbModal) {
+  constructor(private router: Router, private httpClient: HttpClient, private http: HttpClient, private fb: FormBuilder,private modalService: NgbModal) {
 
   }
 
@@ -113,6 +113,10 @@ export class CreateQuizesComponent implements OnInit {
         error => {
           console.log(error);
         });
+    if (this.saved == true) {
+      this.router.navigate(['home']);
+      }
+    
   }
 
   selectedTags($event:any) {
@@ -129,13 +133,6 @@ export class CreateQuizesComponent implements OnInit {
   public save(){
     this.saved = true;
   }
-
-  
-
-  public increment(){
-
-  }
-
 
   public count(){
     let result = '';

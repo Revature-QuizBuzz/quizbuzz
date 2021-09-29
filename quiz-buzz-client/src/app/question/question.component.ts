@@ -92,6 +92,7 @@ export class QuestionComponent implements OnInit {
     console.log(question);
     this.questionEvent.emit(this.questions);
     this.saveEvent.emit(true);
+    this.router.navigate(['quiz/new'])
 
   }
 
