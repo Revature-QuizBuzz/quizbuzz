@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EditQuizComponent } from './edit-quiz/edit-quiz.component';
-import { MyQuizzesComponent } from './my-quizzes/my-quizzes.component';
 
 import { QuestionAnswerComponent } from './answer/question-answer.component';
 import { QuestionComponent } from './question/question.component';
@@ -13,6 +11,8 @@ import { TagsShowPageComponent } from './tags-show-page/tags-show-page.component
 import { CreateQuizesComponent } from './create-quizes/create-quizes.component';
 import { ScoreBoardComponent } from './scoreboard/scoreboard.component';
 import { TotalUserPointsComponent } from './total-user-points/total-user-points.component';
+import { MyQuizzesComponent } from './my-quizzes/my-quizzes.component';
+import { EditQuizComponent } from './edit-quiz/edit-quiz.component';
 
 
 export const routes: Routes = [
@@ -37,8 +37,8 @@ export const routes: Routes = [
   {path: 'quiz/new', component:CreateQuizesComponent},
   {path: 'newquestionanswer', component: QuestionAnswerComponent, outlet: "answer"},
   {path: 'newquestion', component: QuestionComponent, outlet: "question"},
-  {path: 'my-quizzes/', component:MyQuizzesComponent},
-  {path: 'my-quizzes/edit/:id', component:EditQuizComponent}
+  {path: 'my-quizzes', component: MyQuizzesComponent},
+  {path: 'edit-quiz/${name}', component: EditQuizComponent}
   
 ];
 

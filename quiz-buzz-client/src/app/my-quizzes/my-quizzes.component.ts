@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { EditQuizService } from '../services/edit-quiz.service';
 import { Quiz } from '../models/quizzes';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-my-quizzes',
@@ -9,19 +10,25 @@ import { Quiz } from '../models/quizzes';
 })
 export class MyQuizzesComponent implements OnInit {
 
-  quizzes:Quiz[] = [];
+  quizzes: Quiz[] = [];
 
-  constructor(private editQuizService: EditQuizService) { }
+  constructor(private http: HttpClient) { }
+
+  private baseUrl = "http://localhost:8080/quizzes"
 
   ngOnInit(): void {
-    this.getQuizzes();
+    this.getUserQuizzes();
   }
 
-  getQuizzes() {
-    this.editQuizService.getAllQuizzes()
-      .subscribe(quizzes => {
-        this.quizzes = quizzes;
-      })
+  getUserQuizzes() {
+    this.getQuizzesById()
+     .subscribe(quizzes => {
+       this.quizzes = quizzes;
+     })
+  }
+
+  getQuizzesById(): Observable<Quiz[]> {
+    return this.http.get<Quiz[]>(`${this.baseUrl}/user/1`);
   }
 
 }

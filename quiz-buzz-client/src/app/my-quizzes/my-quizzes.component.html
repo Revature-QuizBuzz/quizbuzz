@@ -1,1 +1,14 @@
-<p>my-quizzes works!</p>
+<table>
+    <thead>
+        <th>Name</th>
+        <th>Modified</th>
+        <th>Make Edits</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let quiz of quizzes">
+            <td>{{quiz.name}}</td>
+            <td>{{quiz.dateModified}}</td>
+            <td><a href="#">Edit</a></td>
+        </tr>
+    </tbody>
+</table>

@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 
-import { EditQuizComponent } from './edit-quiz/edit-quiz.component';
-import { MyQuizzesComponent } from './my-quizzes/my-quizzes.component';
 import { QuestionAnswerComponent } from './answer/question-answer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { QuestionComponent } from './question/question.component';
@@ -24,15 +22,13 @@ import { TotalUserPointsComponent } from './total-user-points/total-user-points.
 import { ScoreBoardComponent } from './scoreboard/scoreboard.component';
 import { TagsShowPageComponent } from './tags-show-page/tags-show-page.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { MyQuizzesComponent } from './my-quizzes/my-quizzes.component';
+import { EditQuizComponent } from './edit-quiz/edit-quiz.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-
-    EditQuizComponent,
-    MyQuizzesComponent,
-
     QuestionAnswerComponent,
     QuestionComponent,
     TotalUserPointsComponent,
@@ -44,7 +40,9 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     ScoreBoardComponent,
     TagsShowPageComponent,
     AttachTagsComponent,
-    ScoreBoardComponent
+    ScoreBoardComponent,
+    MyQuizzesComponent,
+    EditQuizComponent
 
   ],
   imports: [
