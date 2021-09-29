@@ -22,6 +22,7 @@ public class TestController {
 	@Autowired
 	private TestManager manager; 
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping(path = "/create", consumes = "application/json", produces = "application/json")
 	public TestClass create(@Validated @RequestBody TestClass tc) {
 		return manager.create(tc);

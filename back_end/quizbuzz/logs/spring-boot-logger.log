@@ -212,3 +212,10 @@
 2021-09-28 14:13:20,779 INFO quiz.controllers.QuizController [http-nio-8080-exec-10] GET to /getTen
 2021-09-29 16:50:28,276 INFO quiz.controllers.QuizController [http-nio-8080-exec-2] GET to /quizzes
 2021-09-29 16:53:12,860 INFO quiz.controllers.QuizController [http-nio-8080-exec-1] GET to /quizzes
+2021-09-29 17:47:39,348 INFO quiz.controllers.QuizController [http-nio-8080-exec-1] GET to /getTen
+2021-09-29 17:47:46,018 INFO quiz.controllers.QuizController [http-nio-8080-exec-3] GET to /quizzes
+2021-09-29 17:52:01,870 INFO quiz.controllers.QuizController [http-nio-8080-exec-1] GET to /getTen
+2021-09-29 17:52:04,566 INFO quiz.controllers.QuizController [http-nio-8080-exec-2] GET to /quizzes
+2021-09-29 17:53:34,799 INFO quiz.controllers.LoginController [http-nio-8080-exec-6] POST to /login
+2021-09-29 17:53:34,827 INFO quiz.controllers.QuizController [http-nio-8080-exec-7] GET to /getTen
+2021-09-29 17:53:50,087 INFO quiz.controllers.QuizController [http-nio-8080-exec-8] GET to /quizzes
