@@ -3,7 +3,7 @@
 
 DROP SCHEMA IF EXISTS quizbuzz CASCADE;
 
-CREATE SCHEMA quizbuzz AUTHORIZATION postgres;
+CREATE SCHEMA quizbuzz AUTHORIZATION nacard192;
 
 
 -- DROP SCHEMA quizbuzz;
@@ -17,7 +17,7 @@ CREATE SCHEMA quizbuzz AUTHORIZATION postgres;
 CREATE TABLE quizbuzz.answers (
 	answer_id serial NOT NULL,
 	question_id int4 NOT NULL,
-	answer varchar(200) NOT NULL,
+	answer text NOT NULL,
 	correct bool NOT NULL,
 	CONSTRAINT answers_pk PRIMARY KEY (answer_id)
 );
@@ -32,7 +32,7 @@ CREATE TABLE quizbuzz.answers (
 CREATE TABLE quizbuzz.questions (
 	question_id serial NOT NULL,
 	quiz_id int4 NOT NULL,
-	question varchar(200) NOT NULL,
+	question text NOT NULL,
 	possible_points float4 NOT NULL,
 	CONSTRAINT questions_pk PRIMARY KEY (question_id)
 );
@@ -61,7 +61,7 @@ CREATE TABLE quizbuzz.quiz_tags (
 CREATE TABLE quizbuzz.quizzes (
 	quiz_id serial NOT NULL,
 	user_id int4 NOT NULL,
-	"name" varchar(15) NOT NULL,
+	"name" varchar(45) NOT NULL,
 	description text NULL,
 	total_score int4 NOT NULL,
 	CONSTRAINT quizzes_pk PRIMARY KEY (quiz_id)
@@ -233,7 +233,7 @@ FROM
     quizbuzz.user_scores s
 WHERE 
     u.user_id = s.user_id
-and s.score_id = (select max(score_id) from quizbuzz.user_scores );
+and s.score_id = (select max(score_id) from quizbuzz.user_scores);
 
 
 UPDATE quizbuzz.users u
