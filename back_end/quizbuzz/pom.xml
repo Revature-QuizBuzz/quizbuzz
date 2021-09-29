@@ -80,7 +80,7 @@
 	</dependencies>
 
 	<build>
-	
+	<finalName>docker-jenkins-integration</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
