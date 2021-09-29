@@ -1,3 +1,7 @@
-.scoreboard {
+.leaderboard {
         background-color: #F26925 !important;
     }
+
+     table, td, th, tr, thead {
+        border: 1px solid black !important;
+      } 
