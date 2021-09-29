@@ -5,3 +5,6 @@
      table, td, th, tr, thead {
         border: 1px solid black !important;
       } 
+.sort:hover{
+    background-color: #F26925 !important;
+}
