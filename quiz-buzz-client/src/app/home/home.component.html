@@ -1,39 +1,64 @@
-<div class="container">
-  <section>
-    <div class="jumbotron banner bg-orange">
-      <h2 class="text-shadow">Welcome to QuizBuzz, the premier quiz platform
-        designed to make learning code fun.</h2>
-    </div>
-  </section>
-  <section>
-    <div class="row">
-      <h3 class="col-auto">{{getName()}}</h3>
-      <h3 class="col">Total Score: {{getTotalScore()}}</h3>
-    </div>
+<section>
+  <!--<div class="jumbotron banner bg-orange">
+    <h2 class="text-shadow">Welcome to QuizBuzz, the premier quiz platform
+      designed to make learning code fun.</h2>
+  </div>-->
+  <div id="carouselExampleControls" class="jumbotron bg-orange carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active bg-orange text-dark" data-bs-interval="2000">
+        <h2 class="text-shadow">Welcome to QuizBuzz, the premier quiz platform
+          designed to make learning code fun.</h2>
+        <h3>Level up your coding skills with our point based system</h3>
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <h2><i class="bi bi-trophy text-light"></i></h2>
+        <h3 class="text-dark">Compete for the top of the leaderboard</h3>
+        
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <h2 class="text-light"><i class="bi bi-pencil-square"></i></h2>
+        <h3 class="text-dark">Create quizzes to test knowledge</h3>
 
-    <div class="row featured-section">
-      <h2>Featured Quizzes: </h2>
-      <ng-container *ngFor="let quiz of quizzes">
-        <div class="row card text-dark bg-light mb-3 featured-row">
-          <div class="col-10">
-            <b>Quiz Name: </b>{{quiz.name}}<br>
-            <b>Quiz Description: </b>{{quiz.description}}<br>
-            <div class="row" *ngIf="quiz.tags !== undefined && quiz.tags.length !== 0">
-              <b class="col-auto">Tags:</b>
-              <ng-container *ngFor="let tags of quiz.tags">
-                <div class="col-auto">
-                  {{tags.name}}
-                </div>
-              </ng-container>
-            </div>
-          </div>
-          <div class="col-2">
-            <button class="btn btn-primary" (click)="takeQuiz(quiz.quizId)"
-              style="position:absolute; top:50%; transform: translateY(-50%);">Take Quiz</button>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</section>
+
+<section>
+  <div class="row">
+    <h3 class="col-auto">{{getName()}}</h3>
+    <h3 class="col">Total Score: {{getTotalScore()}}</h3>
+  </div>
+
+  <div class="row featured-section">
+    <h2>Featured Quizzes: </h2>
+    <ng-container *ngFor="let quiz of quizzes">
+      <div class="row card text-dark bg-light mb-3 featured-row">
+        <div class="col-10">
+          <b>Quiz Name: </b>{{quiz.name}}<br>
+          <b>Quiz Description: </b>{{quiz.description}}<br>
+          <div class="row" *ngIf="quiz.tags !== undefined && quiz.tags.length !== 0">
+            <b class="col-auto">Tags:</b>
+            <ng-container *ngFor="let tags of quiz.tags">
+              <div class="col-auto">
+                {{tags.name}}
+              </div>
+            </ng-container>
           </div>
         </div>
-      </ng-container>
-    </div>
-
-  </section>
-</div>
+        <div class="col-2">
+          <button class="btn btn-primary" (click)="takeQuiz(quiz.quizId)"
+            style="position:absolute; top:50%; transform: translateY(-50%);">Take Quiz</button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</section>
