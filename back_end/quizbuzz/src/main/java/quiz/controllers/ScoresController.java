@@ -64,4 +64,11 @@ public class ScoresController {
 		return scores;
 	}
 	
+	@CrossOrigin(origins="http://localhost:4200")
+	@GetMapping(path="/MyScore/{id}", produces="application/json")
+	public ResponseEntity<Integer> getMyScore(@PathVariable int id) {
+		int total = score.getMyScores(id).stream().mapToInt(s -> s.getScore()).sum();
+		return new ResponseEntity<>(total, HttpStatus.ACCEPTED);
+	}
+	
 }

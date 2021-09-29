@@ -1,30 +1,21 @@
 <title>Quiz Buzz Test</title><br>
-<button class=""  (click)="home()">Home</button>
-<button class=""  (click)="signout()">SignOut</button>
+
     
 <br>
 
-
-    
     <!--where the questions and answers are -->
-    <div class="test-group" > {{currentQuestion?.questionId}}:{{currentQuestion?.question}} </div>
-    
+    <div class="test-group" ><h3>{{currentQuestion?.questionId}}: {{currentQuestion?.question}}</h3> </div>
     <form #testForm="ngForm" >
       
       <div *ngFor="let a of currentQuestion?.answers"  >
-        <input  name="a.answer" value="{{a.answer}}"  type ="radio"   
-
-        class="test-group"  
-           (change)="getAnswers($event)"  [checked]="a?.answer === currentQuestion.selectedAnswer" > {{a?.answer}}
-               
-           
-     </div>
-        <br>
+        <input  id="form-answers" name="a.answer" value="{{a.answer}}"  type ="radio" style="margin-bottom:20px;"
+          class="test-group" (change)="getAnswers($event)"  
+            [checked]="a?.answer === currentQuestion.selectedAnswer" required ngModel> <span><b> {{a?.answer}}</b></span>
+      </div>
+      
+      <!-- <br> -->
+      <button class="btn btn-primary" (click)="previous()" >Previous</button>
+      <button class="btn btn-primary" style="margin-left: 10px; margin-right:10px;" type="button" (click)="submit(testForm)" [disabled]="isDisable || !testForm.valid" >Submit</button>
+      <button class="btn btn-primary" (click)="next()" >Next</button>
   
-        <button class="btn"  (click)="previous()" >Previous</button>
-        <button class="btn" type="button" (click)="submit(testForm)" [disabled]="isDisable" >Submit</button>
-        <button class="btn" (click)="next()" >Next</button>
-   
     </form>
-
-

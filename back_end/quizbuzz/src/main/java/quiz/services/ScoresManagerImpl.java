@@ -47,6 +47,11 @@ public class ScoresManagerImpl implements ScoresManager{
 		return dao.save(us);
 	}
 
+	@Override
+	public List<Scores> getMyScores(int id) {
+		return dao.findMyId(id);
+	}
+	
 
 //	@Override
 //	public Scores findScore(Scores score) {

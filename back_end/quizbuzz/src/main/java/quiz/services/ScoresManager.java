@@ -20,4 +20,6 @@ public interface ScoresManager {
 	Scores addScore(Scores score);
 //	Scores findById(int id);
 
+	List<Scores> getMyScores(int id);
+
 }
