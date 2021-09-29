@@ -7,7 +7,7 @@
     <form>
       <div [formGroup]="createQuiz">
         <label for="quizName">Name</label>
-        <input type="text" class="form-control" id="quizName"  name="quizName" formControlName="quizName"/>
+        <input type="text" class="form-control" id="quizName"  name="quizName" formControlName="quizName" maxlength="15"/>
       </div>
     </form>
   </div>
@@ -27,11 +27,11 @@
   </div>
   
   <div formGroupName="questionArray">
-    <app-question (questionEvent)="recieveQuestion($event)"></app-question>
+    <app-question (questionEvent)="recieveQuestion($event)" (saveEvent)="save()"></app-question>
   </div>
   <div>
     <!-- <button type="button" (click)="" class="btn btn-primary">Add question</button> -->
-    <button type="submit"  class="btn btn-primary">Submit</button>
+    <button type="submit" [disabled]="!createQuiz.valid" class="btn btn-primary">Submit</button>
     <!-- <button (click)="save()" class="btn btn-success">Save Quiz</button> -->
     <!-- <button (click)="add()" class="btn btn-success">Submit</button>  -->
   </div>
