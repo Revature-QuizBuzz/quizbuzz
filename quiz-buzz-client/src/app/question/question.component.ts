@@ -1,8 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscriber } from 'rxjs';
 import { CreateQuizesComponent } from '../create-quizes/create-quizes.component';
+import { Answer } from '../models/answers';
 import { Question } from '../models/questions';
 import { Quiz } from '../models/quizzes';
 
@@ -17,18 +19,20 @@ export class QuestionComponent implements OnInit {
   public questions: Question[] = [{
       question: "",
       possiblePoints: 0,
-      type: ""
+      type: "",
+      answers: []
   
   }];
 
   @Output() questionEvent = new EventEmitter<Question[]>();
 
+  @Input() answerEvent?: Answer[];
+
   constructor(private router: Router, private http: HttpClient) {
    }
 
-  public _url = "http://localhost:8080/questions/new"
-
   ngOnInit(): void {
+    
   }
 
   addQuestion(index:number, stockForm: NgForm) {
@@ -36,10 +40,11 @@ export class QuestionComponent implements OnInit {
       questionId: 0,
       question: "",
       possiblePoints: 0,
-      type: ""
+      type: "",
+      answers: []
     }
     question.question= stockForm.value.question;
-    question.possiblePoints = stockForm.value.possiblePoints;
+    // question.possiblePoints = stockForm.value.possiblePoints;
     question.type = stockForm.value.type;
     console.log(question);
     this.questions[index]= question;
@@ -70,36 +75,25 @@ export class QuestionComponent implements OnInit {
   }
 
   onSubmit(stockForm: NgForm) {
-    
-
-    // const httpOptions = {
-    // headers: new HttpHeaders({'Content-Type':'application/json'})}
-    // let quiz: Quiz ={id:stockForm.value.quizid}
-    // this.http.post(this._url,({ 
-    //   quiz:quiz, 
-    //   question:stockForm.value.question, 
-    //   possiblePoints:stockForm.value.possiblePoints, 
-    //   type:stockForm.value.type, 
-    // }), httpOptions
-    // ).subscribe({
-    //   next: (data) => {
-    //     console.log(data)
-    //   }
-    // })
-    // this.router.navigate([""])
 
     let question: Question = {
-      questionId: 0,
       question: "",
       possiblePoints: 0,
-      type: ""
+      type: "",
+      answers: []
     }
 
     question.question = stockForm.value.question;
-    question.possiblePoints = stockForm.value.possiblePoints;
+    // question.possiblePoints = stockForm.value.possiblePoints;
     question.type = stockForm.value.type;
+    question.answers = this.questions[this.questions.length - 1].answers;
+    this.questions[this.questions.length - 1] = question;
     console.log(question);
     this.questionEvent.emit(this.questions);
 
+  }
+
+  answerCapture($event: Answer[], index:number){
+    this.questions[index].answers=$event;
   }
 }

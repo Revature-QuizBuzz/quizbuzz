@@ -11,20 +11,17 @@ import org.springframework.stereotype.Service;
 import quiz.dao.QuestionDAO;
 import quiz.models.Question;
 
-
-
 @Service
-public class QuestionManagerImpl implements QuestionManager{
-	
+public class QuestionManagerImpl implements QuestionManager {
+
 	@Autowired
 	private QuestionDAO dao;
-	
 
 	@Override
 	public List<Question> findAll() {
 		return StreamSupport.stream(dao.findAll().spliterator(), false).collect(Collectors.toList());
 	}
-	
+
 	@Override
 	public Question create(Question que) {
 		return dao.save(que);
@@ -35,10 +32,11 @@ public class QuestionManagerImpl implements QuestionManager{
 		List<Question> persistedQuestion = new ArrayList<Question>();
 		for (Question question : questions) {
 			persistedQuestion.add(dao.save(question));
+			
 		}
-		return persistedQuestion;}
-	
-	
+		return persistedQuestion;
+	}
+
 	public Question findByQuestion(String text) {
 		return dao.findByQuestion(text);
 	}

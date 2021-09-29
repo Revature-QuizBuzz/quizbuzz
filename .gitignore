@@ -54,3 +54,4 @@ secrets.yml
 .gradletasknamecache
 .sts4-cache
 /.properties
+back_end/quizbuzz/logs/spring-boot-logger.log
