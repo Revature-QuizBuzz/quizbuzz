@@ -57,4 +57,11 @@ public class ScoresController {
 //		return new ResponseEntity<>(answers, HttpStatus.OK);
 //	}
 
+	@CrossOrigin(origins="http://localhost:4200")
+	@PostMapping(path="/submitQuiz", produces="application/json", consumes="application/json")
+	public Scores create(@RequestBody Scores scores) {
+		System.out.println(scores.getScore());
+		return scores;
+	}
+	
 }

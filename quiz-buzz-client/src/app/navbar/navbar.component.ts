@@ -34,4 +34,11 @@ export class NavbarComponent implements OnInit {
   quizSelection(){
     this.router.navigate(['quiz/selection'])
   }
+
+  isAdmin() {
+    if(localStorage.getItem("username") === "admin")
+      return true;
+    return false;
+  }
+
 }

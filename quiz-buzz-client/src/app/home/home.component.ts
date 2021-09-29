@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Quiz } from '../models/quizzes';
 
 @Component({
@@ -9,7 +10,7 @@ import { Quiz } from '../models/quizzes';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private router:Router) { }
 
   quizzes:Quiz[] = [];
 
@@ -31,7 +32,10 @@ export class HomeComponent implements OnInit {
   }
 
   takeQuiz(quizId:number = 0) {
-    console.log(quizId);
+    if(quizId !== 0) {
+      localStorage.setItem("quizId", String(quizId));
+      this.router.navigate(['take/quiz'])
+    }
   }
 
 }
