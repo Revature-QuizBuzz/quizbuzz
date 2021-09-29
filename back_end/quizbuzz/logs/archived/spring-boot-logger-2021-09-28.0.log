@@ -1,3 +1,4 @@
+<<<<<<<< HEAD:back_end/quizbuzz/logs/archived/spring-boot-logger-2021-09-28.0.log
 2021-09-27 08:20:04,070 INFO quiz.controllers.LoginController [http-nio-8080-exec-2] POST to /login
 2021-09-27 08:45:03,991 INFO quiz.controllers.LoginController [http-nio-8080-exec-6] POST to /login
 2021-09-27 08:46:44,155 INFO quiz.controllers.QuizController [http-nio-8080-exec-10] GET to /getTen
@@ -407,3 +408,6 @@
 2021-09-28 23:59:23,108 INFO quiz.controllers.QuizController [http-nio-8080-exec-5] GET to /getTen
 2021-09-28 23:59:48,401 INFO quiz.controllers.QuizController [http-nio-8080-exec-6] GET to /getTen
 2021-09-28 23:59:48,629 INFO quiz.controllers.QuizController [http-nio-8080-exec-7] GET to /getTen
+========
+2021-09-29 10:10:07,127 INFO quiz.controllers.QuizController [http-nio-8080-exec-2] GET to /quizzes
+>>>>>>>> TakeQuizzes:back_end/quizbuzz/logs/spring-boot-logger.log
