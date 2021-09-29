@@ -12,10 +12,7 @@ import java.util.List;
 
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
-
 import quiz.models.Tags;
 import quiz.models.User;
 import quiz.services.TagsManager;
@@ -141,25 +138,6 @@ class QuizbuzzApplicationTests {
 		user.setPassword("1234");
 		User found = userManager.findLogin(user);
 		assertNotEquals(found, null);
-	}
-	
-	@Test
-	void searchForQuiz() {
-		String searchValue = "Test";
-		List<Quiz> testQuizList = quizManager.findBySearchValue(searchValue);
-		assertFalse(testQuizList.isEmpty());
-		
-		String searchValue2 = "Not A Valid Test";
-		List<Quiz> testQuizList2 = quizManager.findBySearchValue(searchValue2);
-		assertTrue(testQuizList2.isEmpty());
-		
-		String searchValue3 = "Java";
-		List<Quiz> testQuizList3 = quizManager.findBySearchValue(searchValue3);
-		assertFalse(testQuizList3.isEmpty());
-		
-		String searchValue4 = "Not A Valid Tag";
-		List<Quiz> testQuizList4 = quizManager.findBySearchValue(searchValue4);
-		assertTrue(testQuizList4.isEmpty());
 	}
 
 }
