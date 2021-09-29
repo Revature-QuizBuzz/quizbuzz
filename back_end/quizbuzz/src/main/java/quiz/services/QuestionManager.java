@@ -7,14 +7,14 @@ import java.util.List;
 public interface QuestionManager {
 	
 	List<Question> findAll();
-	List<Question> createAll(List<Question> questions);
+	void createAll(List<Question> questions);
 	Question create(Question ques);
 
     Question updateQuestion(int questionId, Question question);
 
     void deleteQuestionsById(List<Integer> questionIds);
     
-    void createAll(List<Question> questions);
+    List<Question> createAllPersisted(List<Question> questions);
     
     void deleteQuestion(Question question);
 

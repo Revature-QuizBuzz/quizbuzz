@@ -30,7 +30,7 @@ public class QuizController {
 
 	private static final Logger logger = LogManager.getLogger(QuizController.class);
 
-    @GetMapping(produces = "application/json")
+    @GetMapping(path = "getAll", produces = "application/json")
     public List<Quiz> getAll(){
         return manager.findAll();
     }
@@ -38,7 +38,8 @@ public class QuizController {
     @GetMapping(path = "/{quizId}", produces = "application/json")
     public ResponseEntity<Quiz> getQuizById(@PathVariable int quizId) {
         Quiz tempQuiz = manager.getQuizById(quizId);
-        return new ResponseEntity<>(tempQuiz, HttpStatus.OK);
+    	System.out.println(tempQuiz.getName());
+        return new ResponseEntity<Quiz>(tempQuiz, HttpStatus.OK);
     }
 	
 	@GetMapping(path="/user/{userId}", produces="application/json")
@@ -70,10 +71,10 @@ public class QuizController {
     }
    
 	
-	@CrossOrigin(origins="http://localhost:4200")
-	@GetMapping(path="/getTen", produces="application/json")
-	public ResponseEntity<List<Quiz>> getTenQuizzes() {
-		logger.info("GET to /getTen");
-		return new ResponseEntity<>(manager.getFeaturedQuizzes(), HttpStatus.OK);
-	}
+//	@CrossOrigin(origins="http://localhost:4200")
+//	@GetMapping(path="/getTen", produces="application/json")
+//	public ResponseEntity<List<Quiz>> getTenQuizzes() {
+//		logger.info("GET to /getTen");
+//		return new ResponseEntity<>(manager.getFeaturedQuizzes(), HttpStatus.OK);
+//	}
 }

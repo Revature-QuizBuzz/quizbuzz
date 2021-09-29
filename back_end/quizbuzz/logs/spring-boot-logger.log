@@ -155,3 +155,8 @@
 2021-09-28 09:23:50,757 INFO quiz.controllers.QuizController [http-nio-8080-exec-3] GET to /getTen
 2021-09-28 09:25:49,647 INFO quiz.controllers.QuizController [http-nio-8080-exec-2] GET to /getTen
 2021-09-28 09:25:51,836 INFO quiz.controllers.TagsController [http-nio-8080-exec-3] GET to /tags
+2021-09-28 21:54:47,826 INFO quiz.controllers.QuizController [http-nio-8080-exec-6] Calling update quiz from controller with id: 1 and quiz: , name: Test Quiz, total score: 3, questions: [quiz.models.Question@2345647b, quiz.models.Question@a9774cb, quiz.models.Question@1e71cdd7, quiz.models.Question@54403ed5]
+2021-09-28 22:13:48,387 INFO quiz.controllers.LoginController [http-nio-8080-exec-3] POST to /login
+2021-09-28 23:06:17,646 INFO quiz.controllers.QuizController [http-nio-8080-exec-5] Calling update quiz from controller with id: 1 and quiz: , name: Test QuizX, total score: 100, questions: [quiz.models.Question@5f8768cf, quiz.models.Question@186d06e2, quiz.models.Question@7bb27466]
+2021-09-28 23:18:30,833 INFO quiz.controllers.LoginController [http-nio-8080-exec-8] POST to /login
+2021-09-28 23:23:07,826 INFO quiz.controllers.TagsController [http-nio-8080-exec-4] GET to /tags

@@ -35,20 +35,20 @@ public class QuizManagerImpl implements QuizManager {
         return daoQuiz.save(quiz);
     }
 
-    @Override
-    public Quiz findById(int id) {
-        return daoQuiz.findById(id);
-    }
+//    @Override
+//    public Quiz findById(int id) {
+//        return daoQuiz.findById(id);
+//    }
 
     @Override
     public List<Quiz> findAll() {
         return daoQuiz.findAll();
     }
     
-    @Override
-    public List<Quiz> getFeaturedQuizzes() {
-    	return daoQuiz.getFeaturedQuizzes();
-    }
+//    @Override
+//    public List<Quiz> getFeaturedQuizzes() {
+//    	return daoQuiz.getFeaturedQuizzes();
+//    }
 
     @Override
     public List<Quiz> findByUser(int userId) {
@@ -61,7 +61,10 @@ public class QuizManagerImpl implements QuizManager {
     }
 
     @Override
-    public Quiz getQuizById(int id) {return daoQuiz.getById(id);}
+    public Quiz getQuizById(int id) {
+    	System.out.println(daoQuiz.getById(id).getName());
+    	return daoQuiz.findById(id).get();
+    }
 
     @Override
     public Quiz updateQuiz(int quizId, Quiz quiz) {

@@ -52,7 +52,7 @@ public class AnswersManagerImpl implements AnswersManager {
     
     @Override
     public void createAll(List<Answers> answers) {
-    	daoAnswers.saveAll(answers);
+    	dao.saveAll(answers);
     }
 
     @Override

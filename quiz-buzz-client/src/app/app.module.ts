@@ -23,6 +23,7 @@ import { AttachTagsComponent } from './attach-tags/attach-tags.component';
 import { TotalUserPointsComponent } from './total-user-points/total-user-points.component';
 import { ScoreBoardComponent } from './scoreboard/scoreboard.component';
 import { TagsShowPageComponent } from './tags-show-page/tags-show-page.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { TagsShowPageComponent } from './tags-show-page/tags-show-page.component
     LoginComponent,
 
     EditQuizComponent,
-    MyQuizzesComponent
+    MyQuizzesComponent,
 
     QuestionAnswerComponent,
     QuestionComponent,
@@ -42,7 +43,7 @@ import { TagsShowPageComponent } from './tags-show-page/tags-show-page.component
     CreateQuizesComponent,
     ScoreBoardComponent,
     TagsShowPageComponent,
-    AttachTagsComponent
+    AttachTagsComponent,
     ScoreBoardComponent
 
   ],
@@ -55,7 +56,8 @@ import { TagsShowPageComponent } from './tags-show-page/tags-show-page.component
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    NgMultiSelectDropDownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

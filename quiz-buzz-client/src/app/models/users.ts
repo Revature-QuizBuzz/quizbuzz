@@ -14,8 +14,7 @@ export interface User {
     point_percentage?: number;
     userScores?: UserScore[];
     quizzes?: Quiz[];
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> 61bcad626f4f30ac554db28be1bd22fc809621dd
+
+

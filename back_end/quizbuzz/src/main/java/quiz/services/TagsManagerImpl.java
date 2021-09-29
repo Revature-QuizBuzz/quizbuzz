@@ -22,11 +22,11 @@ public class TagsManagerImpl implements TagsManager{
 	@Autowired
 	private TagsDAO dao;
 	
-	@Override
-	public List<Tags> getAllTags() {
-		// TODO Auto-generated method stub
-		return dao.findAll();
-	}
+//	@Override
+//	public List<Tags> getAllTags() {
+//		// TODO Auto-generated method stub
+//		return dao.findAll();
+//	}
 
 	@Override
 	public ResponseEntity<Tags> createTags(Tags t) throws SQLException {

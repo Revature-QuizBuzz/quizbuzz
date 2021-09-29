@@ -45,12 +45,12 @@ public class Question {
 	
 	public Question() { }
 
-	public Question(int id) {
-		this.questionId = id;
+	public Question(int questionId) {
+		this.questionId = questionId;
 	}
 
-	public Question(int id, Quiz quiz, List<Answers> answers, String question, float possiblePoints, String type) {
-		this.questionId = id;
+	public Question(int questionId, Quiz quiz, List<Answers> answers, String question, float possiblePoints, String type) {
+		this.questionId =questionId;
 		this.quiz = quiz;
 		this.answers = answers;
 		this.question = question;
@@ -62,8 +62,8 @@ public class Question {
 		return questionId;
 	}
 
-	public void setQuestionId(int id) {
-		this.questionId = id;
+	public void setQuestionId(int questionId) {
+		this.questionId =questionId;
 	}
 	
 //	public Quiz getQuiz() {
@@ -106,10 +106,6 @@ public class Question {
 	public void setType(String type) {
 		this.type = type;
 	}
-
-	public void setQuiz(Quiz quiz) {
-		this.quiz = quiz;
-	}
 	
 	public void add(Answers answer) {
 		if(this.answers == null) {
@@ -126,7 +122,7 @@ public class Question {
 		
 		for(Answers oldAnswer: oldList) {
 			if(!newList.contains(oldAnswer)) {
-				toDelete.add(oldAnswer.getId());
+				toDelete.add(oldAnswer.getAnswerId());
 			}
 		}
 		

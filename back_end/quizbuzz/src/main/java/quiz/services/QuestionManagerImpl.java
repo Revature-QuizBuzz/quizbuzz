@@ -41,20 +41,18 @@ public class QuestionManagerImpl implements QuestionManager{
 		return daoQuestion.save(que);
 	}
 
-<<<<<<< HEAD
 	@Override
-	public List<Question> createAll(List<Question> questions) {
+	public List<Question> createAllPersisted(List<Question> questions) {
 		List<Question> persistedQuestion = new ArrayList<Question>();
 		for (Question question : questions) {
-			persistedQuestion.add(dao.save(question));
+			persistedQuestion.add(daoQuestion.save(question));
 		}
 		return persistedQuestion;}
 	
 	
 	public Question findByQuestion(String text) {
-		return dao.findByQuestion(text);
+		return daoQuestion.findByQuestion(text);
 	}
-=======
 
     @Override
     public void createAll(List<Question> questions) {
@@ -91,7 +89,7 @@ public class QuestionManagerImpl implements QuestionManager{
        }
        // Update remaining answers
        for (Answers answer: question.getAnswers()) {
-           aManager.updateAnswer(answer.getId(), answer);
+           aManager.updateAnswer(answer.getAnswerId(), answer);
        }
        // updatedQuestion.setAnswers(question.getAnswers());
         
@@ -114,6 +112,5 @@ public class QuestionManagerImpl implements QuestionManager{
     public void deleteQuestion(Question question) {
     	daoQuestion.delete(question);
     }
->>>>>>> update-quiz
 
 }

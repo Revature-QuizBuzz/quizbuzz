@@ -7,19 +7,16 @@ import java.util.List;
 public interface QuizManager {
     Quiz create(Quiz quiz);
 
-    Quiz findById(int id);
+//    Quiz findById(int id);
 
     List<Quiz> findAll();
 
     List<Quiz> findByUser(int userId);
 
     Quiz findByName(String name);
-<<<<<<< HEAD
-    List<Quiz> getFeaturedQuizzes();
-=======
+//    List<Quiz> getFeaturedQuizzes();
 
     Quiz getQuizById(int id);
 
     Quiz updateQuiz(int quizId, Quiz quiz);
->>>>>>> update-quiz
 }

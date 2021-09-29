@@ -6,21 +6,24 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
 @Table(name = "quizzes")
 public class Quiz {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @SequenceGenerator(name="id_generator", sequenceName = "quizzes_quiz_id_seq", allocationSize = 1)
+//    @SequenceGenerator(name="id_generator", sequenceName = "quizzes_quiz_id_seq", allocationSize = 1)
     @Column(name="quiz_id")
 	private int quizId;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="user_id")
 	private User user;
 	
-	@OneToMany(mappedBy="quiz", cascade=CascadeType.MERGE)
+	@OneToMany(mappedBy="quiz", cascade=CascadeType.MERGE, fetch=FetchType.LAZY)
 	private List<Scores> scores;
 	
 	@OneToMany(mappedBy="quiz", cascade=CascadeType.MERGE)
@@ -88,8 +91,6 @@ public class Quiz {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
-	public User getUser() {return this.user;}
 
 	public List<Scores> getScores() {
 		return scores;
@@ -178,7 +179,7 @@ public class Quiz {
 		List<Integer> toDelete = new ArrayList<>();
 		for (Question oldQuestion: oldList) {
 			if (!newList.contains(oldQuestion)) {
-				toDelete.add(oldQuestion.getId());
+				toDelete.add(oldQuestion.getQuestionId());
 			}
 		}
 		return toDelete;
@@ -211,7 +212,7 @@ public class Quiz {
 	public static List<Integer> getListIds(List<Question> questions) {
 		List<Integer> ids = new ArrayList<>();
 		for(Question question: questions) {
-			ids.add(question.getId());
+			ids.add(question.getQuestionId());
 		}
 		return ids;
 	}

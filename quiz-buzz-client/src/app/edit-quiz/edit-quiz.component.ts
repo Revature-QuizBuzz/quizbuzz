@@ -13,7 +13,6 @@ export class EditQuizComponent implements OnInit {
 
 
   quiz:Quiz = {
-    id: 0,
     scores: [],
     questions: [],
     tags: [],

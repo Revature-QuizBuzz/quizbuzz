@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 
 public interface TagsManager {
 	
-	public List<Tags> getAllTags();
 
     List<Tags> getAllTags();
 

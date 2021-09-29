@@ -34,12 +34,12 @@ public class Answers {
 	public Answers() {
 	}
 
-	public Answers(int id) {
-		this.answerId = id;
+	public Answers(int answerId) {
+		this.answerId = answerId;
 	}
 
-	public Answers(int id, Question question, String answer, boolean correct) {
-		this.answerId = id;
+	public Answers(int answerId, Question question, String answer, boolean correct) {
+		this.answerId =answerId;
 		this.question = question;
 		this.answer = answer;
 		this.correct = correct;
@@ -49,20 +49,20 @@ public class Answers {
 		return answerId;
 	}
 
-	public void setAnswerId(int id) {
-		this.answerId = id;
+	public void setAnswerId(int answerId) {
+		this.answerId =answerId;
 	}
 
 	public void setQuestion(Question question) {
 		this.question = question;
 	}
 	
-	public Question getQuestion() {
-		return this.question;
-	}
+//	public Question getQuestion() {
+//		return this.question;
+//	}
 
 	public int getQuestionId() {
-		return question.getId();
+		return question.getQuestionId();
 	}
 
 	public String getAnswer() {
