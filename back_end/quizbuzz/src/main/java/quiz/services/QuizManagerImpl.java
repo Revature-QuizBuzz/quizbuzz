@@ -2,6 +2,13 @@ package quiz.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import quiz.dao.QuizDAO;
+import quiz.models.Quiz;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import quiz.dao.*;
 import quiz.models.*;
 
@@ -33,5 +40,20 @@ public class QuizManagerImpl implements QuizManager {
     public List<Quiz> getFeaturedQuizzes() {
     	return daoQuiz.getFeaturedQuizzes();
     }
+
+    @Override
+    public List<Quiz> findByUser(int userId) {
+        return daoQuiz.findByUserId(userId);
+    }
+
+    @Override
+    public Quiz findByName(String name) {
+        return daoQuiz.findByName(name);
+    }
+
+	@Override
+	public List<Quiz> findByQuizName(String quizName) {
+		return daoQuiz.findByQuizName(quizName);
+	}
 
 }

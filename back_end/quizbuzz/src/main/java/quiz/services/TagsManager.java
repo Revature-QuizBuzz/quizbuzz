@@ -10,6 +10,8 @@ import quiz.models.Tags;
 public interface TagsManager {
 	
 	public List<Tags> getAllTags();
+
+    Tags findByName(String name);
 	
 	public ResponseEntity<Tags> createTags(Tags t) throws SQLException ;//adds new tag to db
 	

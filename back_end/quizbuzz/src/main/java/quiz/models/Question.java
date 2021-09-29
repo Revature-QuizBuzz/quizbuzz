@@ -14,32 +14,34 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.springframework.data.annotation.Transient;
+
 @Entity
-@Table(name="questions")
+@Table(name = "questions")
 public class Question {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @SequenceGenerator(name="id_generator", sequenceName = "questions_question_id_seq", allocationSize = 1)
+//    @SequenceGenerator(name="id_generator", sequenceName = "questions_question_id_seq", allocationSize = 1)
     @Column(name="question_id")
 	private int questionId;
 	
 	@ManyToOne
-	@JoinColumn(name="quiz_id", nullable=false)
+	@JoinColumn(name = "quiz_id")
 	private Quiz quiz;
-	
-	@OneToMany(mappedBy="question", cascade=CascadeType.ALL)
+
+	@OneToMany(mappedBy = "question", cascade = CascadeType.MERGE)
 	private List<Answers> answers;
-	
+
 	@Column
 	private String question;
-	
-	@Column(name="possible_points")
-	private float possiblePoints;
-	
-	@Column(name="question_type")
-	private String type;
 
+	@Column(name = "possible_points")
+	private float possiblePoints;
+
+	@Column(name = "question_type")
+	private String type;
+	
 	public Question() { }
 
 	public Question(int id) {
@@ -62,6 +64,15 @@ public class Question {
 	public void setQuestionId(int id) {
 		this.questionId = id;
 	}
+	
+//	public Quiz getQuiz() {
+//		return this.quiz;
+//	}
+	
+	public void setQuiz(Quiz quiz) {
+		this.quiz = quiz;
+	}
+
 
 	public List<Answers> getAnswers() {
 		return answers;
@@ -95,8 +106,9 @@ public class Question {
 		this.type = type;
 	}
 
-	public void setQuiz(Quiz quiz) {
-		this.quiz = quiz;
+	@Override
+	public String toString() {
+		return "Question [questionId=" + questionId + ", quiz=" + quiz + ", answers=" + answers + ", question="
+				+ question + ", possiblePoints=" + possiblePoints + ", type=" + type + "]";
 	}
-
 }

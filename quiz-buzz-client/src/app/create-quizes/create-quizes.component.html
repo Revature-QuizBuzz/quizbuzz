@@ -1,38 +1,39 @@
-<form [formGroup]="createQuiz">
+<form [formGroup]="createQuiz" (ngSubmit)="onSubmit()">
 
   <div>
     <h2>Create a Quiz</h2>
   </div>
-  <!--<div class="modal-body">-->
+  <div class="modal-body">
     <form>
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" required [(ngModel)]="quiz.name" name="name" />
+      <div [formGroup]="createQuiz">
+        <label for="quizName">Name</label>
+        <input type="text" class="form-control" id="quizName"  name="quizName" formControlName="quizName" maxlength="15"/>
       </div>
     </form>
-  <!--</div>-->
-  <!--<div class="modal-body">-->
-    <form>
-      <div class="form-group">
-        <label for="description">Description</label>
-        <input type="text" class="form-control" id="description" required [(ngModel)]="quiz.description"
-          name="description" />
-      </div>
-    </form>
-  <!--</div>-->
-
-  <div formGroupName="questions">
-
-    Questions and answers go here, using dummies for testing
   </div>
+  <div class="modal-body">
+    <form>
+      <div [formGroup]="createQuiz">
+        <label for="quizDescription">Description</label>
+        <input type="text" class="form-control" id="quizDescription"
+          name="quizDescription" formControlName="quizDescription"/>
+      </div>
+    </form>
+  </div>
+
+
   <div class="form-group">
     <app-attach-tags (tags)="selectedTags($event)"></app-attach-tags>
   </div>
- 
-    <div class="form-group">
-      <button type="button" (click)="addQuestion()" class="btn btn-primary">Add question</button>
-    </div>
-    <!-- <button type="submit" [disabled]="!createQuiz.valid" class="btn btn-primary">Submit</button> -->
-    <button (click)="add()" class="btn btn-success">Submit</button>
+  
+  <div formGroupName="questionArray">
+    <app-question (questionEvent)="recieveQuestion($event)" (saveEvent)="save()"></app-question>
+  </div>
+  <div>
+    <!-- <button type="button" (click)="" class="btn btn-primary">Add question</button> -->
+    <button type="submit" [disabled]="!createQuiz.valid" class="btn btn-primary">Submit</button>
+    <!-- <button (click)="save()" class="btn btn-success">Save Quiz</button> -->
+    <!-- <button (click)="add()" class="btn btn-success">Submit</button>  -->
+  </div>
 
 </form>

@@ -35,6 +35,10 @@ public class TagsManagerImpl implements TagsManager{
 		return new ResponseEntity<Integer>(t, HttpStatus.OK);
 	}
 
-	
+	@Override
+	public Tags findByName(String name) {
+		return dao.findByName(name);
+	}
+
 
 }

@@ -10,23 +10,24 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+
 @Entity
-@Table(name="answers")
+@Table(name = "answers")
 public class Answers {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @SequenceGenerator(name="id_generator", sequenceName = "answers_answer_id_seq", allocationSize = 1)
+//    @SequenceGenerator(name="id_generator", sequenceName = "answers_answer_id_seq", allocationSize = 1)
     @Column(name="answer_id")
 	private int answerId;
 	
 	@ManyToOne
-	@JoinColumn(name="question_id", nullable=false)
+	@JoinColumn(name = "question_id", nullable = false)
 	private Question question;
-	
+
 	@Column
 	private String answer;
-	
+
 	@Column
 	private boolean correct;
 
@@ -55,6 +56,14 @@ public class Answers {
 	public void setQuestion(Question question) {
 		this.question = question;
 	}
+	
+	// public Question getQuestion() {
+	// 	return this.question;
+	// }
+
+//	public int getQuestionId() {
+//		return question.getId();
+//	}
 
 	public String getAnswer() {
 		return answer;

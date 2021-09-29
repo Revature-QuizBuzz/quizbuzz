@@ -7,8 +7,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import quiz.models.Answers;
+import quiz.models.Question;
 import quiz.models.Quiz;
+import quiz.models.User;
+import quiz.services.AnswersManager;
+import quiz.services.QuestionManager;
 import quiz.services.QuizManager;
+
 
 import java.util.List;
 
@@ -18,6 +24,11 @@ public class QuizController {
 	
 	@Autowired
 	private QuizManager manager;
+	@Autowired
+	private QuestionManager questionManager;
+	@Autowired
+	private AnswersManager answersManager;
+
 
 	private static final Logger logger = LogManager.getLogger(QuizController.class);
 
@@ -25,7 +36,17 @@ public class QuizController {
 	@PostMapping(path = "/createQuiz", produces = "application/json", consumes = "application/json")
 	public Quiz create(@RequestBody Quiz quiz) {
 		logger.info("created new quiz");
-		return manager.create(quiz);
+		quiz = manager.create(quiz);
+		for(Question questions : quiz.getQuestions()) {
+			questions.setQuiz(quiz);
+			questionManager.create(questions);
+			for (Answers answers : questions.getAnswers()) {
+				answers.setQuestion(questions);
+				answersManager.create(answers);
+			}
+			
+		}		
+		return quiz;
 	}
 
 	@CrossOrigin(origins="http://localhost:4200")
@@ -34,6 +55,12 @@ public class QuizController {
 		logger.info("GET to /quizzes");
 		return manager.findAll();
 	}
+
+	@GetMapping(path="/user/{userId}", produces="application/json")
+	public List<Quiz> findQuizzesCreatedByUser(@PathVariable int userId){
+		logger.info("Find quiz(zes) created by user ");
+		return manager.findByUser(userId);
+	}
 	
 	@CrossOrigin(origins="http://localhost:4200")
 	@GetMapping(path="/getTen", produces="application/json")
@@ -41,4 +68,12 @@ public class QuizController {
 		logger.info("GET to /getTen");
 		return new ResponseEntity<>(manager.getFeaturedQuizzes(), HttpStatus.OK);
 	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping(path="/search/{quizName}", produces="application/json")
+	public List<Quiz> findBySearchValue(@PathVariable String quizName) {
+		return manager.findByQuizName(quizName);
+	}
+	
+	
 }

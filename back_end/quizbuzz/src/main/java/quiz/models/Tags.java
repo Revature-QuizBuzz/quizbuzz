@@ -17,7 +17,7 @@ public class Tags {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @SequenceGenerator(name="id_generator", sequenceName = "tags_tag_id_seq", allocationSize = 1)
+//    @SequenceGenerator(name="id_generator", sequenceName = "tags_tag_id_seq", allocationSize = 1)
     @Column(name="tag_id")
 	private int tagId;
 	
@@ -45,6 +45,6 @@ public class Tags {
 
 	public void setName(String name) {
 		this.name = name;
-	}	
-	
+	}
+
 }
