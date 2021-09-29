@@ -19,10 +19,6 @@ export class QuestionAnswerComponent implements OnInit {
   }
 
   @Input() questionType?: string;
-<<<<<<< HEAD
-  @Output() answerEvent = new EventEmitter<Answer[]>();
-=======
->>>>>>> TakeQuizzes
   
   constructor(private http:HttpClient, private router:Router) { }
 
@@ -30,10 +26,7 @@ export class QuestionAnswerComponent implements OnInit {
   }
 
   
-<<<<<<< HEAD
-=======
   @Output() answerEvent = new EventEmitter<Answer[]>();
->>>>>>> TakeQuizzes
 
   onClick(form:NgForm){
     console.log(this.questionType);
@@ -66,10 +59,6 @@ export class QuestionAnswerComponent implements OnInit {
     console.log(answer2)
     console.log(answer3)
     console.log(answer4);
-<<<<<<< HEAD
-    console.log(answerArray);
-=======
->>>>>>> TakeQuizzes
   this.answerEvent.emit(answerArray);
   //     this.http.post(this._url,
   //       answerArray,httpOptions

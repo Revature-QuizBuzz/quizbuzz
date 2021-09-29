@@ -15,17 +15,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { routes } from './app-routing.module';
 import { CreateQuizesComponent } from './create-quizes/create-quizes.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-<<<<<<< HEAD
-=======
 import { TaketestComponent } from './take-quiz-components/taketest/taketest.component';
 import { QuizSubmissionComponent } from './take-quiz-components/quiz-submission/quiz-submission.component';
 import { QuizSelectionComponent } from './take-quiz-components/quiz-selection/quiz-selection.component';
->>>>>>> TakeQuizzes
 import { AttachTagsComponent } from './attach-tags/attach-tags.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { TotalUserPointsComponent } from './total-user-points/total-user-points.component';
 import { ScoreBoardComponent } from './scoreboard/scoreboard.component';
 import { TagsShowPageComponent } from './tags-show-page/tags-show-page.component';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +34,6 @@ import { TagsShowPageComponent } from './tags-show-page/tags-show-page.component
     TotalUserPointsComponent,
     QuizSubmissionComponent,
     NavbarComponent,
-    TaketestComponent,
     QuizSelectionComponent,
     HomeComponent,
     FooterComponent,
@@ -44,23 +41,13 @@ import { TagsShowPageComponent } from './tags-show-page/tags-show-page.component
     CreateQuizesComponent,
     ScoreBoardComponent,
     TagsShowPageComponent,
-<<<<<<< HEAD
-    AttachTagsComponent
-=======
     AttachTagsComponent,
     TaketestComponent
->>>>>>> TakeQuizzes
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-<<<<<<< HEAD
-    ReactiveFormsModule,
-    HttpClientModule,
-    FormsModule,
-=======
->>>>>>> TakeQuizzes
     NgbModule,
     NgMultiSelectDropDownModule.forRoot(),
     RouterModule.forRoot(routes),

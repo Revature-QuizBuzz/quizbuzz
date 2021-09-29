@@ -8,10 +8,6 @@ import { Router } from '@angular/router';
 import { AnswerService } from '../answer.service';
 import { NgForm, FormGroup, FormControl, FormArray } from '@angular/forms';
 
-<<<<<<< HEAD
-=======
-
->>>>>>> main
 
 @Component({
   selector: 'app-quiz-submission',
@@ -20,17 +16,6 @@ import { NgForm, FormGroup, FormControl, FormArray } from '@angular/forms';
 })
 export class QuizSubmissionComponent implements OnInit {
 
-<<<<<<< HEAD
-  questions: Question[] = [];
-  quizzes: Quiz[] = [];
-  answers: Answer[] = [];
-  answer: any;
-  userAnswer?: any;
-  userAnswers: any=[];
-  // scoreId: number;
-
-  constructor(private answerService: AnswerService) { 
-=======
   questions: any = [];
   question:any =[];
 
@@ -39,66 +24,17 @@ export class QuizSubmissionComponent implements OnInit {
   userAnswers:any = [];
   correctAnswers:any = [];
   correct:any=[];
-
-  key = 'correct';
-
   userScore: any;
   quiz: any = localStorage.getItem('quizId');
   quizQuestion: any = [];
   userPoints: any = localStorage.getItem('score');
-  totalPoints: any = 100;
+  totalPoints: any = 0;
   date: any;
-<<<<<<< HEAD
->>>>>>> main
-  
-  }
-=======
-  
->>>>>>> TakeQuizzes
-
- 
+   
 
   constructor(private router:Router, private answerService: AnswerService) { }
 
   ngOnInit(): void {
-<<<<<<< HEAD
-
-    this.answerService.getAllAnswers()
-    .subscribe((data: Answer[]) =>{
-      console.log(data);
-      this.answers = data;
-    });
-  
-    this.answerService.getAllQuiz()
-    .subscribe((data: Quiz[]) => {
-      console.log(data);
-      this.quizzes = data;
-    });
-
-    this.answerService.getAllQuestions()
-    .subscribe((data: Question[]) => { 
-      console.log(data);
-      this.questions = data;
-    });
-
-    this.userAnswers = new FormGroup({
-      currentQuestion : new FormControl (''),
-      currentAnswer : new FormControl ('')
-    });
-    
-  }
-
-  getUserAnswer() {
-    this.userAnswer = localStorage.getItem('answers');
-    // let localStorageItem = JSON.parse(localStorage.getItem('answers'));
-    
-  }
-
-  // submit() {
-  //   localStorage.getItem('answers');
-  //   userAnswer = this.answers;
-  // }
-=======
     this.getUserAnswer()
     this.getUserQuestion()
     this.getCorrectAnswers()
@@ -137,14 +73,12 @@ export class QuizSubmissionComponent implements OnInit {
    }
 
   }
->>>>>>> main
 
  
 
   // addScore(text: string): void {
   //   let userAnswer = new this.answers(this.scoreId, text);
   //   this.userAnswers.push(this.userAnswer);
-  //   this.scoreId++;
   // }
 
   // addUserAnswer(userAnswer : Answer) {
@@ -153,8 +87,3 @@ export class QuizSubmissionComponent implements OnInit {
 
   // let userAnswers = this.getUserAnswers();
 
-<<<<<<< HEAD
-  // this.scoreId = 2;
-}
-=======
->>>>>>> main

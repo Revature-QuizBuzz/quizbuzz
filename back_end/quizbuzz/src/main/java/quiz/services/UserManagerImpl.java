@@ -8,31 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import quiz.dao.UserDAO;
 import quiz.models.User;
-<<<<<<< HEAD
-//
-//import quiz.models.ScoreBoard;
-=======
-
 import quiz.models.ScoreBoard;
->>>>>>> TakeQuizzes
 
 @Service
 public class UserManagerImpl implements UserManager{
 
 	@Autowired
 	private UserDAO uDao;
-<<<<<<< HEAD
-//	
-//	@Override
-//	public List<ScoreBoard> findScoreBoard() {
-//		return uDao.findScoreBoard();
-//	}
-=======
-	
-	
->>>>>>> main
-	
-	
 	
 	@Override
 	public User findLogin(User user) {
@@ -64,13 +46,6 @@ public class UserManagerImpl implements UserManager{
 	public List<User> getUsers() {
 		return uDao.findAll();
 	}
-
-<<<<<<< HEAD
-//    @Override
-//    public User findById(int id) {
-//        return uDao.findById(id);
-//    }
-=======
     @Override
     public User findById(int id) {
         return uDao.findById(id);
@@ -81,10 +56,4 @@ public class UserManagerImpl implements UserManager{
 		return uDao.findScoreBoard();
 	}
 
-
-	
-<<<<<<< HEAD
->>>>>>> main
-=======
->>>>>>> TakeQuizzes
 }

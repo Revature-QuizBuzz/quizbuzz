@@ -8,24 +8,9 @@ public interface QuestionManager {
 	
 	List<Question> findAll();
 	List<Question> createAll(List<Question> questions);
-<<<<<<< HEAD
-<<<<<<< HEAD
 	Question create(Question ques);	
 	List<Question> findAll(int id);
 	List<Question> getAllQuestions();
-
-
     Question findByQuestion(String name);
 
-=======
-=======
->>>>>>> TakeQuizzes
-	Question create(Question ques);
-
-    Question findByQuestion(String name);
-
-	List<Question> findAll(int id);
-	List<Question> getAllQuestions();
-	
->>>>>>> main
 }

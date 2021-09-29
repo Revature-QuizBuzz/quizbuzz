@@ -14,9 +14,6 @@ import quiz.models.Quiz;
 public class AnswersManagerImpl implements AnswersManager {
 	
 	@Autowired
-	private AnswersDAO adao;
-
-	@Autowired
 	private AnswersDAO dao;
 	
 
@@ -44,43 +41,5 @@ public class AnswersManagerImpl implements AnswersManager {
 	public List<Answers> findAll(int id) {
 		return dao.findAll();
 	}
-	@Override
-	public List<Answers> getAllAnswers() {
-		return StreamSupport.stream(adao.findAll().spliterator(), false)
-				.collect(Collectors.toList());
-	}
 	
-<<<<<<< HEAD
-	
-
-	@Override
-	public List<Answers> findAllAnswers() {
-		return StreamSupport.stream(adao.findAll().spliterator(), false).collect(Collectors.toList());
-	}
-
-
-	@Override
-	public Answers create(Answers ans) {
-		return adao.save(ans);
-	}
-
-	public List<Answers> createAnswers(List<Answers> list) {
-		return adao.saveAll(list);
-	}
-
-	@Override
-	public Answers findByAnswer(String answer) {
-		return adao.findByAnswer(answer);
-	}
-=======
-//	@Override
-//	public List<Answers> getAllAnswers() {
-//		return adao.findAll();
-//	}
-//
-//	@Override
-//	public Answers findById(int id) {
-//		return adao.findOne(id);
-//	}
->>>>>>> main
 }
