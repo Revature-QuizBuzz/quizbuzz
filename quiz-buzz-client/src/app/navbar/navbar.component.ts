@@ -18,6 +18,8 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //add in routing here
+
   signOut() {
     localStorage.clear();
     this.router.navigate(['login']);
@@ -27,5 +29,9 @@ export class NavbarComponent implements OnInit {
     if(localStorage.getItem("id") === null)
       return ""; 
     return String(localStorage.getItem("firstName")) + " " + String(localStorage.getItem("lastName"));
+  }
+
+  quizSelection(){
+    this.router.navigate(['quiz/selection'])
   }
 }

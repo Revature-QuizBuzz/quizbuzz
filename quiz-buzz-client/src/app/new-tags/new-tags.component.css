@@ -2,10 +2,14 @@
     background-color: #72A4C2;
     color: #fff;
     border-radius:27px;
+    text-align: center;
+    margin: 10px;
     width: 300px;
     /* padding: 20px; */
-    padding-bottom: 20px;
-    margin-top: 20px;
+}
+
+.newTagForm {
+    padding: 10px;
 }
 
 .minwidth {
