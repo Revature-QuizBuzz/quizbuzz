@@ -7,22 +7,22 @@
 
     
     <!--where the questions and answers are -->
-    <div class="test-group" > {{currentQuestion?.quizId}}:{{currentQuestion?.question}} </div>
+    <div class="test-group" > {{currentQuestion?.questionId}}:{{currentQuestion?.question}} </div>
     
     <form #testForm="ngForm" >
       
       <div *ngFor="let a of currentQuestion?.answers"  >
-        <input [name]="currentQuestion?.id"  value={{a.answers}}  type="radio"  
+        <input  name="a.answer" value="{{a.answer}}"  type ="radio"   
 
         class="test-group"  
-           (change)="getAnswers($event)"  [checked]="a.answers === currentQuestion.selectedAnswer" > {{a?.answer}}
+           (change)="getAnswers($event)"  [checked]="a?.answer === currentQuestion.selectedAnswer" > {{a?.answer}}
                
            
      </div>
         <br>
   
         <button class="btn"  (click)="previous()" >Previous</button>
-        <button class="btn" (click)="submit(testForm)" [disabled]="isDisable" >Submit</button>
+        <button class="btn" type="button" (click)="submit(testForm)" [disabled]="isDisable" >Submit</button>
         <button class="btn" (click)="next()" >Next</button>
    
     </form>
