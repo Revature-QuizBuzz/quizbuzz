@@ -48,9 +48,13 @@ export class QuizSubmissionComponent implements OnInit {
   userPoints: any = localStorage.getItem('score');
   totalPoints: any = 100;
   date: any;
+<<<<<<< HEAD
 >>>>>>> main
   
   }
+=======
+  
+>>>>>>> TakeQuizzes
 
  
 

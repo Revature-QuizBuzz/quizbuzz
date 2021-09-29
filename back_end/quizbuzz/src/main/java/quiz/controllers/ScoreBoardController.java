@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 //package quiz.controllers;
 //
 //import java.util.List;
@@ -39,6 +40,8 @@
 //
 //}
 =======
+=======
+>>>>>>> TakeQuizzes
 package quiz.controllers;
 
 import java.util.Collections;
@@ -96,4 +99,7 @@ public class ScoreBoardController {
 
 
 }
+<<<<<<< HEAD
 >>>>>>> main
+=======
+>>>>>>> TakeQuizzes

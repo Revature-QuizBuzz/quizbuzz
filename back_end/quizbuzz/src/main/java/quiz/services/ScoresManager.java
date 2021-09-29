@@ -15,7 +15,10 @@ public interface ScoresManager {
 
 =======
 	
+<<<<<<< HEAD
 >>>>>>> main
+=======
+>>>>>>> TakeQuizzes
 	List<Scores> findAll();
 
 	Object save(Scores score);
@@ -24,8 +27,11 @@ public interface ScoresManager {
 
 	Scores newScore(Scores score);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
+=======
+>>>>>>> TakeQuizzes
 	Scores addScore(Scores score);
 //	Scores findById(int id);
 >>>>>>> main

@@ -8,8 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import quiz.dao.UserDAO;
 import quiz.models.User;
+<<<<<<< HEAD
 //
 //import quiz.models.ScoreBoard;
+=======
+
+import quiz.models.ScoreBoard;
+>>>>>>> TakeQuizzes
 
 @Service
 public class UserManagerImpl implements UserManager{
@@ -26,6 +31,8 @@ public class UserManagerImpl implements UserManager{
 	
 	
 >>>>>>> main
+	
+	
 	
 	@Override
 	public User findLogin(User user) {
@@ -76,5 +83,8 @@ public class UserManagerImpl implements UserManager{
 
 
 	
+<<<<<<< HEAD
 >>>>>>> main
+=======
+>>>>>>> TakeQuizzes
 }

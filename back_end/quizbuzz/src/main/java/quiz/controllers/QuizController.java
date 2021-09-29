@@ -7,11 +7,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+<<<<<<< HEAD
 import quiz.models.Answers;
 import quiz.models.Question;
 import quiz.models.Quiz;
 import quiz.models.User;
 import quiz.services.AnswersManager;
+=======
+import quiz.models.Question;
+import quiz.models.Quiz;
+import quiz.models.User;
+>>>>>>> TakeQuizzes
 import quiz.services.QuestionManager;
 import quiz.services.QuizManager;
 
@@ -25,9 +31,13 @@ public class QuizController {
 	@Autowired
 	private QuizManager manager;
 	@Autowired
+<<<<<<< HEAD
 	private QuestionManager questionManager;
 	@Autowired
 	private AnswersManager answersManager;
+=======
+	private QuestionManager qmanager;
+>>>>>>> TakeQuizzes
 
 
 	private static final Logger logger = LogManager.getLogger(QuizController.class);
@@ -39,6 +49,7 @@ public class QuizController {
 		quiz = manager.create(quiz);
 		for(Question questions : quiz.getQuestions()) {
 			questions.setQuiz(quiz);
+<<<<<<< HEAD
 			questionManager.create(questions);
 			for (Answers answers : questions.getAnswers()) {
 				answers.setQuestion(questions);
@@ -46,6 +57,10 @@ public class QuizController {
 			}
 			
 		}		
+=======
+		}
+		qmanager.createAll(quiz.getQuestions());
+>>>>>>> TakeQuizzes
 		return quiz;
 	}
 

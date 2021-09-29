@@ -2,6 +2,10 @@ package quiz.services;
 
 import java.util.List;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> TakeQuizzes
 import quiz.models.ScoreBoard;
 import quiz.models.User;
 
@@ -16,6 +20,9 @@ public interface UserManager {
 
 >>>>>>> main
 
+
+
+
 	User findLogin(User user);
 	User createAccount(User user);
 	List<User> getUsers();
@@ -28,5 +35,8 @@ public interface UserManager {
 	List<ScoreBoard> findScoreBoard();
 	
 	
+<<<<<<< HEAD
 >>>>>>> main
+=======
+>>>>>>> TakeQuizzes
 }

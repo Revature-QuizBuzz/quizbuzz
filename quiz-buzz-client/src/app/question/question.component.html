@@ -62,10 +62,17 @@
               </div>
           </div>
           
+<<<<<<< HEAD
               <!-- <div>
                   <label for="possiblePoints">Point Value</label>
                   <input id="possiblePoints" type="number" name="possiblePoints" placeholder="{{questions[i].possiblePoints}}" required ngModel>
               </div> -->
+=======
+              <div>
+                  <label for="possiblePoints">Point Value</label>
+                  <input id="possiblePoints" type="number" name="possiblePoints" placeholder="{{questions[i].possiblePoints}}" required ngModel>
+              </div>
+>>>>>>> TakeQuizzes
           </div>
         
         <div class="row">
@@ -79,7 +86,11 @@
                   </select>
 
                   <ng-container *ngIf="questions[i].type !== ''">
+<<<<<<< HEAD
                     <app-question-answer [questionType]="questions[i].type" (answerEvent) = "answerCapture($event, i)"></app-question-answer>
+=======
+                    <app-question-answer [questionType]="questions[i].type"></app-question-answer>
+>>>>>>> TakeQuizzes
                 </ng-container>
                <!-- <app-question-answer [questionType]="selectedType"></app-question-answer>--> 
           </div>

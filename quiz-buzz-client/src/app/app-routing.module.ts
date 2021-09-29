@@ -21,6 +21,7 @@ export const routes: Routes = [
   {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
   {path: 'login', component: LoginComponent},
 <<<<<<< HEAD
+<<<<<<< HEAD
   {path: 'quiz/submit', component: QuizSubmissionComponent},
   {path:"tags/new", component: NewTagsComponent},
   {path: 'quiz/new', component:CreateQuizesComponent},
@@ -32,6 +33,10 @@ export const routes: Routes = [
   {path: 'scoreboard', component:ScoreBoardComponent, canActivate:[AuthGuard]},
   {path: 'totalpoints', component:TotalUserPointsComponent, canActivate:[AuthGuard]},
   {path: 'tags', component: TagsShowPageComponent, canActivate:[AuthGuard]},
+=======
+  {path: 'scoreboard', component:ScoreBoardComponent, canActivate:[AuthGuard]},
+  {path: 'totalpoints', component:TotalUserPointsComponent, canActivate:[AuthGuard]},
+>>>>>>> TakeQuizzes
   {path: 'quiz/new', component:CreateQuizesComponent, canActivate:[AuthGuard], children:[
     {path: 'tags/edit', component:AttachTagsComponent, canActivate:[AuthGuard], children:[
       {path: 'tags/new', component: NewTagsComponent, canActivate:[AuthGuard]}

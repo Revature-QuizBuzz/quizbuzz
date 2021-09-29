@@ -6,21 +6,21 @@ import { QuestionComponent } from './question/question.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule , ReactiveFormsModule } from '@angular/forms';
- 
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { NewTagsComponent } from './new-tags/new-tags.component';
-import { RouterModule } from '@angular/router';
-
+import { Routes, RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { routes } from './app-routing.module';
-import { QuizSubmissionComponent } from './take-quiz-components/quiz-submission/quiz-submission.component';
-import { QuizSelectionComponent } from './take-quiz-components/quiz-selection/quiz-selection.component';
-import { TaketestComponent } from './take-quiz-components/taketest/taketest.component';
 import { CreateQuizesComponent } from './create-quizes/create-quizes.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+<<<<<<< HEAD
+=======
+import { TaketestComponent } from './take-quiz-components/taketest/taketest.component';
+import { QuizSubmissionComponent } from './take-quiz-components/quiz-submission/quiz-submission.component';
+import { QuizSelectionComponent } from './take-quiz-components/quiz-selection/quiz-selection.component';
+>>>>>>> TakeQuizzes
 import { AttachTagsComponent } from './attach-tags/attach-tags.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { TotalUserPointsComponent } from './total-user-points/total-user-points.component';
@@ -44,21 +44,28 @@ import { TagsShowPageComponent } from './tags-show-page/tags-show-page.component
     CreateQuizesComponent,
     ScoreBoardComponent,
     TagsShowPageComponent,
+<<<<<<< HEAD
     AttachTagsComponent
+=======
+    AttachTagsComponent,
+    TaketestComponent
+>>>>>>> TakeQuizzes
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
     FormsModule,
+<<<<<<< HEAD
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+=======
+>>>>>>> TakeQuizzes
     NgbModule,
     NgMultiSelectDropDownModule.forRoot(),
     RouterModule.forRoot(routes),
-    NgbModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

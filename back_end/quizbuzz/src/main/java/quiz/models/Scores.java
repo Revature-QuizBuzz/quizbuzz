@@ -40,7 +40,10 @@ public class Scores {
 =======
 	public Scores() { }
 
+<<<<<<< HEAD
 >>>>>>> main
+=======
+>>>>>>> TakeQuizzes
 	public Scores(int id, User user, Quiz quiz, int score, Date completedOn) {
 		super();
 		this.scoreId = id;
@@ -60,12 +63,17 @@ public class Scores {
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public int getId() {
 		return id;
 =======
 	public int getScoreId() {
 		return scoreId;
 >>>>>>> main
+=======
+	public int getScoreId() {
+		return scoreId;
+>>>>>>> TakeQuizzes
 	}
 
 	public void setScoreId(int id) {
