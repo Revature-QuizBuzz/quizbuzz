@@ -6,6 +6,12 @@ import quiz.models.Question;
 
 public interface QuestionManager {
 	
+	List<Question> findAll();
+	List<Question> createAll(List<Question> questions);
+	Question create(Question ques);
+
+    Question findByQuestion(String name);
+
 	List<Question> findAll(int id);
 	List<Question> getAllQuestions();
 	

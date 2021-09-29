@@ -1,0 +1,27 @@
+<div class="container" style="text-align:center;">
+    <h1 style="text-align:center;">Total User Points</h1>
+    <h2>User</h2>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <th>First Name</th>
+                <th>Total Points</th>
+                <th>Possible Points</th>
+                <th>Point Percentage</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let scores of scoreBoard">
+                    <td> {{ scores.firstName }} </td>
+                    <td> {{ scores.totalPoints }}</td>
+                    <td> {{ scores.possiblePoints }}</td>
+                    <td> {{ scores.pointPercentage }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <input name="inputScore" ngModel #inputScore="ngModel">
+        <button>Submit</button>
+      </form>
+  
+</div>

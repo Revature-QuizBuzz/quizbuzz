@@ -5,7 +5,7 @@ import { Tag } from './tags'
 
 export interface Quiz {
     
-    id?: number;
+    quizId?: number;
     user?: User;
     scores?: UserScore[];
     questions?: Question[];
@@ -15,4 +15,6 @@ export interface Quiz {
     totalScore?: number;
     createdDate?: Date;
     dateModified?: Date;
+
 }
+

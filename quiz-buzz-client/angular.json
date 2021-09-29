@@ -10,7 +10,8 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
-          "strict": true
+          "strict": true,
+          "style":"scss"
         }
       },
       "root": "",
@@ -32,7 +33,8 @@
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
+              "src/ng-multiselect-dropdown.theme.scss",
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -99,6 +101,8 @@
               "src/assets"
             ],
             "styles": [
+              "src/ng-multiselect-dropdown.theme.scss",
+              "src/styles.scss",
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.css"
             ],

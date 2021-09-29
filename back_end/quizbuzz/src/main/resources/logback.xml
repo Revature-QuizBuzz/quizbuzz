@@ -37,21 +37,42 @@
         <appender-ref ref="Console" />
     </root>
 
-		<!-- 
-    	<Logger name="project.two.controllers.ProductController" level="info" additivity="false">
-    	  <appender-ref ref="RollingFile"/>
-    	</Logger>
-    	
-    	<Logger name="project.two.controllers.ProductStockController" level="info" additivity="false">
-    	  <appender-ref ref="RollingFile"/>
-    	</Logger>
-    	
-    	<Logger name="project.two.services.ProductServiceImpl" level="info" additivity="false">
-    		<appender-ref ref="RollingFile"/>
-    	</Logger>
-    	
-    	<Logger name="project.two.services.ProductStockManagerImpl" level="info" additivity="false">
-    	  <appender-ref ref="RollingFile"/>
-   		</Logger>
-		-->
+	<!-- Logging for quiz.controllers -->
+	<Logger name="quiz.controllers.LoginController" level="info" additivity="false">
+		<appender-ref ref="RollingFile"/>
+	</Logger>
+	<Logger name="quiz.controllers.QuizController" level="info" additivity="false">
+		<appender-ref ref="RollingFile"/>
+	</Logger>
+	<Logger name="quiz.controllers.ScoreBoardController" level="info" additivity="false">
+		<appender-ref ref="RollingFile"/>
+	</Logger>
+	<Logger name="quiz.controllers.TagsController" level="info" additivity="false">
+		<appender-ref ref="RollingFile"/>
+	</Logger>
+	<Logger name="quiz.controllers.TotalUserPointsController" level="info" additivity="false">
+		<appender-ref ref="RollingFile"/>
+	</Logger>
+
+
+	<!-- Logging for quiz.services -->
+	<Logger name="quiz.services.AnsersManagerImpl" level="info" additivity="false">
+		<appender-ref ref="RollingFile"/>
+	</Logger>
+	<Logger name="quiz.services.QuestionManagerImpl" level="info" additivity="false">
+		<appender-ref ref="RollingFile"/>
+	</Logger>
+	<Logger name="quiz.services.QuizManagerImpl" level="info" additivity="false">
+		<appender-ref ref="RollingFile"/>
+	</Logger>
+	<Logger name="quiz.services.ScoresManagerImpl" level="info" additivity="false">
+		<appender-ref ref="RollingFile"/>
+	</Logger>
+	<Logger name="quiz.services.TagsManagerImpl" level="info" additivity="false">
+		<appender-ref ref="RollingFile"/>
+	</Logger>
+	<Logger name="quiz.services.UserManagerImpl" level="info" additivity="false">
+		<appender-ref ref="RollingFile"/>
+	</Logger>
+		
 </configuration>

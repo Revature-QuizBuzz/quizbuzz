@@ -7,14 +7,14 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table(name="quizzes")
+@Table(name = "quizzes")
 public class Quiz {
-	
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator")
-    @SequenceGenerator(name="id_generator", sequenceName = "quizzes_quiz_id_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @SequenceGenerator(name="id_generator", sequenceName = "quizzes_quiz_id_seq", allocationSize = 1)
     @Column(name="quiz_id")
-	private int id;
+	private int quizId;
 	
 	@ManyToOne
 	@JoinColumn(name="user_id")
@@ -32,11 +32,11 @@ public class Quiz {
 
 	@Column
 	private String name;
-	
+
 	@Column
 	private String description;
-	
-	@Column(name="total_score")
+
+	@Column(name = "total_score")
 	private int totalScore;
 	
 	@Column(name="created_date")
@@ -49,11 +49,11 @@ public class Quiz {
 	}
 
 	public Quiz(int id) {
-		this.id = id;
+		this.quizId = id;
 	}
 
 	public Quiz(int id, User user, List<Scores> scores, List<Question> questions, List<Tags> tags, String name, String description, int totalScore, Date dateModified) {
-		this.id = id;
+		this.quizId = id;
 		this.user = user;
 		this.scores = scores;
 		this.questions = questions;
@@ -65,7 +65,7 @@ public class Quiz {
 	}
 
 	public Quiz(int id, User user, List<Scores> scores, List<Question> questions, List<Tags> tags, String name, String description, int totalScore, Date createdDate, Date dateModified) {
-		this.id = id;
+		this.quizId = id;
 		this.user = user;
 		this.scores = scores;
 		this.questions = questions;
@@ -77,12 +77,12 @@ public class Quiz {
 		this.dateModified = dateModified;
 	}
 
-	public int getId() {
-		return id;
+	public int getQuizId() {
+		return quizId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setQuizId(int id) {
+		this.quizId = id;
 	}
 
 	public void setUser(User user) {
@@ -104,7 +104,7 @@ public class Quiz {
 	public void setTags(List<Tags> tags) {
 		this.tags = tags;
 	}
-	
+
 	public List<Question> getQuestions() {
 		return questions;
 	}

@@ -28,16 +28,13 @@ export class QuizSubmissionComponent implements OnInit {
 
   key = 'correct';
 
-  userScore: any = {};
+  userScore: any;
   quiz: any = localStorage.getItem('quizId');
   quizQuestion: any = [];
   userPoints: any = localStorage.getItem('score');
-  totalPoints: any = 0;
+  totalPoints: any = 100;
   date: any;
-  // first: any = localStorage.getItem('answers');
-  // second: any = localStorage.getItem('question');
-  // third: any = localStorage.getItem('correctAnswer');
-  //quizInfo: any = [this.first,this.second,this.third];
+  
 
  
 
@@ -48,7 +45,6 @@ export class QuizSubmissionComponent implements OnInit {
     this.getUserQuestion()
     this.getCorrectAnswers()
     this.getScore()
-    // console.log(this.quizInfo)
     this.date = this.userScore.completedOn?.getDate
   
   }
@@ -71,20 +67,12 @@ export class QuizSubmissionComponent implements OnInit {
   getCorrectAnswers() {
     this.correctAnswers = localStorage.getItem('correctAnswer');
     this.correct = this.correctAnswers.split(',');
-    // console.log(this.correct.length);
-    // console.log("look here");
   }
 
   getScore(){
     this.userPoints = localStorage.getItem('score');
-    // console.log(this.totalPoints);
-    this.userScore = Math.round(this.userPoints/this.totalPoints*100);
+    this.userScore = this.userPoints + '/' + this.question.length ;
   }
-
-  
-  // addScore(){
-
-  // }
   
   home(){
     this.router.navigate(['home']);

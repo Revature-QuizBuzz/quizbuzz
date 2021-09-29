@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 
 
+
 @Component({
   selector: 'app-taketest',
   templateUrl: './taketest.component.html',
@@ -39,13 +40,12 @@ public url ='http://localhost:8080/questions/'+this.quizId;
 
   submit(testForm: any){
 //Stores answers into the answers array
-//loops questions and compares them to correct answers 
+//loops questions and compares them to correct answers
 for(let i in this.questions){
+  console.log(this.currentQuestion.answers);
   this.answers.push(this.questions[i].selectedAnswer);
   this.question.push(this.questions[i].question);
   this.correctAnswser.push(this.questions[i].answers[0].answer)
-  console.log(this.questions[i].answers[0].correct);
-  console.log(this.questions[i].answers[0].answer);
   if(this.questions[i].selectedAnswer === this.questions[i].answers[0].answer ){
     this.score +=1;
     localStorage.setItem('score', this.score.toString())

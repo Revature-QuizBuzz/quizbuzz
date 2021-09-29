@@ -1,0 +1,36 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Edit tags
+</button>
+
+<ng-container *ngFor="let items of savedItems">
+  <button class="tag">{{items.name}}</button>
+</ng-container>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit tags</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <ng-multiselect-dropdown [placeholder]="'attach quiz tags here'" [settings]="dropdownSettings"
+          [data]="dropdownList" [(ngModel)]="selectedItems">
+        </ng-multiselect-dropdown>
+        <ng-container *ngIf="addTagForm === true">
+          <app-new-tags (addTag)="updateTags($event)"></app-new-tags>
+        </ng-container>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" (click)="addTagToggle()" class="btn btn-primary">Add Tag</button>
+        <button type="button" (click)="save()" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
+        <button type="button" (click)="close()" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

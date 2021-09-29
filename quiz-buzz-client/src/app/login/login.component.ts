@@ -16,6 +16,10 @@ export class LoginComponent implements OnInit {
   constructor(private loginService:LoginService, private router:Router) { }
 
   ngOnInit(): void {
+    var loggedIn:any = localStorage.getItem("id");
+    if(loggedIn !== null || loggedIn !== undefined) {
+      this.router.navigate(['home']);
+    }
   }
 
   onSubmit(form:NgForm): void {
@@ -27,7 +31,7 @@ export class LoginComponent implements OnInit {
           this.incorrect = true;
         } else {
           console.log(JSON.stringify(data));
-          localStorage.setItem("id", String(data.id));
+          localStorage.setItem("id", String(data.userId));
           localStorage.setItem("username", String(data.username));
           localStorage.setItem("firstName", String(data.firstName));
           localStorage.setItem("lastName", String(data.lastName));

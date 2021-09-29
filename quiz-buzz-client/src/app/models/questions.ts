@@ -4,7 +4,7 @@ import { Answer } from './answers'
 
 export interface Question {
     
-    id?: number;
+    questionId?: number;
     quiz?: Quiz;
     answers?: Answer[];
     question?: string;
