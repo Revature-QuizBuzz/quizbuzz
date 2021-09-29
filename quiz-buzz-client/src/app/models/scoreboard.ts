@@ -1,5 +1,5 @@
  export interface ScoreBoard {
-   id: number;
+   scoreId: number;
    firstName: String;
    totalPoints: number;
    possiblePoints: number;

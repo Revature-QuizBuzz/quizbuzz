@@ -1,8 +1,17 @@
 .newTagCont{
-    background-color: blueviolet;
+    background-color: #72A4C2;
     color: #fff;
     border-radius:27px;
+    text-align: center;
+    margin: 10px;
     width: 300px;
-    padding: 50px;
+    /* padding: 20px; */
 }
 
+.newTagForm {
+    padding: 10px;
+}
+
+.minwidth {
+    min-width: 200px;
+}

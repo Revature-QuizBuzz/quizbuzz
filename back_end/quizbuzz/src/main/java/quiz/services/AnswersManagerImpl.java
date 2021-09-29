@@ -19,6 +19,27 @@ public class AnswersManagerImpl implements AnswersManager {
 	@Autowired
 	private AnswersDAO dao;
 	
+
+	@Override
+	public List<Answers> findAllAnswers() {
+		return StreamSupport.stream(dao.findAll().spliterator(), false).collect(Collectors.toList());
+	}
+
+	@Override
+	public Answers create(Answers ans) {
+		return dao.save(ans);
+	}
+
+	@Override
+	public List<Answers> createAnswers(List<Answers> allAnswers) {
+		return dao.saveAll(allAnswers);
+	}
+
+	@Override
+	public Answers findByAnswer(String answer) {
+		return dao.findByAnswer(answer);
+	}
+
 	@Override
 	public List<Answers> findAll(int id) {
 		return dao.findAll();
@@ -29,6 +50,7 @@ public class AnswersManagerImpl implements AnswersManager {
 				.collect(Collectors.toList());
 	}
 	
+<<<<<<< HEAD
 	
 
 	@Override
@@ -50,4 +72,15 @@ public class AnswersManagerImpl implements AnswersManager {
 	public Answers findByAnswer(String answer) {
 		return adao.findByAnswer(answer);
 	}
+=======
+//	@Override
+//	public List<Answers> getAllAnswers() {
+//		return adao.findAll();
+//	}
+//
+//	@Override
+//	public Answers findById(int id) {
+//		return adao.findOne(id);
+//	}
+>>>>>>> main
 }

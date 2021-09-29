@@ -16,11 +16,16 @@ public class UserManagerImpl implements UserManager{
 
 	@Autowired
 	private UserDAO uDao;
+<<<<<<< HEAD
 //	
 //	@Override
 //	public List<ScoreBoard> findScoreBoard() {
 //		return uDao.findScoreBoard();
 //	}
+=======
+	
+	
+>>>>>>> main
 	
 	@Override
 	public User findLogin(User user) {
@@ -53,8 +58,23 @@ public class UserManagerImpl implements UserManager{
 		return uDao.findAll();
 	}
 
+<<<<<<< HEAD
 //    @Override
 //    public User findById(int id) {
 //        return uDao.findById(id);
 //    }
+=======
+    @Override
+    public User findById(int id) {
+        return uDao.findById(id);
+    }
+
+	@Override
+	public List<ScoreBoard> findScoreBoard() {
+		return uDao.findScoreBoard();
+	}
+
+
+	
+>>>>>>> main
 }

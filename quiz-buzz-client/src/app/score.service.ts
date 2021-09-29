@@ -28,4 +28,8 @@ export class ScoreService {
   displayScore(): Observable<ScoreBoard[]> {
     return this.http.get<ScoreBoard[]>(`${this.apiUrl}/scoreboard`);
   }
+
+  displayScoreBoard(sort: string): Observable<ScoreBoard[]> {
+    return this.http.get<ScoreBoard[]>(`${this.apiUrl}/scoreboard/${sort}`);
+  }
 }

@@ -1,3 +1,18 @@
+#searchBar{
+    border-radius: 5px; 
+    text-align: center;
+    margin: 5px 0px;
+}
+
+.searchButton{
+    background-color: #F26925;
+    text-align: center;
+    width: 200px;
+    display: block;
+    margin: auto;
+    font-weight: bold;
+}
+
 .search{
     width: 200px;
     display: block;
@@ -6,10 +21,21 @@
 }
 
 .quizSelector{
-    border-radius: 10px;
+    
     border: 1px solid lightgray;
     box-shadow: 0 3px 10px lightgray;
+    border-radius: 5px;
     margin: 5px;
+    padding: 5px;
+}
+
+.quiz:hover{
+    background-color: rgb(240, 240, 240);
+    cursor: pointer;
+}
+
+.quizData{
+    border-radius: 5px !important;
 }
 
 .quizTable{
@@ -24,10 +50,6 @@
     padding: 10px;
 }
 
-.quizType:hover{
-    cursor: pointer;
-}
-
 .resize{
     width: 100px;
     height: 100px;
@@ -39,9 +61,10 @@
 }
 
 .startQuiz{
+    background-color: #F26925;
     text-align: center;
-    border-radius: 5px;
     width: 200px;
     display: block;
     margin: auto;
+    font-weight: bold;
 }

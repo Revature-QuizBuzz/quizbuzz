@@ -1,0 +1,81 @@
+@font-face {
+    font-family: "Futura";
+    src: local("Futura"), url(./assets/fonts/Futura-Std-Book.otf) format("opentype");
+}
+
+@font-face {
+    font-family: "Futura Bold";
+    src: local("Futura-Std-Bold"), url(./assets/fonts/Futura-Std-Bold.otf) format("opentype");
+}
+
+@font-face {
+    font-family: "Futura Medium";
+    src: local("Futura-Std-Medium"), url(./assets/fonts/Futura-Std-Medium.otf) format("opentype");
+}
+
+@font-face {
+    font-family: "Futura Std Heavy";
+    src: local("Futura-Std-Heavy"), url(./assets/fonts/Futura-Std-Heavy.otf) format("opentype");
+}
+
+* {
+    font-family: 'Futura';
+}
+
+label {
+    font-weight: bold;
+    display: inline-block;
+    width:150px;
+    padding: 10px;
+}
+
+.primary {
+    color:  #F26925;
+}
+
+.dark-gray {
+    color: #474C55;
+}
+
+.bg-dark-gray {
+    background-color: #474C55;
+}
+
+.blue {
+    color: #72A4C2;
+    background-color: #72A4C2;
+}
+
+.yellow {
+    color: #FCB414;
+}
+
+.light-gray {
+    color:  #B9B9BA;
+}
+
+.btn-primary {
+    background-color: #F26925;
+    border: none;
+}
+.btn-primary:hover {
+    background-color: #F26925;
+    outline: #F26925;
+}
+
+main {
+    padding: 20px;
+}
+
+.tag {
+    background-color: #FCB414;
+    border-radius: 10px;
+    border:#FCB414;
+    padding: 5px;
+    margin: 2px;
+}
+
+h2 {
+    color:#F26925;
+    font-family: 'Futura Bold';
+}

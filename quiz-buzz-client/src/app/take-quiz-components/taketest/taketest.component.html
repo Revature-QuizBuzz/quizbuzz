@@ -1,31 +1,30 @@
-<mat-card>
-    <mat-card-title>Quiz Buzz Test</mat-card-title>
-    <button class="" mat-fab (click)="home()">Home</button>
-    <button class="" mat-fab (click)="signout()">SignOut</button>
+<title>Quiz Buzz Test</title><br>
+<button class=""  (click)="home()">Home</button>
+<button class=""  (click)="signout()">SignOut</button>
     
-    <mat-card-content >
-  <!--where the questions and answers are going-->
-  <div > {{currentQuestion.id}}:{{currentQuestion.question}} 
- 
-</div>
+<br>
+
+
     
-        <mat-card-actions >
-          <button *ngFor="let a of currentQuestion.answers"> {{a.answer}}</button> 
-         <!--   <div></div>
-           <div>{{currentQuestion | json}}</div>-->
-           
-           
-           
+    <!--where the questions and answers are -->
+    <div class="test-group" > {{currentQuestion?.quizId}}:{{currentQuestion?.question}} </div>
+    
+    <form #testForm="ngForm" >
       
-        </mat-card-actions>
-     
-    </mat-card-content>
+      <div *ngFor="let a of currentQuestion?.answers"  >
+        <input [name]="currentQuestion?.id"  value={{a.answers}}  type="radio"  
 
-    <mat-card-actions>
-        <button mat-raised-button (click)="previous()">Previous</button>
-        <button mat-raised-button (click)="submit()">Submit</button>
-        <button mat-raised-button (click)="next()">Next</button>
-    </mat-card-actions>
+        class="test-group"  
+           (change)="getAnswers($event)"  [checked]="a.answers === currentQuestion.selectedAnswer" > {{a?.answer}}
+               
+           
+     </div>
+        <br>
+  
+        <button class="btn"  (click)="previous()" >Previous</button>
+        <button class="btn" (click)="submit(testForm)" [disabled]="isDisable" >Submit</button>
+        <button class="btn" (click)="next()" >Next</button>
+   
+    </form>
 
-</mat-card>
 

@@ -8,6 +8,7 @@ public interface QuestionManager {
 	
 	List<Question> findAll();
 	List<Question> createAll(List<Question> questions);
+<<<<<<< HEAD
 	Question create(Question ques);	
 	List<Question> findAll(int id);
 	List<Question> getAllQuestions();
@@ -15,4 +16,13 @@ public interface QuestionManager {
 
     Question findByQuestion(String name);
 
+=======
+	Question create(Question ques);
+
+    Question findByQuestion(String name);
+
+	List<Question> findAll(int id);
+	List<Question> getAllQuestions();
+	
+>>>>>>> main
 }

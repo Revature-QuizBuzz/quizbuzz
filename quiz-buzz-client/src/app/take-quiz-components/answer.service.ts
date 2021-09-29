@@ -12,10 +12,24 @@ import { BehaviorSubject } from 'rxjs';
 
 export class AnswerService {
 
+<<<<<<< HEAD
   private testUrl: string = "http://localhost:8080/answers/testresults"
   
   constructor(private http: HttpClient) { }
+=======
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+   
+  localStorage: Storage;
+>>>>>>> main
 
+  private testUrl: string = "http://localhost:8080/answers/testresults"
+  
+  constructor(private http: HttpClient) { 
+    this.localStorage = window.localStorage;
+  }
+  
   getAllAnswers(): Observable<Answer[]>{
     return this.http.get<Answer[]>(`${this.testUrl}`);
   }
@@ -28,11 +42,23 @@ export class AnswerService {
     return this.http.get<Quiz[]>(`${this.testUrl}`);
   }
 
-  // getAnswer(id: number): Observable<Answer> {
-  //   const answer = this.answers.find(a => a.id === id)!;
-  //   this.answerService.add(`answerService: fetched answer id=${id}`);
-  //   return of(answer);
-  // }
+  getUserAnswers(key: string): any {
+    if (this.inStorage) {
+      return JSON.parse(this.localStorage.getItem(key)||'{}');
+    }
+    return null;
+  }
+  set(key: string, value: any): boolean {
+    if (this.inStorage) {
+      this.localStorage.setItem(key, JSON.stringify(value));
+      return true;
+    }
+    return false;
+  }
+  
+  get inStorage(): boolean {
+    return !!this.localStorage
+  }
 
   // add(answers: Answer): Observable<Answer> {
   //   console.log(answers);

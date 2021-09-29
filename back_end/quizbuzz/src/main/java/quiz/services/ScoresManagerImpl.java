@@ -40,7 +40,10 @@ public class ScoresManagerImpl implements ScoresManager{
 		// TODO Auto-generated method stub
 		return dao.save(score);
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
 	
 	@Override
 	public Scores addScore(Scores us) {
@@ -48,4 +51,8 @@ public class ScoresManagerImpl implements ScoresManager{
 		return dao.save(us);
 	}
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 }
