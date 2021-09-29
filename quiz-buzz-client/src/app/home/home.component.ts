@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
   }
 
   getTotalScore() {
-    return 100;
+    //return 100;
   }
 
   takeQuiz(quizId:number = 0) {

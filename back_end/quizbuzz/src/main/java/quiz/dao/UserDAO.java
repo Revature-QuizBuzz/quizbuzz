@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import quiz.models.ScoreBoard;
 //import quiz.models.ScoreBoard;
 import quiz.models.User;
 
