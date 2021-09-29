@@ -40,12 +40,6 @@ class QuizbuzzApplicationTests {
 	void contextLoads() {
 	}
 
-//	@Test
-//	void createTags(Tags tag) {
-//		ResponseEntity<Tags> newTag = manager.createTags(tag);
-//		assertNotEquals(newTag, null);
-//	}
-
 	@Test
 	void createQuiz() {
 		String name = "Coffee Quiz";

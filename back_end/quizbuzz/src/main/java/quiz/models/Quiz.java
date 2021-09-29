@@ -1,6 +1,6 @@
 package quiz.models;
 
-
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -25,8 +25,8 @@ public class Quiz {
 	
 	@OneToMany(mappedBy="quiz", cascade=CascadeType.MERGE)
 	private List<Question> questions;
-	
-	@ManyToMany
+
+	@ManyToMany(cascade=CascadeType.PERSIST)
 	@JoinTable(name="quiz_tags", joinColumns = { @JoinColumn(name="quiz_id") }, inverseJoinColumns = { @JoinColumn(name="tag_id") })
 	private List<Tags> tags;
 
@@ -88,6 +88,8 @@ public class Quiz {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	public User getUser() {return this.user;}
 
 	public List<Scores> getScores() {
 		return scores;
@@ -152,5 +154,66 @@ public class Quiz {
 	public void setDateModified(Date dateModified) {
 		this.dateModified = dateModified;
 	}
+	
+	public void add(Question tempQuestion) {
+		if(this.questions == null) {
+			this.questions = new ArrayList<>();
+		
+		}
+		this.questions.add(tempQuestion);
+		tempQuestion.setQuiz(this);
+	}
 
+
+	public int calculateTotalScore (List<Question> questions) {
+		int total = 0;
+		for( Question element: questions) {
+			total += element.getPossiblePoints();
+		}
+		return total;
+	}
+
+	// returns a list of ids to call deleteAllByIdInBatch() on
+	public static List<Integer> findQuestionDeletions(List<Question> oldList, List<Question> newList) {
+		List<Integer> toDelete = new ArrayList<>();
+		for (Question oldQuestion: oldList) {
+			if (!newList.contains(oldQuestion)) {
+				toDelete.add(oldQuestion.getId());
+			}
+		}
+		return toDelete;
+	}
+
+	public static List<Question> findNewQuestions(List<Question> oldList, List<Question> newList) {
+		List<Question> newQuestions = new ArrayList<>();
+		for (Question newQuestion: newList) {
+			if (!oldList.contains(newQuestion)) {
+				newQuestions.add(newQuestion);
+			}
+		}
+		return newQuestions;
+	}
+
+	public static List<String> findTagCreations(List<Tags> oldList, List<Tags> newList) {
+		List<String> toCreate = new ArrayList<>();
+		List<String> oldNames = new ArrayList<>();
+		for(Tags oldTag: oldList) {
+			oldNames.add(oldTag.getName());
+		}
+		for (Tags newTag: newList) {
+			if(!oldNames.contains(newTag.getName())) {
+				toCreate.add(newTag.getName());
+			}
+		}
+		return toCreate;
+	}
+	
+	public static List<Integer> getListIds(List<Question> questions) {
+		List<Integer> ids = new ArrayList<>();
+		for(Question question: questions) {
+			ids.add(question.getId());
+		}
+		return ids;
+	}
+	
 }

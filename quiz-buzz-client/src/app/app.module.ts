@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
+
+import { EditQuizComponent } from './edit-quiz/edit-quiz.component';
+import { MyQuizzesComponent } from './my-quizzes/my-quizzes.component';
 import { QuestionAnswerComponent } from './answer/question-answer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { QuestionComponent } from './question/question.component';
@@ -16,7 +20,6 @@ import { routes } from './app-routing.module';
 import { CreateQuizesComponent } from './create-quizes/create-quizes.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AttachTagsComponent } from './attach-tags/attach-tags.component';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { TotalUserPointsComponent } from './total-user-points/total-user-points.component';
 import { ScoreBoardComponent } from './scoreboard/scoreboard.component';
 import { TagsShowPageComponent } from './tags-show-page/tags-show-page.component';
@@ -25,6 +28,10 @@ import { TagsShowPageComponent } from './tags-show-page/tags-show-page.component
   declarations: [
     AppComponent,
     LoginComponent,
+
+    EditQuizComponent,
+    MyQuizzesComponent
+
     QuestionAnswerComponent,
     QuestionComponent,
     TotalUserPointsComponent,
@@ -36,6 +43,8 @@ import { TagsShowPageComponent } from './tags-show-page/tags-show-page.component
     ScoreBoardComponent,
     TagsShowPageComponent,
     AttachTagsComponent
+    ScoreBoardComponent
+
   ],
   imports: [
     BrowserModule,
@@ -46,8 +55,7 @@ import { TagsShowPageComponent } from './tags-show-page/tags-show-page.component
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    NgbModule,
-    NgMultiSelectDropDownModule.forRoot()
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

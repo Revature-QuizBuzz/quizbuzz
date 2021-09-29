@@ -94,7 +94,13 @@ public class User {
 	public void setUserId(int id) {
 		this.userId = id;
 	}
+<<<<<<< HEAD
 	
+=======
+
+	// implementing a getQuizzes will cause errors in the updateQuiz() uer story
+
+>>>>>>> update-quiz
 	public void setQuizzes(List<Quiz> quizzes) {
 		this.quizzes = quizzes;
 	}
