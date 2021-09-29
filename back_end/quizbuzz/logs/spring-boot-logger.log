@@ -1,0 +1,4 @@
+2021-09-29 09:49:19,156 INFO quiz.controllers.QuizController [http-nio-8080-exec-1] GET to /getTen
+2021-09-29 09:49:34,402 INFO quiz.controllers.TagsController [http-nio-8080-exec-2] GET to /tags
+2021-09-29 09:50:41,051 INFO quiz.controllers.QuizController [http-nio-8080-exec-4] created new quiz
+2021-09-29 09:59:12,752 INFO quiz.controllers.QuizController [http-nio-8080-exec-1] created new quiz
