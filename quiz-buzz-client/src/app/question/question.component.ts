@@ -2,10 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CreateQuizesComponent } from '../create-quizes/create-quizes.component';
 import { Question } from '../models/questions';
-import { Quiz } from '../models/quizzes';
-
+import { Answer } from '../models/answers';
 @Component({
   selector: 'app-question',
   templateUrl: './question.component.html',
@@ -105,4 +103,9 @@ export class QuestionComponent implements OnInit {
     this.router.navigate(['quiz/new'])
 
   }
+
+  answerCapture($event: Answer[], index:number){
+    this.questions[index].answers=$event;
+  }
+
 }
