@@ -294,7 +294,7 @@ INSERT INTO quizbuzz.user_scores (quiz_id,user_id,user_score,completed_on) value
 INSERT INTO quizbuzz.user_scores (quiz_id,user_id,user_score,completed_on) VALUES(4,4,124,'2021-10-10 16:20:45.194406');
 INSERT INTO quizbuzz.user_scores (quiz_id,user_id,user_score,completed_on) VALUES(3,4,90,'2021-10-12 18:10:35.194406');
 INSERT INTO quizbuzz.user_scores (quiz_id,user_id,user_score,completed_on) VALUES(3,5,100,'2021-10-12 18:10:35.194406');
-INSERT INTO quizbuzz.user_scores (quiz_id,user_id,user_score,completed_on) VALUES(4,5,140,'2021-10-13 10:00:15.194406');
+INSERT INTO quizbuzz.user_scores (quiz_id,user_id,user_score,completed_on) VALUES(4,5,95,'2021-10-13 10:00:15.194406');
 INSERT INTO quizbuzz.user_scores (quiz_id,user_id,user_score,completed_on) VALUES(4,2,130,'2021-10-13 10:00:10.194406');
 
 INSERT INTO quizbuzz.questions (quiz_id,question,possible_points,question_type) VALUES
