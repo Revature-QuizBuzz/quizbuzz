@@ -34,28 +34,29 @@ public url ='http://localhost:8080/questions/'+this.quizId;
   ngOnInit(): void {
    
   this.fetchQuestions();
-  this.currentQuestion = this.questions[this.counter];
-   console.log('http://localhost:8080/questions/'+this.quizId);
+ 
   }
 
   submit(testForm: any){
 //Stores answers into the answers array
 //loops questions and compares them to correct answers
 for(let i in this.questions){
-  console.log(this.currentQuestion.answers);
+ 
   this.answers.push(this.questions[i].selectedAnswer);
   this.question.push(this.questions[i].question);
   this.correctAnswser.push(this.questions[i].answers[0].answer)
   if(this.questions[i].selectedAnswer === this.questions[i].answers[0].answer ){
     this.score +=1;
     localStorage.setItem('score', this.score.toString())
-    
   }
+
 }
 //console logs the score and when form is submitted
-  console.log( " this is your score " + this.score);
+  
   console.log("form Sumbitted!");
+
 //variable for quiz answers to put in local storage
+
   var quiz_data =  this.answers;
   var quiz_question = this.question;
   var quiz_correct = this.correctAnswser;
@@ -65,21 +66,23 @@ for(let i in this.questions){
     localStorage.setItem('question','[]');
     localStorage.setItem('correctAnswer','[]');  
   }
+
+ 
   //adds new answer to the array then stores it in local storage
   var old_data  = JSON.parse(localStorage.getItem('answers')||'{}');
   old_data.push(quiz_data);
-  JSON.stringify(old_data);
   localStorage.setItem('answers', old_data);
 //adds new question to the array then stores it in local storage
   var old_question = JSON.parse(localStorage.getItem('question')||'{}');
   old_question.push(quiz_question);
-  JSON.stringify(old_question);
   localStorage.setItem('question',old_question);
 //adds the correct answer to the array in local storage
   var old_correctAnswer = JSON.parse(localStorage.getItem('correctAnswer')||'{}');
   old_correctAnswer.push(quiz_correct);
-  JSON.stringify(old_correctAnswer);
   localStorage.setItem('correctAnswer',old_correctAnswer);
+
+
+
 
   //navigates to the Test Results page
   this.router.navigate(['testresults']);
@@ -115,14 +118,10 @@ for(let i in this.questions){
   fetchQuestions(){ 
     this.http.get(this.url).subscribe(data=>{
       this.questions = data;
-      this.currentQuestion = this.questions[0];
+      this.currentQuestion = this.questions[this.counter];
     })
   }
-//clears out local storage and routs to login page
-  signout(){
-    localStorage.clear();
-    this.router.navigate(['']);
-  }
+
 //routs to the home page
   home(){
    this.router.navigate(['home']);
@@ -131,18 +130,14 @@ for(let i in this.questions){
   getAnswers(e:any){        
       this.currentQuestion.answer = e.target.value;
       this.questions.forEach((q:any) => {
-       if( q.id === this.currentQuestion.id){
-         q.selectedAnswer = e.target.value 
+       if( q.questionId === this.currentQuestion.questionId){
+         q.selectedAnswer = e.target.value
+        
        }  
+       
+      
       });
   }
 
-
-  isAnswered(){
-    this.questions.forEach((n:any) => {
-       
-    });
-
-  }
 
 }
