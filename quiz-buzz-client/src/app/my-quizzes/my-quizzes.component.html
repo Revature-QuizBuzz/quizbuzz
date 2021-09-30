@@ -3,13 +3,13 @@
         <table class="table table-striped">
             <thead>
                 <th>Name</th>
-                <th>Modified</th>
+                <th>Date Created</th>
                 <th>Delete</th>
             </thead>
             <tbody>
                 <tr *ngFor="let quiz of quizzes">
                     <td>{{quiz.name}}</td>
-                    <td>{{quiz.dateModified}}</td>
+                    <td>{{quiz.createdDate | date}} </td>
                     <td><button class="btn btn-primary" (click)="deleteQuiz(quiz)">Delete</button></td>
                 </tr>
             </tbody>
