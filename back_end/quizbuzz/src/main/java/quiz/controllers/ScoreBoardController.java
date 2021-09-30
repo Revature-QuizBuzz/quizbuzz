@@ -26,32 +26,24 @@ public class ScoreBoardController {
 	@Autowired
 	private UserManager manager;
 
-//	@CrossOrigin(origins = "http://localhost:4200")
-//	@GetMapping(path = "/{sort}", produces = "application/json")
-//	public List<ScoreBoard> findScoreBoard(@PathVariable String sort) {
-//		System.out.println("sort");
-//		System.out.println(sort);
-//
-//		//List<ScoreBoard> scoreboard = manager.findScoreBoard();
-//		List<ScoreBoard> sortedUsers = null;
-//		
-//		
-//		
-//			 sortedUsers = scoreboard.stream()
-//			 		  .sorted(Comparator.comparing(ScoreBoard::getTotalPoints).reversed())
-//			 		  .collect(Collectors.toList());
-//			
-//		
-//		return sortedUsers;
-//	}
-//	
-//	@GetMapping(produces="application/json")
-//	public List<ScoreBoard> findScoreBoard() {
-//		logger.info("GET to /scoreboard");
-//		List<ScoreBoard> scoreboard = manager.findScoreBoard();
-//		System.out.println(scoreboard);
-//		return scoreboard;
-//	}
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping(path = "/{sort}", produces = "application/json")
+	public List<ScoreBoard> findScoreBoard(@PathVariable String sort) {
+		System.out.println("sort");
+		System.out.println(sort);
+
+		List<ScoreBoard> scoreboard = manager.findScoreBoard();
+		
+		return scoreboard;
+	}
+	
+	@GetMapping(produces="application/json")
+	public List<ScoreBoard> findScoreBoard() {
+		logger.info("GET to /scoreboard");
+		List<ScoreBoard> scoreboard = manager.findScoreBoard();
+		System.out.println(scoreboard);
+		return scoreboard;
+	}
 
 
 }

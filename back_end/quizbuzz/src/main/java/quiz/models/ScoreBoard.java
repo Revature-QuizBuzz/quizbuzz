@@ -1,8 +1,7 @@
 package quiz.models;
 
 public interface ScoreBoard {
-
-	 	int getId();
+	 	int getUserId();
 	    String getFirstName();
 	    int getTotalPoints();
 	    int getPossiblePoints();
