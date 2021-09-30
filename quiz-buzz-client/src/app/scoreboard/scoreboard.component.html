@@ -5,12 +5,12 @@
         <table class="table table-striped">
             <thead>
                 <th>First Name</th>
-                <th (click)="seeScoreBoard('totalPoints')">Total Points</th>
-                <th>Possible Points</th>
-                <th (click)="seeScoreBoard('pointPercentage')">Point Percentage</th>
+                <th class="sort" (click)="seeScoreBoard('totalPoints')">Total Points</th>
+                <th class="sort" (click)="seeScoreBoard('pointPercentage')">Possible Points</th>
+                <th class="sort" (click)="seeScoreBoard('pointPercentage')">Point Percentage</th>
             </thead>
             <tbody>
-                <tr *ngFor="let scores of scoreBoard" [ngClass]="{'scoreboard': scores.scoreId === userId }">
+                <tr *ngFor="let scores of scoreBoard" [ngClass]="{'leaderboard' : scores.id === userId}">
                     <td> {{ scores.firstName }} </td>
                     <td> {{ scores.totalPoints }}</td>
                     <td> {{ scores.possiblePoints }}</td>
