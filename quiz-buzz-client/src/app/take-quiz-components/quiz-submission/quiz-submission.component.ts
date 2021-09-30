@@ -50,12 +50,12 @@ export class QuizSubmissionComponent implements OnInit {
     }).toPromise().then((data : any) => {
       console.log(data)
     })
-    
+
     delete localStorage['answers'];
-   delete localStorage['question'];
-   delete localStorage['correctAnswer'];
-   delete localStorage['score'];
-   delete localStorage['quizId'];
+    delete localStorage['question'];
+    delete localStorage['correctAnswer'];
+    delete localStorage['score'];
+    delete localStorage['quizId'];
    }
    
   
