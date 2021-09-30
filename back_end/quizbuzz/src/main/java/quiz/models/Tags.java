@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -17,7 +16,6 @@ public class Tags {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @SequenceGenerator(name="id_generator", sequenceName = "tags_tag_id_seq", allocationSize = 1)
     @Column(name="tag_id")
 	private int tagId;
 	

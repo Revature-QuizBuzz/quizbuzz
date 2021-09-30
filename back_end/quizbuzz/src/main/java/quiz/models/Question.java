@@ -11,10 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
-import org.springframework.data.annotation.Transient;
 
 @Entity
 @Table(name = "questions")
@@ -22,7 +19,6 @@ public class Question {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @SequenceGenerator(name="id_generator", sequenceName = "questions_question_id_seq", allocationSize = 1)
     @Column(name="question_id")
 	private int questionId;
 	

@@ -8,7 +8,8 @@ import quiz.models.Tags;
 
 @Repository
 public interface TagsDAO extends JpaRepository<Tags, Integer>{
-    @Query("SELECT t FROM Tags t WHERE t.name = ?1")
+    
+	@Query("SELECT t FROM Tags t WHERE t.name = ?1")
     Tags findByName(String name);
-    //public List<Tags> getAllTags();
+    
 }

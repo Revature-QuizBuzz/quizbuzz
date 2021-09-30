@@ -21,18 +21,16 @@ import quiz.services.AnswersManager;
 @CrossOrigin(origins = "http://localhost:4200")
 public class AnswerController {
 	
+	private static final Logger log = LogManager.getLogger(TagsController.class);
+	// Create logger for debugging 
+	
 	@Autowired
 	private AnswersManager manager;
-	
 	
 	@GetMapping(path = "/{id}", produces = "application/json")
 	public List<Answers> findById(@PathVariable int id) {
 		return manager.findAll(id);
 	}
-	
-
-	private static final Logger log = LogManager.getLogger(TagsController.class);
-	// Create logger for debugging 
 	
 	@GetMapping(path ="/testresults",produces = "application/json")
 	public List<Answers> getAllAnswers() {

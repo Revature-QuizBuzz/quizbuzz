@@ -1,12 +1,7 @@
 package quiz.services;
-import quiz.models.Scores;
-import java.util.List;
-import org.springframework.http.ResponseEntity;
-import quiz.models.Answers;
-
-import java.util.List;
 
 import quiz.models.Scores;
+import java.util.List;
 
 public interface ScoresManager {
 	
@@ -18,7 +13,6 @@ public interface ScoresManager {
 
 	Scores newScore(Scores score);
 	Scores addScore(Scores score);
-//	Scores findById(int id);
 
 	List<Scores> getMyScores(int id);
 

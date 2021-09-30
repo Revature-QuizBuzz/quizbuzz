@@ -10,8 +10,6 @@ import quiz.dao.UserDAO;
 import quiz.models.ScoreBoard;
 import quiz.models.User;
 
-//import quiz.models.ScoreBoard;
-
 @Service
 public class UserManagerImpl implements UserManager{
 
@@ -59,6 +57,4 @@ public class UserManagerImpl implements UserManager{
 		return uDao.findScoreBoard();
 	}
 
-
-	
 }

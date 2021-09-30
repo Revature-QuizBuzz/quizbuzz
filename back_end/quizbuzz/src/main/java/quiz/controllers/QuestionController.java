@@ -31,14 +31,14 @@ public class QuestionController {
 	
 	@PostMapping(path= "/new",consumes="application/json", produces="application/json")
 	public Question create( @RequestBody Question ques){
-//		System.out.println(ques.getQuiz().getId());
+		log.info("POST to /questions/new");
 		manager.create(ques);
 		return null;
-		
 	}
 
 	@GetMapping(path = "/{id}", produces = "application/json")
 	public List<Question> getProduct(@PathVariable int id) {
+		log.info("GET to questions/" + id);
 		return manager.findAll(id);
 	}
 

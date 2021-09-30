@@ -9,7 +9,4 @@ import quiz.models.TestClass;
 	
 @Repository
 public interface TestDAO extends JpaRepository<TestClass, Integer>{
-
-		
-
 }
