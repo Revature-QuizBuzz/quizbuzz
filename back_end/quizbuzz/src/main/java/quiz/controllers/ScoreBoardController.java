@@ -33,16 +33,8 @@ public class ScoreBoardController {
 		System.out.println(sort);
 
 		List<ScoreBoard> scoreboard = manager.findScoreBoard();
-		List<ScoreBoard> sortedUsers = null;
 		
-		
-		
-			 sortedUsers = scoreboard.stream()
-			 		  .sorted(Comparator.comparing(ScoreBoard::getTotalPoints).reversed())
-			 		  .collect(Collectors.toList());
-			
-		
-		return sortedUsers;
+		return scoreboard;
 	}
 	
 	@GetMapping(produces="application/json")

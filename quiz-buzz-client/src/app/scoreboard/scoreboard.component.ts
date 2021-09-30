@@ -14,7 +14,6 @@ export class ScoreBoardComponent implements OnInit {
 
   userId = 0;
   
-
   constructor(private scoreService: ScoreService) {
   }
 
@@ -23,7 +22,6 @@ export class ScoreBoardComponent implements OnInit {
    
     this.userId = this.getUserId();
     console.log(this.userId);
-    
   } 
  
 
@@ -33,8 +31,11 @@ export class ScoreBoardComponent implements OnInit {
         this.scoreBoard = userScoreboard.sort((a, b) => (a.pointPercentage > b.pointPercentage) ? -1 : 1)
       } else if (sort === "totalPoints") {
         this.scoreBoard = userScoreboard.sort((a, b) => (a.totalPoints > b.totalPoints) ? -1 : 1)
-      } 
+      } else if (sort === "totalPoints") {
+        this.scoreBoard = userScoreboard.sort((a, b) => (a.possiblePoints > b.possiblePoints) ? -1 : 1)
+      }
       console.log(this.scoreBoard)
+      
     })
   }
 
