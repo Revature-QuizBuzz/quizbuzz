@@ -25,6 +25,7 @@ import { DeleteQuizzesComponent } from './delete-quizzes/delete-quizzes.componen
 import { ScoreBoardComponent } from './scoreboard/scoreboard.component';
 import { TagsShowPageComponent } from './tags-show-page/tags-show-page.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,6 @@ import { TagsShowPageComponent } from './tags-show-page/tags-show-page.component
     TotalUserPointsComponent,
     QuizSubmissionComponent,
     NavbarComponent,
-    TaketestComponent,
     QuizSelectionComponent,
     HomeComponent,
     FooterComponent,

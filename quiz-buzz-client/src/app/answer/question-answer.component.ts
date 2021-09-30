@@ -19,7 +19,6 @@ export class QuestionAnswerComponent implements OnInit {
   }
 
   @Input() questionType?: string;
-  @Output() answerEvent = new EventEmitter<Answer[]>();
   
   constructor(private http:HttpClient, private router:Router) { }
 
@@ -27,6 +26,7 @@ export class QuestionAnswerComponent implements OnInit {
   }
 
   
+  @Output() answerEvent = new EventEmitter<Answer[]>();
 
   onClick(form:NgForm){
     console.log(this.questionType);
@@ -59,7 +59,6 @@ export class QuestionAnswerComponent implements OnInit {
     console.log(answer2)
     console.log(answer3)
     console.log(answer4);
-    console.log(answerArray);
   this.answerEvent.emit(answerArray);
   //     this.http.post(this._url,
   //       answerArray,httpOptions

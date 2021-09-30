@@ -46,7 +46,6 @@ public class UserManagerImpl implements UserManager{
 	public List<User> getUsers() {
 		return uDao.findAll();
 	}
-
     @Override
     public User findById(int id) {
         return uDao.findById(id);

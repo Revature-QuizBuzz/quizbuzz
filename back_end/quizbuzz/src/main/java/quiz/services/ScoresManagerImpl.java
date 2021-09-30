@@ -1,5 +1,6 @@
 package quiz.services;
 
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,11 +20,6 @@ public class ScoresManagerImpl implements ScoresManager{
 	}
 
 	@Override
-	public Scores create(Scores score) {
-		return score;
-	}
-
-	@Override
 	public Object save(Scores score) {
 		// TODO Auto-generated method stub
 		return null;
@@ -31,13 +27,11 @@ public class ScoresManagerImpl implements ScoresManager{
 	
 	@Override
 	public Scores newScore(Scores score) {
-		// TODO Auto-generated method stub
 		return dao.save(score);
 	}
-	
-	@Override
-	public Scores addScore(Scores us) {
-		// Create User Results
+   @Override
+	public Scores create(Scores us) {
+		us.setCompletedOn( new Date() );		
 		return dao.save(us);
 	}
 

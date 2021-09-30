@@ -22,6 +22,13 @@ export const routes: Routes = [
   {path: '', component:HomeComponent, canActivate:[AuthGuard]},
   {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
   {path: 'login', component: LoginComponent},
+  {path: 'quiz/submit', component: QuizSubmissionComponent},
+  {path:"tags/new", component: NewTagsComponent},
+  {path: 'quiz/new', component:CreateQuizesComponent},
+  {path: 'tags/new', component: NewTagsComponent},
+  {path: 'quiz/new', component:CreateQuizesComponent},
+  {path: 'newquestionanswer', component: QuestionAnswerComponent, outlet: "answer"},
+  {path: 'newquestion', component: QuestionComponent, outlet: "question"},
   {path: 'scoreboard', component:ScoreBoardComponent, canActivate:[AuthGuard]},
   {path: 'totalpoints', component:TotalUserPointsComponent, canActivate:[AuthGuard]},
   {path: 'quiz/new', component:CreateQuizesComponent, canActivate:[AuthGuard], children:[

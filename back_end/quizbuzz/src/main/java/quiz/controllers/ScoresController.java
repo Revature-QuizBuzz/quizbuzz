@@ -1,5 +1,8 @@
 package quiz.controllers;
 
+import java.util.Date;
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +20,8 @@ import quiz.services.*;
 
 
 @RestController
-@RequestMapping("/testresults")
+@RequestMapping("/scores")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ScoresController {
 	
 	@Autowired
@@ -34,14 +38,6 @@ public class ScoresController {
 	}
 	
 	@CrossOrigin(origins="http://localhost:4200")
-	@PostMapping(path="/submitQuiz", produces="application/json", consumes="application/json")
-	public Scores create(@RequestBody Scores scores) {
-		log.info("POST to /submitQuiz");
-		System.out.println(scores.getScore());
-		return scores;
-	}
-	
-	@CrossOrigin(origins="http://localhost:4200")
 	@GetMapping(path="/MyScore/{id}", produces="application/json")
 	public ResponseEntity<Integer> getMyScore(@PathVariable int id) {
 		log.info("GET to /MyScore/" + id);
@@ -49,4 +45,11 @@ public class ScoresController {
 		return new ResponseEntity<>(total, HttpStatus.ACCEPTED);
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping(path = "/submitQuiz", produces = "application/json", consumes = "application/json")
+	public Scores create(@RequestBody Scores scores) {
+		log.info("Submitted user Quiz");
+		scores.setCompletedOn(new Date()) ;
+		return score.create(scores);
+	}
 }

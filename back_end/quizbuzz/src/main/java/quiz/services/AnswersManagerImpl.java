@@ -13,9 +13,6 @@ import quiz.models.Answers;
 public class AnswersManagerImpl implements AnswersManager {
 	
 	@Autowired
-	private AnswersDAO adao;
-
-	@Autowired
 	private AnswersDAO dao;
 	
 
@@ -43,6 +40,7 @@ public class AnswersManagerImpl implements AnswersManager {
 	public List<Answers> findAll(int id) {
 		return dao.findAll();
 	}
+	
 	@Override
 	public List<Answers> getAllAnswers() {
 		return StreamSupport.stream(adao.findAll().spliterator(), false)

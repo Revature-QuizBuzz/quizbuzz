@@ -47,6 +47,4 @@ public class QuestionController {
 		log.info("Listing Answers");
 		return this.manager.getAllQuestions();
 	} //Getting Questions to compare UserAnswers
-
-
 }

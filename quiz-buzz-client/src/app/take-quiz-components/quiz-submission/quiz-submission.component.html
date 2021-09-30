@@ -10,12 +10,12 @@
                         <th>Question</th>
                         <th>The Correct Answer</th>
                     </thead>
-                    <tbody >
-                         <tr>
-                            <td>{{answers}}</td>
-                            <td>{{question}}</td>
-                            <td>{{correct}}</td>
-                        </tr>               
+                    <tbody>
+                        <tr *ngFor="let item of [].constructor(question.length); let i = index">
+                            <td>{{getAnswers(i)}}</td>
+                            <td>{{getQuestions(i)}}</td> 
+                            <td>{{getCorrect(i)}}</td>  
+                        </tr>  
                     </tbody>
                 </table>
             </div>

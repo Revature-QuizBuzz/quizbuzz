@@ -16,7 +16,6 @@ import quiz.services.TestManager;
 
 @RestController
 @RequestMapping(path = "/testanswers")
-@CrossOrigin(origins = "http://localhost:4200")
 public class TestController {
 	
 	private static final Logger logger = LogManager.getLogger(TestController.class);
@@ -24,6 +23,7 @@ public class TestController {
 	@Autowired
 	private TestManager manager; 
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping(path = "/create", consumes = "application/json", produces = "application/json")
 	public TestClass create(@Validated @RequestBody TestClass tc) {
 		logger.info("POST to /create");
