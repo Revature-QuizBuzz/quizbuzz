@@ -43,8 +43,13 @@ public class AnswersManagerImpl implements AnswersManager {
 	
 	@Override
 	public List<Answers> getAllAnswers() {
-		return StreamSupport.stream(adao.findAll().spliterator(), false)
+		return StreamSupport.stream(dao.findAll().spliterator(), false)
 				.collect(Collectors.toList());
 	}
 
+	@Override
+	public void delete(int answerId) {
+		dao.deleteById(answerId);
+	}
+	
 }

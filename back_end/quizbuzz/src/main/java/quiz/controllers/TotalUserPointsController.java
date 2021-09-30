@@ -16,7 +16,7 @@ import quiz.models.Scores;
 import quiz.services.ScoresManager;
 
 @RestController
-@RequestMapping(path = "/scores")
+@RequestMapping(path = "/totalUserPoints")
 public class TotalUserPointsController {
 	
 	public static final Logger logger = LogManager.getLogger(TotalUserPointsController.class);

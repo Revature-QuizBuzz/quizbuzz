@@ -9,7 +9,6 @@ import quiz.models.Scores;
 import java.util.List;
 
 public interface ScoresManager {
-	Scores addScore(Scores score);
 	List<Scores> findAll();
 	Object save(Scores score);
 	Scores create(Scores score);

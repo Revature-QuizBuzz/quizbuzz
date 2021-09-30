@@ -62,6 +62,13 @@ public class QuizController {
 	public ResponseEntity<String> deleteQuiz(@PathVariable("quizId") Integer quizId) {
 		// LOGGER.info(MessageFormat.format("Calling delete method on quiz id:
 		// {quizId}", quizId));
+		Quiz quiz = manager.findById(quizId);
+		for(Question questions : quiz.getQuestions()) {
+			for (Answers answers : questions.getAnswers()) {
+				answersManager.delete(answers.getAnswerId());
+			}
+			questionManager.delete(questions.getQuestionId());
+		}		
 		manager.deleteQuiz(quizId);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}

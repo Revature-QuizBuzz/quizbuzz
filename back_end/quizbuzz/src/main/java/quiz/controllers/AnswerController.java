@@ -22,7 +22,7 @@ import quiz.models.Answers;
 import quiz.services.AnswersManager;
 
 @RestController
-@RequestMapping(path = "answer")
+@RequestMapping(path = "/answer")
 public class AnswerController {
 	
 	private static final Logger log = LogManager.getLogger(TagsController.class);

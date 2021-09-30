@@ -47,12 +47,14 @@ public class QuestionManagerImpl implements QuestionManager{
 		return dao.findAllByQuizId(id);
 	}
 
-	@Autowired
-	private QuestionDAO qdao;
-	
 	@Override
 	public List<Question> getAllQuestions() {
-		return StreamSupport.stream(qdao.findAll().spliterator(), false)
+		return StreamSupport.stream(dao.findAll().spliterator(), false)
 				.collect(Collectors.toList());
+	}
+
+	@Override
+	public void delete(int questionId) {
+		dao.deleteById(questionId);
 	}
 }

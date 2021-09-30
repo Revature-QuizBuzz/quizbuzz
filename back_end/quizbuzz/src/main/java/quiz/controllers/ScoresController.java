@@ -20,7 +20,7 @@ import quiz.services.*;
 
 
 @RestController
-@RequestMapping("/scores")
+@RequestMapping("/testresults")
 @CrossOrigin(origins = "http://localhost:4200")
 public class ScoresController {
 	
@@ -32,7 +32,7 @@ public class ScoresController {
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping(consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Scores> addScore(@RequestBody Scores us) {
-		Scores userScores = score.addScore(us);
+		Scores userScores = score.create(us);
 		log.info("Submit User Answers");
 		return new ResponseEntity<>(userScores, HttpStatus.CREATED);
 	}

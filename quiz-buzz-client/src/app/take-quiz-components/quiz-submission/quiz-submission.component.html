@@ -1,26 +1,25 @@
+<div class="container">
+    <div class="card">
+        <h3 class="text-center">Quiz Results</h3><span class="text-center">Your Score</span>
+        <span class="text-center">{{userScore}}</span>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <th>Your Answer</th>
+                    <th>Question</th>
+                    <th>The Correct Answer</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of [].constructor(question.length); let i = index">
+                        <td>{{getAnswers(i)}}</td>
+                        <td>{{getQuestions(i)}}</td>
+                        <td>{{getCorrect(i)}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-<div class = "container">
-    <div class = "card">
-        <h3 class = "text-center">Quiz Results</h3><span class = "text-center">Your Score</span>
-        <span class = "text-center" >{{userScore}}</span>
-            <div class = "card-body">
-                <table class = "table table-striped">
-                    <thead>
-                        <th>Your Answer</th>
-                        <th>Question</th>
-                        <th>The Correct Answer</th>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let item of [].constructor(question.length); let i = index">
-                            <td>{{getAnswers(i)}}</td>
-                            <td>{{getQuestions(i)}}</td> 
-                            <td>{{getCorrect(i)}}</td>  
-                        </tr>  
-                    </tbody>
-                </table>
-            </div>
-            
     </div>
 </div>
 
-<button class="btn" (click)="home()" >Home</button>
+<button class="btn" (click)="home()">Home</button>

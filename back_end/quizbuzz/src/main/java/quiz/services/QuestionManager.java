@@ -12,5 +12,5 @@ public interface QuestionManager {
 	List<Question> findAll(int id);
 	List<Question> getAllQuestions();
     Question findByQuestion(String name);
-
+    void delete(int questionId);
 }

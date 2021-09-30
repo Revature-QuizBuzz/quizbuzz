@@ -14,5 +14,8 @@ public interface AnswersManager {
     Answers findByAnswer(String answer);
 	
 	List< Answers> findAll(int id);
+	
+	List<Answers> getAllAnswers();
 		
+	void delete(int answerId);
 }
