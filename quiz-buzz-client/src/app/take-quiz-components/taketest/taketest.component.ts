@@ -70,15 +70,17 @@ for(let i in this.questions){
  
   //adds new answer to the array then stores it in local storage
   var old_data  = JSON.parse(localStorage.getItem('answers')||'{}');
-  old_data.push(quiz_data);
+  old_data.push(quiz_data + '*');
+  console.log(quiz_data);
   localStorage.setItem('answers', old_data);
 //adds new question to the array then stores it in local storage
   var old_question = JSON.parse(localStorage.getItem('question')||'{}');
-  old_question.push(quiz_question);
+  old_question.push(quiz_question + '*');
   localStorage.setItem('question',old_question);
 //adds the correct answer to the array in local storage
   var old_correctAnswer = JSON.parse(localStorage.getItem('correctAnswer')||'{}');
-  old_correctAnswer.push(quiz_correct);
+  old_correctAnswer.push(quiz_correct +'*');
+
   localStorage.setItem('correctAnswer',old_correctAnswer);
 
 

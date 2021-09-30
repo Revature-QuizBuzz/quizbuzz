@@ -24,15 +24,17 @@ export class QuizSubmissionComponent implements OnInit {
   userAnswers:any = [];
   correctAnswers:any = [];
   correct:any=[];
-
+  
   key = 'correct';
-  userId: any = localStorage.getItem('');
-  userScore: any;
+  userId: any = localStorage.getItem('id');
+  userScore: any = localStorage.getItem('score');
   quiz: any = localStorage.getItem('quizId');
   quizQuestion: any = [];
   userPoints: any = localStorage.getItem('score');
-  totalPoints: any = localStorage.getItem('question')?.length;
+  totalPoints: any;
   date: any;
+
+  quizdata:any = [[],[],[]] 
    
   constructor(private router:Router, private http: HttpClient, private answerService: AnswerService) {
 
@@ -41,40 +43,55 @@ export class QuizSubmissionComponent implements OnInit {
   ngOnInit(): void {
 
     
+    this.getUserAnswer();
+    this.getUserQuestion();
+    this.getCorrectAnswers();
+    this.totalPoints = this.question.length;
+    this.getScore();
+    this.quizdata = [[this.answers],[this.question],[this.correct]]
+    
+      
+   
+   console.log(this.quizdata);
+
+
     let scoreUrl= "http://localhost:8080/scores/submitQuiz"
 
     this.http.post(scoreUrl, {      
       user: {userId: this.userId},
-      quiz: {quizId: this.quiz.id},
-      score: this.userScore,      
-    }).toPromise().then((data : any) => {
-      console.log(data)
-    })
+      quiz: {quizId: this.quiz},
+      score: this.userScore, 
+         
+    }).subscribe({
+              next: (data:any)=>{
+               console.log(data)
+              }
+            })
 
-    
-   }
+   }  
+   
    
   
   getUserAnswer() {
     this.userAnswers = localStorage.getItem('answers');
-    this.answers = this.userAnswers.split(',');
+    this.answers = this.userAnswers.split('*');
+    console.log(this.answers)
    }
   getUserQuestion() {
     this.questions = localStorage.getItem('question');
-    this.question = this.questions.split(',');
+    this.question = this.questions.split('*');
   }
 
   getCorrectAnswers() {
     this.correctAnswers = localStorage.getItem('correctAnswer');
-    this.correct = this.correctAnswers.split(',');
+    this.correct = this.correctAnswers.split('*');
   }
 
   getScore(){
-    this.userPoints = localStorage.getItem('score');
-  //   this.userScore = this.userPoints + '/' + this.question.length ;
-  // }
-    console.log(this.totalPoints);
-    this.userScore = Math.round(this.userPoints/this.totalPoints*100);
+    this.userPoints = localStorage.getItem('score');   
+     let math =  (this.userPoints/this.totalPoints)*100;
+     this.userScore = Math.round(math);
+    
   }
   
   home(){

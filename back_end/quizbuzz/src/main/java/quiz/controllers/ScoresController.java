@@ -1,5 +1,6 @@
 package quiz.controllers;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -21,6 +22,7 @@ import quiz.services.*;
 
 @RestController
 @RequestMapping("/scores")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ScoresController {
 	
 	@Autowired
@@ -38,6 +40,7 @@ public class ScoresController {
 	@PostMapping(path = "/submitQuiz", produces = "application/json", consumes = "application/json")
 	public Scores create(@RequestBody Scores scores) {
 		log.info("Submitted user Quiz");
+		scores.setCompletedOn(new Date()) ;
 		return score.create(scores);
 	}
 }
