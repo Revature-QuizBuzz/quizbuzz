@@ -31,7 +31,7 @@ public class Question {
 	@JoinColumn(name = "quiz_id")
 	private Quiz quiz;
 
-	@OneToMany(mappedBy = "question", cascade = CascadeType.MERGE)
+	@OneToMany(mappedBy = "question", cascade = {CascadeType.MERGE, CascadeType.REMOVE})
 	private List<Answers> answers;
 
 	@Column

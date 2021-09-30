@@ -56,7 +56,7 @@ public class QuestionManagerImpl implements QuestionManager {
 	
 	@Override
 	public List<Question> findAll(int id) {
-		return dao.findAllByQuizId(id);
+		return daoQuestion.findAllByQuizId(id);
 	}
 
 	@Autowired

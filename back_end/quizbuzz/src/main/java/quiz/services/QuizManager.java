@@ -11,18 +11,19 @@ import java.util.List;
 public interface QuizManager {
     Quiz create(Quiz quiz);
 
-//    Quiz findById(int id);
-
     List<Quiz> findAll();
 
     List<Quiz> findByUser(int userId);
 
     Quiz findByName(String name);
-//    List<Quiz> getFeaturedQuizzes();
 
     Quiz getQuizById(int id);
+    
+    void deleteQuiz (Integer quizId);
 
-    Quiz updateQuiz(int quizId, Quiz quiz);
     List<Quiz> getFeaturedQuizzes();
+    
     List<Quiz> findByQuizName(String quizName);
+    
+    Quiz findByUserAndQuizName(Integer userId, String quizName);
 }

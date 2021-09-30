@@ -8,7 +8,7 @@
         <tr *ngFor="let quiz of quizzes">
             <td>{{quiz.name}}</td>
             <td>{{quiz.dateModified}}</td>
-            <td><a href="#">Edit</a></td>
+            <td><a href="edit-quiz/{{quiz.name}}">Edit</a></td>
         </tr>
     </tbody>
 </table>

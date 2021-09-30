@@ -44,7 +44,7 @@ export const routes: Routes = [
   {path: 'newquestionanswer', component: QuestionAnswerComponent, outlet: "answer"},
   {path: 'newquestion', component: QuestionComponent, outlet: "question"},
   {path: 'my-quizzes', component: MyQuizzesComponent},
-  {path: 'edit-quiz/${name}', component: EditQuizComponent},
+  {path: 'edit-quiz/:name', component: EditQuizComponent},
   {path: 'tags', component: TagsShowPageComponent, canActivate:[AuthGuard]},
   {path: 'testresults', component: QuizSubmissionComponent},
   {path: 'quiz/selection', component: QuizSelectionComponent},

@@ -1,19 +1,8 @@
-2021-09-29 09:57:51,227 INFO quiz.controllers.QuizController [http-nio-8080-exec-7] created new quiz
-2021-09-29 10:00:08,990 INFO quiz.controllers.TagsController [http-nio-8080-exec-2] GET to /tags
-2021-09-29 10:00:22,202 INFO quiz.controllers.TagsController [http-nio-8080-exec-4] GET to /tags
-2021-09-29 10:08:16,560 INFO quiz.controllers.TagsController [http-nio-8080-exec-6] GET to /tags
-2021-09-29 10:12:35,546 INFO quiz.controllers.TagsController [http-nio-8080-exec-10] GET to /tags
-2021-09-29 13:53:28,306 INFO quiz.controllers.TagsController [http-nio-8080-exec-9] GET to /tags
-2021-09-29 13:53:44,051 INFO quiz.controllers.TagsController [http-nio-8080-exec-10] GET to /tags
-2021-09-29 13:55:04,883 INFO quiz.controllers.QuizController [http-nio-8080-exec-3] Find quiz(zes) created by user 
-2021-09-29 13:55:29,066 INFO quiz.controllers.QuizController [http-nio-8080-exec-4] Calling update quiz from controller with id: 1 and quiz: , name: Test QuizX, total score: 100, questions: [quiz.models.Question@7e5fac8d, quiz.models.Question@3323c3b4]
-2021-09-29 13:57:01,131 INFO quiz.controllers.QuizController [http-nio-8080-exec-7] Calling update quiz from controller with id: 1 and quiz: , name: Test QuizX, total score: 100, questions: [quiz.models.Question@3926339b, quiz.models.Question@798c04e5]
-2021-09-29 14:01:21,867 INFO quiz.controllers.TagsController [http-nio-8080-exec-10] GET to /tags
-2021-09-29 14:03:54,295 INFO quiz.controllers.TagsController [http-nio-8080-exec-2] GET to /tags
-2021-09-29 14:05:11,965 INFO quiz.controllers.TagsController [http-nio-8080-exec-4] GET to /tags
-2021-09-29 14:09:16,353 INFO quiz.controllers.TagsController [http-nio-8080-exec-6] GET to /tags
-2021-09-29 14:12:22,234 INFO quiz.controllers.TagsController [http-nio-8080-exec-8] GET to /tags
-2021-09-29 14:16:58,041 INFO quiz.controllers.TagsController [http-nio-8080-exec-10] GET to /tags
-2021-09-29 14:19:39,023 INFO quiz.controllers.QuizController [http-nio-8080-exec-5] Find quiz(zes) created by user 
-2021-09-29 14:21:49,634 INFO quiz.controllers.QuizController [http-nio-8080-exec-7] Find quiz(zes) created by user 
-2021-09-29 14:25:22,187 INFO quiz.controllers.QuizController [http-nio-8080-exec-9] Find quiz(zes) created by user 
+2021-09-30 05:02:59,584 INFO quiz.controllers.TagsController [http-nio-8080-exec-6] GET to /tags
+2021-09-30 05:03:29,781 INFO quiz.controllers.TagsController [http-nio-8080-exec-1] POST to /tags/new
+2021-09-30 05:03:29,997 INFO quiz.controllers.TagsController [http-nio-8080-exec-3] GET to /tags
+2021-09-30 05:04:18,823 INFO quiz.controllers.QuizController [http-nio-8080-exec-2] Find quiz(zes) created by user 
+2021-09-30 05:34:53,552 INFO quiz.controllers.QuizController [http-nio-8080-exec-1] Find quiz(zes) created by user 
+2021-09-30 06:18:36,170 INFO quiz.controllers.QuizController [http-nio-8080-exec-9] GET to /getTen
+2021-09-30 06:18:43,278 INFO quiz.controllers.QuizController [http-nio-8080-exec-6] Find quiz(zes) created by user 
+2021-09-30 07:33:12,902 INFO quiz.controllers.QuizController [http-nio-8080-exec-6] Find quiz(zes) created by user 

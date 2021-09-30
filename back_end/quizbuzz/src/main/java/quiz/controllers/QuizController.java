@@ -21,7 +21,6 @@ import quiz.services.QuizManager;
 import java.util.List;
 
 @RestController
-//@EnableTransactionManagement
 @RequestMapping(path = "quizzes")
 public class QuizController {
 
@@ -68,16 +67,34 @@ public class QuizController {
 		}		
 		return quiz;
 	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@DeleteMapping(path = "/{quizId}", produces = "application/json")
+	public ResponseEntity<Quiz> deleteQuiz(@PathVariable("quizId") Integer quizId) {
+		// LOGGER.info(MessageFormat.format("Calling delete method on quiz id:
+		// {quizId}", quizId));
+		manager.deleteQuiz(quizId);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 
 	@PutMapping(path = "/edit/{quizId}", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Quiz> updateQuiz(@PathVariable int quizId, @RequestBody Quiz quiz) {
     	
-    	logger.info("Calling update quiz from controller with id: " + quizId + " and quiz: " + ", name: " +
-    quiz.getName() + ", total score: " + quiz.getTotalScore() + ", questions: " + quiz.getQuestions());
-    	
-        manager.updateQuiz(quizId, quiz);
-        return new ResponseEntity<>(manager.getQuizById(quizId), HttpStatus.NO_CONTENT); // status code 204, means successful put
-    }
+		logger.info("Calling update quiz from controller with id: " + quizId + " and quiz: " + ", name: " +
+				quiz.getName() + ", total score: " + quiz.getTotalScore() + ", questions: " + quiz.getQuestions());
+		
+		System.out.println("assigning quiz to updatedQuiz...");
+		Quiz updatedQuiz = quiz;
+		
+		System.out.println("Calling create...");
+		updatedQuiz = this.create(updatedQuiz);
+		
+		System.out.println("Deleting old quiz");
+		manager.deleteQuiz(quizId);
+				
+		
+		return new ResponseEntity<Quiz>(manager.getQuizById(quiz.getQuizId()), HttpStatus.NO_CONTENT);
+	}
    
 	
 	@CrossOrigin(origins="http://localhost:4200")
@@ -91,6 +108,12 @@ public class QuizController {
 	@GetMapping(path="/search/{quizName}", produces="application/json")
 	public List<Quiz> findBySearchValue(@PathVariable String quizName) {
 		return manager.findByQuizName(quizName);
+	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping(path="/user/{userId}/quiz/{quizName}", produces="application/json")
+	public Quiz findByUserIdAndQuizName(@PathVariable Integer userId, @PathVariable String quizName) {
+		return manager.findByUserAndQuizName(userId, quizName);
 	}
 	
 	

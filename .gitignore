@@ -55,3 +55,5 @@ secrets.yml
 .sts4-cache
 /.properties
 back_end/quizbuzz/logs/spring-boot-logger.log
+back_end/quizbuzz/logs/spring-boot-logger.log
+back_end/quizbuzz/logs/spring-boot-logger.log

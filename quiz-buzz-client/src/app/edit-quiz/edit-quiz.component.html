@@ -1,1 +1,40 @@
-<p>edit-quiz works!</p>
+<!-- For reference     
+    quizId?: number;
+    user?: User;
+    scores?: UserScore[];
+    questions?: Question[];
+    tags?: Tag[];
+    name?: string;
+    description?: string;
+    totalScore?: number;
+    createdDate?: Date;
+    dateModified?: Date; -->
+
+<form class="submit-form" (ngSubmit)="onSubmit(editQuizForm)" #editQuizForm="ngForm">
+    <div class="form-group">
+        <label for="quizName">
+            Name
+        </label>
+        <input id="quizName" name="quizName" #quizName="ngModel" type="text" [(ngModel)]="editQuizModel.name" required>
+    </div>
+
+    <div class="form-group">
+        <label for="description">
+            Description
+        </label>
+        <input id="description" name="description" #description="ngModel" type="text" [(ngModel)]="editQuizModel.description" required>
+    </div>
+
+
+
+    
+    
+    
+</form>
+<!-- <ul>
+    <li>{{quiz.name}}</li>
+    <li *ngFor = "let q of questions">{{q.question}}</li>
+
+    
+
+</ul> -->

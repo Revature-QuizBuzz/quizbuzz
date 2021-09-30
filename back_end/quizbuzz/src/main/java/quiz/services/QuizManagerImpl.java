@@ -34,29 +34,22 @@ public class QuizManagerImpl implements QuizManager {
     
     @Autowired
     private QuestionManager qManager;
-//    
-//    @Autowired
-//    private TagsManager tagManager;
 
     @Override
     public Quiz create(Quiz quiz){
         return daoQuiz.save(quiz);
     }
 
-//    @Override
-//    public Quiz findById(int id) {
-//        return daoQuiz.findById(id);
-//    }
-
     @Override
     public List<Quiz> findAll() {
         return daoQuiz.findAll();
     }
     
-//    @Override
-//    public List<Quiz> getFeaturedQuizzes() {
-//    	return daoQuiz.getFeaturedQuizzes();
-//    }
+    
+    @Override
+	public void deleteQuiz(Integer quizId) {
+		daoQuiz.deleteById(quizId);
+	}
 
     @Override
     public List<Quiz> findByUser(int userId) {
@@ -74,40 +67,20 @@ public class QuizManagerImpl implements QuizManager {
     	return daoQuiz.findById(id).get();
     }
 
-    @Override
-    public Quiz updateQuiz(int quizId, Quiz quiz) {
-        Quiz updatedQuiz = daoQuiz.getById(quizId);
-
-        
-        for(Question inputQuestion: quiz.getQuestions()) {
-        	inputQuestion.setQuiz(quiz);
-        	for(Answers inputAnswer: inputQuestion.getAnswers()) {
-        		inputAnswer.setQuestion(inputQuestion);
-        	}
-        }
-        
-        // update questions
-        updatedQuiz.setQuestions(quiz.getQuestions());
-        
-        //update tags so service returns the updated object
-        updatedQuiz.setTags(quiz.getTags());
-
-        updatedQuiz.setName(quiz.getName());
-
-        updatedQuiz.setDescription(quiz.getDescription());
-
-        // calculate totalScore
-        int updatedScore = quiz.calculateTotalScore(quiz.getQuestions());
-        updatedQuiz.setTotalScore(updatedScore);
-
-        updatedQuiz.setDateModified(new Date());
-        
-        return daoQuiz.save(updatedQuiz);
-    }
-}
+    
 	@Override
 	public List<Quiz> findByQuizName(String quizName) {
 		return daoQuiz.findByQuizName(quizName);
+	}
+
+	@Override
+	public List<Quiz> getFeaturedQuizzes() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public Quiz findByUserAndQuizName(Integer userId, String quizName) {
+		return daoQuiz.findByUserAndQuizName(userId, quizName);
 	}
 
 }

@@ -23,15 +23,15 @@ public class Quiz {
 	@JoinColumn(name="user_id")
 	private User user;
 	
-	@OneToMany(mappedBy="quiz", cascade=CascadeType.MERGE, fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="quiz", cascade= {CascadeType.MERGE, CascadeType.REMOVE}, fetch=FetchType.LAZY)
 	private List<Scores> scores;
 	
-	@OneToMany(mappedBy="quiz", cascade=CascadeType.MERGE)
+	@OneToMany(mappedBy="quiz", cascade={CascadeType.MERGE, CascadeType.REMOVE})
 	private List<Question> questions;
 
-	@ManyToMany(cascade=CascadeType.PERSIST)
-	@JoinTable(name="quiz_tags", joinColumns = { @JoinColumn(name="quiz_id") }, inverseJoinColumns = { @JoinColumn(name="tag_id") })
-	private List<Tags> tags;
+	@ManyToMany
+    @JoinTable(name="quiz_tags", joinColumns = { @JoinColumn(name="quiz_id") }, inverseJoinColumns = { @JoinColumn(name="tag_id") })
+    private List<Tags> tags;
 
 	@Column
 	private String name;
