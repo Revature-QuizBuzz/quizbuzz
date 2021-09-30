@@ -62,13 +62,12 @@ export class TaketestComponent implements OnInit {
     var quiz_data = this.answers;
     var quiz_question = this.question;
     var quiz_correct = this.correctAnswser;
-    //checks to see if the answers array is empyt or even in the local storage then sets the item
+    //checks to see if the answers array is empty or even in the local storage then sets the item
     if (localStorage.getItem('answers') == null && localStorage.getItem('question') == null && localStorage.getItem('correctAnswer') == null) {
       localStorage.setItem('answers', '[]');
       localStorage.setItem('question', '[]');
       localStorage.setItem('correctAnswer', '[]');
     }
-
 
     //adds new answer to the array then stores it in local storage
     var old_data = "";
@@ -90,9 +89,6 @@ export class TaketestComponent implements OnInit {
     console.log(old_correctAnswer);
     console.log("here");
     localStorage.setItem('correctAnswer', old_correctAnswer);
-
-
-
 
     //navigates to the Test Results page
     this.router.navigate(['testresults']);
@@ -116,11 +112,9 @@ export class TaketestComponent implements OnInit {
     if (this.counter + 1 < this.questions.length) {
       this.counter = this.counter + 1;
       this.currentQuestion = this.questions[this.counter];
-
       if ((this.counter + 1) === this.questions.length) {
         this.isDisable = false;
       }
-
     }
   }
 

@@ -42,6 +42,7 @@ export class TagsShowPageComponent implements OnInit {
         error: error => {
             alert("Sorry, there was a problem with your request.")
         }
+        
     });
 
 
