@@ -15,6 +15,7 @@ import { QuizSelectionComponent } from './take-quiz-components/quiz-selection/qu
 import { TaketestComponent } from './take-quiz-components/taketest/taketest.component';
 import { AttachTagsComponent } from './attach-tags/attach-tags.component';
 import { CreatedQuizzesComponent } from './created-quizzes/created-quizzes.component';
+import { EditQuizComponent } from './edit-quiz/edit-quiz.component';
 
 
 export const routes: Routes = [
@@ -36,7 +37,8 @@ export const routes: Routes = [
   {path: 'quiz/selection', component: QuizSelectionComponent},
   {path: 'take/quiz', component: TaketestComponent},
   {path: 'quiz/submit', component: QuizSubmissionComponent},
-  {path: 'quiz/created-quizzes', component: CreatedQuizzesComponent}
+  {path: 'quiz/created-quizzes', component: CreatedQuizzesComponent},
+  {path: 'quiz/edit-quiz', component: EditQuizComponent}
 ];
 
 @NgModule({

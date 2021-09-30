@@ -27,6 +27,7 @@ import { TotalUserPointsComponent } from './total-user-points/total-user-points.
 import { ScoreBoardComponent } from './scoreboard/scoreboard.component';
 import { TagsShowPageComponent } from './tags-show-page/tags-show-page.component';
 import { CreatedQuizzesComponent } from './created-quizzes/created-quizzes.component';
+import { EditQuizComponent } from './edit-quiz/edit-quiz.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { CreatedQuizzesComponent } from './created-quizzes/created-quizzes.compo
     ScoreBoardComponent,
     TagsShowPageComponent,
     AttachTagsComponent,
-    CreatedQuizzesComponent
+    CreatedQuizzesComponent,
+    EditQuizComponent
   ],
   imports: [
     BrowserModule,
