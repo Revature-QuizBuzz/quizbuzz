@@ -13,7 +13,7 @@ export class ScoreBoardComponent implements OnInit {
   scoreBoard: ScoreBoard[] = [];
 
   userId = 0;
-
+  
   constructor(private scoreService: ScoreService) {
   }
 
@@ -22,8 +22,6 @@ export class ScoreBoardComponent implements OnInit {
    
     this.userId = this.getUserId();
     console.log(this.userId);
-    
-    
   } 
  
 

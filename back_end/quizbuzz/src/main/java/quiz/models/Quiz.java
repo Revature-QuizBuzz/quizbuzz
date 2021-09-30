@@ -12,7 +12,6 @@ public class Quiz {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @SequenceGenerator(name="id_generator", sequenceName = "quizzes_quiz_id_seq", allocationSize = 1)
     @Column(name="quiz_id")
 	private int quizId;
 	

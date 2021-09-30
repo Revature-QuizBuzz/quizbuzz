@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -18,7 +17,6 @@ public class Scores {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @SequenceGenerator(name="id_generator", sequenceName = "user_scores_score_id_seq", allocationSize = 1)
     @Column(name="score_id")
 	private int scoreId;
 	

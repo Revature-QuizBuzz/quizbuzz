@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import quiz.models.Answers;
 import quiz.models.Question;
 import quiz.models.Quiz;
-import quiz.models.User;
 import quiz.services.AnswersManager;
 import quiz.services.QuestionManager;
 import quiz.services.QuizManager;
@@ -67,6 +66,8 @@ public class QuizController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
+	
+	@CrossOrigin(origins="http://localhost:4200")
 	@GetMapping(path="/user/{userId}", produces="application/json")
 	public List<Quiz> findQuizzesCreatedByUser(@PathVariable int userId){
 		logger.info("Find quiz(zes) created by user ");
@@ -83,6 +84,7 @@ public class QuizController {
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping(path="/search/{quizName}", produces="application/json")
 	public List<Quiz> findBySearchValue(@PathVariable String quizName) {
+		logger.info("GET to /search/" + quizName);
 		return manager.findByQuizName(quizName);
 	}
 	

@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 
@@ -17,7 +16,6 @@ public class Answers {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @SequenceGenerator(name="id_generator", sequenceName = "answers_answer_id_seq", allocationSize = 1)
     @Column(name="answer_id")
 	private int answerId;
 	

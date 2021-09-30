@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -18,7 +17,6 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @SequenceGenerator(name="id_generator", sequenceName = "users_user_id_seq", allocationSize = 1)
     @Column(name="user_id")
 	private int userId;
 	
@@ -50,34 +48,31 @@ public class User {
 	private double pointPercentage;
 	
 	
-	
-
-//	public User(int id, List<Quiz> quizzes, List<Scores> scores, String username, String password, String firstName,
-//			String lastName, int totalPoints, int totalPossible, double pointPercentage) {
-//		super();
-//		this.userId = id;
-//		this.quizzes = quizzes;
-//		this.scores = scores;
-//		this.username = username;
-//		this.password = password;
-//		this.firstName = firstName;
-//		this.lastName = lastName;
-//		this.totalPoints = totalPoints;
-//		this.totalPossible = totalPossible;
-//		this.pointPercentage = pointPercentage;
-//	}
-	
-	
-
 	public User() { }
 
-	public User(int id) {
-		this.userId = id;
+	public User(int userId) {
+		this.userId = userId;
+	}
+	
+	public User(int userId, List<Quiz> quizzes, List<Scores> scores, String username, String password, String firstName,
+			String lastName, int totalPoints, int totalPossible, double pointPercentage) {
+
+		this.userId = userId;
+		this.quizzes = quizzes;
+		this.scores = scores;
+		this.username = username;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.totalPoints = totalPoints;
+		this.totalPossible = totalPossible;
+		this.pointPercentage = pointPercentage;
 	}
 
 
-	public User(int id, List<Quiz> quizzes, List<Scores> scores, String username, String password, String firstName, String lastName, int totalPoints) {
-		this.userId = id;
+
+	public User(int userId, List<Quiz> quizzes, List<Scores> scores, String username, String password, String firstName, String lastName, int totalPoints) {
+		this.userId = userId;
 		this.quizzes = quizzes;
 		this.scores = scores;
 		this.username = username;
@@ -91,8 +86,8 @@ public class User {
 		return userId;
 	}
 
-	public void setUserId(int id) {
-		this.userId = id;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 	
 	public void setQuizzes(List<Quiz> quizzes) {

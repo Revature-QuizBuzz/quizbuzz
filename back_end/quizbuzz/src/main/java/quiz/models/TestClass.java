@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -14,7 +13,6 @@ public class TestClass {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @SequenceGenerator(name="id_generator", sequenceName = "testanswers_id_seq", allocationSize = 1)
     @Column(name="id")
 	private int id;
 	
@@ -69,10 +67,5 @@ public class TestClass {
 	public void setNotselectedanswers(String notselectedanswers) {
 		this.notselectedanswers = notselectedanswers;
 	}
-	
-	
-	
-	
-	
 
 }

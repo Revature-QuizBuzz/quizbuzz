@@ -1,14 +1,8 @@
 package quiz.services;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.StreamSupport;
-import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import quiz.dao.ScoresDAO;
-import quiz.models.Scores;
-
 import quiz.dao.ScoresDAO;
 import quiz.models.Scores;
 
@@ -47,48 +41,9 @@ public class ScoresManagerImpl implements ScoresManager{
 		return dao.save(us);
 	}
 
-
-//	@Override
-//	public Scores findScore(Scores score) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//
-//	@Override
-//	public List<Scores> getScores() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//
-//	@Override
-//	public Scores findById(int id) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-
-//	@Override
-//	public Answers findById(Answers ua) {
-//		return StreamSupport.stream(adao.findById(), false)
-//				.collect(Collectors.toList());
-//	}
-//	
-//	@Override
-//	public List<Question> findAllQuestions() {
-//		return StreamSupport.stream(qdao.findAll().spliterator(), false)
-//				.collect(Collectors.toList());
-//	}
-//
-//	@Override
-//	public Answers findById(int id) {
-//		return adao.findById(Integer.valueOf(id));
-//	}
-//	
-//
-//	@Override
-//	public Question findByQuestion(Question q) {
-//		return qdao.findByQuestion(findByQuestion q));
-//	}
+	@Override
+	public List<Scores> getMyScores(int id) {
+		return dao.findMyId(id);
+	}
 
 }

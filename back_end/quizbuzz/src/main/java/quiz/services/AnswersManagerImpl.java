@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import quiz.dao.AnswersDAO;
 import quiz.models.Answers;
-import quiz.models.Quiz;
 
 @Service
 public class AnswersManagerImpl implements AnswersManager {
@@ -49,14 +48,5 @@ public class AnswersManagerImpl implements AnswersManager {
 		return StreamSupport.stream(adao.findAll().spliterator(), false)
 				.collect(Collectors.toList());
 	}
-	
-//	@Override
-//	public List<Answers> getAllAnswers() {
-//		return adao.findAll();
-//	}
-//
-//	@Override
-//	public Answers findById(int id) {
-//		return adao.findOne(id);
-//	}
+
 }

@@ -13,12 +13,19 @@ export class HomeComponent implements OnInit {
   constructor(private http:HttpClient, private router:Router) { }
 
   quizzes:Quiz[] = [];
+  score:number = 0;
 
   ngOnInit(): void {
     this.http.get('http://localhost:8080/quizzes/getTen').subscribe({
       next: (data:any) => {
         console.log(data);
         this.quizzes = data;
+      }
+    })
+
+    this.http.get('http://localhost:8080/testresults/MyScore/' + localStorage.getItem("id")).subscribe({
+      next: (data:any) => {
+        this.score = data;
       }
     })
   }
@@ -28,7 +35,7 @@ export class HomeComponent implements OnInit {
   }
 
   getTotalScore() {
-    //return 100;
+    return this.score;
   }
 
   takeQuiz(quizId:number = 0) {

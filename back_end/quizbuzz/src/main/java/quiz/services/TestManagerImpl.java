@@ -15,8 +15,6 @@ public class TestManagerImpl implements TestManager{
 	@Autowired
 	private TestDAO dao;
 
-	
-	
 	@Override
 	@Transactional(isolation = Isolation.SERIALIZABLE, rollbackFor = {
 			ConstraintViolationException.class }, propagation = Propagation.REQUIRES_NEW) 
