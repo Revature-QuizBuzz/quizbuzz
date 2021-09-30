@@ -20,10 +20,10 @@ public class Quiz {
 	@JoinColumn(name="user_id")
 	private User user;
 	
-	@OneToMany(mappedBy="quiz", cascade=CascadeType.MERGE)
+	@OneToMany(mappedBy="quiz", cascade=CascadeType.ALL)
 	private List<Scores> scores;
 	
-	@OneToMany(mappedBy="quiz", cascade=CascadeType.MERGE)
+	@OneToMany(mappedBy="quiz", cascade=CascadeType.ALL)
 	private List<Question> questions;
 	
 	@ManyToMany

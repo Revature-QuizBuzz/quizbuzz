@@ -22,7 +22,7 @@ export class QuizService {
     // }
   }
 
-  deleteQuiz(quizId: number): Observable<HttpResponse<string>> {
-    return this.http.delete<HttpResponse<string>>(this.baseUrl + "/" + quizId);
+  deleteQuiz(quizId: number): Observable<string> {
+    return this.http.delete<string>(this.baseUrl + "/" + quizId);
   }
 }

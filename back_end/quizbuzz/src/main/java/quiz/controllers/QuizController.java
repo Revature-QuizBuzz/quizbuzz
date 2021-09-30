@@ -60,7 +60,7 @@ public class QuizController {
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@DeleteMapping(path = "/{quizId}", produces = "application/json")
-	public ResponseEntity<Quiz> deleteQuiz(@PathVariable("quizId") Integer quizId) {
+	public ResponseEntity<String> deleteQuiz(@PathVariable("quizId") Integer quizId) {
 		// LOGGER.info(MessageFormat.format("Calling delete method on quiz id:
 		// {quizId}", quizId));
 		manager.deleteQuiz(quizId);
