@@ -67,25 +67,32 @@ export class QuizSubmissionComponent implements OnInit {
                console.log(data)
               }
             })
-
-   }  
+    
+    delete localStorage['answers'];
+    delete localStorage['question'];
+    delete localStorage['correctAnswer'];
+    delete localStorage['score'];
+    delete localStorage['quizId'];
+  }  
    
    
   
-  getUserAnswer() {
-    this.userAnswers = localStorage.getItem('answers');
-    this.answers = this.userAnswers.split('*');
-    console.log(this.answers)
-   }
-  getUserQuestion() {
-    this.questions = localStorage.getItem('question');
-    this.question = this.questions.split('*');
-  }
+    getUserAnswer() {
+      this.userAnswers = localStorage.getItem('answers');
+      this.answers = this.userAnswers.split('*');
+      this.answers.pop();
+    }
+    getUserQuestion() {
+      this.questions = localStorage.getItem('question');
+      this.question = this.questions.split('*');
+      this.question.pop();
+    }
 
-  getCorrectAnswers() {
-    this.correctAnswers = localStorage.getItem('correctAnswer');
-    this.correct = this.correctAnswers.split('*');
-  }
+    getCorrectAnswers() {
+      this.correctAnswers = localStorage.getItem('correctAnswer');
+      this.correct = this.correctAnswers.split('*');
+      this.correct.pop();
+    }
 
   getScore(){
     this.userPoints = localStorage.getItem('score');   
@@ -95,14 +102,21 @@ export class QuizSubmissionComponent implements OnInit {
   }
   
   home(){
-    delete localStorage['answers'];
-    delete localStorage['question'];
-    delete localStorage['correctAnswer'];
-    delete localStorage['score'];
-    delete localStorage['quizId'];
     this.router.navigate(['home']);
    }
 
+  getAnswers(i:number) {
+    return this.answers[i];
   }
+
+  getQuestions(i:number) {
+    return this.question[i];
+  }
+
+  getCorrect(i:number) {
+    return this.correct[i];
+  }
+}
+
 
 
