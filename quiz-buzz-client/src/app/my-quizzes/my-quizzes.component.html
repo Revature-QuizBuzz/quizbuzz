@@ -10,7 +10,7 @@
                 <tr *ngFor="let quiz of quizzes">
                     <td>{{quiz.name}}</td>
                     <td>{{quiz.dateModified}}</td>
-                    <td><button >Delete</button></td>
+                    <td><button class="btn btn-primary" (click)="deleteQuiz(quiz)">Delete</button></td>
                 </tr>
             </tbody>
         </table>

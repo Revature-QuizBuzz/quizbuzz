@@ -42,7 +42,6 @@ export class DeleteQuizzesComponent implements OnInit {
         console.log(data)
         })
       }
-
   }
 
   selectQuiz(quiz:any){

@@ -25,8 +25,10 @@ public class QuizController {
 
 	@Autowired
 	private QuizManager manager;
+	
 	@Autowired
 	private QuestionManager questionManager;
+	
 	@Autowired
 	private AnswersManager answersManager;
 

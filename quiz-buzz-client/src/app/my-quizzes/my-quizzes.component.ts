@@ -14,6 +14,7 @@ export class MyQuizzesComponent implements OnInit {
   quizzes: Quiz[] = [];
   userId = JSON.parse(localStorage.getItem('id')|| '{}');
 
+
   constructor(private quizService: QuizService) { }
 
 
@@ -26,6 +27,15 @@ export class MyQuizzesComponent implements OnInit {
      .subscribe(quizzes => {
        this.quizzes = quizzes;
      })
+  }
+  
+  deleteQuiz(quiz: Quiz) {
+    console.log(quiz.quizId)
+    this.quizService.deleteQuiz(Number(quiz.quizId))
+    .subscribe(response => {
+      console.log(response)
+      this.ngOnInit();
+    })
   }
 
 }

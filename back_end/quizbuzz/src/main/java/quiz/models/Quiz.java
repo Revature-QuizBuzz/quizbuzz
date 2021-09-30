@@ -19,7 +19,7 @@ public class Quiz {
 	@JoinColumn(name="user_id")
 	private User user;
 	
-	@OneToMany(mappedBy="quiz", cascade=CascadeType.MERGE)
+	@OneToMany(mappedBy="quiz", cascade= {CascadeType.MERGE, CascadeType.REMOVE})
 	private List<Scores> scores;
 	
 	@OneToMany(mappedBy="quiz", cascade=CascadeType.MERGE)
