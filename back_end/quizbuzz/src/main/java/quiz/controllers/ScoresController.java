@@ -20,7 +20,7 @@ import quiz.services.*;
 
 
 @RestController
-@RequestMapping("/testresults")
+@RequestMapping("/scores")
 public class ScoresController {
 	
 	@Autowired

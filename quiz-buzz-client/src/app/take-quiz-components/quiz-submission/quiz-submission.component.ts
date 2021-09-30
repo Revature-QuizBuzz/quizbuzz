@@ -41,7 +41,7 @@ export class QuizSubmissionComponent implements OnInit {
   ngOnInit(): void {
 
     
-    let scoreUrl= "http://localhost:8080/testresults"
+    let scoreUrl= "http://localhost:8080/scores/submitQuiz"
 
     this.http.post(scoreUrl, {      
       user: {userId: this.userId},
@@ -51,11 +51,7 @@ export class QuizSubmissionComponent implements OnInit {
       console.log(data)
     })
 
-    delete localStorage['answers'];
-    delete localStorage['question'];
-    delete localStorage['correctAnswer'];
-    delete localStorage['score'];
-    delete localStorage['quizId'];
+    
    }
    
   
@@ -82,6 +78,11 @@ export class QuizSubmissionComponent implements OnInit {
   }
   
   home(){
+    delete localStorage['answers'];
+    delete localStorage['question'];
+    delete localStorage['correctAnswer'];
+    delete localStorage['score'];
+    delete localStorage['quizId'];
     this.router.navigate(['home']);
    }
 

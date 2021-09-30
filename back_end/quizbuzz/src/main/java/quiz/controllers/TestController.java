@@ -16,7 +16,6 @@ import quiz.services.TestManager;
 
 @RestController
 @RequestMapping(path = "/testanswers")
-@CrossOrigin(origins = "http://localhost:4200")
 public class TestController {
 	
 	@Autowired
