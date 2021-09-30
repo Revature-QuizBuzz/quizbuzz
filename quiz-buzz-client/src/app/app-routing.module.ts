@@ -16,6 +16,7 @@ import { TaketestComponent } from './take-quiz-components/taketest/taketest.comp
 import { AttachTagsComponent } from './attach-tags/attach-tags.component';
 import { TagGuardGuard } from './tag-guard.guard';
 import { DeleteQuizzesComponent } from './delete-quizzes/delete-quizzes.component';
+import { MyQuizzesComponent } from './my-quizzes/my-quizzes.component';
 
 
 export const routes: Routes = [
@@ -43,7 +44,8 @@ export const routes: Routes = [
   {path: 'quiz/selection', component: QuizSelectionComponent, canActivate:[AuthGuard]},
   {path: 'take/quiz', component: TaketestComponent, canActivate:[AuthGuard]},
   {path: 'quiz/submit', component: QuizSubmissionComponent, canActivate:[AuthGuard]},
-  {path: 'quiz/management', component: DeleteQuizzesComponent, canActivate:[AuthGuard, TagGuardGuard]}
+  {path: 'quiz/management', component: DeleteQuizzesComponent, canActivate:[AuthGuard, TagGuardGuard]},
+  {path: 'myquizzes', component: MyQuizzesComponent}
 ];
 
 @NgModule({

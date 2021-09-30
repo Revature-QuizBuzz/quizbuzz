@@ -1,0 +1,18 @@
+<div class="container" style="text-align:center;">
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <th>Name</th>
+                <th>Modified</th>
+                <th>Delete</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let quiz of quizzes">
+                    <td>{{quiz.name}}</td>
+                    <td>{{quiz.dateModified}}</td>
+                    <td><button >Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
