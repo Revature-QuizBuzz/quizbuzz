@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DeleteQuizzesComponent } from './delete-quizzes/delete-quizzes.component';
+import { Quiz } from './models/quizzes';
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +25,9 @@ export class QuizService {
 
   deleteQuiz(quizId: number): Observable<string> {
     return this.http.delete<string>(this.baseUrl + "/" + quizId);
+  }
+
+  getQuizzesByUserId(userId: number): Observable<Quiz[]> {
+    return this.http.get<Quiz[]>(`${this.baseUrl}/user/${userId}`);
   }
 }
