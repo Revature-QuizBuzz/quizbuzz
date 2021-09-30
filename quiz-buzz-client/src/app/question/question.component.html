@@ -30,8 +30,7 @@
                     </select>
 
                     <ng-container *ngIf="questions[i].type !== ''">
-                        <app-question-answer [questionType]="questions[i].type"
-                            (answerEvent)="answerCapture($event, i)"></app-question-answer>
+                        <app-question-answer [questionType]="questions[i].type" (answerEvent)="answerCapture($event, i)"></app-question-answer>
                     </ng-container>
                 </div>
 

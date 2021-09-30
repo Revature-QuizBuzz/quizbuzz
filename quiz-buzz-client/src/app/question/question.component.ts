@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Question } from '../models/questions';
@@ -13,35 +13,39 @@ export class QuestionComponent implements OnInit {
   selectedType = "";
   // questions: Question[] = [];
   public questions: Question[] = [{
-      question: "",
-      possiblePoints: 0,
-      type: ""
-  
+    question: "",
+    possiblePoints: 0,
+    type: ""
+
   }];
+  answersArray?: Answer[]
 
   @Output() questionEvent = new EventEmitter<Question[]>();
   @Output() saveEvent = new EventEmitter<boolean>();
 
+  @Input() answerEvent?: Answer[];
+
   constructor(private router: Router, private http: HttpClient) {
-   }
+  }
 
   public _url = "http://localhost:8080/questions/new"
 
   ngOnInit(): void {
   }
 
-  addQuestion(index:number, stockForm: NgForm) {
+  addQuestion(index: number, stockForm: NgForm) {
     let question: Question = {
       questionId: 0,
       question: "",
       possiblePoints: 0,
       type: ""
     }
-    question.question= stockForm.value.question;
+    question.question = stockForm.value.question;
     question.possiblePoints = stockForm.value.possiblePoints;
     question.type = stockForm.value.type;
     console.log(question);
-    this.questions[index]= question;
+    question.answers = this.answersArray;
+    this.questions[index] = question;
     this.questions.push({
       question: "",
       possiblePoints: 0,
@@ -59,33 +63,16 @@ export class QuestionComponent implements OnInit {
     console.log(this.questions);
   }
 
-  counter(i: number){
+  counter(i: number) {
     return new Array(i)
   }
 
-  onChange(selectedType: string, index:number) {
+  onChange(selectedType: string, index: number) {
     console.log(selectedType);
     this.questions[index].type = selectedType;
   }
 
   onSubmit(stockForm: NgForm) {
-    
-
-    // const httpOptions = {
-    // headers: new HttpHeaders({'Content-Type':'application/json'})}
-    // let quiz: Quiz ={id:stockForm.value.quizid}
-    // this.http.post(this._url,({ 
-    //   quiz:quiz, 
-    //   question:stockForm.value.question, 
-    //   possiblePoints:stockForm.value.possiblePoints, 
-    //   type:stockForm.value.type, 
-    // }), httpOptions
-    // ).subscribe({
-    //   next: (data) => {
-    //     console.log(data)
-    //   }
-    // })
-    // this.router.navigate([""])
 
     let question: Question = {
       questionId: 0,
@@ -95,17 +82,17 @@ export class QuestionComponent implements OnInit {
     }
 
     question.question = stockForm.value.question;
-    question.possiblePoints = stockForm.value.possiblePoints;
     question.type = stockForm.value.type;
+    question.answers = this.answersArray;
     console.log(question);
+    this.questions[this.questions.length - 1] = question;
     this.questionEvent.emit(this.questions);
     this.saveEvent.emit(true);
-    this.router.navigate(['quiz/new'])
-
   }
 
-  answerCapture($event: Answer[], index:number){
-    this.questions[index].answers=$event;
+  answerCapture($event: Answer[], index: number) {
+    this.answersArray = $event;
+    console.log($event);
   }
 
 }
