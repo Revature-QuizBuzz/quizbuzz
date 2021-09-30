@@ -32,11 +32,11 @@ export const routes: Routes = [
     {path: 'newquestion', component: QuestionComponent, outlet: "question", canActivate:[AuthGuard]},
   ]},
   {path: 'tags', component: TagsShowPageComponent, canActivate:[AuthGuard, TagGuardGuard]},
-  {path: 'testresults', component: QuizSubmissionComponent},
-  {path: 'quiz/selection', component: QuizSelectionComponent},
-  {path: 'take/quiz', component: TaketestComponent},
-  {path: 'quiz/submit', component: QuizSubmissionComponent},
-  {path: 'quiz/management', component: DeleteQuizzesComponent}
+  {path: 'testresults', component: QuizSubmissionComponent, canActivate:[AuthGuard]},
+  {path: 'quiz/selection', component: QuizSelectionComponent, canActivate:[AuthGuard]},
+  {path: 'take/quiz', component: TaketestComponent, canActivate:[AuthGuard]},
+  {path: 'quiz/submit', component: QuizSubmissionComponent, canActivate:[AuthGuard]},
+  {path: 'quiz/management', component: DeleteQuizzesComponent, canActivate:[AuthGuard, TagGuardGuard]}
 ];
 
 @NgModule({
