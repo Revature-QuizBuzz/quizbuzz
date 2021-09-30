@@ -7,18 +7,13 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import quiz.models.Answers;
 import quiz.models.Question;
 import quiz.models.Quiz;
 import quiz.models.User;
+import quiz.services.AnswersManager;
 import quiz.services.QuestionManager;
 import quiz.services.QuizManager;
 
@@ -32,7 +27,9 @@ public class QuizController {
 	@Autowired
 	private QuizManager manager;
 	@Autowired
-	private QuestionManager qmanager;
+	private QuestionManager questionManager;
+	@Autowired
+	private AnswersManager answersManager;
 
 
 	private static final Logger logger = LogManager.getLogger(QuizController.class);
@@ -42,15 +39,22 @@ public class QuizController {
 	public Quiz create(@RequestBody Quiz quiz) {
 		logger.info("created new quiz");
 		quiz = manager.create(quiz);
-		for (Question questions : quiz.getQuestions()) {
+		for(Question questions : quiz.getQuestions()) {
 			questions.setQuiz(quiz);
-		}
-		qmanager.createAll(quiz.getQuestions());
+			questionManager.create(questions);
+			for (Answers answers : questions.getAnswers()) {
+				answers.setQuestion(questions);
+				answersManager.create(answers);
+			}
+			
+		}		
 		return quiz;
 	}
 
-	@GetMapping(produces = "application/json")
+	@CrossOrigin(origins="http://localhost:4200")
+	@GetMapping(path="", produces = "application/json")
 	public List<Quiz> getAll() {
+		logger.info("GET to /quizzes");
 		return manager.findAll();
 	}
 
@@ -68,4 +72,19 @@ public class QuizController {
 		logger.info("Find quiz(zes) created by user ");
 		return manager.findByUser(userId);
 	}
+	
+	@CrossOrigin(origins="http://localhost:4200")
+	@GetMapping(path="/getTen", produces="application/json")
+	public ResponseEntity<List<Quiz>> getTenQuizzes() {
+		logger.info("GET to /getTen");
+		return new ResponseEntity<>(manager.getFeaturedQuizzes(), HttpStatus.OK);
+	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping(path="/search/{quizName}", produces="application/json")
+	public List<Quiz> findBySearchValue(@PathVariable String quizName) {
+		return manager.findByQuizName(quizName);
+	}
+	
+	
 }

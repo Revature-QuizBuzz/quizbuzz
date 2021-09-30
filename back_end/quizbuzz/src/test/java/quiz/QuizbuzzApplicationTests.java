@@ -3,16 +3,20 @@ package quiz;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.ResponseEntity;
 import quiz.models.*;
 import quiz.services.*;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import quiz.models.Tags;
+import quiz.models.User;
+import quiz.services.TagsManager;
+import quiz.services.UserManager;
 
 @SpringBootTest
 class QuizbuzzApplicationTests {
@@ -62,6 +66,7 @@ class QuizbuzzApplicationTests {
 		assertNotEquals(found, null);
 		assertEquals(found.getName(),name);
 	}
+	
 
 	@Test
 	void createQuestion() {
@@ -113,7 +118,12 @@ class QuizbuzzApplicationTests {
 			List<Quiz> quizSet = new ArrayList<>();
 			quizSet.add(quizManager.findByName("Coffee Quiz"));
 			newTags.setQuizzes(quizSet);
-			tagsManager.createTags(newTags);
+			try {
+				tagsManager.createTags(newTags);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			found = tagsManager.findByName(name);
 		}
 

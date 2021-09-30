@@ -4,7 +4,7 @@ import { Quiz } from "./quizzes";
 import { LoginComponent } from "../login/login.component";
 
 export interface User {
-    id?: number;
+    userId?: number;
     username?: string;
     password?: string;
     firstName?: string;

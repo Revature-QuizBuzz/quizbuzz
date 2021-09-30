@@ -1,0 +1,53 @@
+
+.listItem{
+    height: 40px;
+    width: 100%;
+    line-height: 40px;    
+    display: inline-block;
+}
+
+li:nth-child(2n) {
+    background-color: #f7f7f7;
+}
+
+.marginSpacer{
+    margin-top: 50px;
+}
+
+.tagsListAll {
+    background-color: white;
+    color: black;
+    border-radius: 27px;
+    list-style: none;
+    margin: 0;
+    margin-bottom: 50px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.centerText{
+    text-align: center;
+}
+
+.tagsAllCont {
+    border-radius: 27px;
+    background-color: #72A4C2;
+    color: #fff;
+}
+
+.trash {
+    background-color: #e74c3c;
+    height: 40px;
+    color: white;
+    width: 0px;
+    display: inline-block;
+    transition: 0.2s linear;
+    opacity: 0;    
+    line-height: 40px;  
+  }
+
+  li:hover .trash {
+    width: 40px;
+    opacity: 1;
+  }
+ 

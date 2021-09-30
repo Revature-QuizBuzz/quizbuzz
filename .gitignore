@@ -9,7 +9,7 @@ buildNumber.properties
 .mvn/timing.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
-
+*.log
 
 *#
 *.iml
@@ -54,3 +54,4 @@ secrets.yml
 .gradletasknamecache
 .sts4-cache
 /.properties
+back_end/quizbuzz/logs/spring-boot-logger.log

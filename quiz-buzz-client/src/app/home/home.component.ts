@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Quiz } from '../models/quizzes';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +10,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http:HttpClient, private router:Router) { }
+
+  quizzes:Quiz[] = [];
 
   ngOnInit(): void {
+    this.http.get('http://localhost:8080/quizzes/getTen').subscribe({
+      next: (data:any) => {
+        console.log(data);
+        this.quizzes = data;
+      }
+    })
+  }
+
+  getName() {
+    return localStorage.getItem("firstName") + " " + localStorage.getItem("lastName");
+  }
+
+  getTotalScore() {
+    //return 100;
+  }
+
+  takeQuiz(quizId:number = 0) {
+    if(quizId !== 0) {
+      localStorage.setItem("quizId", String(quizId));
+      this.router.navigate(['take/quiz'])
+    }
   }
 
 }

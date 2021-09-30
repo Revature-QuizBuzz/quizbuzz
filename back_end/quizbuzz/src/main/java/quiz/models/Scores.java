@@ -18,9 +18,9 @@ public class Scores {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @SequenceGenerator(name="id_generator", sequenceName = "user_scores_score_id_seq", allocationSize = 1)
+//    @SequenceGenerator(name="id_generator", sequenceName = "user_scores_score_id_seq", allocationSize = 1)
     @Column(name="score_id")
-	private int id;
+	private int scoreId;
 	
 	@ManyToOne
 	@JoinColumn(name="user_id", nullable=false)
@@ -36,30 +36,27 @@ public class Scores {
 	@Column(name="completed_on")
 	private Date completedOn;
 	
-	
+	public Scores() { }
 
 	public Scores(int id, User user, Quiz quiz, int score, Date completedOn) {
 		super();
-		this.id = id;
+		this.scoreId = id;
 		this.user = user;
 		this.quiz = quiz;
 		this.score = score;
 		this.completedOn = completedOn;
 	}
 
-	public Scores() { }
-
 	public Scores(int id) {
-		this.id = id;
+		this.scoreId = id;
 	}
 
-
-	public int getId() {
-		return id;
+	public int getScoreId() {
+		return scoreId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setScoreId(int id) {
+		this.scoreId = id;
 	}
 
 	public void setUser(User user) {

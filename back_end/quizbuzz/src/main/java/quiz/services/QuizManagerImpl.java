@@ -7,7 +7,13 @@ import quiz.models.Quiz;
 
 import java.util.List;
 
-import quiz.dao.QuizDAO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import quiz.dao.*;
+import quiz.models.*;
+
+
+import java.util.List;
 
 @Service
 public class QuizManagerImpl implements QuizManager {
@@ -29,6 +35,11 @@ public class QuizManagerImpl implements QuizManager {
     public List<Quiz> findAll() {
         return daoQuiz.findAll();
     }
+    
+    @Override
+    public List<Quiz> getFeaturedQuizzes() {
+    	return daoQuiz.getFeaturedQuizzes();
+    }
 
     @Override
 	public void deleteQuiz(Integer quizId) {
@@ -42,5 +53,10 @@ public class QuizManagerImpl implements QuizManager {
     public Quiz findByName(String name) {
         return daoQuiz.findByName(name);
     }
+
+	@Override
+	public List<Quiz> findByQuizName(String quizName) {
+		return daoQuiz.findByQuizName(quizName);
+	}
 
 }
